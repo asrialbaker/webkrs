@@ -310,10 +310,11 @@ body.lb-lock{overflow:hidden}
    muat awal halaman. */
 .ofc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2.2vw,1.5rem)}
 .ofc__card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(.75rem,1.5vw,1.25rem);
   display:flex;flex-direction:column;overflow:hidden;transition:border-color .18s,transform .18s}
 .ofc__card:hover{border-color:var(--haram);transform:translateY(-3px)}
 .ofc__map{order:-1;position:relative;aspect-ratio:16/10;background:var(--limestone);
-  border-bottom:1px solid var(--line)}
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .ofc__map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;
   filter:grayscale(.4);transition:filter .25s}
 .ofc__card:hover .ofc__map iframe{filter:none}
@@ -339,9 +340,8 @@ body.lb-lock{overflow:hidden}
 /* Kad ibu pejabat — merentang penuh, peta di sebelah kanan */
 .story__hq{margin-top:clamp(2rem,4vw,3rem)}
 .ofc__card--hq{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;
-  padding:clamp(.75rem,1.5vw,1.25rem);gap:clamp(.75rem,1.5vw,1.25rem)}
-.ofc__card--hq .ofc__map{order:0;aspect-ratio:auto;min-height:300px;
-  border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  gap:clamp(.75rem,1.5vw,1.25rem)}
+.ofc__card--hq .ofc__map{order:0;aspect-ratio:auto;min-height:300px}
 .ofc__map-open{position:absolute;z-index:1;top:10px;left:10px;display:inline-flex;align-items:center;gap:.4rem;
   padding:.65rem .8rem;background:#fff;color:#1967d2;border:1px solid var(--line);border-radius:2px;
   box-shadow:0 1px 4px rgba(0,0,0,.2);font:500 13px/1.2 Arial,sans-serif;text-decoration:none}
