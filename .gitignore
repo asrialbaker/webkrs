@@ -8,6 +8,9 @@
 **/.env
 **/.env.*
 **/node_modules/
+**/.claude/
+**/.codex/
+**/.agents/
 **/.DS_Store
 **/Thumbs.db
 **/*.log
