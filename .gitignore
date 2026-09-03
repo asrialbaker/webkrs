@@ -3,6 +3,7 @@
 !/.gitignore
 !/README.md
 !/site-live/
+!/.github/
 
 # Local settings, secrets and temporary files.
 **/.env

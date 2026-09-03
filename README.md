@@ -32,4 +32,12 @@ repository to an online Git repository and a static hosting service for a
 shareable preview. The hosting publish directory must be `site-live`.
 This website requires no build command.
 
-No remote repository or online deployment has been configured yet.
+Repository: https://github.com/asrialbaker/webkrs
+
+Online preview: https://asrialbaker.github.io/webkrs/
+
+GitHub Pages publishes `site-live/` automatically after each push to `main`.
+Save and commit your changes, then run `git push`. Wait for the **Publish
+website** workflow on GitHub to finish, then refresh the online preview.
+Local edits are visible online only after they have been committed, pushed
+and published successfully.
