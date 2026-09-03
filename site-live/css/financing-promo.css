@@ -1,0 +1,20 @@
+/* Shared financing callout: fixed desktop rail, inline mobile card. */
+.fin-promo{margin:1.25rem var(--pad);background:#fffdf6;color:var(--ink);border:1px solid #d4c69b;border-top:5px solid #ffce32;border-radius:6px;padding:1.25rem;box-shadow:0 12px 32px rgba(14,28,34,.16)}
+.fin-promo__brand{display:flex;align-items:center;gap:.6rem;color:#10513e;font-size:.875rem;font-weight:700;margin:0 0 1rem}
+.fin-promo__brand svg{width:30px;height:30px;flex:0 0 30px;background:#ffce32;padding:5px;border-radius:50%}
+.fin-promo h2{font-size:1.35rem;line-height:1.2;letter-spacing:-.02em;margin:0 0 .8rem}
+.fin-promo__text{font-size:1rem;line-height:1.5;margin:0 0 1rem;color:#52626a}
+.fin-promo__cta{display:flex;align-items:center;justify-content:space-between;gap:.6rem;background:#ffce32;color:#17241c;padding:.8rem .9rem;border-radius:3px;font-size:.95rem;line-height:1.35;font-weight:700;text-decoration:none}
+.fin-promo__cta:hover{background:#f1be19}
+.fin-promo__cta:focus-visible{outline:3px solid #10513e;outline-offset:4px}
+.fin-promo__note{font-size:.8rem;line-height:1.45;color:#52626a;margin:.8rem 0 0}
+@media(min-width:861px){
+ :root{--floatw:clamp(206px,17.5vw,244px);--floatgap:clamp(1rem,1.6vw,1.5rem);--floattop:calc(107px + .7rem)}
+ .fin-promo{position:fixed;z-index:50;top:var(--floattop);right:var(--floatgap);width:var(--floatw);margin:0;padding:1rem;max-height:calc(100dvh - var(--floattop) - 90px);overflow-y:auto}
+ #kandungan .wrap,.rakan .wrap,.foot .wrap{padding-right:calc(var(--floatw) + var(--floatgap) * 2)}
+ /* Keep homepage slides and carousel controls clear of the rail. */
+ .hsl{margin-right:calc(var(--floatw) + var(--floatgap) * 2)}
+}
+@media(min-width:1206px) and (max-width:1345px){.foot__main{grid-template-columns:repeat(2,minmax(0,1fr))}.foot__ig{grid-column:1/-1;max-width:340px}}
+@media(min-width:861px) and (max-width:1205px){.foot__main{grid-template-columns:1fr}.foot__ig{grid-column:1/-1;max-width:340px}}
+@media(max-width:860px){.fin-promo{max-width:600px;margin:1.5rem auto;width:calc(100% - var(--pad) * 2)}.fin-promo__cta{justify-content:center}}
