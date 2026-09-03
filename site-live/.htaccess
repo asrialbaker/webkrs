@@ -1,0 +1,111 @@
+# ══════════════════════════════════════════════════════════════
+#  KRS Travel — konfigurasi pelayan (Apache / LiteSpeed · cPanel)
+#  Muat naik fail ini ke ROOT laman (public_html/).
+#
+#  NOTA: fail `_headers` dan `_redirects` hanya berfungsi di Netlify
+#  dan Cloudflare Pages. Di cPanel ia DIABAIKAN sepenuhnya —
+#  fail inilah yang benar-benar digunakan.
+# ══════════════════════════════════════════════════════════════
+
+# ── 1 · Halaman ralat ─────────────────────────────────────────
+# Jika laman masih di /site-live/, tukar kepada: /site-live/404.html
+ErrorDocument 404 /404.html
+
+# ── 2 · Paksa HTTPS + www tunggal ─────────────────────────────
+# Penting: TikTok, Google Maps dan widget ulasan menolak untuk dimuat
+# dalam halaman HTTP (mixed content). Tanpa blok ini, video TikTok
+# dalam mockup telefon akan kosong pada pelawat yang tiba melalui http://
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # http → https
+  # Guna %{REQUEST_URI}, bukan /$1 — supaya peraturan ini betul sama ada fail
+  # ini berada di root laman ATAU di dalam subfolder seperti /site-live/.
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # www → tanpa www (tukar arah jika anda lebih suka www)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+  # URL cantik: /umrah → umrah.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# ── 3 · Pengalihan daripada URL WordPress lama ────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^pakej-umrah/?$              /umrah.html            [R=301,L]
+  RewriteRule ^pakej-haji/?$               /haji.html             [R=301,L]
+  RewriteRule ^tentang-kami/?$             /tentang-kami.html     [R=301,L]
+  RewriteRule ^ejen/?$                     /ejen-krs.html         [R=301,L]
+  RewriteRule ^tiket-penerbangan/?$        /ticketing.html        [R=301,L]
+  RewriteRule ^visa/?$                     /visa.html             [R=301,L]
+  RewriteRule ^pelancongan/?$              /pelancongan.html      [R=301,L]
+</IfModule>
+
+# ── 4 · Pengepala keselamatan ─────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # Buang pengepala yang membocorkan versi perisian
+  Header unset X-Powered-By
+  Header unset Server
+</IfModule>
+
+# ── 5 · Cache ─────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Imej & fon — kekal lama (nama fail tidak berubah)
+  ExpiresByType image/webp              "access plus 1 year"
+  ExpiresByType image/jpeg              "access plus 1 year"
+  ExpiresByType image/png               "access plus 1 year"
+  ExpiresByType image/svg+xml           "access plus 1 year"
+  ExpiresByType image/x-icon            "access plus 1 year"
+  ExpiresByType font/woff2              "access plus 1 year"
+
+  # HTML — jangan cache, supaya kemas kini nampak serta-merta
+  ExpiresByType text/html               "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|jpe?g|png|gif|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ── 6 · Mampatan ──────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── 7 · Jenis MIME ────────────────────────────────────────────
+# Sesetengah pelayan cPanel lama tidak mengenali WebP — tanpa baris ini
+# semua imej laman ini gagal dipaparkan.
+<IfModule mod_mime.c>
+  AddType image/webp             .webp
+  AddType image/svg+xml          .svg
+  AddType font/woff2             .woff2
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ── 8 · Lindungi fail sensitif ────────────────────────────────
+<FilesMatch "^(\.htaccess|\.htpasswd|\.git.*|_headers|_redirects|DEPLOY\.md)$">
+  Require all denied
+</FilesMatch>
+
+Options -Indexes

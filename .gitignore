@@ -1,0 +1,14 @@
+# Track the active website and project instructions only.
+/*
+!/.gitignore
+!/README.md
+!/site-live/
+
+# Local settings, secrets and temporary files.
+**/.env
+**/.env.*
+**/node_modules/
+**/.DS_Store
+**/Thumbs.db
+**/*.log
+**/*~

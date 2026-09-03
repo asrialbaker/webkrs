@@ -1,0 +1,5 @@
+# Old WordPress URLs -> new pages (Cloudflare Pages auto-strips .html)
+/tentang-krstravel/*   /tentang-kami   301
+/tentang-krstravel     /tentang-kami   301
+/index.php             /               301
+/home                  /               301

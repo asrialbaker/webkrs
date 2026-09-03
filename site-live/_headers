@@ -1,0 +1,26 @@
+# ══════════════════════════════════════════════════════════════
+#  TIDAK DIGUNAKAN pada hosting cPanel / Apache / LiteSpeed.
+#
+#  Fail `_headers` hanya difahami oleh Netlify dan Cloudflare Pages.
+#  Laman ini dihoskan di cPanel, jadi fail ini DIABAIKAN sepenuhnya —
+#  semua pengepala sebenar kini ditetapkan dalam `.htaccess`.
+#
+#  JANGAN muat naik fail ini. Ia dikekalkan di sini hanya sebagai
+#  rujukan sekiranya laman dipindahkan ke Netlify/Cloudflare kelak.
+#  (`.htaccess` juga menyekat akses awam kepadanya.)
+# ══════════════════════════════════════════════════════════════
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

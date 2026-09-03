@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Halaman Tidak Dijumpai (404) &mdash; KRS Travel</title>
+<meta name="robots" content="noindex,follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..800&amp;family=Instrument+Sans:wght@400..700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1C22; --haram:#10513E; --haram-lift:#177056;
+    --amber:#E0912C; --amber-deep:#9C6013;
+    --maroon:#7A1C27; --maroon-deep:#5C121B;
+    --limestone:#EDE6D8; --paper:#FBF9F4; --line:#D3C9B6; --muted:#52626A;
+    --ff-display:'Archivo',system-ui,sans-serif;
+    --ff-body:'Instrument Sans',system-ui,sans-serif;
+    --ff-mono:'IBM Plex Mono',ui-monospace,monospace;
+    --r:3px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; display:grid; place-items:center;
+    padding:clamp(1.5rem,5vw,4rem);
+    background:var(--paper); color:var(--ink);
+    font-family:var(--ff-body); line-height:1.6;
+  }
+  .wrap{max-width:44rem; text-align:center}
+  .mark{height:64px; width:auto; margin:0 auto 2rem; display:block}
+  .code{
+    font-family:var(--ff-mono); font-size:.8rem; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--amber-deep); margin:0 0 .75rem;
+  }
+  h1{
+    font-family:var(--ff-display); font-weight:800; line-height:1.1;
+    font-size:clamp(1.9rem,5vw,3rem); margin:0 0 1rem; letter-spacing:-.02em;
+  }
+  p{color:var(--muted); font-size:1.05rem; margin:0 auto 2.25rem; max-width:34rem}
+  .actions{display:flex; gap:.75rem; flex-wrap:wrap; justify-content:center}
+  .btn{
+    display:inline-block; padding:.85rem 1.6rem; border-radius:var(--r);
+    font-weight:600; font-size:.95rem; text-decoration:none;
+    border:1px solid transparent; transition:background .18s,border-color .18s,color .18s;
+  }
+  .btn--primary{background:var(--maroon); color:#fff; border-color:var(--maroon)}
+  .btn--primary:hover,.btn--primary:focus-visible{background:#fff; color:var(--maroon); border-color:var(--maroon)}
+  .btn--ghost{border-color:var(--line); color:var(--ink)}
+  .btn--ghost:hover{border-color:var(--haram); color:var(--haram)}
+  .btn--wa{background:#25D366; color:#fff}
+  .btn--wa:hover{background:#1EBE5B}
+  .links{
+    margin-top:2.5rem; padding-top:1.75rem; border-top:1px solid var(--line);
+    display:flex; gap:.4rem 1.5rem; flex-wrap:wrap; justify-content:center;
+    font-size:.9rem;
+  }
+  .links a{color:var(--muted); text-decoration:none}
+  .links a:hover{color:var(--haram); text-decoration:underline}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <img class="mark" src="/images/logo/krs-travel.webp" alt="KRS Travel Sdn Bhd" width="200" height="64">
+    <p class="code">Ralat 404</p>
+    <h1>Maaf, halaman ini tidak dijumpai.</h1>
+    <p>Halaman yang anda cari mungkin telah dipindahkan, ditukar nama, atau tidak lagi wujud. Sila cuba pautan di bawah atau hubungi kami terus melalui WhatsApp.</p>
+    <div class="actions">
+      <a class="btn btn--primary" href="/">Kembali ke Laman Utama</a>
+      <a class="btn btn--ghost" href="/umrah">Lihat Pakej Umrah</a>
+      <a class="btn btn--wa" href="https://wa.me/60102790458?text=Salam,%20saya%20perlukan%20bantuan" rel="noopener">WhatsApp Kami</a>
+    </div>
+    <nav class="links">
+      <a href="/umrah">Umrah</a>
+      <a href="/haji">Haji</a>
+      <a href="/ticketing">Ticketing</a>
+      <a href="/visa">Visa</a>
+      <a href="/pelancongan">Pelancongan</a>
+      <a href="/ejen-krs">Ejen KRS</a>
+      <a href="/tentang-kami">Tentang Kami</a>
+    </nav>
+  </main>
+</body>
+</html>
