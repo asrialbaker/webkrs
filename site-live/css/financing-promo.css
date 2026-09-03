@@ -10,7 +10,7 @@
 .fin-promo__note{font-size:.8rem;line-height:1.45;color:#52626a;margin:.8rem 0 0}
 @media(min-width:861px){
  :root{--floatw:clamp(206px,17.5vw,244px);--floatgap:clamp(1rem,1.6vw,1.5rem);--floattop:calc(107px + .7rem)}
- .fin-promo{position:fixed;z-index:50;top:var(--floattop);right:var(--floatgap);width:var(--floatw);margin:0;padding:1rem;max-height:calc(100dvh - var(--floattop) - 90px);overflow-y:auto}
+ .fin-promo{position:fixed;z-index:50;top:var(--floattop);right:var(--floatgap);width:var(--floatw);margin:0;padding:1rem}
  #kandungan .wrap,.rakan .wrap,.foot .wrap{padding-right:calc(var(--floatw) + var(--floatgap) * 2)}
  /* Keep homepage slides and carousel controls clear of the rail. */
  .hsl{margin-right:calc(var(--floatw) + var(--floatgap) * 2)}
