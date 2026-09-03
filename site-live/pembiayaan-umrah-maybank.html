@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pembiayaan Umrah Maybank Islamic — KRS Travel</title>
+<title>Pembiayaan Haji &amp; Umrah Maybank Islamic — KRS Travel</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<meta name="description" content="Kenali pembiayaan umrah Maybank Islamic: pakej Safa dan Marwa, kelayakan serta panduan permohonan bersama KRS Travel.">
+<meta name="description" content="Kenali pembiayaan Haji dan Umrah Maybank Islamic: had Safa dan Marwa, syarat kelayakan, dokumen serta borang permohonan bersama KRS Travel.">
 
 <link rel="canonical" href="https://krstravel.com.my/pembiayaan-umrah-maybank">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ms_MY">
-<meta property="og:title" content="Pembiayaan Umrah Maybank Islamic — KRS Travel">
-<meta property="og:description" content="Kenali pembiayaan umrah Maybank Islamic: pakej Safa dan Marwa, kelayakan serta panduan permohonan bersama KRS Travel.">
+<meta property="og:title" content="Pembiayaan Haji &amp; Umrah Maybank Islamic — KRS Travel">
+<meta property="og:description" content="Kenali pembiayaan Haji dan Umrah Maybank Islamic: had Safa dan Marwa, syarat kelayakan, dokumen serta borang permohonan bersama KRS Travel.">
 <meta property="og:url" content="https://krstravel.com.my/pembiayaan-umrah-maybank">
 <meta property="og:image" content="https://krstravel.com.my/og-image.jpg">
 <meta name="twitter:card" content="summary">
@@ -695,6 +695,78 @@ body.lb-open{overflow:hidden}
 .finance-hukum .finance-card h3{font-size:1.2rem;line-height:1.3}.finance-hukum .finance-card p:last-child{margin-bottom:0}
 .finance-source{font-size:.875rem;overflow-wrap:anywhere}.finance-caution{border-left:3px solid var(--amber-deep);padding:1rem 1.4rem;background:#fffaf0;margin-top:1.5rem}
 @media(max-width:760px){.finance-benefits,.finance-facts,.finance-resources{grid-template-columns:1fr}.finance-benefits{gap:1.5rem}.finance-agency{grid-template-columns:1fr;gap:1rem}.finance-download{padding:1.3rem;gap:1rem}.finance-download strong{font-size:1.15rem}}
+
+/* Haji and Umrah hero: clear text at left, pilgrim portrait at right. */
+.finance-hero h1{font-size:clamp(2.4rem,4.5vw,3.8rem);max-width:58%}
+.finance-hero>img{object-position:75% 42%}
+.finance-hero:after{background:linear-gradient(90deg,rgba(9,34,29,.96),rgba(9,34,29,.78) 42%,rgba(9,34,29,.12) 68%,transparent)}
+.finance-hero p{max-width:48%}
+.finance-purpose{margin-top:2rem;padding:1.5rem;border:1px solid var(--line);background:#f3f5ee}
+.finance-purpose h3{font-size:1.3rem;line-height:1.3}
+.finance-table-wrap{overflow-x:auto}
+.finance-table{width:100%;border-collapse:collapse;margin-top:1rem;text-align:left;font-size:1rem}
+.finance-table caption{text-align:left;font-size:.875rem;color:var(--muted);padding-bottom:.75rem}
+.finance-table th,.finance-table td{padding:1rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+.finance-table thead{background:var(--haram);color:white}
+@media(max-width:700px){.finance-hero>img{position:relative;display:block;height:260px;object-position:85% 35%;z-index:0}.finance-hero:after{display:none}.finance-hero h1,.finance-hero p{max-width:100%}.finance-hero .wrap{padding-top:1.5rem}.finance-hero .crumb{margin-bottom:1.5rem}.finance-purpose{padding:1rem}.finance-table th,.finance-table td{padding:.8rem .5rem}}
+
+/* Portrait crop excludes the unrelated headline and footer of the supplied clipping. */
+/* Caption treatment matches the media tiles on Tentang Kami. */
+.finance-mufti{position:relative;margin:0 0 1.5rem;max-width:360px;overflow:hidden;border-radius:3px;background:var(--ink)}
+.finance-mufti__crop{position:relative;aspect-ratio:399 / 320;overflow:hidden;background:var(--limestone)}
+.finance-mufti__crop img{position:absolute;left:0;top:-49.375%;width:100%;height:auto;max-width:none}
+.finance-mufti::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(6,18,22,.95) 0%,rgba(6,18,22,.78) 22%,rgba(6,18,22,.25) 48%,transparent 72%)}
+.finance-mufti figcaption{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:1rem .95rem;line-height:1.3;color:var(--white)}
+.finance-mufti figcaption strong,.finance-mufti figcaption span,.finance-mufti figcaption small{display:block}
+.finance-mufti figcaption strong{font-family:var(--ff-display);font-size:1rem;font-weight:700;color:var(--white);text-shadow:0 1px 12px rgba(6,18,22,.5)}
+.finance-mufti__role{font-size:.875rem;color:#e3ecee;margin-top:.3rem}
+.finance-mufti figcaption small{margin-top:.4rem;color:#c2d1d5;font-size:.75rem}
+
+.finance-mufti--zulkifli .finance-mufti__crop img{inset:0;width:100%;height:100%;object-fit:cover;object-position:49% 0}
+.finance-mufti figcaption a{color:inherit;text-decoration:none}
+.finance-mufti figcaption a:hover{text-decoration:underline}
+.finance-mufti-logo{margin:0 0 1.5rem;max-width:360px;aspect-ratio:399 / 320;background:white;border-radius:3px;display:flex;align-items:center;justify-content:center;padding:1rem}
+.finance-mufti-logo img{display:block;width:100%;height:100%;min-height:0;object-fit:contain}
+.finance-hukum-poster{margin:0 0 1.5rem}
+.finance-hukum-poster a{display:block}
+.finance-hukum-poster img{display:block;width:100%;height:auto;border-radius:3px}
+.finance-hukum-poster figcaption{margin-top:.6rem;font-size:.8rem;line-height:1.5;color:var(--muted)}
+
+/* Consistent full-width, padded media inside the four religious guidance cards. */
+.finance-hukum .finance-card{min-width:0}
+.finance-hukum-media{width:100%;padding:.85rem;margin:0 0 1.5rem;background:#f5f3ed;border:1px solid var(--line);border-radius:6px}
+.finance-hukum-media figure{width:100%;max-width:none;margin:0}
+.finance-hukum-media .finance-mufti-logo{position:relative;display:block;padding:0;overflow:hidden}
+.finance-hukum-media .finance-mufti-logo img{position:absolute;inset:0;width:100%;height:100%;padding:.75rem;object-fit:contain}
+.finance-hukum-media .finance-hukum-poster>a{position:relative;aspect-ratio:399 / 320;background:white;border-radius:3px;overflow:hidden}
+.finance-hukum-media .finance-hukum-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+@media(max-width:700px){.finance-hukum-media{padding:.65rem}}
+
+/* Four religious guidance cards in one desktop row. */
+.finance-hukum .finance-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;align-items:start}
+.finance-hukum .finance-card{padding:1rem}
+.finance-hukum .finance-hukum-media{padding:.5rem}
+.finance-hukum .finance-mufti figcaption{padding:.65rem}
+.finance-hukum .finance-mufti figcaption strong{font-size:.875rem;line-height:1.3}
+.finance-hukum .finance-mufti__role{font-size:.8rem}
+@media(max-width:1100px){.finance-hukum .finance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.finance-hukum .finance-grid{grid-template-columns:1fr}}
+
+/* Source caption stamped over the first infographic. */
+.finance-hukum .finance-hukum-poster{position:relative}
+.finance-hukum .finance-hukum-poster figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:.55rem .65rem;background:rgba(6,18,22,.88);color:#fff;font-size:.75rem;line-height:1.35;border-radius:0 0 3px 3px;pointer-events:none}
+
+[data-hukum-lightbox]{cursor:zoom-in}
+a.finance-mufti__crop{display:block}
+.finance-mufti-logo>[data-hukum-lightbox]{position:absolute;inset:0;display:block}
+.finance-mufti figcaption{pointer-events:none}
+.finance-mufti figcaption a{pointer-events:auto}
+[data-hukum-lightbox]:focus-visible{outline:3px solid var(--amber);outline-offset:-3px}
+@media(prefers-reduced-motion:reduce){.lb{animation:none}}
+
+.lb__image-frame{display:contents}
+.lb--portrait-crop .lb__image-frame{display:block;position:relative;width:min(80vw,calc(70vh * 399 / 320));aspect-ratio:399 / 320;overflow:hidden;border-radius:var(--r)}
+.lb--portrait-crop .lb__img{position:absolute;left:0;top:-49.375%;width:100%;height:auto;max-width:none;max-height:none;box-shadow:none}
 </style>
 </head>
 <body>
@@ -851,44 +923,67 @@ body.lb-open{overflow:hidden}
 
 <main id="kandungan">
 <section class="finance-hero">
-<img src="images/umrah-hero.webp" alt="Pemandangan Masjidil Haram di Makkah" fetchpriority="high">
-<div class="wrap"><nav class="crumb" aria-label="Laluan"><a href="index.html">Utama</a><span>/</span><a href="umrah.html">Umrah</a><span>/</span><span aria-current="page">Pembiayaan</span></nav>
+<img src="images/pembiayaan-haji-umrah-hero.png" width="1536" height="1024" alt="Gambaran pasangan jemaah tersenyum sambil bersedia untuk perjalanan ke Tanah Suci di lapangan terbang" fetchpriority="high" decoding="async">
+<div class="wrap"><nav class="crumb" aria-label="Laluan"><a href="index.html">Utama</a><span>/</span><span aria-current="page">Pembiayaan Haji &amp; Umrah</span></nav>
 <span class="finance-brand">Maybank Islamic</span>
-<h1>Rancang perjalanan.<br><em>Sempurnakan niat.</em></h1>
-<p>Pembiayaan Peribadi-i bagi Haji &amp; Umrah. Kenali pilihan pembiayaan Maybank Islamic untuk perjalanan umrah anda bersama KRS Travel.</p>
-<div class="finance-actions"><a class="btn finance-primary" href="#kelayakan">Semak kelayakan</a><a class="btn finance-outline" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20sebut%20harga%20pakej%20umrah%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">Minta sebut harga umrah ↗</a></div>
+<h1>Pembiayaan<br><em>Haji &amp; Umrah.</em></h1>
+<p>Langkah ke Tanah Suci bermula dengan perancangan. Kenali Pembiayaan Peribadi-i Maybank Islamic untuk haji dan umrah bersama KRS Travel.</p>
+<div class="finance-actions"><a class="btn finance-primary" href="#kelayakan">Semak kelayakan</a><a class="btn finance-outline" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20maklumat%20pakej%20haji%20atau%20umrah%20serta%20dokumen%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">Tanya pakej haji &amp; umrah ↗</a></div>
 </div></section>
 <section class="finance-strip" aria-label="Ringkasan pembiayaan"><div class="wrap finance-stats"><div><strong>2–10 tahun</strong><span>Atau sehingga persaraan, yang lebih awal</span></div><div><strong>Tanpa penjamin</strong><span>Tiada cagaran diperlukan</span></div><div><strong>Bayaran bulanan</strong><span>Potongan gaji atau arahan tetap berubah</span></div></div></section>
 
 <nav class="finance-jump" aria-label="Kandungan pembiayaan"><div class="wrap"><a href="#kelebihan">Kelebihan</a><a href="#kelayakan">Kelayakan</a><a href="#kadar-caj">Kadar &amp; caj</a><a href="#muat-turun-borang">Muat turun borang</a><a href="#hukum-hakam">Hukum hakam</a></div></nav>
-<section class="finance-section" id="kelebihan"><div class="wrap"><p class="finance-tag">KELEBIHAN PEMBIAYAAN</p><h2>Rancang umrah dengan lebih teratur</h2>
-<div class="finance-benefits"><figure><a href="images/kelebihan-pembiayaan-umrah-maybank.png" target="_blank" rel="noopener" aria-label="Buka infografik kelebihan pembiayaan umrah dalam saiz penuh"><img src="images/kelebihan-pembiayaan-umrah-maybank.png" width="1254" height="1254" loading="lazy" alt="Infografik enam kelebihan pembiayaan umrah Maybank Islamic; penerangan penuh tersedia di sebelah gambar."></a><figcaption><a href="images/kelebihan-pembiayaan-umrah-maybank.png" download>Muat turun infografik (PNG, segi empat sama)</a></figcaption></figure>
+<section class="finance-section" id="kelebihan"><div class="wrap"><p class="finance-tag">KELEBIHAN PEMBIAYAAN</p><h2>Rancang haji &amp; umrah dengan lebih teratur</h2>
+<div class="finance-benefits"><figure><a data-hukum-lightbox href="images/kelebihan-pembiayaan-umrah-maybank.png" target="_blank" rel="noopener" aria-label="Buka infografik kelebihan pembiayaan umrah dalam saiz penuh"><img src="images/kelebihan-pembiayaan-umrah-maybank.png" width="1254" height="1254" loading="lazy" alt="Infografik enam kelebihan pembiayaan umrah Maybank Islamic; penerangan penuh tersedia di sebelah gambar."></a><figcaption>Kelebihan kemudahan ini turut terpakai untuk pembiayaan haji.<br><a href="images/kelebihan-pembiayaan-umrah-maybank.png" download>Muat turun infografik (PNG, segi empat sama)</a></figcaption></figure>
 <div><ul class="finance-benefit-list"><li><strong>Untuk pekerja berpendapatan tetap</strong>Pekerjaan disahkan oleh majikan.</li><li><strong>Bayaran mampu milik</strong>Tertakluk kepada penilaian dan tawaran bank.</li><li><strong>Pembayaran bulanan</strong>Melalui potongan gaji atau Arahan Tetap Berubah (VSI).</li><li><strong>Tempoh fleksibel</strong>2–10 tahun atau sehingga persaraan, yang lebih awal.</li><li><strong>Tanpa cagaran atau penjamin</strong>Kemudahan pembiayaan tanpa cagaran.</li><li><strong>Dana terus kepada agensi diluluskan</strong>Disalurkan setelah semua syarat kemudahan dipenuhi.</li></ul><p class="finance-note"><a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Sumber: Kelebihan — Maybank Islamic ↗</a></p></div></div>
 <aside class="finance-agency" id="agensi-krs"><div class="finance-agency-number">1 / 14<small>Agensi dalam senarai Maybank</small></div><div><h3>KRS Travel Sdn Bhd</h3><p>Salah satu daripada 14 agensi pelancongan yang disenaraikan Maybank bagi kemudahan ini. KRS berada pada nombor 14 dalam senarai rasmi.</p><p class="finance-source"><a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Semak senarai agensi Maybank ↗</a></p></div></aside>
 </div></section>
 <section class="finance-section" id="kelayakan"><div class="wrap"><p class="finance-tag">01 / PILIHAN PEMBIAYAAN</p><h2>Pakej mengikut pekerjaan anda</h2><p class="finance-lede">Pemohon individu Muslim, warganegara Malaysia berumur 21–55 tahun, bekerja tetap dan disahkan majikan. Kelulusan tertakluk kepada penilaian bank.</p>
-<div class="finance-grid"><article class="finance-card"><p class="finance-tag">PAKEJ SAFA</p><h3>Sektor awam &amp; majikan terpilih</h3><p>Untuk kakitangan Kumpulan Maybank, kerajaan dan syarikat terpilih.</p><ul><li>Pembiayaan sehingga RM200,000.</li><li>Kakitangan kontrak Kerajaan Persekutuan: doktor, doktor gigi, ahli farmasi, pensyarah, guru dan jururawat; masih berkhidmat dengan sekurang-kurangnya satu tahun kontrak disempurnakan.</li></ul></article>
-<article class="finance-card"><p class="finance-tag">PAKEJ MARWA</p><h3>Pekerja berpendapatan tetap</h3><p>Untuk pekerja selain kategori Safa; tidak termasuk bekerja sendiri.</p><ul><li>Umrah: sehingga RM50,000 atau 20 kali gaji bulanan termasuk elaun tetap, yang lebih rendah.</li><li>Pendapatan minimum RM5,000 sebulan.</li><li>Gaji masuk ke Maybank; sekurang-kurangnya dua tahun dengan majikan yang memenuhi kriteria bank.</li></ul></article></div>
+<div class="finance-grid"><article class="finance-card"><p class="finance-tag">PAKEJ SAFA</p><h3>Sektor awam &amp; majikan terpilih</h3><p>Untuk kakitangan Kumpulan Maybank, kerajaan dan syarikat terpilih.</p><ul><li>Pembiayaan haji atau umrah sehingga RM200,000, tertakluk kepada kelayakan.</li><li>Kakitangan kontrak Kerajaan Persekutuan: doktor, doktor gigi, ahli farmasi, pensyarah, guru dan jururawat; masih berkhidmat dengan sekurang-kurangnya satu tahun kontrak disempurnakan.</li></ul></article>
+<article class="finance-card"><p class="finance-tag">PAKEJ MARWA</p><h3>Pekerja berpendapatan tetap</h3><p>Untuk pekerja selain kategori Safa; tidak termasuk bekerja sendiri.</p><ul><li>Umrah: sehingga RM50,000 atau 20 kali gaji bulanan termasuk elaun tetap, yang lebih rendah.</li><li>Haji: sehingga RM100,000 atau 20 kali gaji bulanan termasuk elaun tetap, yang lebih rendah.</li><li>Pendapatan minimum RM5,000 sebulan.</li><li>Gaji masuk ke Maybank; sekurang-kurangnya dua tahun dengan majikan yang memenuhi kriteria bank.</li></ul></article></div>
+
+<div class="finance-purpose" aria-label="Perbandingan pembiayaan haji dan umrah">
+  <h3>Had pembiayaan mengikut tujuan</h3>
+  <div class="finance-table-wrap"><table class="finance-table"><caption>Ringkasan had maksimum Safa dan Marwa</caption><thead><tr><th scope="col">Pakej</th><th scope="col">Umrah</th><th scope="col">Haji</th></tr></thead><tbody><tr><th scope="row">Safa</th><td>Sehingga RM200,000</td><td>Sehingga RM200,000</td></tr><tr><th scope="row">Marwa</th><td>Sehingga RM50,000*</td><td>Sehingga RM100,000*</td></tr></tbody></table></div>
+  <p class="finance-note">*Had Marwa ialah amaun di atas atau 20 kali gaji bulanan termasuk elaun tetap, yang mana lebih rendah. Semua amaun tertakluk kepada kelayakan dan kelulusan bank. <a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Rujuk ciri pembiayaan Maybank ↗</a></p>
+</div>
 <p class="finance-note">Rujuk Maybank untuk kadar keuntungan, ansuran, caj dan syarat penuh yang berkuat kuasa. <a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Lihat maklumat rasmi ↗</a></p></div></section>
 
 <section class="finance-section finance-process" id="kadar-caj"><div class="wrap"><p class="finance-tag">KADAR, CAJ &amp; TANGGUNGJAWAB</p><h2>Fahami kos sebelum membuat komitmen</h2><div class="finance-facts"><article><h3>Keuntungan efektif<br><strong>Serendah 5.45% setahun</strong></h3><p>Menurut maklumat Maybank yang disemak pada 3 September 2026. Kadar terapung dikira atas baki berkurang; perubahan Kadar Asas Standard (KAS) boleh mengubah ansuran.</p></article><article><h3>Duti setem<br><strong>RM5 bagi setiap RM1,000</strong></h3><p>Atau sebahagian daripadanya. Perlindungan takaful digalakkan; semak sumbangan dan pilihan perlindungan dengan bank.</p></article><article><h3>Penyelesaian awal<br><strong>Tiada penalti</strong></h3><p>Rebat (ibra’) diberi bagi keuntungan mengikut terma bank. Caj lewat bayar dikenakan jika ansuran tertunggak; rujuk risalah produk.</p></article></div><p class="finance-note">Pembiayaan menggunakan kontrak Murabahah Komoditi. <a href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/pds-pembiayaan-peribadi-haji-umrah-bm.pdf" target="_blank" rel="noopener">Baca Risalah Maklumat Produk (BM, PDF) ↗</a> untuk terma dan risiko penuh.</p></div></section>
-<section class="finance-section finance-process" id="permohonan"><div class="wrap"><p class="finance-tag">02 / PERSEDIAAN PERMOHONAN</p><h2>Dari sebut harga ke permohonan</h2>
-<ol class="finance-steps"><li><b>01</b><h3>Pilih perjalanan anda</h3><p>Bincangkan tarikh, bilangan jemaah dan pilihan pakej dengan KRS.</p><a href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20sebut%20harga%20pakej%20umrah%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">Minta sebut harga ↗</a></li><li><b>02</b><h3>Sediakan dokumen</h3><p>Dapatkan borang dan senarai dokumen terkini daripada Maybank.</p><a href="#muat-turun-borang">Muat turun borang ↓</a></li><li><b>03</b><h3>Hantar kepada Maybank</h3><p>Serahkan permohonan melalui cawangan atau e-mel rasmi bank.</p><a href="mailto:mibretailfinancing@maybank.com">E-mel Maybank ↗</a></li></ol>
-<div class="finance-docs"><h3>Dokumen untuk disediakan</h3><ul><li>Salinan kad pengenalan pemohon dan penyata gaji satu bulan terkini.</li><li>Penyata bank tiga bulan / penyata KWSP / Borang EA atau BE terkini.</li><li>Surat pengesahan majikan serta sebut harga umrah daripada agensi yang diluluskan bank.</li></ul></div></div></section>
+<section class="finance-section finance-process" id="permohonan"><div class="wrap"><p class="finance-tag">02 / PERSEDIAAN PERMOHONAN</p><h2>Persediaan permohonan haji &amp; umrah</h2>
+<ol class="finance-steps"><li><b>01</b><h3>Pilih perjalanan anda</h3><p>Bincangkan tarikh, bilangan jemaah dan pilihan pakej dengan KRS.</p><a href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20maklumat%20pakej%20haji%20atau%20umrah%20serta%20dokumen%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">Minta sebut harga ↗</a></li><li><b>02</b><h3>Sediakan dokumen</h3><p>Dapatkan borang dan senarai dokumen terkini daripada Maybank.</p><a href="#muat-turun-borang">Muat turun borang ↓</a></li><li><b>03</b><h3>Hantar kepada Maybank</h3><p>Serahkan permohonan melalui cawangan atau e-mel rasmi bank.</p><a href="mailto:mibretailfinancing@maybank.com">E-mel Maybank ↗</a></li></ol>
+<div class="finance-docs"><h3>Dokumen untuk disediakan</h3><ul><li>Salinan kad pengenalan pemohon dan penyata gaji satu bulan terkini.</li><li>Penyata bank tiga bulan / penyata KWSP / Borang EA atau BE terkini.</li><li>Surat pengesahan majikan.</li><li>Dokumen perjalanan: surat tawaran haji / visa / sebut harga umrah daripada agensi yang diluluskan bank, mengikut tujuan permohonan.</li></ul></div></div></section>
 
 <section class="finance-section" id="muat-turun-borang"><div class="wrap"><p class="finance-tag">DOKUMEN RASMI MAYBANK</p><h2>Muat Turun Borang</h2><p class="finance-lede">Buka borang rasmi, simpan salinan dan isi menggunakan huruf besar. Sediakan dokumen sokongan sebelum menghantar permohonan.</p><a class="finance-download" href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/salary-financing-i-for-hajj-umrah-form.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg><span><strong>Borang Permohonan Pembiayaan<br>Peribadi-i bagi Haji &amp; Umrah</strong><small>PDF · Bahasa Melayu / English · Dibuka dari laman rasmi Maybank</small></span><span class="download-arrow" aria-hidden="true">↓</span></a><div class="finance-resources"><a class="finance-resource" href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/pds-pembiayaan-peribadi-haji-umrah-bm.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg><span>Risalah Maklumat Produk · BM<br><small>PDF rasmi Maybank ↗</small></span></a><a class="finance-resource" href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/faq-salary-financing-i-for-hajj-umrah.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg><span>Soalan lazim pembiayaan<br><small>PDF rasmi Maybank ↗</small></span></a><a class="finance-resource" href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/jadual-pembayaran-bagi-haji-umrah.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg><span>Jadual ansuran · Potongan gaji<br><small>PDF rasmi Maybank ↗</small></span></a><a class="finance-resource" href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/jadual-pembayaran-bagi-haji-umrah-safa-vsi.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg><span>Jadual ansuran · VSI (Safa &amp; Marwa)<br><small>PDF rasmi Maybank ↗</small></span></a><a class="finance-resource" href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/jadual-pembayaran-bagi-haji-umrah-safa-vsi-bank-lain.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg><span>Jadual ansuran · Safa, gaji di bank lain<br><small>PDF rasmi Maybank ↗</small></span></a></div><p class="finance-note">Gunakan ikon muat turun dalam pembaca PDF untuk menyimpan fail. Hantar borang lengkap ke <a href="mailto:mibretailfinancing@maybank.com">mibretailfinancing@maybank.com</a> atau cawangan Maybank. <a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Panduan permohonan rasmi ↗</a></p></div></section>
-<section class="finance-section finance-hukum" id="hukum-hakam"><div class="wrap"><p class="finance-tag">PANDUAN SYARIAH</p><h2>Hukum hakam pembiayaan umrah</h2><p class="finance-lede">Kemampuan membayar dan tanggungjawab keluarga perlu dinilai bersama hasrat beribadah.</p>
-<div class="finance-grid"><article class="finance-card"><h3>Harus, dengan syarat</h3><p>FAQ Maybank merujuk keputusan Muzakarah Kebangsaan: haji atau umrah secara berhutang dibenarkan jika diyakini mampu membayar dan bebas riba. FAQ itu turut merujuk penerangan Mufti Wilayah Persekutuan.</p><p class="finance-source"><a href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/faq-salary-financing-i-for-hajj-umrah.pdf" target="_blank" rel="noopener">Rujukan: FAQ Maybank, hukum pembiayaan ↗</a></p></article>
-<article class="finance-card"><h3>Bebas riba, nafkah terpelihara</h3><p>Dalam Bayan Li al-Haj Siri 11, Mufti Wilayah mengharuskan pembiayaan haji dengan syarat tiada riba, pendapatan mencukupi selepas sara diri dan tanggungan, serta niat menyegerakan ibadah. Peminjam mesti yakin mampu melunaskannya.</p><p class="finance-source"><a href="https://www.muftiwp.gov.my/index.php/ms/artikel/bayan-li-al-haj/715-bayan-li-al-haj-siri-11-hukum-berhutang-untuk-menunaikan-ibadah-haji" target="_blank" rel="noopener">Bayan Li al-Haj Siri 11 · 10 Ogos 2017 ↗</a></p></article>
-<article class="finance-card"><h3>Umrah ketika masih berhutang</h3><p>Dalam jawapan tentang PTPTN, Mufti Wilayah membezakan hutang yang perlu dilunaskan segera daripada hutang bertangguh. Umrah boleh dilakukan sambil meneruskan bayaran PTPTN bulanan yang dapat diurus.</p><p class="finance-source"><a href="https://www.muftiwp.gov.my/ms/artikel/al-kafi-li-al-fatawi/1692-langsai-ptptn-atau-umrah-mana-lebih-utama" target="_blank" rel="noopener">Langsai PTPTN atau Umrah · 18 Februari 2016 ↗</a></p></article>
-<article class="finance-card"><h3>Menabung lebih diutamakan</h3><p>Penjelasan Mufti Wilayah pada 2026 tentang haji menegaskan bahawa berhutang bukan kewajipan. Menabung diutamakan, walaupun pembiayaan dibenarkan apabila kemampuan membayar kukuh dan nafkah tidak terjejas.</p><p class="finance-source"><a href="https://www.muftiwp.gov.my/en/arkib/tinta-mufti/6607-tinta-mufti-bil-113-2026-kepentingan-menyimpan-di-tabung-haji-untuk-menunaikan-haji-berbanding-berhutang" target="_blank" rel="noopener">Tinta Mufti 113/2026 · 29 Jun 2026 ↗</a></p></article></div>
+<section class="finance-section finance-hukum" id="hukum-hakam"><div class="wrap"><p class="finance-tag">PANDUAN SYARIAH</p><h2>Hukum hakam pembiayaan haji &amp; umrah</h2><p class="finance-lede">Kemampuan membayar dan tanggungjawab keluarga perlu dinilai bersama hasrat beribadah.</p>
+<div class="finance-grid"><article class="finance-card">
+<div class="finance-hukum-media"><figure class="finance-hukum-poster">
+  <a data-hukum-lightbox href="images/hukum-berhutang-haji-mufti-selangor.png" target="_blank" rel="noopener" aria-label="Buka infografik hukum berhutang untuk menunaikan haji dalam saiz penuh"><img src="images/hukum-berhutang-haji-mufti-selangor.png" width="940" height="788" loading="lazy" decoding="async" alt="Infografik Jabatan Mufti Negeri Selangor: berhutang untuk haji diharuskan jika mampu melunaskan hutang; haji sah apabila cukup rukun dan syaratnya."></a>
+  <figcaption>Infografik: Jabatan Mufti Negeri Selangor · Klik untuk saiz penuh</figcaption>
+</figure></div>
+<h3>Harus, dengan syarat</h3><p>FAQ Maybank merujuk keputusan Muzakarah Kebangsaan: haji atau umrah secara berhutang dibenarkan jika diyakini mampu membayar dan bebas riba. FAQ itu turut merujuk penerangan Mufti Wilayah Persekutuan.</p><p class="finance-source"><a href="https://www.maybank2u.com.my/iwov-resources/pdf/personal/loans/personal_loan/faq-salary-financing-i-for-hajj-umrah.pdf" target="_blank" rel="noopener">Rujukan: FAQ Maybank, hukum pembiayaan ↗</a></p></article>
+<article class="finance-card">
+<div class="finance-hukum-media"><figure class="finance-mufti finance-mufti--zulkifli">
+  <a class="finance-mufti__crop" data-hukum-lightbox href="images/dr-zulkifli-mohamad-al-bakri.png" aria-label="Buka gambar: Dr Zulkifli Mohamad Al-Bakri, Mufti Wilayah Persekutuan dari 2014 hingga 2020" target="_blank" rel="noopener"><img src="images/dr-zulkifli-mohamad-al-bakri.png" width="830" height="468" loading="lazy" decoding="async" alt="Dr Zulkifli Mohamad Al-Bakri, Mufti Wilayah Persekutuan dari 2014 hingga 2020"></a>
+  <figcaption><strong>Dr Zulkifli Mohamad Al-Bakri</strong><span class="finance-mufti__role">Mufti Wilayah Persekutuan<br>2014–2020</span></figcaption>
+</figure></div>
+<h3>Bebas riba, nafkah terpelihara</h3><p>Dalam Bayan Li al-Haj Siri 11, Mufti Wilayah mengharuskan pembiayaan haji dengan syarat tiada riba, pendapatan mencukupi selepas sara diri dan tanggungan, serta niat menyegerakan ibadah. Peminjam mesti yakin mampu melunaskannya.</p><p class="finance-source"><a href="https://www.muftiwp.gov.my/index.php/ms/artikel/bayan-li-al-haj/715-bayan-li-al-haj-siri-11-hukum-berhutang-untuk-menunaikan-ibadah-haji" target="_blank" rel="noopener">Bayan Li al-Haj Siri 11 · 10 Ogos 2017 ↗</a></p></article>
+<article class="finance-card">
+<div class="finance-hukum-media"><figure class="finance-mufti-logo"><a data-hukum-lightbox href="images/jabatan-mufti-wilayah-persekutuan.png" aria-label="Buka logo Jabatan Mufti Wilayah Persekutuan dalam saiz penuh" target="_blank" rel="noopener"><img src="images/jabatan-mufti-wilayah-persekutuan.png" width="647" height="775" loading="lazy" decoding="async" alt="Logo Jabatan Mufti Wilayah Persekutuan"></a></figure></div>
+<h3>Umrah ketika masih berhutang</h3><p>Dalam jawapan tentang PTPTN, Mufti Wilayah membezakan hutang yang perlu dilunaskan segera daripada hutang bertangguh. Umrah boleh dilakukan sambil meneruskan bayaran PTPTN bulanan yang dapat diurus.</p><p class="finance-source"><a href="https://www.muftiwp.gov.my/ms/artikel/al-kafi-li-al-fatawi/1692-langsai-ptptn-atau-umrah-mana-lebih-utama" target="_blank" rel="noopener">Langsai PTPTN atau Umrah · 18 Februari 2016 ↗</a></p></article>
+<article class="finance-card">
+<div class="finance-hukum-media"><figure class="finance-mufti">
+  <a class="finance-mufti__crop" data-hukum-lightbox data-portrait-crop href="images/mufti-ahmad-fauwaz-fadzil.png" aria-label="Buka gambar: Sahibus Samahah Ustaz Ahmad Fauwaz bin Fadzil, Mufti Wilayah Persekutuan" target="_blank" rel="noopener"><img src="images/mufti-ahmad-fauwaz-fadzil.png" width="399" height="501" loading="lazy" decoding="async" alt="Sahibus Samahah Ustaz Ahmad Fauwaz bin Fadzil, Mufti Wilayah Persekutuan"></a>
+  <figcaption><strong>Sahibus Samahah Ustaz Ahmad Fauwaz bin Fadzil</strong><span class="finance-mufti__role">Mufti Wilayah Persekutuan</span><small>Foto: Oh My Media</small></figcaption>
+</figure></div>
+<h3>Menabung lebih diutamakan</h3><p>Penjelasan Mufti Wilayah pada 2026 tentang haji menegaskan bahawa berhutang bukan kewajipan. Menabung diutamakan, walaupun pembiayaan dibenarkan apabila kemampuan membayar kukuh dan nafkah tidak terjejas.</p><p class="finance-source"><a href="https://www.muftiwp.gov.my/en/arkib/tinta-mufti/6607-tinta-mufti-bil-113-2026-kepentingan-menyimpan-di-tabung-haji-untuk-menunaikan-haji-berbanding-berhutang" target="_blank" rel="noopener">Tinta Mufti 113/2026 · 29 Jun 2026 ↗</a></p></article></div>
 <p class="finance-caution">Ringkasan untuk panduan umum. Artikel Bayan Li al-Haj dan Tinta Mufti membincangkan <strong>haji</strong>; artikel PTPTN membincangkan <strong>umrah</strong>. Rujukan ini bukan pengesahan khusus Mufti Wilayah terhadap produk Maybank. Untuk keadaan peribadi, dapatkan penjelasan pihak berautoriti agama.</p></div></section>
 <section class="finance-section"><div class="wrap"><p class="finance-tag">SOALAN LAZIM</p><h2>Sebelum anda memohon</h2><div class="finance-faq">
 <details><summary>Adakah KRS agensi yang diluluskan Maybank?</summary><p>Ya. KRS Travel Sdn Bhd ialah salah satu daripada 14 agensi dalam <a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">senarai agensi diluluskan Maybank</a>.</p></details>
 <details><summary>Adakah pertanyaan kepada KRS merupakan permohonan bank?</summary><p>Tidak. WhatsApp KRS ialah saluran pertanyaan pakej dan sebut harga. Permohonan serta keputusan pembiayaan diuruskan oleh Maybank.</p></details>
 <details><summary>Bagaimana saya mengetahui jumlah ansuran?</summary><p>Rujuk jadual pembayaran di laman Maybank dan dapatkan pengesahan bank berdasarkan jumlah, tempoh serta pakej pembiayaan anda.</p></details>
 </div><p class="finance-note">Sumber: <a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Maybank Islamic — Pembiayaan Peribadi-i bagi Haji &amp; Umrah</a>. Disemak pada 3 September 2026.</p></div></section>
-<section class="finance-section finance-contact" id="hubungi"><div class="wrap"><h2>Mulakan dengan pilihan pakej anda.</h2><p>Pasukan KRS sedia membantu anda mendapatkan sebut harga umrah untuk langkah seterusnya.</p><div class="finance-actions"><a class="btn finance-primary" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20sebut%20harga%20pakej%20umrah%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">WhatsApp KRS Travel ↗</a><a class="btn finance-outline" href="umrah.html">Lihat pakej umrah</a></div></div></section>
+<section class="finance-section finance-contact" id="hubungi"><div class="wrap"><h2>Mulakan dengan pilihan pakej anda.</h2><p>Bincangkan pilihan pakej haji atau umrah dan dokumen perjalanan yang anda perlukan bersama pasukan KRS.</p><div class="finance-actions"><a class="btn finance-primary" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20maklumat%20pakej%20haji%20atau%20umrah%20serta%20dokumen%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">WhatsApp KRS Travel ↗</a><a class="btn finance-outline" href="umrah.html">Lihat pakej umrah</a><a class="btn finance-outline" href="haji.html">Lihat pakej haji</a></div></div></section>
 </main>
 
 <!-- ══ RAKAN & PENGIKTIRAFAN ═══════════════════════════════ -->
@@ -998,7 +1093,7 @@ body.lb-open{overflow:hidden}
 <div class="lb" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Paparan gambar saiz penuh">
   <button class="lb__close" id="lb-close" type="button" aria-label="Tutup paparan gambar">&times;</button>
   <figure class="lb__fig">
-    <img class="lb__img" id="lb-img" src="" alt="">
+    <div class="lb__image-frame"><img class="lb__img" id="lb-img" src="" alt=""></div>
     <figcaption class="lb__cap" id="lb-cap"></figcaption>
   </figure>
 </div>
@@ -1061,13 +1156,13 @@ body.lb-open{overflow:hidden}
   });
 })();
 
-// Lightbox untuk gambar dalam seksyen Kepakaran Kami
+// Lightbox untuk empat gambar dalam seksyen hukum hakam
 (function(){
   var lb=document.getElementById('lightbox'),
       lbImg=document.getElementById('lb-img'),
       lbCap=document.getElementById('lb-cap'),
       lbClose=document.getElementById('lb-close'),
-      links=document.querySelectorAll('#kepakaran .kcard__media a');
+      links=document.querySelectorAll('[data-hukum-lightbox]');
   if(!lb||!lbImg||!lbClose||!links.length) return;
 
   var lastFocus=null;
@@ -1076,6 +1171,7 @@ body.lb-open{overflow:hidden}
     var img=link.querySelector('img');
     if(!img) return;
     lastFocus=link;
+    lb.classList.toggle('lb--portrait-crop',link.hasAttribute('data-portrait-crop'));
     lbImg.setAttribute('src', link.getAttribute('href'));
     lbImg.setAttribute('alt', img.getAttribute('alt')||'');
     lbCap.textContent=img.getAttribute('alt')||'';
@@ -1086,6 +1182,7 @@ body.lb-open{overflow:hidden}
 
   function close(){
     lb.hidden=true;
+    lb.classList.remove('lb--portrait-crop');
     document.body.classList.remove('lb-open');
     lbImg.setAttribute('src','');
     lbImg.setAttribute('alt','');
