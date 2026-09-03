@@ -338,9 +338,10 @@ body.lb-lock{overflow:hidden}
 
 /* Kad ibu pejabat — merentang penuh, peta di sebelah kanan */
 .story__hq{margin-top:clamp(2rem,4vw,3rem)}
-.ofc__card--hq{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+.ofc__card--hq{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;
+  padding:clamp(.75rem,1.5vw,1.25rem);gap:clamp(.75rem,1.5vw,1.25rem)}
 .ofc__card--hq .ofc__map{order:0;aspect-ratio:auto;min-height:300px;
-  border-bottom:0;border-left:1px solid var(--line)}
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .ofc__card--hq .ofc__body{padding:clamp(1.35rem,2.6vw,2.1rem)}
 .ofc__card--hq h3{font-size:clamp(1.15rem,1.9vw,1.45rem)}
 .ofc__card--hq .ofc__addr{font-size:.92rem}
@@ -348,8 +349,7 @@ body.lb-lock{overflow:hidden}
 @media(max-width:960px){
   .ofc{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ofc__card--hq{grid-template-columns:1fr}
-  .ofc__card--hq .ofc__map{order:-1;aspect-ratio:16/9;min-height:0;
-    border-bottom:1px solid var(--line);border-left:0}
+  .ofc__card--hq .ofc__map{order:-1;aspect-ratio:16/9;min-height:0}
 }
 @media(max-width:640px){
   .ofc{grid-template-columns:1fr}
@@ -848,7 +848,7 @@ body.lb-lock{overflow:hidden}
           </div>
         </div>
         <div class="ofc__map">
-          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=101.97322%2C2.7455846%2C101.98122%2C2.7505846&amp;layer=mapnik&amp;marker=2.7480846%2C101.97722"
+          <iframe src="https://maps.google.com/maps?q=2.7480846%2C101.97722&amp;t=m&amp;z=16&amp;output=embed&amp;iwloc="
                   title="Peta lokasi ibu pejabat KRS Travel Sdn Bhd, Bandar Warisan Puteri, Seremban"
                   loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
