@@ -8,17 +8,14 @@
 .fin-promo__cta:hover{background:#f1be19}
 .fin-promo__cta:focus-visible{outline:3px solid #10513e;outline-offset:4px}
 .fin-promo__note{font-size:.8rem;line-height:1.45;color:#52626a;margin:.8rem 0 0}
-/* Compact homepage callout. */
-.page-home .fin-promo{padding:.85rem}
-.page-home .fin-promo__brand{font-size:.78rem;gap:.45rem;margin-bottom:.7rem}
-.page-home .fin-promo__brand svg{width:24px;height:24px;flex-basis:24px;padding:4px}
-.page-home .fin-promo h2{font-size:1.1rem;margin-bottom:.6rem}
-.page-home .fin-promo__text{font-size:.875rem;line-height:1.45;margin-bottom:.75rem}
-.page-home .fin-promo__cta{font-size:.8rem;padding:.65rem .7rem;gap:.4rem}
-@media(min-width:861px){.page-home{--floatw:clamp(180px,15vw,210px)}}
 @media(min-width:861px){
  :root{--floatw:clamp(206px,17.5vw,244px);--floatgap:clamp(1rem,1.6vw,1.5rem);--floattop:calc(107px + .7rem)}
- .fin-promo{position:fixed;z-index:50;top:var(--floattop);right:var(--floatgap);width:var(--floatw);margin:0;padding:1rem}
+ .fin-promo{position:fixed;z-index:50;top:var(--floattop);right:var(--floatgap);width:var(--floatw);margin:0;padding:.95rem 1rem 1rem}
+ .fin-promo__brand{font-size:.71rem;gap:.45rem;margin-bottom:.4rem}
+ .fin-promo__brand svg{width:24px;height:24px;flex-basis:24px;padding:4px}
+ .fin-promo h2{font-size:1rem;line-height:1.28;margin-bottom:.4rem}
+ .fin-promo__text{font-size:.71rem;line-height:1.45;margin-bottom:.8rem}
+ .fin-promo__cta{font-size:.72rem;line-height:1.25;padding:.5rem;justify-content:center;text-align:center}
  #kandungan .wrap,.rakan .wrap,.foot .wrap{padding-right:calc(var(--floatw) + var(--floatgap) * 2)}
  /* Keep homepage slides and carousel controls clear of the rail. */
  .hsl{margin-right:calc(var(--floatw) + var(--floatgap) * 2)}
