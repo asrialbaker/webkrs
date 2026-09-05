@@ -622,14 +622,14 @@ body.lb-open{overflow:hidden}
 
 /* Umrah financing */
 #kandungan .wrap,.rakan .wrap,.foot .wrap{padding-inline:var(--pad)}
-.finance-hero{position:relative;background:#102e28;color:white;isolation:isolate;overflow:hidden}
+.finance-hero{position:relative;background:var(--paper);color:var(--ink);isolation:isolate;overflow:hidden}
 .finance-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
 .finance-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,34,29,.97),rgba(9,34,29,.82) 48%,rgba(9,34,29,.15));z-index:-1}
-.finance-hero .wrap{padding-block:2rem 4.5rem}
-.finance-hero .crumb{margin-bottom:3rem}
+.finance-hero .wrap{padding-block:clamp(1.6rem,4vw,3rem)}
+.finance-hero .crumb{margin-bottom:1.2rem;color:var(--ink)}
 .finance-hero h1{max-width:720px;font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.08}
-.finance-hero h1 em{font-style:normal;color:#ffce32}
-.finance-hero p{max-width:540px;margin:1.5rem 0;font-size:1.15rem;color:#e0e9e3}
+.finance-hero h1 em{font-style:normal;color:var(--haram)}
+.finance-hero p{max-width:540px;margin:1.2rem 0 0;font-size:clamp(1rem,1.3vw,1.1rem);color:var(--ink)}
 .finance-brand{display:inline-block;background:#ffce32;color:#17241c;font-size:1rem;font-weight:700;padding:.45rem .85rem;margin-bottom:1.5rem}
 .finance-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.75rem}
 .finance-actions .btn{font-size:1rem;text-align:center;white-space:normal}
@@ -696,11 +696,18 @@ body.lb-open{overflow:hidden}
 .finance-source{font-size:.875rem;overflow-wrap:anywhere}.finance-caution{border-left:3px solid var(--amber-deep);padding:1rem 1.4rem;background:#fffaf0;margin-top:1.5rem}
 @media(max-width:760px){.finance-benefits,.finance-facts,.finance-resources{grid-template-columns:1fr}.finance-benefits{gap:1.5rem}.finance-agency{grid-template-columns:1fr;gap:1rem}.finance-download{padding:1.3rem;gap:1rem}.finance-download strong{font-size:1.15rem}}
 
-/* Haji and Umrah hero: clear text at left, pilgrim portrait at right. */
-.finance-hero h1{font-size:clamp(2.4rem,4.5vw,3.8rem);max-width:58%}
+/* Shared photo-hero treatment: text stays over the image at every width. */
+.finance-hero h1{font-size:clamp(2.1rem,5vw,3.9rem);max-width:720px;color:var(--ink);text-wrap:pretty}
 .finance-hero>img{object-position:75% 42%}
-.finance-hero:after{background:linear-gradient(90deg,rgba(9,34,29,.96),rgba(9,34,29,.78) 42%,rgba(9,34,29,.12) 68%,transparent)}
-.finance-hero p{max-width:48%}
+.finance-hero:after{background:linear-gradient(96deg,rgba(251,249,244,.68) 0%,rgba(251,249,244,.62) 25%,rgba(251,249,244,.58) 60%,rgba(251,249,244,.56) 82%,rgba(251,249,244,.55) 100%)}
+.finance-hero p{max-width:52ch}
+.finance-hero .crumb span[aria-current]{color:#0A3A2C}
+@media(max-width:860px){
+  .finance-hero:after{background:linear-gradient(180deg,rgba(251,249,244,.63) 0%,rgba(251,249,244,.57) 40%,rgba(251,249,244,.62) 76%,rgba(251,249,244,.90) 100%)}
+  .finance-hero>img{object-position:75% 42%}
+  .finance-hero .wrap{padding-block:clamp(1.6rem,4vw,3rem)}
+  .finance-hero .crumb{margin-bottom:1.2rem}
+}
 .finance-purpose{margin-top:2rem;padding:1.5rem;border:1px solid var(--line);background:#f3f5ee}
 .finance-purpose h3{font-size:1.3rem;line-height:1.3}
 .finance-table-wrap{overflow-x:auto}
@@ -708,7 +715,7 @@ body.lb-open{overflow:hidden}
 .finance-table caption{text-align:left;font-size:.875rem;color:var(--muted);padding-bottom:.75rem}
 .finance-table th,.finance-table td{padding:1rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
 .finance-table thead{background:var(--haram);color:white}
-@media(max-width:700px){.finance-hero>img{position:relative;display:block;height:260px;object-position:85% 35%;z-index:0}.finance-hero:after{display:none}.finance-hero h1,.finance-hero p{max-width:100%}.finance-hero .wrap{padding-top:1.5rem}.finance-hero .crumb{margin-bottom:1.5rem}.finance-purpose{padding:1rem}.finance-table th,.finance-table td{padding:.8rem .5rem}}
+@media(max-width:700px){.finance-purpose{padding:1rem}.finance-table th,.finance-table td{padding:.8rem .5rem}}
 
 /* Portrait crop excludes the unrelated headline and footer of the supplied clipping. */
 /* Caption treatment matches the media tiles on Tentang Kami. */
