@@ -75,7 +75,6 @@ p{margin:0 0 1em}
 .sec__bar > *,
 .prose,
 .prose > *{margin-inline:0}
-.mono{font-family:var(--ff-mono)}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:1rem;top:1rem;z-index:999;background:var(--ink);color:var(--white);padding:.7rem 1rem}
@@ -87,14 +86,11 @@ p{margin:0 0 1em}
   font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:1rem;overflow:hidden}
 .ph b{display:block;font-weight:600;color:var(--haram);letter-spacing:.1em}
 .ph span{font-size:.6rem;opacity:.8}
-.ph--dark{background:repeating-linear-gradient(135deg,rgba(255,255,255,.045) 0 10px,transparent 10px 20px),var(--ink-2);border-color:var(--line-dark);color:var(--muted-on-dark)}
-.ph--dark b{color:var(--amber)}
 .ph--video::after{content:'▶';position:absolute;font-size:1.5rem;color:var(--haram);opacity:.32}
 .ph--video.ph--dark::after{color:var(--amber)}
 
 /* Slot kosong — ikhlas ada, KRS belum ada kandungan */
 .slot{border:1px dashed var(--amber);background:repeating-linear-gradient(135deg,rgba(224,145,44,.09) 0 9px,transparent 9px 18px),var(--paper)}
-.slot__note{font-family:var(--ff-mono);font-size:.64rem;line-height:1.5;letter-spacing:.05em;color:var(--amber-deep);text-transform:uppercase;padding:.85rem 1rem;border-top:1px dashed var(--amber);margin-top:auto}
 
 /* ── Bar utiliti (motto kiri · talian telefon kanan) ── */
 .util{background:var(--paper);color:var(--muted);border-bottom:1px solid var(--line);font-size:.78rem}
@@ -246,20 +242,6 @@ p{margin:0 0 1em}
 .pcard__price::after{content:'→';margin-left:auto;font-family:var(--ff-mono);color:var(--amber)}
 
 /* ── Testimoni ───────────────────────────────────────────── */
-.stores{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);margin-bottom:1.75rem;overflow:hidden}
-.store{background:var(--paper);padding:1.1rem 1.6rem;display:flex;align-items:center;gap:.9rem;flex:1 1 200px}
-.store__n{font-family:var(--ff-display);font-variation-settings:'wdth' 118;font-size:2rem;font-weight:700;line-height:1;color:var(--haram)}
-.store__m{line-height:1.35}
-.store__m strong{display:block;font-size:.85rem}
-.store__m span{font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.stars{color:var(--amber);letter-spacing:.1em;font-size:.85rem}
-.quotes{display:grid;gap:1.25rem;grid-template-columns:repeat(3,minmax(0,1fr))}
-.quote{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:1.35rem;display:flex;flex-direction:column}
-.quote p{font-size:.9rem;flex:1}
-.quote__by{display:flex;align-items:center;gap:.65rem;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--line)}
-.quote__av{width:34px;height:34px;border-radius:50%;background:var(--haram);color:var(--white);display:grid;place-items:center;font-family:var(--ff-mono);font-size:.7rem;font-weight:600;flex:none}
-.quote__by strong{font-size:.85rem;display:block;line-height:1.3}
-.quote__by span{font-family:var(--ff-mono);font-size:.66rem;color:var(--muted)}
 
 /* ── Rombongan + borang ──────────────────────────────────── */
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(2rem,4vw,3.25rem);align-items:start}
@@ -365,9 +347,7 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 }
 @media(max-width:960px){
   .hero .wrap{grid-template-columns:1fr}
-  .hero__art{order:-1;max-width:260px}
   .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .quotes{grid-template-columns:1fr}
   .duo{grid-template-columns:1fr}
   .foot__main{grid-template-columns:1fr}
   .gal{grid-template-columns:repeat(2,1fr)}
@@ -581,7 +561,6 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .cta__row{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:1.8rem}
 @media(max-width:960px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.info{grid-template-columns:1fr}}
 @media(max-width:640px){.steps{grid-template-columns:1fr}}
-
 
 /* ── CTA akhir halaman (sitewide) ─────────────────────────── */
 .sec--cta{background:var(--paper);border-top:1px solid var(--line)}
@@ -1313,21 +1292,6 @@ body.is-lbox-open{overflow:hidden}
   });
 })();
 
-(function(){
-  var f=document.getElementById('enquiry');
-  if(!f) return;
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var d=new FormData(f);
-    var tel=String(d.get('telefon')||'').replace(/\D/g,'').replace(/^0+/,'');
-    var msg='Salam KRS Travel.'
-      +'\nNama: '+(d.get('nama')||'')
-      +'\nTelefon: +'+d.get('kod')+tel
-      +'\nPertanyaan: '+d.get('jenis')
-      +(d.get('pesanan')?'\nPesanan: '+d.get('pesanan'):'');
-    window.open('https://wa.me/60177775401?text='+encodeURIComponent(msg),'_blank','noopener');
-  });
-})();
 
 </script>
 

@@ -75,7 +75,6 @@ p{margin:0 0 1em}
 .sec__bar > *,
 .prose,
 .prose > *{margin-inline:0}
-.mono{font-family:var(--ff-mono)}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:2px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-9999px}
@@ -88,14 +87,11 @@ p{margin:0 0 1em}
   font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:1rem;overflow:hidden}
 .ph b{display:block;font-weight:600;color:var(--haram);letter-spacing:.1em}
 .ph span{font-size:.6rem;opacity:.8}
-.ph--dark{background:repeating-linear-gradient(135deg,rgba(255,255,255,.045) 0 10px,transparent 10px 20px),var(--ink-2);border-color:var(--line-dark);color:var(--muted-on-dark)}
-.ph--dark b{color:var(--amber)}
 .ph--video::after{content:'▶';order:-1;margin-bottom:.35rem;font-size:3.25rem;line-height:1;color:var(--haram);opacity:.32;pointer-events:none}
 .ph--video.ph--dark::after{color:var(--amber)}
 
 /* Slot kosong — ikhlas ada, KRS belum ada kandungan */
 .slot{border:1px dashed var(--amber);background:repeating-linear-gradient(135deg,rgba(224,145,44,.09) 0 9px,transparent 9px 18px),var(--paper)}
-.slot__note{font-family:var(--ff-mono);font-size:.64rem;line-height:1.5;letter-spacing:.05em;color:var(--amber-deep);text-transform:uppercase;padding:.85rem 1rem;border-top:1px dashed var(--amber);margin-top:auto}
 
 /* ── Bar utiliti (motto kiri · talian telefon kanan) ── */
 .util{background:var(--paper);color:var(--muted);border-bottom:1px solid var(--line);font-size:.78rem}
@@ -246,7 +242,6 @@ p{margin:0 0 1em}
 /* Poster pakej — nisbah 1:1, pelapik dikongsi dengan .pcard__media */
 .pcard__poster{display:block;width:auto;align-self:stretch;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center;background:var(--limestone);border:1px solid var(--line)}
 .pcard__poster--tall{aspect-ratio:99/140}
-.pcard__poster--wide{aspect-ratio:3/2}
 /* Senarai harga mengikut jenis bilik */
 .tiers{list-style:none;margin:.95rem 0 0;padding:.8rem 0 0;border-top:1px solid var(--line);display:grid;gap:.35rem}
 .tiers li{display:flex;align-items:baseline;gap:.6rem;font-size:.83rem}
@@ -266,36 +261,16 @@ p{margin:0 0 1em}
 .pcard__price em{font-style:normal;font-size:.72rem;color:var(--muted);font-family:var(--ff-body)}
 
 /* ── Kad media sosial (TikTok · Facebook · Instagram) ── */
-.soc{background:var(--white);border:1px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;overflow:hidden;transition:border-color .18s,transform .18s}
-.soc:hover{border-color:var(--haram);transform:translateY(-3px)}
+
 .sec--stone .soc{background:var(--paper)}
 .sec--stone .soc.slot,.soc.slot{background:repeating-linear-gradient(135deg,rgba(224,145,44,.09) 0 9px,transparent 9px 18px),var(--paper)}
-.soc__head{display:flex;align-items:center;gap:.7rem;padding:var(--card-pad);border-bottom:1px solid var(--line)}
-.soc__ico{width:34px;height:34px;flex:none;border-radius:8px;display:grid;place-items:center;color:var(--white)}
-.soc__ico svg{width:19px;height:19px;fill:currentColor}
-.soc__ico--tt{background:#010101}
-.soc__ico--fb{background:#1877f2}
-.soc__ico--ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b 50%,#6228d7)}
-.soc__head h3{font-size:1rem;margin:0;line-height:1.25}
-.soc__handle{display:block;font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.1em;text-transform:lowercase;color:var(--muted);margin-top:.15rem}
 /* Feed: tinggi tetap supaya 3 kad sejajar & embed pihak ketiga tak "blow out" */
-.soc__feed{flex:1;display:block;padding:var(--card-pad);height:520px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.soc__feed::-webkit-scrollbar{width:6px}
-.soc__feed::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
-.soc__feed>*{max-width:100%}
-.soc__feed iframe{max-width:100%!important;border:0;display:block;margin:0 auto}
-.soc__feed .tiktok-embed{min-width:0!important;width:100%;margin:0}
+
 /* Widget pihak ketiga — lebar penuh kad, tanpa padding */
-.soc__feed--sk,.soc__feed--el{padding:0}
-.soc__feed--sk .sk-ww-facebook-page-posts,.soc__feed--el [class^="elfsight-app-"]{width:100%;min-width:0}
+
 /* Tampung: header widget SociableKit runtuh dalam kontena sempit (teks pecah satu huruf).
    Penyelesaian sebenar = matikan "profile header" dalam dashboard SociableKit. */
-.soc__feed--sk *{word-break:normal!important;overflow-wrap:break-word!important}
-.soc__feed--sk [class*="header"],.soc__feed--sk [class*="profile"]{flex-wrap:wrap!important;row-gap:.5rem}
-.soc__feed--sk [class*="username"],.soc__feed--sk [class*="handle"],.soc__feed--sk [class*="title"]{min-width:0;flex:1 1 auto}
-.soc__note{font-size:.83rem;color:var(--muted);line-height:1.55;margin:0 0 1rem;text-align:center}
-.soc__cta{margin-top:auto;padding:var(--card-pad)}
-@media(max-width:900px){.soc__feed{height:460px}}
+
 .pcard__price:hover strong{color:var(--amber-deep)}
 .pcard__cta{margin-top:.9rem}
 .pcard__cta + .pcard__cta{margin-top:.55rem}
@@ -303,7 +278,6 @@ p{margin:0 0 1em}
 .pcard__link{text-decoration:none}
 .pcard__link:hover{color:var(--haram)}
 .pcard__link::after{content:'→';font-family:var(--ff-mono);color:var(--amber);font-size:.8em;margin-left:.4em;vertical-align:.05em}
-
 
 /* Ulasan Google */
 .gwidget{margin-top:1.75rem}
@@ -335,7 +309,6 @@ p{margin:0 0 1em}
 .krsinfo__val{margin:0;color:var(--muted);font-size:.95rem;line-height:1.55}
 .krsinfo__val a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(224,145,44,.45)}
 .krsinfo__val a:hover,.krsinfo__val a:focus-visible{color:var(--amber-deep);border-bottom-color:var(--amber-deep)}
-.krsinfo__note{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:#7E949A}
 .krsinfo__wa{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
 .krsinfo__wabtn{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem;border-radius:999px;background:#25D366;border:1px solid #25D366;color:#0B2E1B;font-family:var(--ff-body);font-size:.86rem;font-weight:600;text-decoration:none;line-height:1;transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease}
 .krsinfo__wabtn:hover,.krsinfo__wabtn:focus-visible{background:#1EBE5B;border-color:#1EBE5B;color:var(--white);transform:translateY(-1px)}
@@ -389,11 +362,6 @@ p{margin:0 0 1em}
 .galvid__facade:hover .galvid__play{transform:translate(-50%,-50%) scale(1.08)}
 .galvid__facade:hover .galvid__play-bg{fill:#FF0000;fill-opacity:1}
 .galvid__facade:focus-visible{outline:2px solid var(--amber);outline-offset:-3px}
-.galvid__cap{position:absolute;left:0;right:0;bottom:0;z-index:2;pointer-events:none;
-  text-align:left;padding:2rem .9rem .8rem;
-  background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.4) 55%,rgba(0,0,0,0))}
-.galvid__cap b{color:var(--amber);letter-spacing:.1em}
-.galvid__cap span{color:rgba(255,255,255,.82);opacity:1;font-size:.6rem}
 .galvid[data-playing="true"] .galvid__facade{display:none}
 
 /* Kad foto dalam galeri — mewarisi .ph supaya saiz grid kekal */
@@ -608,7 +576,6 @@ body.is-lbox-open{overflow:hidden}
 .pitem[aria-current="page"]{background:var(--limestone)}
 .pitem[aria-current="page"] h3{color:var(--haram)}
 .ext{font-size:.78em;color:var(--amber-deep);opacity:.75;font-weight:400}
-
 
 /* ── CTA akhir halaman (sitewide) ─────────────────────────── */
 .sec--cta{background:var(--paper);border-top:1px solid var(--line)}
