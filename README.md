@@ -8,10 +8,10 @@ The active website is in `site-live/`. Edit this folder, including
 From the project folder, run:
 
 ```sh
-python3 -m http.server 8000 --bind 127.0.0.1 --directory site-live
+python3 -m http.server 8777 --bind 127.0.0.1 --directory site-live
 ```
 
-Open http://127.0.0.1:8000/ and refresh the browser after saving changes.
+Open http://127.0.0.1:8777/ and refresh the browser after saving changes.
 If the server is already running, use the existing preview.
 
 ## Version history
