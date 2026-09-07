@@ -614,6 +614,18 @@ body.lb-lock{overflow:hidden}
 @media(max-width:1080px){.rakan__band{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:860px){.rakan{padding:2.1rem 0 2.3rem}.rakan__band{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem 1rem}.rakan__band img{height:38px}}
 @media(max-width:560px){.rakan__band{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.35rem .9rem}.rakan__band img{height:30px}}
+.profile-section{padding-block:clamp(2rem,4vw,3.5rem)}
+.profile-section h3{font-family:var(--ff-display);font-size:clamp(1.8rem,3.4vw,3rem);line-height:1.15;margin:0 0 1.25rem;font-weight:700;letter-spacing:-.02em}
+.profile-section__description{max-width:74ch;color:var(--muted);font-size:1.1rem;margin:0;line-height:1.6}
+.profile-download{display:flex;align-items:center;gap:1.5rem;background:var(--maroon);color:var(--white);padding:2rem;margin-top:2rem;text-decoration:none;border:2px solid transparent;transition:background .15s,border-color .15s}
+.profile-download:hover{background:var(--maroon-deep);border-color:#ffce32}
+.profile-download:focus-visible{outline:3px solid var(--maroon);outline-offset:4px}
+.profile-download__icon{width:48px;height:48px;flex:0 0 48px;color:#ffce32}
+.profile-download__text{min-width:0}
+.profile-download strong{display:block;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.3;font-weight:700}
+.profile-download small{display:block;margin-top:.6rem;font-size:1rem;color:#f1dfe2}
+.profile-download__arrow{width:30px;height:30px;flex:0 0 30px;margin-left:auto;color:#ffce32}
+@media(max-width:600px){.profile-download{padding:1.3rem 1rem;gap:1rem}.profile-download__icon{width:36px;height:36px;flex-basis:36px}.profile-download__arrow{width:24px;height:24px;flex-basis:24px}.profile-download small{font-size:.85rem}}
 </style>
 </head>
 <body>
@@ -863,10 +875,23 @@ body.lb-lock{overflow:hidden}
         </div>
       </article>
     </div>
+<section class="profile-section" id="profil-syarikat" aria-labelledby="profil-syarikat-title">
+  <div>
+    <h3 id="profil-syarikat-title">Muat Turun Profil Syarikat</h3>
+    <p class="profile-section__description">Kenali KRS Travel dengan lebih dekat melalui profil syarikat kami. Muat turun salinan edisi 2025 untuk rujukan anda dan ketahui lebih lanjut tentang latar belakang serta perkhidmatan kami.</p>
+    <a class="profile-download" href="downloads/krs-travel-company-profile-2025.pdf" download="KRS-Travel-Company-Profile-2025.pdf" type="application/pdf" aria-label="Muat turun KRS Travel Company Profile (2025), PDF, 5.2 MB">
+      <svg class="profile-download__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg>
+      <span class="profile-download__text"><strong>KRS Travel Company Profile (2025)</strong><small>PDF · 5.2 MB · Edisi November 2025</small></span>
+      <svg class="profile-download__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M4 13l8 8 8-8"/></svg>
+    </a>
+  </div>
+</section>
   </div>
 </section>
 
 <!-- ══ 03 · KRS TRAVEL DI MEDIA ARUS PERDANA ═══════════ -->
+
+
 <section class="sec" id="media">
   <div class="wrap">
     <div class="sec__head centered">
