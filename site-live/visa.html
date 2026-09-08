@@ -499,12 +499,13 @@ body.lb-open{overflow:hidden}
 .step .checks{gap:.5rem}
 .step .checks li{font-size:.79rem;line-height:1.45}
 .kep__app{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;justify-content:space-between;margin-top:1.25rem;padding:1.15rem 1.3rem;background:var(--paper);border:1px solid var(--line);border-radius:var(--r)}
-.kep__app--video{gap:1.3rem}
+.kep__app--video{gap:1.3rem;align-items:flex-start}
 .kep__appbody{flex:1 1 20rem;display:flex;flex-direction:column;align-items:flex-start;gap:1rem}
 .sec--stone .kep__app{background:var(--white)}
 .kep__app p{margin:0;font-size:.87rem;color:var(--muted);line-height:1.55;flex:1 1 22rem}
 .kep__appbody p{flex:0 0 auto}  /* jangan regang: butang kekal rapat di bawah teks */
-.kep__steps{list-style:none;counter-reset:kstep;margin:0;padding:0;width:100%;display:grid;gap:.7rem}
+.kep__stepsttl{margin:.35rem 0 -.2rem}
+.kep__steps{list-style:none;counter-reset:kstep;margin:0;padding:0;width:100%;display:grid;gap:.55rem}
 .kep__steps li{counter-increment:kstep;position:relative;padding-left:2.15rem;font-size:.83rem;line-height:1.5;color:var(--muted)}
 .kep__steps li::before{content:counter(kstep,decimal-leading-zero);position:absolute;left:0;top:.1rem;font-family:var(--ff-mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;color:var(--amber-deep)}
 .kep__steps b{color:var(--ink)}
@@ -948,11 +949,17 @@ body.lb-open{overflow:hidden}
       </figure>
       <div class="kep__appbody">
         <p><b>Tonton video panduan pengguna aplikasi Saudi Visa Bio.</b><br><br>Video ini menerangkan permohonan biometrik visa umrah langkah demi langkah. Ada masalah semasa pendaftaran biometrik? Hubungi petugas kami &mdash; kami boleh memandu anda langkah demi langkah melalui WhatsApp.</p>
+        <h4 class="kep__stepsttl">Langkah Permohonan Visa Umrah (Biometrik)</h4>
         <ol class="kep__steps">
-          <li><b>Serah dokumen</b> &mdash; hantar salinan pasport, gambar dan dokumen sokongan kepada petugas kami.</li>
-          <li><b>Semakan dokumen</b> &mdash; kami semak kelengkapan dan maklumkan jika ada dokumen yang perlu diperbaiki.</li>
-          <li><b>Biometrik &amp; permohonan</b> &mdash; setiap pemohon mendaftar biometrik sendiri melalui aplikasi Saudi Visa Bio, kemudian permohonan dihantar.</li>
-          <li><b>Visa diterima</b> &mdash; visa dimaklumkan kepada anda sebelum tarikh berlepas.</li>
+          <li>Muat turun dan pasang aplikasi <b>Saudi Visa Bio</b> melalui Google Play Store atau Apple App Store.</li>
+          <li>Buka aplikasi, masukkan alamat emel anda, dan buat pengesahan (<i>verify</i>) melalui emel yang diterima.</li>
+          <li>Pilih jenis visa iaitu <b>Umrah</b> dan tetapkan kedutaan pengeluaran visa (contoh: Kuala Lumpur / Malaysia).</li>
+          <li>Imbas halaman biodata pasport menggunakan kamera telefon.</li>
+          <li>Letakkan telefon pintar pada muka hadapan pasport untuk pengesahan cip NFC (jika telefon menyokongnya).</li>
+          <li>Ambil gambar muka dengan latar belakang cerah/putih mengikut panduan dalam aplikasi sehingga bulatan imbasan bertukar warna hijau.</li>
+          <li>Lakukan imbasan cap jari bagi kedua-dua belah tangan mengikut arahan paparan.</li>
+          <li>Semak butiran maklumat anda dan klik hantar.</li>
+          <li>Simpan atau <i>screenshot</i> emel pengesahan pendaftaran berjaya (<i>application submitted successfully</i>) dan serahkan kepada agensi pelancongan umrah anda.</li>
         </ol>
         <a class="btn btn--primary" href="https://wa.me/60102790458">Minta bantuan biometrik</a>
       </div>
