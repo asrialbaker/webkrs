@@ -1,0 +1,13 @@
+# Semua fail teks disimpan dengan hujung baris LF, tanpa mengira OS penyunting.
+# Tanpa ini, alat yang menulis semula fail di Windows boleh menukar LF -> CRLF
+# secara senyap dan menghasilkan diff seluruh fail untuk suntingan kecil.
+* text=auto eol=lf
+
+# Aset binari — jangan sentuh hujung baris.
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.webp   binary
+*.ico    binary
+*.pdf    binary
+*.woff2  binary

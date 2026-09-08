@@ -1,6 +1,7 @@
 # Track the active website and project instructions only.
 /*
 !/.gitignore
+!/.gitattributes
 !/README.md
 !/site-live/
 !/.github/
