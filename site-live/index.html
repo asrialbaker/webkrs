@@ -666,18 +666,20 @@ body.is-lbox-open{overflow:hidden}
 /* Senarai perkhidmatan */
 .dhui__lead h3{font-size:clamp(1.25rem,2.4vw,1.75rem);font-variation-settings:'wdth' 115}
 .dhui__lead p{color:var(--muted);font-size:.95rem;margin:.55rem 0 1.6rem;max-width:52ch}
-.dhui__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.35rem 1.9rem}
-.dhui__item{display:flex;gap:.85rem;text-decoration:none;color:inherit}
+.dhui__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.85rem 1.9rem}
+.dhui__item{display:flex;gap:.85rem;text-decoration:none;color:inherit;padding:.6rem;margin:-.6rem;border-radius:var(--r);box-shadow:inset 0 0 0 1px transparent;transition:background .15s,box-shadow .15s}
 .dhui__item svg{width:24px;height:24px;flex:none;stroke:var(--haram);fill:none;stroke-width:1.4;margin-top:.15rem}
 .dhui__item h4{font-size:.98rem;margin-bottom:.25rem}
 .dhui__item p{font-size:.82rem;line-height:1.55;color:var(--muted);margin:0;max-width:38ch}
+.dhui__item:hover,.dhui__item:focus-visible{background:var(--white);box-shadow:inset 0 0 0 1px rgba(16,81,62,.42)}
 .dhui__item:hover h4{color:var(--haram)}
 .dhui__item:hover svg{stroke:var(--amber-deep)}
 .dhui__strip{margin-top:2.1rem;padding-top:1.35rem;border-top:1px solid var(--line)}
 .dhui__eyebrow{font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 .9rem}
 .dhui__chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
 .dhui__chip{display:flex;align-items:flex-start;gap:.6rem;background:var(--paper);
-  border:1px solid var(--line);border-radius:var(--r);padding:.6rem .75rem}
+  border:1px solid var(--line);border-radius:var(--r);padding:.6rem .75rem;transition:background .15s,border-color .15s}
+.dhui__chip:hover,.dhui__chip:focus-within{background:var(--white);border-color:rgba(16,81,62,.42)}
 .dhui__chip img{height:24px;width:auto;flex:none;margin-top:.1rem}
 .dhui__chip a{text-decoration:none;color:inherit}
 .dhui__chip .nm{display:block;font-size:.85rem;font-weight:600;line-height:1.25}
@@ -697,7 +699,7 @@ body.is-lbox-open{overflow:hidden}
   .phone{max-width:262px}
 }
 @media(max-width:560px){
-  .dhui__grid{grid-template-columns:1fr;gap:1.1rem}
+  .dhui__grid{grid-template-columns:1fr;gap:1.7rem}
 }
 
 /* ── Rakan & pengiktirafan ───────────────────────────────── */
