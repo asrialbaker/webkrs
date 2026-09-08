@@ -319,6 +319,7 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .foot__ig{align-self:end;min-width:0}
 .igrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;margin:0}
 .igrid__item{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:var(--r);border:1px solid var(--line);background:var(--white)}
+.igrid__item[hidden]{display:none}
 /* Mozek: 3 kecil di baris atas, satu besar 2x2 di kiri bawah, 2 kecil di kanan.
    Kad besar sentiasa item ke-4 dalam markup — penempatan auto grid buat selebihnya. */
 .igrid__item--big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
@@ -1303,6 +1304,72 @@ body.lb-open{overflow:hidden}
     },8000);
   }
   facade.addEventListener('click',onPlay);
+})();
+
+/* Grid Instagram — pilih 6 siaran secara rawak daripada kolam penuh dalam
+   markup, sekali bagi setiap kunjungan. Susunan disimpan dalam sessionStorage
+   supaya ia kekal sama sepanjang pengguna melayari laman, dan dikocok semula
+   pada kunjungan baharu.
+
+   · Nod <a> dialihkan, bukan src ditukar, supaya imej tidak dimuat semula.
+   · Siaran yang tidak terpilih ditanda [hidden] — imej lazy tidak dimuat.
+   · Kelas --big diberi mengikut slot, jadi mozek 3-lajur sentiasa kekal.
+     Untuk tambah siaran: salin satu <a class="igrid__item"> dalam .igrid
+     (tanpa --big) dan letak imej baharu dalam images/instagram/. */
+(function(){
+  var KEY='krs.ig.v1';
+  var SLOTS=6;
+
+  var grid=document.querySelector('.igrid');
+  if(!grid) return;
+  var pool=[].slice.call(grid.children);
+  if(pool.length<2) return;
+
+  var show=Math.min(SLOTS,pool.length);
+
+  /* Slot tumpuan (2x2) diambil daripada markup; abai jika di luar 6 slot */
+  var bigSlot=-1,i;
+  for(i=0;i<pool.length;i++){
+    if(pool[i].classList.contains('igrid__item--big')&&i<show) bigSlot=i;
+  }
+
+  var pick=recall(pool.length,show);
+  if(!pick){ pick=draw(pool.length,show); store(pool.length,pick); }
+
+  /* Terpilih dahulu, kemudian yang tersembunyi — DOM ikut susunan visual */
+  var slotOf={};
+  for(i=0;i<pick.length;i++) slotOf[pick[i]]=i;
+  var seq=pick.slice();
+  for(i=0;i<pool.length;i++) if(!(i in slotOf)) seq.push(i);
+
+  for(i=0;i<seq.length;i++){
+    var el=pool[seq[i]], on=i<pick.length;
+    el.hidden=!on;
+    el.classList.toggle('igrid__item--big',on&&i===bigSlot);
+    grid.appendChild(el);
+  }
+
+  /* Fisher-Yates, ambil `take` yang pertama */
+  function draw(n,take){
+    var a=[],j,t,x;
+    for(x=0;x<n;x++) a.push(x);
+    for(x=n-1;x>0;x--){ j=Math.floor(Math.random()*(x+1)); t=a[x]; a[x]=a[j]; a[j]=t; }
+    return a.slice(0,take);
+  }
+  /* Buang simpanan jika kolam berubah saiz (siaran ditambah/dibuang) */
+  function recall(n,take){
+    try{
+      var v=JSON.parse(window.sessionStorage.getItem(KEY));
+      if(!v||v.n!==n||!v.pick||v.pick.length!==take) return null;
+      for(var x=0;x<take;x++){
+        if(typeof v.pick[x]!=='number'||v.pick[x]<0||v.pick[x]>=n) return null;
+      }
+      return v.pick;
+    }catch(e){ return null; }
+  }
+  function store(n,pick){
+    try{ window.sessionStorage.setItem(KEY,JSON.stringify({n:n,pick:pick})); }catch(e){}
+  }
 })();
 </script>
 
