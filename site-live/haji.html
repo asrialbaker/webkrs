@@ -87,7 +87,6 @@ p{margin:0 0 1em}
 .ph b{display:block;font-weight:600;color:var(--haram);letter-spacing:.1em}
 .ph span{font-size:.6rem;opacity:.8}
 .ph--video::after{content:'▶';position:absolute;font-size:1.5rem;color:var(--haram);opacity:.32}
-.ph--video.ph--dark::after{color:var(--amber)}
 
 /* Slot kosong — ikhlas ada, KRS belum ada kandungan */
 .slot{border:1px dashed var(--amber);background:repeating-linear-gradient(135deg,rgba(224,145,44,.09) 0 9px,transparent 9px 18px),var(--paper)}
@@ -776,9 +775,6 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .ycols{grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem 1.5rem}
 /* Poster potret 1:2 — jalur 4 lajur supaya tinggi kekal munasabah */
 
-.posters .gitem{aspect-ratio:1/2;background:var(--white)}
-.posters .gitem img{object-fit:contain}
-.posters .gitem:hover img{transform:none}
 @media(max-width:860px){.ycols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){
   .ycols{grid-template-columns:1fr}

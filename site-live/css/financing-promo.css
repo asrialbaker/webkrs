@@ -7,7 +7,6 @@
 .fin-promo__cta{display:flex;align-items:center;justify-content:space-between;gap:.6rem;background:#ffce32;color:#17241c;padding:.8rem .9rem;border-radius:3px;font-size:.95rem;line-height:1.35;font-weight:700;text-decoration:none}
 .fin-promo__cta:hover{background:#f1be19}
 .fin-promo__cta:focus-visible{outline:3px solid #10513e;outline-offset:4px}
-.fin-promo__note{font-size:.8rem;line-height:1.45;color:#52626a;margin:.8rem 0 0}
 @media(min-width:861px){
  :root{--floatw:clamp(206px,17.5vw,244px);--floatgap:clamp(1rem,1.6vw,1.5rem);--floattop:calc(107px + .7rem)}
  .fin-promo{position:fixed;z-index:50;top:var(--floattop);right:var(--floatgap);width:var(--floatw);margin:0;padding:.95rem 1rem 1rem}

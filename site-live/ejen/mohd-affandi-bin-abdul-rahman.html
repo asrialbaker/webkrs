@@ -72,7 +72,6 @@ p{margin:0 0 1em}
 .ph b{display:block;font-weight:600;color:var(--haram);letter-spacing:.1em}
 .ph span{font-size:.6rem;opacity:.8}
 .ph--video::after{content:'▶';position:absolute;font-size:1.5rem;color:var(--haram);opacity:.32}
-.ph--video.ph--dark::after{color:var(--amber)}
 
 /* Slot kosong — ikhlas ada, KRS belum ada kandungan */
 .slot{border:1px dashed var(--amber);background:repeating-linear-gradient(135deg,rgba(224,145,44,.09) 0 9px,transparent 9px 18px),var(--paper)}
@@ -940,40 +939,6 @@ body.is-lbox-open{overflow:hidden}
 
 
 <script>
-/* Penapis negeri */
-(function(){
-  var grid=document.getElementById('agrid');
-  var tally=document.getElementById('tally');
-  var empty=document.getElementById('empty');
-  var chips=[].slice.call(document.querySelectorAll('.chip'));
-  if(!grid||!chips.length) return;
-  var cards=[].slice.call(grid.querySelectorAll('.acard'));
-
-  function apply(key){
-    var shown=0;
-    cards.forEach(function(c){
-      var neg=c.getAttribute('data-negeri')||'';
-      var on = key==='all' || (key==='none' ? neg==='' : neg===key);
-      c.hidden=!on;
-      if(on) shown++;
-    });
-    chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.getAttribute('data-filter')===key));});
-    tally.textContent = shown===1 ? 'Memaparkan 1 ejen' : 'Memaparkan '+shown+' ejen';
-    empty.hidden = shown>0;
-    grid.hidden = shown===0;
-  }
-
-  chips.forEach(function(c){
-    c.addEventListener('click',function(){
-      var key=c.getAttribute('data-filter');
-      apply(key);
-      history.replaceState(null,'',key==='all'?location.pathname:location.pathname+'#negeri='+key);
-    });
-  });
-
-  var m=/#negeri=([a-z-]+)/.exec(location.hash);
-  if(m) apply(m[1]);
-})();
 
 /* Tunjuk monogram jika potret ejen gagal dimuatkan */
 (function(){
