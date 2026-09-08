@@ -16,3 +16,6 @@
 **/Thumbs.db
 **/*.log
 **/*~
+
+# Local preview helper — not part of the published site.
+/site-live/_desktop-preview.html
