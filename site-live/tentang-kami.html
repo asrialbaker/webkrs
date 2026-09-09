@@ -232,11 +232,15 @@ p{margin:0 0 1em}
 .trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(2.25rem,4vw,3.5rem)}
 .quad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(2rem,3.5vw,3rem)}
 .tenet{text-align:center}
-/* Ikon besar mengikut rentak ikhlas. Glif minimal nampak kosong pada saiz ini,
-   jadi ikon dilukis semula dengan lebih perincian supaya cukup padat. */
+/* Ikon besar mengikut rentak ikhlas. Duotone rata: bentuk pejal, tiada garisan
+   nipis — pada 104-168px glif bergaris nampak seperti lakaran teknikal.
+   Subjeknya simbol umrah & haji, bukan metafora am (glob, kompas, pingat).
+   .g2 = hijau cerah untuk muka kedua · .gd = aksen emas. */
 .tenet__ico{width:clamp(104px,11vw,144px);height:auto;aspect-ratio:1;color:var(--haram);
-            margin:0 auto 1.6rem;stroke-width:1.7}
-.trio .tenet__ico{width:clamp(120px,13vw,168px);stroke-width:1.6}
+            margin:0 auto 1.6rem;fill:currentColor}
+.trio .tenet__ico{width:clamp(120px,13vw,168px)}
+.tenet__ico .g2{fill:var(--haram-lift)}
+.tenet__ico .gd{fill:var(--amber)}
 .tenet h3{font-family:var(--ff-display);font-variation-settings:'wdth' 115;font-weight:700;
           text-transform:uppercase;letter-spacing:.13em;font-size:.95rem;margin:0 0 .75rem;color:var(--ink)}
 .tenet p{font-size:.9rem;color:var(--muted);margin:0;max-width:32ch;margin-inline:auto}
@@ -1092,41 +1096,39 @@ body.lb-lock{overflow:hidden}
 
     <div class="trio">
       <div class="tenet">
-        <!-- Globe + bulan sabit & bintang — reputasi global, jemaah Muslim -->
-        <svg class="tenet__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="26" cy="40" r="18"/>
-          <path d="M8 40h36"/>
-          <path d="M26 22c5.4 5.2 8.4 11.2 8.4 18s-3 12.8-8.4 18c-5.4-5.2-8.4-11.2-8.4-18s3-12.8 8.4-18z"/>
-          <path d="M12.5 29c4 2.4 8.6 3.7 13.5 3.7S35.5 31.4 39.5 29"/>
-          <path d="M12.5 51c4-2.4 8.6-3.7 13.5-3.7s9.5 1.3 13.5 3.7"/>
-          <g transform="translate(38 2)"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></g>
-          <path d="M34 5l1.5 4.1 4.1 1.5-4.1 1.5L34 16.2l-1.5-4.1L28.4 10.6l4.1-1.5z"/>
+        <!-- Kaabah — kiblat yang dituju setiap jemaah, matlamat syarikat -->
+        <svg class="tenet__ico" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="g2" d="M32 4 58 14 32 24 6 14Z"/>
+          <path d="M6 14 32 24v34L6 48Z"/>
+          <path d="M58 14 32 24v34l26-10Z" opacity=".82"/>
+          <path class="gd" d="M6 27.6 32 37.6v6L6 33.6Z"/>
+          <path class="gd" d="M58 27.6 32 37.6v6l26-10Z"/>
         </svg>
         <h3>Visi</h3>
         <p>Menjadi agensi Umrah &amp; Haji pilihan utama dengan reputasi global, membawa lebih ramai jemaah menunaikan ibadah dengan yakin.</p>
       </div>
 
       <div class="tenet">
-        <!-- Kompas — bimbingan menyeluruh sepanjang perjalanan -->
-        <svg class="tenet__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="32" cy="32" r="24"/>
-          <circle cx="32" cy="32" r="18.5"/>
-          <path d="M42.5 21.5L36.5 36.5 21.5 42.5 27.5 27.5z"/>
-          <circle cx="32" cy="32" r="1.8" fill="currentColor" stroke="none"/>
-          <path d="M32 3v5M32 56v5M3 32h5M56 32h5"/>
-          <path d="M15 15l3 3M46 46l3 3M49 15l-3 3M18 46l-3 3"/>
+        <!-- Kubah & menara — perkhidmatan dan bimbingan di Tanah Suci -->
+        <svg class="tenet__ico" viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="gd" cx="32" cy="6.4" r="2.7"/>
+          <path d="M32 10c8 6.5 12.5 12 12.5 17.5H19.5C19.5 22 24 16.5 32 10Z"/>
+          <path class="g2" d="M10 13l4.5 8.5V56h-9V21.5Z"/>
+          <path class="g2" d="M54 13l4.5 8.5V56h-9V21.5Z"/>
+          <path d="M17 27.5h30V56H17Z"/>
+          <path class="gd" d="M32 38c3.6 0 6.5 2.9 6.5 6.5V56h-13V44.5c0-3.6 2.9-6.5 6.5-6.5Z"/>
+          <path class="g2" d="M3 56h58v4H3Z"/>
         </svg>
         <h3>Misi</h3>
         <p>Menyediakan pakej terbaik dengan layanan mesra, bimbingan menyeluruh, serta kemudahan selesa untuk setiap jemaah.</p>
       </div>
 
       <div class="tenet">
-        <!-- Perisai berlapis dengan bulan sabit — nilai yang melindungi jemaah -->
-        <svg class="tenet__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M32 4l22 8.5V29c0 15.2-9.4 26.2-22 31C19.4 55.2 10 44.2 10 29V12.5z"/>
-          <path d="M32 11l15.5 6V29c0 11.4-6.9 20-15.5 24-8.6-4-15.5-12.6-15.5-24V17z"/>
-          <g transform="translate(23.5 20) scale(0.68)"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></g>
-          <path d="M40 34.5l.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z"/>
+        <!-- Al-Quran terbuka — sumber nilai yang memandu setiap urusan -->
+        <svg class="tenet__ico" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M6 15c7-3.2 14.5-3 24 2.4v37c-9.5-5.4-17-5.6-24-2.4Z"/>
+          <path class="g2" d="M58 15c-7-3.2-14.5-3-24 2.4v37c9.5-5.4 17-5.6 24-2.4Z"/>
+          <path class="gd" d="M30 17.4h4v37h-4Z"/>
         </svg>
         <h3>Nilai Teras</h3>
         <p>Integriti, amanah, profesionalisme dan kesungguhan dalam memenuhi keperluan rohani jemaah.</p>
@@ -1145,54 +1147,54 @@ body.lb-lock{overflow:hidden}
 
     <div class="quad">
       <div class="tenet">
-        <!-- Dokumen rasmi bercop — harga & butiran dinyatakan seperti adanya -->
-        <svg class="tenet__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M14 4h23l13 13v43a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-          <path d="M37 4v13h13"/>
-          <path d="M20 26h17M20 33h17M20 40h7"/>
-          <circle cx="38" cy="45" r="9"/>
-          <path d="M34 45l3 3 6-6"/>
-          <path d="M32.5 52.5L30 60l8-3.4 8 3.4-2.5-7.5"/>
+        <!-- Mizan — harga dan butiran ditimbang adil, dinyatakan seperti adanya -->
+        <svg class="tenet__ico" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="9" r="4"/>
+          <path d="M29.8 11h4.4v39h-4.4Z"/>
+          <path d="M7 14.5h50v4.4H7Z"/>
+          <path d="M12.2 18h3.6v6.5h-3.6ZM48.2 18h3.6v6.5h-3.6Z"/>
+          <path class="gd" d="M2 24.5h24a12 12 0 0 1-24 0Z"/>
+          <path class="gd" d="M38 24.5h24a12 12 0 0 1-24 0Z"/>
+          <path class="g2" d="M24 48h16l8 12H16Z"/>
         </svg>
         <h3>Integriti</h3>
         <p>Harga, tarikh dan jarak hotel dinyatakan seperti adanya — tiada kos tersembunyi selepas anda mendaftar.</p>
       </div>
 
       <div class="tenet">
-        <!-- Jabat tangan — janji yang dipegang antara kami dan jemaah -->
-        <svg class="tenet__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M2 25h10v15H2z"/><path d="M62 25h-10v15h10z"/>
-          <path d="M12 28l11-3.5a5.5 5.5 0 0 1 4.3.4L38 30.5"/>
-          <path d="M52 28l-11-3.5a5.5 5.5 0 0 0-4.3.4L26 30.5"/>
-          <path d="M12 37.5l11 4.6a5.5 5.5 0 0 0 4.6 0L32 40.2l4.4 1.9a5.5 5.5 0 0 0 4.6 0l11-4.6"/>
-          <path d="M25.5 31.8l8.5 4.2a3.4 3.4 0 0 1-3 6.1l-7.2-3.5"/>
-          <path d="M30 28.6l6 3"/>
+        <!-- Tangan menadah — wang, dokumen dan keselamatan jemaah dipegang sebagai amanah -->
+        <svg class="tenet__ico" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M20 12c1.6 0 2.6 1.2 2.6 2.8v14h2V10.5C24.6 9 25.7 8 27.2 8s2.6 1 2.6 2.5V28.8h2V12c0-1.6 1.1-2.6 2.6-2.6S37 10.4 37 12v16.8h2V16.6c0-1.6 1-2.6 2.5-2.6s2.5 1 2.5 2.6V37c0 10.5-5.3 19-12 19s-14.6-8.5-14.6-19V14.8c0-1.6 1-2.8 2.6-2.8Z"/>
+          <g class="gd" transform="translate(18.5 29.5) scale(1.02)"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></g>
         </svg>
         <h3>Amanah</h3>
         <p>Wang, dokumen dan keselamatan jemaah adalah amanah yang kami pegang dari pendaftaran hingga pulang.</p>
       </div>
 
       <div class="tenet">
-        <!-- Pingat bertali — mutawwif bertauliah & pengurusan berlesen -->
-        <svg class="tenet__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="32" cy="23" r="16"/>
-          <circle cx="32" cy="23" r="10.5"/>
-          <path d="M27.5 23l3.5 3.5 6.5-7"/>
-          <path d="M21.5 35.5L15 60l17-8.5L49 60l-6.5-24.5"/>
-          <path d="M32 51.5V60"/>
+        <!-- Payung mutawwif — rombongan yang sentiasa ada orang bertauliah di hadapannya -->
+        <svg class="tenet__ico" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M7 29.5C8 17.6 18.7 8 32 8s24 9.6 25 21.5q-3.125 3.5-6.25 0q-3.125 3.5-6.25 0q-3.125 3.5-6.25 0q-3.125 3.5-6.25 0q-3.125 3.5-6.25 0q-3.125 3.5-6.25 0q-3.125 3.5-6.25 0q-3.125 3.5-6.25 0Z"/>
+          <path d="M30.8 29.5h2.4v13h-2.4Z"/>
+          <g class="gd">
+            <circle cx="17" cy="46" r="4"/><path d="M10 60c0-3.9 3.1-7 7-7s7 3.1 7 7Z"/>
+            <circle cx="32" cy="46" r="4"/><path d="M25 60c0-3.9 3.1-7 7-7s7 3.1 7 7Z"/>
+            <circle cx="47" cy="46" r="4"/><path d="M40 60c0-3.9 3.1-7 7-7s7 3.1 7 7Z"/>
+          </g>
         </svg>
         <h3>Profesionalisme</h3>
         <p>Mutawwif bertauliah, petugas berpengalaman dan pengurusan berlesen di setiap peringkat perjalanan.</p>
       </div>
 
       <div class="tenet">
-        <!-- Puncak berbendera dengan denai — usaha sehingga jemaah pulang -->
-        <svg class="tenet__ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 56l17-26 10 13 8-10 23 23z"/>
-          <path d="M20 30V4"/>
-          <path d="M20 6l15 5-15 5z"/>
-          <path d="M13.5 47l6.5-9 4.5 6"/>
-          <path d="M41.5 43l6.5-6.5 5 5"/>
+        <!-- Safa & Marwah — sa'i, usaha berulang sehingga jemaah selamat pulang -->
+        <svg class="tenet__ico" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="gd" d="M17 21h30v5.5H17Z"/>
+          <path class="gd" d="M6 23.75 17 17.5v12.5Z"/>
+          <path class="gd" d="M58 23.75 47 17.5v12.5Z"/>
+          <path d="M2 52a14.5 14.5 0 0 1 29 0Z"/>
+          <path class="g2" d="M33 52a14.5 14.5 0 0 1 29 0Z"/>
+          <path d="M2 52h60v5.5H2Z"/>
         </svg>
         <h3>Kesungguhan</h3>
         <p>Kursus pra-berlepas, bimbingan ibadah dan sokongan 24 jam di Tanah Suci — bukan sekadar tiket dan hotel.</p>
