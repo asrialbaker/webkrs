@@ -21,10 +21,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site-live
+          # v4 stopped bundling dotfiles by default. site-live/.htaccess is
+          # inert on Pages but ships to cPanel from the same tree, so keep the
+          # artifact's contents identical to what v3 produced.
+          include-hidden-files: true
       - uses: actions/deploy-pages@v5
         id: deployment
