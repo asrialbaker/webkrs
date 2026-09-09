@@ -610,79 +610,119 @@ body.lb-open{overflow:hidden}
 }
 
 /* Umrah financing */
-#kandungan .wrap,.rakan .wrap,.foot .wrap{padding-inline:var(--pad)}
 .finance-hero{position:relative;background:var(--paper);color:var(--ink);isolation:isolate;overflow:hidden}
 .finance-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
-.finance-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,34,29,.97),rgba(9,34,29,.82) 48%,rgba(9,34,29,.15));z-index:-1}
+.finance-hero:after{content:"";position:absolute;inset:0;z-index:-1}
 .finance-hero .wrap{padding-block:clamp(1.6rem,4vw,3rem)}
 .finance-hero .crumb{margin-bottom:1.2rem;color:var(--ink)}
 .finance-hero h1{max-width:720px;font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.08}
-.finance-hero h1 em{font-style:normal;color:var(--haram)}
+.finance-hero h1 em{font-style:normal;color:var(--maroon)}
 .finance-hero p{max-width:540px;margin:1.2rem 0 0;font-size:clamp(1rem,1.3vw,1.1rem);color:var(--ink)}
-.finance-brand{display:inline-block;background:#ffce32;color:#17241c;font-size:1rem;font-weight:700;padding:.45rem .85rem;margin-bottom:1.5rem}
-.finance-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.75rem}
-.finance-actions .btn{font-size:1rem;text-align:center;white-space:normal}
-.finance-primary{background:#ffce32;color:#17241c;border:1px solid #ffce32}
-.finance-outline{color:inherit;border:1px solid currentColor;background:transparent}
-.finance-strip{background:#ffce32;color:#17241c;padding-block:1.5rem}
-.finance-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.finance-stats strong{display:block;font-family:var(--ff-display);font-size:1.5rem;line-height:1.3}
-.finance-stats span{font-size:.9rem}
-.finance-section{padding-block:4rem;scroll-margin-top:100px}
+.finance-hero .ribbon{border-top-color:rgba(14,28,34,.28)}
+.finance-hero .ribbon span{color:var(--ink);border-right-color:rgba(14,28,34,.28)}
+.finance-brand{display:inline-block;font-family:var(--ff-mono);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--maroon);border:1px solid var(--maroon);border-radius:2px;padding:.3rem .6rem;margin-bottom:1.1rem}
+.finance-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.8rem}
+.finance-strip{background:var(--paper);padding-block:clamp(.85rem,1.8vw,1.3rem)}
+.finance-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.finance-stats>div{background:var(--paper);padding:1.5rem 1.25rem}
+.finance-stats strong{display:block;font-family:var(--ff-display);font-variation-settings:'wdth' 110;font-size:1.15rem;letter-spacing:-.015em;line-height:1.25;margin-bottom:.4rem}
+.finance-stats span{display:block;font-size:.83rem;line-height:1.5;color:var(--muted)}
+.finance-section{padding-block:clamp(.85rem,1.8vw,1.3rem);scroll-margin-top:100px}
 .finance-section h2{margin-bottom:1rem}
 .finance-lede{max-width:680px;color:var(--muted)}
-.finance-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
-.finance-card{padding:2rem;border:1px solid var(--line);background:white;border-top:4px solid var(--haram)}
-.finance-card h3{font-size:1.5rem;margin-bottom:1rem}
-.finance-card ul{padding-left:1.2rem;margin-bottom:0}
-.finance-card li+li{margin-top:.5rem}
-.finance-tag{font-family:var(--ff-mono);font-size:.875rem;color:var(--haram);margin-bottom:.75rem}
-.finance-note{font-size:.875rem;color:var(--muted);margin:1.5rem 0 0}
-.finance-process{background:var(--limestone)}
-.finance-steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin:2rem 0}
-.finance-steps b{display:block;font-family:var(--ff-mono);font-size:1.6rem;color:var(--haram);margin-bottom:1rem}
-.finance-steps h3{margin-bottom:.8rem}
-.finance-docs{padding:1.5rem 2rem;border:1px solid var(--line);background:var(--paper)}
-.finance-docs ul{padding-left:1.2rem;margin-bottom:0}
-.finance-faq{max-width:850px}
-.finance-faq details{border-bottom:1px solid var(--line);padding:1.3rem 0}
-.finance-faq summary{cursor:pointer;font-weight:600;font-size:1.1rem}
-.finance-faq details p{margin:1rem 0 0;color:var(--muted)}
-.finance-contact{background:var(--haram);color:white}
-.finance-contact p{max-width:600px}
-@media(max-width:700px){.finance-grid,.finance-steps{grid-template-columns:1fr}.finance-stats{gap:1rem;grid-template-columns:1fr}.finance-stats>div+div{padding-top:1rem;border-top:1px solid #b99a28}.finance-section{padding-block:2.5rem}.finance-card{padding:1.5rem}.finance-hero .wrap{padding-bottom:3rem}.finance-hero:after{background:rgba(9,34,29,.82)}.finance-hero .crumb{margin-bottom:2rem}}
+.finance-section>.wrap>h2+.finance-lede{margin-top:-.35rem}
+.finance-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin-top:1.6rem}
+.finance-card{padding:1.4rem;border:1px solid var(--line);border-top:2px solid var(--maroon);border-radius:var(--r);background:var(--white)}
+.finance-card h3{margin-bottom:.55rem}
+.finance-card p{font-size:.87rem;color:var(--muted);line-height:1.55}
+.finance-card ul{padding-left:1.1rem;margin-bottom:0;display:grid;gap:.4rem;font-size:.87rem;color:var(--muted);line-height:1.55}
+.finance-tag{font-family:var(--ff-mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--maroon);margin:0 0 .6rem}
+.finance-note{font-size:.8rem;color:var(--muted);margin:1.2rem 0 0}
+.finance-process,.finance-hukum{background:var(--paper);border-top:1px solid var(--line)}
+.finance-steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.6rem 0 0}
+.finance-steps>li{background:var(--paper);padding:1.5rem 1.25rem}
+.finance-steps b{display:block;font-family:var(--ff-mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;color:var(--maroon);margin-bottom:.75rem}
+.finance-steps h3{margin-bottom:.45rem}
+.finance-steps p{font-size:.83rem;line-height:1.5;color:var(--muted);margin:0 0 .7rem}
+.finance-steps a{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--haram);text-decoration:none;border-bottom:1px solid var(--amber);padding-bottom:2px}
+.finance-steps a:hover{color:var(--amber-deep)}
+.finance-docs{padding:1.4rem;border:1px solid var(--line);border-radius:var(--r);background:var(--white);margin-top:1.25rem}
+.finance-docs h3{margin-bottom:.6rem}
+.finance-docs ul{padding-left:1.1rem;margin-bottom:0;display:grid;gap:.4rem;font-size:.87rem;color:var(--muted);line-height:1.55}
+.finance-faq{max-width:850px;margin-top:1.4rem;border-top:1px solid var(--line)}
+.finance-faq details>p{margin:0;padding:0 2.4rem 1.2rem 0;color:var(--muted);font-size:.9rem}
+@media(max-width:700px){.finance-grid,.finance-steps,.finance-stats{grid-template-columns:1fr}.finance-card{padding:1.25rem}.finance-hero .wrap{padding-bottom:2.4rem}.finance-hero .crumb{margin-bottom:1.2rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-.finance-jump{border-bottom:1px solid var(--line);background:white}
-.finance-jump .wrap{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;padding-block:1rem}
-.finance-jump a{font-size:.9rem;text-decoration:none;font-weight:600;padding:.25rem 0}
-.finance-jump a:hover{text-decoration:underline}
-.finance-benefits{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;margin-top:2rem}
+.finance-jump{border-block:1px solid var(--line);background:var(--paper)}
+.finance-jump .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;padding-block:.7rem}
+.finance-jump a{font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.2rem 0}
+.finance-jump a:hover{color:var(--maroon)}
+.finance-jump+.finance-section{border-top:0}
+.finance-benefits{display:grid;grid-template-columns:1.1fr .9fr;gap:2.25rem;align-items:center;margin-top:1.6rem}
 .finance-benefits figure{margin:0;min-width:0}
-.finance-benefits img{width:100%;height:auto;aspect-ratio:1;object-fit:contain;border:1px solid var(--line)}
-.finance-benefits figcaption{font-size:.875rem;margin-top:.8rem;color:var(--muted)}
+.finance-benefits img{width:100%;height:auto;aspect-ratio:1;object-fit:contain;border:1px solid var(--line);border-radius:var(--r)}
+.finance-benefits figcaption{font-size:.8rem;margin-top:.8rem;color:var(--muted)}
 .finance-benefit-list{padding-left:1.2rem;margin:0}
-.finance-benefit-list li{padding:.7rem 0;border-bottom:1px solid var(--line)}
-.finance-benefit-list strong{display:block;color:var(--haram)}
-.finance-agency{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;padding:2rem;background:#edf3ee;border:1px solid #b6caba;margin-top:2rem}
-.finance-agency-number{font-family:var(--ff-display);font-size:3.5rem;line-height:1;color:var(--haram)}
-.finance-agency-number small{display:block;font-family:var(--ff-body);font-size:.9rem;line-height:1.6;margin-top:.4rem}
-.finance-agency h3{font-size:1.4rem;margin-bottom:.75rem}.finance-agency p{margin-bottom:.5rem}
-.finance-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
-.finance-facts article{border-top:2px solid var(--haram);padding-top:1rem}
-.finance-facts h3{margin-bottom:.75rem;line-height:1.3}.finance-facts strong{color:var(--haram)}
-.finance-download{display:flex;align-items:center;gap:1.5rem;background:var(--haram);color:white;padding:2rem;margin-top:2rem;text-decoration:none;border:2px solid transparent}
-.finance-download:hover{background:#0c4132;border-color:#ffce32}
-.finance-download>svg{width:48px;height:48px;flex:0 0 48px;color:#ffce32}
-.finance-download strong{display:block;font-size:1.3rem;line-height:1.3}.finance-download small{display:block;margin-top:.6rem;font-size:.9rem;color:#dce9df}
-.finance-download .download-arrow{margin-left:auto;font-size:1.8rem;color:#ffce32}
-.finance-resources{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
-.finance-resource{display:flex;align-items:center;gap:.8rem;padding:1.2rem;border:1px solid var(--line);text-decoration:none;background:white;font-size:.95rem}
-.finance-resource:hover{border-color:var(--haram);background:#f1f5f0}.finance-resource svg{width:24px;height:28px;flex:0 0 24px;color:var(--haram)}
-.finance-hukum{background:#edf1e9}.finance-hukum .finance-card{border-top-color:var(--amber-deep)}
+.finance-benefit-list li{padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.87rem;color:var(--muted);line-height:1.55}
+.finance-benefit-list strong{display:block;color:var(--maroon)}
+/* ── Sorotan: agensi diluluskan Maybank ───────────────────────
+   Satu-satunya blok berwarna penuh dalam halaman ini. Ia dibiarkan
+   pekat kerana inilah kelayakan yang membezakan KRS daripada agensi
+   lain — bukan corak umum halaman, tetapi satu titik tumpu. Corak
+   serong .ph dibawa masuk sebagai tekstur supaya ia kekal sebahagian
+   daripada bahasa visual tapak. */
+.finance-agency{position:relative;overflow:hidden;isolation:isolate;
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(1.25rem,3vw,2.25rem);align-items:center;
+  margin-top:1.6rem;padding:clamp(1.5rem,3vw,2.1rem);
+  background:var(--maroon);color:var(--white);border-radius:var(--r);
+  box-shadow:0 14px 36px rgba(92,18,27,.22)}
+.finance-agency::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 12px,transparent 12px 26px);
+  -webkit-mask-image:linear-gradient(100deg,#000 0%,rgba(0,0,0,.4) 32%,transparent 60%);
+  mask-image:linear-gradient(100deg,#000 0%,rgba(0,0,0,.4) 32%,transparent 60%)}
+.finance-agency::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(95% 135% at 100% 0%,rgba(224,145,44,.24),transparent 62%)}
+.finance-agency__seal{position:relative;flex:none;width:clamp(132px,17vw,176px);
+  background:var(--white);border-radius:calc(var(--r) * 2);padding:.85rem 1rem;
+  display:grid;place-items:center}
+.finance-agency__seal img{width:100%;height:auto;display:block}
+.finance-agency__check{position:absolute;right:-11px;bottom:-11px;width:34px;height:34px;border-radius:50%;
+  background:var(--amber);color:var(--ink);display:grid;place-items:center;
+  border:3px solid var(--maroon);box-shadow:0 2px 8px rgba(92,18,27,.35)}
+.finance-agency__check svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:3;
+  stroke-linecap:round;stroke-linejoin:round}
+.finance-agency__eyebrow{font-family:var(--ff-mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--limestone);margin:0 0 .55rem}
+.finance-agency h3{font-size:clamp(1.35rem,2.6vw,1.9rem);font-variation-settings:'wdth' 115;
+  color:var(--white);margin-bottom:.55rem}
+.finance-agency p{max-width:56ch;margin:0 0 1.15rem;font-size:.92rem;line-height:1.6;color:rgba(255,255,255,.87)}
+.finance-agency__link{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--ff-mono);
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white);text-decoration:none;
+  border-bottom:1px solid var(--amber);padding-bottom:3px}
+.finance-agency__link:hover{color:var(--amber)}
+.finance-agency :focus-visible{outline-color:var(--amber)}
+.finance-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin-top:1.6rem}
+.finance-facts article{border-top:2px solid var(--maroon);padding-top:1rem}
+.finance-facts h3{margin-bottom:.6rem;line-height:1.3}
+.finance-facts p{font-size:.83rem;color:var(--muted);line-height:1.5;margin:0}
+.finance-facts strong{color:var(--maroon)}
+.finance-download{display:flex;align-items:center;gap:1.25rem;background:var(--white);color:var(--ink);padding:1.4rem;margin-top:1.6rem;text-decoration:none;border:1px solid var(--line);border-left:2px solid var(--maroon);border-radius:var(--r);transition:border-color .18s,transform .18s}
+.finance-download:hover{border-color:var(--maroon);transform:translateY(-3px)}
+.finance-download>svg{width:34px;height:34px;flex:0 0 34px;color:var(--maroon)}
+.finance-download strong{display:block;font-family:var(--ff-display);font-variation-settings:'wdth' 110;font-size:1.05rem;line-height:1.3}
+.finance-download small{display:block;margin-top:.5rem;font-size:.8rem;color:var(--muted)}
+.finance-download .download-arrow{margin-left:auto;font-family:var(--ff-mono);font-size:1.4rem;color:var(--amber)}
+.finance-resources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.finance-resource{display:flex;align-items:center;gap:.8rem;padding:1.1rem;border:1px solid var(--line);border-radius:var(--r);text-decoration:none;background:var(--white);font-size:.87rem;line-height:1.45;transition:border-color .18s,transform .18s}
+.finance-resource:hover{border-color:var(--maroon);transform:translateY(-3px)}
+.finance-resource small{color:var(--muted);font-size:.75rem}
+.finance-resource svg{width:22px;height:26px;flex:0 0 22px;color:var(--maroon)}
+.finance-hukum .finance-card{border-top-color:var(--amber-deep)}
 .finance-hukum .finance-card h3{font-size:1.2rem;line-height:1.3}.finance-hukum .finance-card p:last-child{margin-bottom:0}
-.finance-source{font-size:.875rem;overflow-wrap:anywhere}.finance-caution{border-left:3px solid var(--amber-deep);padding:1rem 1.4rem;background:#fffaf0;margin-top:1.5rem}
-@media(max-width:760px){.finance-benefits,.finance-facts,.finance-resources{grid-template-columns:1fr}.finance-benefits{gap:1.5rem}.finance-agency{grid-template-columns:1fr;gap:1rem}.finance-download{padding:1.3rem;gap:1rem}.finance-download strong{font-size:1.15rem}}
+.finance-source{font-size:.8rem;overflow-wrap:anywhere}
+.finance-caution{border:1px solid var(--line);border-left:2px solid var(--amber-deep);border-radius:var(--r);padding:1.1rem 1.3rem;background:var(--white);margin-top:1.5rem;font-size:.83rem;color:var(--muted);line-height:1.55}
+@media(max-width:760px){.finance-benefits,.finance-facts,.finance-resources{grid-template-columns:1fr}.finance-benefits{gap:1.5rem}.finance-agency{grid-template-columns:1fr;gap:1.4rem;justify-items:start}.finance-agency__seal{width:clamp(120px,38vw,150px)}.finance-download{padding:1.3rem;gap:1rem}.finance-download strong{font-size:1.15rem}}
 
 /* Shared photo-hero treatment: text stays over the image at every width. */
 .finance-hero h1{font-size:clamp(2.1rem,5vw,3.9rem);max-width:720px;color:var(--ink);text-wrap:pretty}
@@ -696,13 +736,14 @@ body.lb-open{overflow:hidden}
   .finance-hero .wrap{padding-block:clamp(1.6rem,4vw,3rem)}
   .finance-hero .crumb{margin-bottom:1.2rem}
 }
-.finance-purpose{margin-top:2rem;padding:1.5rem;border:1px solid var(--line);background:#f3f5ee}
-.finance-purpose h3{font-size:1.3rem;line-height:1.3}
+.finance-purpose{margin-top:1.6rem;padding:1.4rem;border:1px solid var(--line);border-radius:var(--r);background:var(--white)}
+.finance-purpose h3{line-height:1.3;margin-bottom:.2rem}
 .finance-table-wrap{overflow-x:auto}
-.finance-table{width:100%;border-collapse:collapse;margin-top:1rem;text-align:left;font-size:1rem}
-.finance-table caption{text-align:left;font-size:.875rem;color:var(--muted);padding-bottom:.75rem}
-.finance-table th,.finance-table td{padding:1rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
-.finance-table thead{background:var(--haram);color:white}
+.finance-table{width:100%;border-collapse:collapse;margin-top:.9rem;text-align:left;font-size:.9rem}
+.finance-table caption{text-align:left;font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-bottom:.7rem}
+.finance-table th,.finance-table td{padding:.85rem .75rem;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
+.finance-table tbody th{color:var(--ink)}
+.finance-table thead th{font-family:var(--ff-mono);font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--limestone);border-bottom:2px solid var(--maroon)}
 @media(max-width:700px){.finance-purpose{padding:1rem}.finance-table th,.finance-table td{padding:.8rem .5rem}}
 
 /* Portrait crop excludes the unrelated headline and footer of the supplied clipping. */
@@ -729,7 +770,7 @@ body.lb-open{overflow:hidden}
 
 /* Consistent full-width, padded media inside the four religious guidance cards. */
 .finance-hukum .finance-card{min-width:0}
-.finance-hukum-media{width:100%;padding:.85rem;margin:0 0 1.5rem;background:#f5f3ed;border:1px solid var(--line);border-radius:6px}
+.finance-hukum-media{width:100%;padding:.85rem;margin:0 0 1.5rem;background:var(--limestone);border:1px solid var(--line);border-radius:var(--r)}
 .finance-hukum-media figure{width:100%;max-width:none;margin:0}
 .finance-hukum-media .finance-mufti-logo{position:relative;display:block;padding:0;overflow:hidden}
 .finance-hukum-media .finance-mufti-logo img{position:absolute;inset:0;width:100%;height:100%;padding:.75rem;object-fit:contain}
@@ -923,9 +964,28 @@ a.finance-mufti__crop{display:block}
 <span class="finance-brand">Maybank Islamic</span>
 <h1>Pembiayaan<br><em>Haji &amp; Umrah.</em></h1>
 <p>Langkah ke Tanah Suci bermula dengan perancangan. Kenali Pembiayaan Peribadi-i Maybank Islamic untuk haji dan umrah bersama KRS Travel.</p>
-<div class="finance-actions"><a class="btn finance-primary" href="#kelayakan">Semak kelayakan</a><a class="btn finance-outline" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20maklumat%20pakej%20haji%20atau%20umrah%20serta%20dokumen%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">Tanya pakej haji &amp; umrah ↗</a></div>
+<div class="finance-actions"><a class="btn btn--primary" href="#kelayakan">Semak kelayakan</a><a class="btn btn--on-dark" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20maklumat%20pakej%20haji%20atau%20umrah%20serta%20dokumen%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">Tanya pakej haji &amp; umrah ↗</a></div>
+<div class="ribbon"><span><b>Pakej</b> Safa &amp; Marwa</span><span><b>2–10</b> tahun</span><span><b>Tanpa</b> penjamin</span><span><b>Agensi</b> diluluskan Maybank</span></div>
 </div></section>
-<section class="finance-strip" aria-label="Ringkasan pembiayaan"><div class="wrap finance-stats"><div><strong>2–10 tahun</strong><span>Atau sehingga persaraan, yang lebih awal</span></div><div><strong>Tanpa penjamin</strong><span>Tiada cagaran diperlukan</span></div><div><strong>Bayaran bulanan</strong><span>Potongan gaji atau arahan tetap berubah</span></div></div></section>
+
+<!-- ══ KAD CTA TERAPUNG ════════════════════════
+     Kekal di lajur kanan sepanjang skrol (desktop sahaja). -->
+<div class="rail">
+  <div class="rail__in">
+    <div class="rail__stick">
+      <div class="phead__card">
+        <p class="phead__eyebrow">Maybank Islamic</p>
+        <p class="phead__title">Pembiayaan Haji &amp; Umrah</p>
+        <p class="phead__lede">Semak had Safa dan Marwa, sediakan dokumen dan dapatkan sebut harga pakej KRS untuk permohonan anda.</p>
+        <div class="phead__cta">
+          <a class="btn btn--primary" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20maklumat%20pakej%20haji%20atau%20umrah%20serta%20dokumen%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">Tanya pakej &amp; pembiayaan</a>
+          <a class="btn btn--ghost" href="#muat-turun-borang">Muat turun borang</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="finance-strip" aria-label="Ringkasan pembiayaan"><div class="wrap"><div class="finance-stats"><div><strong>2–10 tahun</strong><span>Atau sehingga persaraan, yang lebih awal</span></div><div><strong>Tanpa penjamin</strong><span>Tiada cagaran diperlukan</span></div><div><strong>Bayaran bulanan</strong><span>Potongan gaji atau arahan tetap berubah</span></div></div></div></section>
 
 <nav class="finance-jump" aria-label="Kandungan pembiayaan"><div class="wrap"><a href="#hukum-hakam">Hukum hakam</a><a href="#kelebihan">Kelebihan</a><a href="#kelayakan">Kelayakan</a><a href="#kadar-caj">Kadar &amp; caj</a><a href="#muat-turun-borang">Muat turun borang</a></div></nav>
 <section class="finance-section finance-hukum" id="hukum-hakam"><div class="wrap"><p class="finance-tag">PANDUAN SYARIAH</p><h2>Hukum hakam pembiayaan haji &amp; umrah</h2><p class="finance-lede">Kemampuan membayar dan tanggungjawab keluarga perlu dinilai bersama hasrat beribadah.</p>
@@ -954,7 +1014,18 @@ a.finance-mufti__crop{display:block}
 <section class="finance-section" id="kelebihan"><div class="wrap"><p class="finance-tag">KELEBIHAN PEMBIAYAAN</p><h2>Rancang haji &amp; umrah dengan lebih teratur</h2>
 <div class="finance-benefits"><figure><a data-hukum-lightbox href="images/kelebihan-pembiayaan-umrah-maybank.png" target="_blank" rel="noopener" aria-label="Buka infografik kelebihan pembiayaan umrah dalam saiz penuh"><img src="images/kelebihan-pembiayaan-umrah-maybank.png" width="1254" height="1254" loading="lazy" alt="Infografik enam kelebihan pembiayaan umrah Maybank Islamic; penerangan penuh tersedia di sebelah gambar."></a><figcaption>Kelebihan kemudahan ini turut terpakai untuk pembiayaan haji.<br><a href="images/kelebihan-pembiayaan-umrah-maybank.png" download>Muat turun infografik (PNG, segi empat sama)</a></figcaption></figure>
 <div><ul class="finance-benefit-list"><li><strong>Untuk pekerja berpendapatan tetap</strong>Pekerjaan disahkan oleh majikan.</li><li><strong>Bayaran mampu milik</strong>Tertakluk kepada penilaian dan tawaran bank.</li><li><strong>Pembayaran bulanan</strong>Melalui potongan gaji atau Arahan Tetap Berubah (VSI).</li><li><strong>Tempoh fleksibel</strong>2–10 tahun atau sehingga persaraan, yang lebih awal.</li><li><strong>Tanpa cagaran atau penjamin</strong>Kemudahan pembiayaan tanpa cagaran.</li><li><strong>Dana terus kepada agensi diluluskan</strong>Disalurkan setelah semua syarat kemudahan dipenuhi.</li></ul><p class="finance-note"><a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Sumber: Kelebihan — Maybank Islamic ↗</a></p></div></div>
-<aside class="finance-agency" id="agensi-krs"><div class="finance-agency-number">1 / 14<small>Agensi dalam senarai Maybank</small></div><div><h3>KRS Travel Sdn Bhd</h3><p>Salah satu daripada 14 agensi pelancongan yang disenaraikan Maybank bagi kemudahan ini. KRS berada pada nombor 14 dalam senarai rasmi.</p><p class="finance-source"><a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Semak senarai agensi Maybank ↗</a></p></div></aside>
+<aside class="finance-agency" id="agensi-krs">
+  <div class="finance-agency__seal">
+    <img src="images/logo/krs-travel-mark.webp" width="830" height="475" loading="lazy" decoding="async" alt="KRS Travel Sdn Bhd">
+    <span class="finance-agency__check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 13 4.5 4.5L19 7"/></svg></span>
+  </div>
+  <div>
+    <p class="finance-agency__eyebrow">Agensi diluluskan Maybank Islamic</p>
+    <h3>KRS Travel Sdn Bhd</h3>
+    <p>Salah satu daripada 14 agensi pelancongan yang disenaraikan Maybank bagi kemudahan pembiayaan haji dan umrah — dana disalurkan terus kepada agensi setelah permohonan anda diluluskan.</p>
+    <a class="finance-agency__link" href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Semak senarai agensi Maybank ↗</a>
+  </div>
+</aside>
 </div></section>
 <section class="finance-section" id="kelayakan"><div class="wrap"><p class="finance-tag">01 / PILIHAN PEMBIAYAAN</p><h2>Pakej mengikut pekerjaan anda</h2><p class="finance-lede">Pemohon individu Muslim, warganegara Malaysia berumur 21–55 tahun, bekerja tetap dan disahkan majikan. Kelulusan tertakluk kepada penilaian bank.</p>
 <div class="finance-grid"><article class="finance-card"><p class="finance-tag">PAKEJ SAFA</p><h3>Sektor awam &amp; majikan terpilih</h3><p>Untuk kakitangan Kumpulan Maybank, kerajaan dan syarikat terpilih.</p><ul><li>Pembiayaan haji atau umrah sehingga RM200,000, tertakluk kepada kelayakan.</li><li>Kakitangan kontrak Kerajaan Persekutuan: doktor, doktor gigi, ahli farmasi, pensyarah, guru dan jururawat; masih berkhidmat dengan sekurang-kurangnya satu tahun kontrak disempurnakan.</li></ul></article>
@@ -978,7 +1049,22 @@ a.finance-mufti__crop{display:block}
 <details><summary>Adakah pertanyaan kepada KRS merupakan permohonan bank?</summary><p>Tidak. WhatsApp KRS ialah saluran pertanyaan pakej dan sebut harga. Permohonan serta keputusan pembiayaan diuruskan oleh Maybank.</p></details>
 <details><summary>Bagaimana saya mengetahui jumlah ansuran?</summary><p>Rujuk jadual pembayaran di laman Maybank dan dapatkan pengesahan bank berdasarkan jumlah, tempoh serta pakej pembiayaan anda.</p></details>
 </div><p class="finance-note">Sumber: <a href="https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/loans/personal/hajj-umrah.page" target="_blank" rel="noopener">Maybank Islamic — Pembiayaan Peribadi-i bagi Haji &amp; Umrah</a>. Disemak pada 3 September 2026.</p></div></section>
-<section class="finance-section finance-contact" id="hubungi"><div class="wrap"><h2>Mulakan dengan pilihan pakej anda.</h2><p>Bincangkan pilihan pakej haji atau umrah dan dokumen perjalanan yang anda perlukan bersama pasukan KRS.</p><div class="finance-actions"><a class="btn finance-primary" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20maklumat%20pakej%20haji%20atau%20umrah%20serta%20dokumen%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic.">WhatsApp KRS Travel ↗</a><a class="btn finance-outline" href="umrah.html">Lihat pakej umrah</a><a class="btn finance-outline" href="haji.html">Lihat pakej haji</a></div></div></section>
+<section class="sec sec--cta" id="hubungi">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Mulakan dengan pilihan pakej anda</h2>
+      <p class="cta__lede">Bincangkan pilihan pakej haji atau umrah, tarikh berlepas dan dokumen perjalanan yang anda perlukan untuk permohonan pembiayaan. Pasukan Seremban kami menjawab setiap hari bekerja, 9 pagi – 6 petang.</p>
+      <div class="cta__row">
+        <a class="btn btn--wa" href="https://wa.me/60102790458?text=Salam%20KRS%20Travel.%20Saya%20ingin%20maklumat%20pakej%20haji%20atau%20umrah%20serta%20dokumen%20untuk%20permohonan%20pembiayaan%20Maybank%20Islamic." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+          WhatsApp 010-279 0458
+        </a>
+        <a class="btn btn--ghost" href="umrah.html">Lihat pakej umrah</a>
+        <a class="btn btn--ghost" href="haji.html">Lihat pakej haji</a>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 <!-- ══ RAKAN & PENGIKTIRAFAN ═══════════════════════════════ -->
