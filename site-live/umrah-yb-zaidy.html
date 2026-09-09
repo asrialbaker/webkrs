@@ -129,10 +129,18 @@ p{margin:0 0 1em}
 
 /* Barisan utama: 3 lajur, ikon kiri + tajuk + huraian */
 .pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.7rem 2.25rem}
-.pitem{display:grid;grid-template-columns:34px 1fr;gap:.95rem;align-items:start;padding:.6rem;margin:-.6rem;border-radius:var(--r);text-decoration:none;box-shadow:inset 0 0 0 1px transparent;transition:background .15s,box-shadow .15s}
+.pitem{display:grid;grid-template-columns:36px 1fr;gap:.95rem;align-items:start;padding:.6rem;margin:-.6rem;border-radius:var(--r);text-decoration:none;box-shadow:inset 0 0 0 1px transparent;transition:background .15s,box-shadow .15s}
 .pitem:hover,.pitem:focus-visible{background:var(--white);box-shadow:inset 0 0 0 1px rgba(16,81,62,.42)}
-.pitem__ico{width:30px;height:30px;color:var(--haram);margin-top:.15rem;transition:color .15s}
+/* Ikon duotone rata — sama bahasanya dengan ikon nilai di Tentang Kami.
+   .g2 = muka kedua · .gd = aksen emas · .gs = garis emas. Pada hover kedua-dua
+   warna bertukar tempat supaya ikon kekal dua tona, bukan jadi satu warna. */
+.pitem__ico{width:32px;height:32px;color:var(--haram);margin-top:.1rem;transition:color .15s;fill:currentColor}
+.pitem__ico .g2{fill:var(--haram-lift)}
+.pitem__ico .gd{fill:var(--amber);transition:fill .15s}
+.pitem__ico .gs{fill:none;stroke:var(--amber);stroke-width:1.7;transition:stroke .15s}
 .pitem:hover .pitem__ico{color:var(--amber-deep)}
+.pitem:hover .pitem__ico .gd{fill:var(--haram)}
+.pitem:hover .pitem__ico .gs{stroke:var(--haram)}
 .pitem h3{font-size:1.02rem;font-weight:600;font-variation-settings:'wdth' 108;margin:0 0 .3rem;transition:color .15s}
 .pitem:hover h3{color:var(--haram)}
 .pitem p{font-size:.83rem;line-height:1.5;color:var(--muted);margin:0;max-width:34ch}
@@ -687,11 +695,11 @@ body.is-lbox-open{overflow:hidden}
           <div class="panel__inner">
             <div class="pgrid">
               <a class="pitem" href="ejen-krs.html">
-                <svg class="pitem__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M18 7v6M15 10h6"/></svg>
+                <svg class="pitem__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9.2" cy="7.4" r="3.9"/><path d="M2 21.4c0-4 3.2-7.2 7.2-7.2s7.2 3.2 7.2 7.2Z"/><circle class="gd" cx="18.4" cy="8" r="4.6"/><path d="M17.6 5.4h1.6v5.2h-1.6Z"/><path d="M15.8 7.2h5.2v1.6h-5.2Z"/></svg>
                 <div><h3>Jadi Ejen KRS</h3><p>Sertai rangkaian ejen kami dan jana pendapatan bersama KRS Travel.</p></div>
               </a>
               <a class="pitem" href="ejen-krs.html">
-                <svg class="pitem__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                <svg class="pitem__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8a7.6 7.6 0 0 0-7.6 7.6c0 5.9 7.6 12.6 7.6 12.6s7.6-6.7 7.6-12.6A7.6 7.6 0 0 0 12 1.8Z"/><circle class="gd" cx="12" cy="9.4" r="3.1"/></svg>
                 <div><h3>Cari Ejen Berdekatan</h3><p>Berurusan bersemuka dengan ejen KRS di kawasan anda.</p></div>
               </a>
             </div>
@@ -707,27 +715,27 @@ body.is-lbox-open{overflow:hidden}
           <p class="panel__eyebrow">Perjalanan &amp; Ibadah</p>
           <div class="pgrid">
             <a class="pitem" href="umrah.html">
-              <svg class="pitem__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="6" width="14" height="13"/><path d="M5 11h14"/><path d="M3 19h18"/></svg>
+              <svg class="pitem__ico" viewBox="0 0 24 24" aria-hidden="true"><path class="g2" d="M12 2.2 21.4 6 12 9.8 2.6 6Z"/><path d="M2.6 6 12 9.8v11.9L2.6 17.9Z"/><path d="M21.4 6 12 9.8v11.9L21.4 17.9Z" opacity=".82"/><path class="gd" d="M2.6 10.5 12 14.3v2.3L2.6 12.8Z"/><path class="gd" d="M21.4 10.5 12 14.3v2.3l9.4-3.8Z"/></svg>
               <div><h3>Umrah</h3><p>Pakej umrah penerbangan terus dengan hotel berdekatan Haramain dan bimbingan mutawwif berpengalaman.</p></div>
             </a>
             <a class="pitem" href="haji.html">
-              <svg class="pitem__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M2 18l4.5-8L11 18z"/><path d="M13 18l4.5-8L22 18z"/><path d="M1 18h22"/></svg>
+              <svg class="pitem__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 18 6.5 9 11 18Z"/><path class="g2" d="M13 18 17.5 9 22 18Z"/><path class="gd" d="M2 18h20v2.5H2Z"/></svg>
               <div><h3>Haji</h3><p>Pakej haji di bawah lesen Pengelola Jemaah Haji (PJH), dibimbing ustaz dan pakar rujuk.</p></div>
             </a>
             <a class="pitem" href="pelancongan.html">
-              <svg class="pitem__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>
+              <svg class="pitem__ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path class="gd" d="M2 11.1h20v1.8H2Z"/><ellipse class="gs" cx="12" cy="12" rx="4.5" ry="9.4"/></svg>
               <div><h3>Pelancongan</h3><p>Pakej pelancongan mesra Muslim dalam dan luar negara untuk keluarga, sekolah dan syarikat.</p></div>
             </a>
             <a class="pitem" href="ticketing.html">
-              <svg class="pitem__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1.5a2.5 2.5 0 0 0 0 5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3.5a2.5 2.5 0 0 0 0-5z"/><path d="M14 7v10" stroke-dasharray="2 2.5"/></svg>
+              <svg class="pitem__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6.2" width="12.6" height="11.6" rx="1.8"/><rect x="17" y="6.2" width="5" height="11.6" rx="1.8"/><path class="gd" d="M15 7.2h1.2v2.2H15Zm0 3.3h1.2v2.2H15Zm0 3.3h1.2v2.2H15Z"/></svg>
               <div><h3>Ticketing</h3><p>Tempahan tiket penerbangan domestik dan antarabangsa melalui agensi ahli IATA.</p></div>
             </a>
             <a class="pitem" href="pembiayaan-umrah-maybank.html">
-              <svg class="pitem__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18L12 3 3 9ZM5 9v10m5-10v10m4-10v10m5-10v10M3 21h18"/></svg>
+              <svg class="pitem__ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 22.6 7.4v2.2H1.4V7.4Z"/><path class="gd" d="M3.6 11.2h2.7v6.9H3.6Zm4.3 0h2.7v6.9H7.9Zm4.3 0h2.7v6.9h-2.7Zm4.3 0h2.7v6.9h-2.7Z"/><path d="M1.4 19.6h21.2v2.4H1.4Z"/></svg>
               <div><h3>Pembiayaan Umrah Maybank</h3><p>Kelayakan, kelebihan dan panduan permohonan pembiayaan umrah Maybank Islamic.</p></div>
             </a>
             <a class="pitem" href="visa.html">
-              <svg class="pitem__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="1.5"/><circle cx="12" cy="10" r="3"/><path d="M9 16.5h6"/></svg>
+              <svg class="pitem__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2.2"/><circle class="gd" cx="12" cy="9.6" r="3.2"/><path class="gd" d="M8.4 15.6h7.2v1.8H8.4Z"/></svg>
               <div><h3>Visa</h3><p>Pengurusan permohonan visa umrah, pelancongan dan perniagaan untuk individu dan rombongan.</p></div>
             </a>
             <a class="pmore" href="umrah.html">Semua pakej &amp; harga</a>
