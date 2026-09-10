@@ -7,10 +7,13 @@ Semua lima logotaip sudah siap dipasang.
 | Fail             | Platform  | Saiz    |
 |------------------|-----------|---------|
 | `facebook.png`   | Facebook  | 532×96  |
-| `instagram.png`  | Instagram | 338×96  |
+| `instagram.png`  | Instagram | 433×96  |
 | `tiktok.png`     | TikTok    | 359×96  |
 | `youtube.png`    | YouTube   | 423×96  |
 | `whatsapp.png`   | WhatsApp  | 414×96  |
+
+`instagram.png` ialah logotaip Instagram baharu (jenama semula 2026) —
+huruf monolin nipis yang menggantikan tulisan berangkai lama.
 
 Semua fail diproses sama: latar dipotong lut sinar, artwork ditukar putih
 tulen, dipangkas rapat, tinggi 96px (4× saiz paparan 23px untuk skrin retina).
