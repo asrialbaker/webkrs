@@ -379,9 +379,14 @@ body.lb-lock{overflow:hidden}
 .sec--hero{position:relative;isolation:isolate;overflow:hidden;background:var(--paper)}
 .sec__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   object-position:center 20%;z-index:-2}
+/* Papan tanda merah di belakang menembusi teks badan. Kaburkan sedikit
+   dan turunkan kesaturasian supaya foto kekal dikenali tetapi hurufnya
+   tidak lagi bersaing dengan kandungan. scale() menutup tepi lembut
+   yang ditinggalkan oleh blur. */
+.sec--hero .sec__bg{filter:blur(3px) saturate(.72);transform:scale(1.06)}
 .sec--hero::before{content:'';position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(251,249,244,.64) 0%,rgba(251,249,244,.56) 50%,
-    rgba(251,249,244,.66) 100%)}
+  background:linear-gradient(180deg,rgba(251,249,244,.70) 0%,rgba(251,249,244,.86) 42%,
+    rgba(251,249,244,.86) 66%,rgba(251,249,244,.74) 100%)}
 .sec--hero .wrap{padding-block:clamp(1.6rem,4vw,3rem)}
 /* --muted terlalu cerah di atas foto yang dibasuh */
 .sec--hero .lede{color:var(--ink)}
@@ -392,9 +397,32 @@ body.lb-lock{overflow:hidden}
 .sec--hero .ribbon{border-block-color:rgba(14,28,34,.28)}
 .sec--hero .ribbon span{border-right-color:rgba(14,28,34,.28)}
 
+/* ── Jalur nav di bawah hero: media · galeri foto · galeri video ──
+   Bahasa pil sama seperti .ytab dalam haji.html (mono, huruf besar,
+   pil putih di atas jalur batu kapur, hijau + garis amber apabila
+   aktif). Ini PAUTAN ke halaman lain, bukan tablist WAI-ARIA — jadi
+   <nav> dengan <a>, dan aria-current="page" menanda halaman semasa. */
+.ptabs{background:var(--limestone);border-bottom:1px solid var(--line)}
+.ptabs__list{display:flex;flex-wrap:wrap;gap:.45rem;padding-block:.85rem}
+.ptab{text-decoration:none;background:var(--white);border:1px solid var(--line);border-radius:var(--r);
+  padding:.66rem .95rem;display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--ff-mono);font-size:.72rem;font-weight:500;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);
+  transition:color .18s,background .18s,border-color .18s,transform .18s}
+.ptab:hover{color:var(--ink);border-color:var(--haram);transform:translateY(-1px)}
+.ptab:focus-visible{outline:2px solid var(--amber-deep);outline-offset:2px}
+.ptab[aria-current="page"]{background:var(--haram);border-color:var(--haram);color:var(--white);transform:none;
+  box-shadow:inset 0 -3px 0 var(--amber)}
+@media(max-width:560px){
+  /* Tiga tab sama lebar dalam satu baris, teks dipusatkan */
+  .ptabs__list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
+  .ptab{justify-content:center;padding:.6rem .35rem;font-size:.63rem;letter-spacing:.04em;text-align:center}
+}
+
 /* ── Media arus perdana ── */
 /* Selebar .mgrid di bawahnya — tiada had 960px, supaya tepi video
    sejajar dengan tepi grid liputan */
+/* Teks hanya untuk pembaca skrin (dipakai oleh cip "Tonton di YouTube") */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .media__hero{margin:0 0 clamp(1.5rem,3vw,2.25rem)}
 .media__hero .ph{aspect-ratio:16/9;font-size:.78rem}
 .media__hero .ph b{font-size:1.05rem}
@@ -651,6 +679,41 @@ body.lb-lock{overflow:hidden}
 .profile-download small{display:block;margin-top:.6rem;font-size:1rem;color:#f1dfe2}
 .profile-download__arrow{width:30px;height:30px;flex:0 0 30px;margin-left:auto;color:#ffce32}
 @media(max-width:600px){.profile-download{padding:1.3rem 1rem;gap:1rem}.profile-download__icon{width:36px;height:36px;flex-basis:36px}.profile-download__arrow{width:24px;height:24px;flex-basis:24px}.profile-download small{font-size:.85rem}}
+
+/* ── Cip "Tonton di YouTube" pada setiap kad video ──────────
+   YouTube kadangkala membalas embed dengan tapisan "Sign in to
+   confirm you're not a bot". Keputusan itu dibuat di pihak YouTube
+   mengikut sesi/kuki penonton (pelayar yang menyekat kuki pihak
+   ketiga paling kerap terkena) — bukan oleh laman ini. Cip ini
+   kekal di atas iframe supaya penonton yang terkena tapisan itu
+   masih boleh menonton dengan satu klik. */
+.ythost{position:relative}
+.ytesc{position:absolute;top:.55rem;right:.55rem;z-index:6;text-decoration:none;
+  display:inline-flex;align-items:center;gap:.32rem;padding:.32rem .54rem;border-radius:999px;
+  background:rgba(14,28,34,.82);border:1px solid rgba(255,255,255,.3);color:#fff;
+  font-family:var(--ff-mono);font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  transition:background .18s,border-color .18s}
+.ytesc:hover{background:#FF0000;border-color:#FF0000}
+.ytesc:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.ytesc svg{width:12px;height:12px;fill:currentColor;flex:none}
+
+/* ── Fasad video YouTube (poster → klik → pemain) ───────────
+   Iframe hanya wujud selepas klik, jadi YouTube tidak dihubungi
+   (dan tiada kuki ditetapkan) semasa halaman dibuka. */
+.ytfac{position:relative;display:block;width:100%;height:100%;margin:0;padding:0;border:0;
+  background:var(--ink-2);cursor:pointer;overflow:hidden;border-radius:var(--r)}
+.ytfac__poster{display:block;width:100%;height:100%;object-fit:cover;
+  transition:transform .35s ease,filter .35s ease}
+.ytfac:hover .ytfac__poster{transform:scale(1.03);filter:brightness(.85)}
+.ytfac:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.ytfac:hover .ytfac__poster{transform:none}}
+.ytfac__play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;background:rgba(14,28,34,.66);border:1px solid rgba(255,255,255,.34);color:#fff;
+  transition:background .18s,transform .18s}
+.ytfac__play svg{width:26px;height:26px;margin-left:2px}
+.ytfac:hover .ytfac__play{background:var(--haram);transform:translate(-50%,-50%) scale(1.08)}
+.media__hero .ytfac{aspect-ratio:16/9;border:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -833,6 +896,15 @@ body.lb-lock{overflow:hidden}
   </div>
 </section>
 
+<!-- ══ JALUR NAV: MEDIA · GALERI ═══════════════════════ -->
+<nav class="ptabs" aria-label="Media dan galeri KRS Travel">
+  <div class="wrap ptabs__list">
+    <a class="ptab" href="testimoni-jemaah-krs.html">Testimoni Jemaah KRS</a>
+    <a class="ptab" href="galeri-foto.html">Galeri Foto</a>
+    <a class="ptab" href="galeri-video.html">Galeri Video</a>
+  </div>
+</nav>
+
 <!-- ══ 02 · KISAH KAMI ═════════════════════════════════ -->
 <section class="sec sec--stone" id="kisah-kami">
   <div class="wrap">
@@ -928,11 +1000,14 @@ body.lb-lock{overflow:hidden}
 
     <!-- Liputan utama / video pilihan -->
     <div class="media__hero">
-      <iframe class="media__hero-embed" src="https://www.youtube-nocookie.com/embed/hldKSdex4Us?start=3"
-              title="Video liputan utama KRS Travel"
-              loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
+      <button class="ytfac" type="button" data-yt="hldKSdex4Us" data-yt-params="start=3"
+              data-yt-class="media__hero-embed"
+              aria-label="Main video: Video korporat umrah dan haji KRS Travel Sdn Bhd 2025 / 1447H">
+        <img class="ytfac__poster" src="images/media/yt-video-korporat-krs-travel-1447h.webp"
+             width="1280" height="720" loading="lazy" decoding="async"
+             alt="Petugas KRS Travel berbual dengan bakal jemaah di meja pameran, dengan poster pakej pelancongan Surabaya dan Aceh di belakang">
+        <span class="ytfac__play" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+      </button>
     </div>
 
     <!-- Grid liputan -->
@@ -1600,28 +1675,28 @@ body.lb-lock{overflow:hidden}
          Imej dihoskan sendiri dalam images/instagram/ (ig-1 .. ig-6). -->
     <div class="foot__ig">
       <div class="igrid">
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcSdc3rxQ5p/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 20 Ogos 2026">
-          <img src="images/instagram/ig-1.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 20 Ogos 2026">
+        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/Dc2RuIFvVv8/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 3 September 2026">
+          <img src="images/instagram/ig-1.webp?v=521a1e22" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 3 September 2026">
           <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
         </a>
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcKsLDnEW5t/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 17 Ogos 2026">
-          <img src="images/instagram/ig-2.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 17 Ogos 2026">
+        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/Dc2RkcdvFtE/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 3 September 2026">
+          <img src="images/instagram/ig-2.webp?v=74b28d9d" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 3 September 2026">
           <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
         </a>
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcA3QfaEfq1/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 14 Ogos 2026">
-          <img src="images/instagram/ig-3.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 14 Ogos 2026">
+        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/Dc0SZr0xhip/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 3 September 2026">
+          <img src="images/instagram/ig-3.webp?v=61e26731" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 3 September 2026">
           <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
         </a>
-        <a class="igrid__item igrid__item--big" href="https://www.instagram.com/krstravelofficial/p/DcA22oMEcdg/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 14 Ogos 2026">
-          <img src="images/instagram/ig-4.webp" width="900" height="900" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 14 Ogos 2026">
+        <a class="igrid__item igrid__item--big" href="https://www.instagram.com/krstravelofficial/p/Dc2Rbq5vb88/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 3 September 2026">
+          <img src="images/instagram/ig-4.webp?v=f54ea696" width="900" height="900" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 3 September 2026">
           <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
         </a>
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcKvg_vESSQ/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 17 Ogos 2026">
-          <img src="images/instagram/ig-5.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 17 Ogos 2026">
+        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/Dcx4lV6v-ft/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 2 September 2026">
+          <img src="images/instagram/ig-5.webp?v=b2c499a4" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 2 September 2026">
           <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
         </a>
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcSdRojEeqh/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 20 Ogos 2026">
-          <img src="images/instagram/ig-6.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 20 Ogos 2026">
+        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/reel/Dc20R_NR3tW/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 4 September 2026">
+          <img src="images/instagram/ig-6.webp?v=ad5d5de2" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 4 September 2026">
           <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
         </a>
       </div>
@@ -1823,7 +1898,12 @@ body.lb-lock{overflow:hidden}
     var id=hit.dataset.yt, card=hit.closest('.mcard');
     var f=document.createElement('iframe');
     f.className='mcard__embed';
-    f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+    // Tanpa autoplay=1: permintaan main automatik dalam embed dibalas
+    // YouTube dengan tapisan “Sign in to confirm you're not a bot”.
+    /* youtube.com (bukan -nocookie): domain nocookie tidak dapat melihat
+       sesi YouTube penonton, jadi embednya dibalas dengan tapisan
+       "Sign in to confirm you're not a bot". */
+    f.src='https://www.youtube.com/embed/'+id+'?rel=0&playsinline=1';
     f.title=hit.getAttribute('aria-label')||'Video KRS Travel';
     f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     f.referrerPolicy='strict-origin-when-cross-origin';
@@ -1918,6 +1998,61 @@ body.lb-lock{overflow:hidden}
   function store(n,pick){
     try{ window.sessionStorage.setItem(KEY,JSON.stringify({n:n,pick:pick})); }catch(e){}
   }
+})();
+</script>
+
+
+<script>
+/* ── Jaring keselamatan YouTube ──────────────────────────────
+   Setiap kad video mendapat pautan keluar ke youtube.com. Jika
+   embed dibalas dengan tapisan "Sign in to confirm you're not a
+   bot" (keputusan YouTube mengikut sesi/kuki penonton), pautan ini
+   tetap boleh diklik di atas iframe. */
+(function(){
+  var MARK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.9 12 4.9 12 4.9s-7 0-8.9.5A3 3 0 0 0 1 7.5C.5 9.4.5 12 .5 12s0 2.6.5 4.5a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5M9.8 15.4V8.6l5.9 3.4z"/></svg>';
+  [].slice.call(document.querySelectorAll('.mcard__hit[data-yt],.ytfac[data-yt]')).forEach(function(b){
+    var id=b.getAttribute('data-yt');
+    /* Langkau kad contoh dalam komen/templat yang belum ada id betul */
+    if(!id||!/^[\w-]{6,}$/.test(id)) return;
+    var host=b.parentNode;
+    if(!host||host.querySelector(':scope > .ytesc')) return;
+    host.classList.add('ythost');
+    var a=document.createElement('a');
+    a.className='ytesc';
+    a.href='https://www.youtube.com/watch?v='+id;
+    a.target='_blank'; a.rel='noopener noreferrer';
+    a.innerHTML=MARK+' Tonton di YouTube<span class="sr"> — buka dalam tab baharu</span>';
+    host.appendChild(a);
+  });
+})();
+</script>
+
+
+<script>
+/* ── Fasad video: poster diklik → iframe YouTube dimuat di tempatnya ──
+   Sebelum klik tiada apa-apa dimuat daripada YouTube, jadi tiada kuki
+   pihak ketiga semasa halaman dibuka. data-yt-params membawa parameter
+   tambahan (cth. start=3); data-yt-class memberi kelas pada iframe. */
+(function(){
+  [].slice.call(document.querySelectorAll('.ytfac[data-yt]')).forEach(function(b){
+    b.addEventListener('click',function(){
+      var host=b.parentNode;
+      if(!host||host.querySelector('iframe')) return;
+      var extra=(b.getAttribute('data-yt-params')||'').trim();
+      var f=document.createElement('iframe');
+      f.className=b.getAttribute('data-yt-class')||'';
+      /* Tanpa autoplay=1 — permintaan main automatik dalam embed dibalas
+         YouTube dengan tapisan "Sign in to confirm you're not a bot". */
+      f.src='https://www.youtube.com/embed/'+b.getAttribute('data-yt')
+            +'?rel=0&playsinline=1'+(extra?'&'+extra:'');
+      f.title=b.getAttribute('aria-label')||'Video KRS Travel';
+      f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+      f.setAttribute('allowfullscreen','');
+      host.appendChild(f);
+      b.hidden=true;
+    });
+  });
 })();
 </script>
 
