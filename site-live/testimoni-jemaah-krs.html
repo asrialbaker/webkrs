@@ -541,9 +541,13 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
    CSS apabila foto sebenar masuk. */
 .ggrid{display:grid;gap:clamp(.65rem,1.6vw,1rem);grid-template-columns:repeat(auto-fill,minmax(14rem,1fr))}
 .ggrid--wide{grid-template-columns:repeat(auto-fill,minmax(19rem,1fr))}
-/* clamp pada lebar minimum: dua lajur pada telefon, lima pada
-   desktop — 23 kad menegak tidak menjadi satu turus panjang. */
-.ggrid--reel{grid-template-columns:repeat(auto-fill,minmax(clamp(9rem,26vw,12.5rem),1fr))}
+/* Tiga lajur tetap, bukan auto-fill: bilangan lajur ditetapkan
+   supaya kad reel kekal besar. Turun kepada dua pada telefon —
+   tiga lajur pada 375px meninggalkan kad selebar ~105px sahaja. */
+.ggrid--reel{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:560px){
+  .ggrid--reel{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 /* Kad reel lebih sempit daripada kad 16:9, jadi kapsyen dan cip
    dikecilkan sedikit supaya tidak menutup wajah dalam bingkai. */
 .gcard--reel .gcard__cap{padding:1.2rem .6rem .55rem;font-size:.6rem}
