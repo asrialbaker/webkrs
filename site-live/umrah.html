@@ -247,6 +247,7 @@ p{margin:0 0 1em}
 .pcard__posterwrap{position:relative;align-self:stretch;margin:var(--card-pad) var(--card-pad) 0;border-radius:var(--r);overflow:hidden;isolation:isolate}
 .pcard__posterwrap .pcard__poster{margin:0;width:100%;border-radius:0;filter:grayscale(.45) brightness(.86)}
 .pcard__soldout{position:absolute;z-index:2;top:50%;left:-14%;width:128%;transform:translateY(-50%) rotate(-16deg);pointer-events:none;background:rgba(176,32,32,.93);color:#fff;text-align:center;font-family:var(--ff-mono);font-weight:700;font-size:clamp(1.44rem,3vw,2.16rem);line-height:1.08;letter-spacing:.02em;text-transform:uppercase;padding:.55rem 0;border-top:2px solid rgba(255,255,255,.9);border-bottom:2px solid rgba(255,255,255,.9);box-shadow:0 8px 22px rgba(0,0,0,.35)}
+.pcard__soldout--long{font-size:clamp(.9rem,2vw,1.35rem);letter-spacing:.01em}
 /* Kad sold out — harga & CTA diredamkan, pautan kekal berfungsi */
 .pcard--soldout .pcard__price{color:var(--muted)}
 .pcard--soldout .pcard__price strong{text-decoration:line-through;text-decoration-thickness:1px}
@@ -898,9 +899,12 @@ body.is-lbox-open{overflow:hidden}
 
     <div class="grid2">
 
-      <article class="pcard">
-        <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-direct-flight-cuti-sekolah-1448h.webp" width="1131" height="1600" loading="lazy" decoding="async" alt="Pakej Umrah Direct Flight Cuti Sekolah Disember 2026 — KRS Travel">
-        <span class="pcard__ribbon pcard__ribbon--hot">Termurah</span>
+      <article class="pcard pcard--soldout">
+        <div class="pcard__posterwrap">
+          <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-direct-flight-cuti-sekolah-1448h.webp" width="1131" height="1600" loading="lazy" decoding="async" alt="Pakej Umrah Transit Muscat Normal Season 1448H bersama MAWI — KRS Travel (tempahan telah penuh)">
+          <span class="pcard__soldout pcard__soldout--long">Harap Maaf -<br>Sudah Habis Ditempah</span>
+        </div>
+        <span class="pcard__ribbon pcard__ribbon--off">Sudah Penuh</span>
         <div class="pcard__body">
           <h3>Umrah Transit Muscat Normal Season</h3>
           <p class="pcard__tier">Transit Muscat · Oman Air · Fullboard</p>
@@ -912,10 +916,9 @@ body.is-lbox-open{overflow:hidden}
             <li>Kanak-kanak 24 bulan &amp; ke bawah RM 1,550</li>
           </ul>
           <a class="pcard__price" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Transit%20Muscat%20Normal%20Season%201448H"><span>Dari</span><strong>RM 5,990</strong><em>/pax</em></a>
-          <a class="btn btn--wa btn--block pcard__cta" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Transit%20Muscat%20Normal%20Season%201448H" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
-            Saya Berminat
-          </a>
+          <span class="btn btn--wa btn--block pcard__cta pcard__cta--off" role="link" aria-disabled="true">
+            Sudah Penuh
+          </span>
         </div>
       </article>
 
@@ -941,9 +944,12 @@ body.is-lbox-open{overflow:hidden}
         </div>
       </article>
 
-      <article class="pcard">
-        <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-transit-muscat-cuti-sekolah-1448h.webp" width="1131" height="1600" loading="lazy" decoding="async" alt="Pakej Umrah Transit Muscat Cuti Sekolah Disember 2026 bersama MAWI — KRS Travel">
-        <span class="pcard__ribbon">Cuti Sekolah</span>
+      <article class="pcard pcard--soldout">
+        <div class="pcard__posterwrap">
+          <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-transit-muscat-cuti-sekolah-1448h.webp" width="1131" height="1600" loading="lazy" decoding="async" alt="Pakej Umrah Transit Muscat Cuti Sekolah Disember 2026 bersama MAWI — KRS Travel (tempahan telah penuh)">
+          <span class="pcard__soldout pcard__soldout--long">Harap Maaf -<br>Sudah Habis Ditempah</span>
+        </div>
+        <span class="pcard__ribbon pcard__ribbon--off">Sudah Penuh</span>
         <div class="pcard__body">
           <h3>Umrah Transit Muscat Cuti Sekolah (Disember 2026)</h3>
           <p class="pcard__tier">Transit Muscat · Oman Air · Fullboard</p>
@@ -955,15 +961,14 @@ body.is-lbox-open{overflow:hidden}
             <li>Cenderahati: sling beg, bag pack, uncang kasut &amp; buku panduan umrah</li>
           </ul>
           <a class="pcard__price" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Transit%20Muscat%20Cuti%20Sekolah%20Disember%202026"><span>Dari</span><strong>RM 8,640</strong><em>/pax</em></a>
-          <a class="btn btn--wa btn--block pcard__cta" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Transit%20Muscat%20Cuti%20Sekolah%20Disember%202026" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
-            Saya Berminat
-          </a>
+          <span class="btn btn--wa btn--block pcard__cta pcard__cta--off" role="link" aria-disabled="true">
+            Sudah Penuh
+          </span>
         </div>
       </article>
 
       <article class="pcard">
-        <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-transit-muscat-normal-season-1448h.webp" width="1131" height="1600" loading="lazy" decoding="async" alt="Pakej Umrah Transit Muscat Normal Season 1448H bersama MAWI — KRS Travel">
+        <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-transit-muscat-normal-season-1448h.webp" width="1131" height="1600" loading="lazy" decoding="async" alt="Pakej Umrah Direct Flight Cuti Sekolah Disember 2026 — KRS Travel">
         <span class="pcard__ribbon pcard__ribbon--hot">Cuti Sekolah</span>
         <div class="pcard__body">
           <h3>Umrah Direct Flight Cuti Sekolah (Disember 2026)</h3>
@@ -1058,7 +1063,7 @@ body.is-lbox-open{overflow:hidden}
              width="990" height="1400" loading="lazy" decoding="async" alt="Pakej Umrah Jolobu Ko Baitullah bersama YB Datuk Seri Jalaluddin Bin Alias dan YB Dato' Razi Bin Mohd Ali — KRS Travel">
         <span class="pcard__ribbon">Jelebu</span>
         <div class="pcard__body">
-          <h3>Jolobu Ko Baitullah</h3>
+          <h3><a class="pcard__link" href="umrah-yb-razi.html">Jolobu Ko Baitullah</a></h3>
           <p class="pcard__tier">YB Datuk Seri Jalaluddin Bin Alias &amp; YB Dato&#39; Razi Bin Mohd Ali</p>
           <ul class="pcard__feats">
             <li>11 Hari 09 Malam · fullboard</li>
@@ -1070,7 +1075,8 @@ body.is-lbox-open{overflow:hidden}
             <li>Visa, tiket, pengangkutan, insurans kelompok &amp; mutawif berpengalaman</li>
             <li>En. Azam Hussin 017-309 2401 · Pn. Shila 017-327 8742</li>
           </ul>
-          <a class="pcard__price" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Jolobu%20Ko%20Baitullah"><span>Pakej serendah</span><strong>RM 6,090</strong><em>/pax</em></a>
+          <a class="pcard__price" href="umrah-yb-razi.html"><span>Pakej serendah</span><strong>RM 6,090</strong><em>/pax</em></a>
+          <a class="btn btn--ghost btn--block pcard__cta" href="umrah-yb-razi.html">Lihat Butiran Pakej</a>
           <a class="btn btn--wa btn--block pcard__cta" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Jolobu%20Ko%20Baitullah" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
             Saya Berminat
