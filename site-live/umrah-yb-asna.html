@@ -454,6 +454,22 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .pcard__poster--tall{aspect-ratio:auto}
 .pcard__cta{margin-top:.9rem}
 
+/* ── Kad pakej sudah penuh — pelekat serong pada poster ── */
+.pcard__ribbon--off{background:rgba(176,32,32,.95);color:var(--white)}
+.pcard__posterwrap{position:relative;align-self:stretch;margin:var(--card-pad) var(--card-pad) 0;border-radius:var(--r);overflow:hidden;isolation:isolate}
+.pcard__posterwrap .pcard__poster{margin:0;width:100%;border-radius:0;filter:grayscale(.45) brightness(.86)}
+.pcard__soldout{position:absolute;z-index:2;top:50%;left:-14%;width:128%;transform:translateY(-50%) rotate(-16deg);pointer-events:none;
+  background:rgba(176,32,32,.93);color:#fff;text-align:center;font-family:var(--ff-mono);font-weight:700;
+  font-size:clamp(1.44rem,3vw,2.16rem);line-height:1.08;letter-spacing:.02em;text-transform:uppercase;padding:.55rem 0;
+  border-top:2px solid rgba(255,255,255,.9);border-bottom:2px solid rgba(255,255,255,.9);box-shadow:0 8px 22px rgba(0,0,0,.35)}
+.pcard--soldout .pcard__price{color:var(--muted)}
+.pcard--soldout .pcard__price strong{text-decoration:line-through;text-decoration-thickness:1px}
+.pcard--soldout .pcard__price::after{color:var(--muted)}
+.pcard--soldout .pcard__cta{filter:grayscale(1);opacity:.6;transition:opacity .15s,filter .15s}
+.pcard--soldout .pcard__cta:hover,.pcard--soldout .pcard__cta:focus-visible{opacity:1;filter:grayscale(.35)}
+.pcard__cta--off{pointer-events:none;cursor:default;user-select:none}
+.pcard--soldout .pcard__cta--off,.pcard--soldout .pcard__cta--off:hover{opacity:.45;filter:grayscale(1)}
+
 /* ── Lightbox foto pakej ─────────────────────────────────── */
 [data-zoom]{cursor:zoom-in}
 .lbox{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
@@ -849,7 +865,7 @@ body.is-lbox-open{overflow:hidden}
         <span>Pakej serendah</span><strong>RM 6,200</strong><em>/pax</em>
       </div>
 
-      <p class="soldout-note"><span><b>Maaf, sudah penuh</b>Tempahan bagi rombongan ini telah ditutup &mdash; kesemua 90 tempat sudah diisi. Aturcara dan harga di bawah dikekalkan sebagai rujukan. Hubungi kami untuk pakej umrah lain yang masih terbuka.</span></p>
+      <p class="soldout-note"><span><b>Harap maaf, sudah penuh</b>Tempahan bagi rombongan ini telah ditutup &mdash; kesemua 90 tempat sudah diisi. Aturcara dan harga di bawah dikekalkan sebagai rujukan. Hubungi kami untuk pakej umrah lain yang masih terbuka.</span></p>
 
       <div class="phero__cta">
         <a class="btn btn--primary" href="#harga">Lihat harga &amp; aturcara</a>
@@ -862,7 +878,7 @@ body.is-lbox-open{overflow:hidden}
     <div class="pkghero__art">
       <div class="pkghero__postwrap">
         <img class="pkghero__poster" data-zoom src="images/umrah-sekampung-ke-mokah-adun-lenggeng.webp" width="990" height="1400" loading="eager" decoding="async" alt="Poster Pakej Umrah Sekampung Ke Mokah bersama YB Datuk Hj Mohd Asna Bin Amin, ADUN Lenggeng — KRS Travel (tempahan sudah penuh)">
-        <span class="soldout-band">Maaf,<br>Sudah Penuh</span>
+        <span class="soldout-band">Harap Maaf,<br>Sudah Penuh</span>
       </div>
     </div>
   </div>
@@ -1433,9 +1449,12 @@ body.is-lbox-open{overflow:hidden}
   <div class="wrap">
     <div class="sec__bar"><h2>Pakej ADUN yang lain</h2><a class="sec__link" href="index.html#umrah-ziarah">Semua pakej ADUN</a></div>
     <div class="grid2">
-      <article class="pcard">
-        <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-moh-poie-mokah-yb-zaidy.webp" width="990" height="1400" loading="lazy" decoding="async" alt="Pakej Umrah Moh Poie Mokah bersama YB Dato' Mohd Zaidy Bin Abdul Kadir — KRS Travel">
-        <span class="pcard__ribbon">Jeram Padang</span>
+      <article class="pcard pcard--soldout">
+        <div class="pcard__posterwrap">
+          <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-moh-poie-mokah-yb-zaidy.webp" width="990" height="1400" loading="lazy" decoding="async" alt="Pakej Umrah Moh Poie Mokah bersama YB Dato' Mohd Zaidy Bin Abdul Kadir — KRS Travel (tempahan telah penuh)">
+          <span class="pcard__soldout">Harap Maaf,<br>Sudah Penuh</span>
+        </div>
+        <span class="pcard__ribbon pcard__ribbon--off">Sudah Penuh</span>
         <div class="pcard__body">
           <h3>Moh Poie Mokah</h3>
           <p class="pcard__tier">YB Dato' Mohd Zaidy Bin Abdul Kadir</p>

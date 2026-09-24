@@ -497,6 +497,22 @@ body.is-lbox-open{overflow:hidden}
 .pkghero__poster{display:block;width:100%;height:auto;max-height:100%;object-fit:contain;
   border-radius:2px;background:var(--paper)}
 
+/* ── Keadaan pakej sudah penuh (tempahan ditutup) ── */
+.pkghero__postwrap{position:relative;overflow:hidden;border-radius:2px;width:100%;max-height:100%;display:flex;align-items:center;justify-content:center}
+.pkghero__postwrap .pkghero__poster{filter:grayscale(.45) brightness(.86)}
+.soldout-band{position:absolute;z-index:2;top:50%;left:-14%;width:128%;transform:translateY(-50%) rotate(-16deg);pointer-events:none;
+  background:rgba(176,32,32,.93);color:var(--white);text-align:center;font-family:var(--ff-mono);font-weight:700;
+  font-size:clamp(1.44rem,3vw,2.16rem);line-height:1.08;letter-spacing:.02em;text-transform:uppercase;padding:.55rem 0;
+  border-top:2px solid rgba(255,255,255,.9);border-bottom:2px solid rgba(255,255,255,.9);box-shadow:0 8px 22px rgba(0,0,0,.35)}
+.soldout-note{margin-top:1.5rem;display:flex;align-items:flex-start;gap:.65rem;background:rgba(176,32,32,.07);
+  border:1px solid rgba(176,32,32,.3);border-left:4px solid rgba(176,32,32,.95);border-radius:var(--r);
+  padding:.85rem 1rem;color:#8E1A1A;font-size:.9rem;line-height:1.45}
+.soldout-note b{font-family:var(--ff-mono);letter-spacing:.06em;text-transform:uppercase;font-size:.8rem;display:block;margin-bottom:.15rem}
+.pkghero__price--off strong{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px}
+.pkghero__price--off span,.pkghero__price--off em{color:var(--muted)}
+.is-off{pointer-events:none;cursor:default;user-select:none;opacity:.45;filter:grayscale(1)}
+.sec__link--off{pointer-events:none;cursor:default;color:var(--muted);opacity:.7}
+
 .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.4rem}
 .chips span{font-family:var(--ff-mono);font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:.35rem .75rem}
 .chips span b{color:var(--haram);font-weight:600}
@@ -804,7 +820,7 @@ body.is-lbox-open{overflow:hidden}
       </div>
     </nav>
 
-    <a class="btn btn--primary btn--sm" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Moh%20Poie%20Mokah%20bersama%20YB%20Dato%20Mohd%20Zaidy">Tempah Sekarang</a>
+    <span class="btn btn--primary btn--sm is-off" role="link" aria-disabled="true">Sudah Penuh</span>
   </div>
 </header>
 
@@ -830,20 +846,25 @@ body.is-lbox-open{overflow:hidden}
         <span><b>Berlepas</b> 03 November 2026</span>
       </div>
 
-      <div class="pkghero__price">
+      <div class="pkghero__price pkghero__price--off">
         <span>Pakej serendah</span><strong>RM 6,040</strong><em>/pax (bilik ber-4/5)</em>
       </div>
 
+      <p class="soldout-note"><span><b>Harap maaf, sudah penuh</b>Tempahan bagi rombongan ini telah ditutup &mdash; kesemua tempat sudah diisi. Aturcara dan harga di bawah dikekalkan sebagai rujukan. Hubungi kami untuk pakej umrah lain yang masih terbuka.</span></p>
+
       <div class="phero__cta">
         <a class="btn btn--primary" href="#harga">Lihat harga &amp; aturcara</a>
-        <a class="btn btn--ghost" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Moh%20Poie%20Mokah%20bersama%20YB%20Dato%20Mohd%20Zaidy" target="_blank" rel="noopener">WhatsApp Kami</a>
+        <span class="btn btn--ghost is-off" role="link" aria-disabled="true">Sudah Penuh</span>
       </div>
 
       <div class="ribbon"><span><b>MOTAC</b> KPL 3590</span><span><b>PJH</b> Berlesen</span><span><b>IATA</b> Ahli</span><span><b>27 tahun</b> pengalaman</span></div>
     </div>
 
     <div class="pkghero__art">
-      <img class="pkghero__poster" data-zoom src="images/umrah-moh-poie-mokah-yb-zaidy.webp" width="990" height="1400" loading="eager" decoding="async" alt="Poster Pakej Umrah Moh Poie Mokah bersama YB Dato' Mohd Zaidy Bin Abdul Kadir — KRS Travel">
+      <div class="pkghero__postwrap">
+        <img class="pkghero__poster" data-zoom src="images/umrah-moh-poie-mokah-yb-zaidy.webp" width="990" height="1400" loading="eager" decoding="async" alt="Poster Pakej Umrah Moh Poie Mokah bersama YB Dato' Mohd Zaidy Bin Abdul Kadir — KRS Travel (tempahan sudah penuh)">
+        <span class="soldout-band">Harap Maaf,<br>Sudah Penuh</span>
+      </div>
     </div>
   </div>
 </section>
@@ -978,7 +999,7 @@ body.is-lbox-open{overflow:hidden}
 <!-- ══ HARGA ════════════════════════════════════════════════ -->
 <section class="sec sec--stone" id="harga">
   <div class="wrap">
-    <div class="sec__bar"><h2>Harga pakej</h2><a class="sec__link" href="https://wa.me/60102790458?text=Salam,%20saya%20ingin%20semak%20harga%20Pakej%20Umrah%20Moh%20Poie%20Mokah">Semak ketersediaan</a></div>
+    <div class="sec__bar"><h2>Harga pakej</h2><span class="sec__link sec__link--off" aria-disabled="true">Tempahan sudah penuh</span></div>
     <div class="tbl-wrap">
       <table class="tbl">
         <caption class="sr">Harga pakej mengikut jenis bilik</caption>
@@ -1227,7 +1248,7 @@ body.is-lbox-open{overflow:hidden}
 <!-- ══ PROSES PENDAFTARAN ═══════════════════════════════════ -->
 <section class="sec sec--stone" id="daftar">
   <div class="wrap">
-    <div class="sec__bar"><h2>Cara mendaftar</h2><a class="sec__link" href="https://wa.me/60102790458?text=Salam,%20saya%20ingin%20mendaftar%20Pakej%20Umrah%20Moh%20Poie%20Mokah">Mula sekarang</a></div>
+    <div class="sec__bar"><h2>Cara mendaftar</h2><span class="sec__link sec__link--off" aria-disabled="true">Pendaftaran ditutup</span></div>
     <div class="steps">
       <div class="step">
         <p class="step__n">01</p>
@@ -1310,7 +1331,7 @@ body.is-lbox-open{overflow:hidden}
   <div class="wrap duo">
     <div>
       <h2>Pertanyaan rombongan</h2>
-      <p style="color:var(--muted);max-width:52ch;margin-top:1rem">Tinggalkan maklumat anda dan pasukan KRS akan menghubungi anda untuk menerangkan pakej, jadual bayaran dan ketersediaan tempat.</p>
+      <p style="color:var(--muted);max-width:52ch;margin-top:1rem">Rombongan ini <strong>sudah penuh</strong>. Tinggalkan maklumat anda untuk senarai menunggu sekiranya ada tempat terlepas, atau untuk cadangan pakej umrah lain yang masih terbuka.</p>
       <div class="ribbon" style="border-top-color:var(--line)">
         <span><b>11</b> Hari 9 Malam</span><span><b>Oman Air</b></span><span><b>Dari RM 6,040</b></span>
       </div>
@@ -1364,7 +1385,7 @@ body.is-lbox-open{overflow:hidden}
       <article class="pcard pcard--soldout">
         <div class="pcard__posterwrap">
           <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="images/umrah-sekampung-ke-mokah-adun-lenggeng.webp" width="990" height="1400" loading="lazy" decoding="async" alt="Pakej Umrah Sekampung Ke Mokah bersama YB Datuk Hj Mohd Asna Bin Amin, ADUN Lenggeng — KRS Travel (tempahan telah penuh)">
-          <span class="pcard__soldout">Maaf,<br>Sudah Penuh</span>
+          <span class="pcard__soldout">Harap Maaf,<br>Sudah Penuh</span>
         </div>
         <span class="pcard__ribbon pcard__ribbon--off">Sudah Penuh</span>
         <div class="pcard__body">
@@ -1515,7 +1536,7 @@ body.is-lbox-open{overflow:hidden}
   </div>
 </footer>
 
-<a class="fab" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Moh%20Poie%20Mokah%20bersama%20YB%20Dato%20Mohd%20Zaidy" aria-label="Hubungi kami di WhatsApp">
+<a class="fab" href="https://wa.me/60102790458?text=Salam,%20Pakej%20Umrah%20Moh%20Poie%20Mokah%20sudah%20penuh.%20Boleh%20cadangkan%20pakej%20umrah%20lain%3F" aria-label="Hubungi kami di WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
   WhatsApp
 </a>
@@ -1718,7 +1739,7 @@ body.is-lbox-open{overflow:hidden}
     e.preventDefault();
     var d=new FormData(f);
     var tel=String(d.get('telefon')||'').replace(/\D/g,'').replace(/^0+/,'');
-    var msg='Salam KRS Travel. Saya berminat dengan Pakej Umrah "Moh Poie Mokah" bersama YB Dato\' Mohd Zaidy.'
+    var msg='Salam KRS Travel. Saya faham Pakej Umrah "Moh Poie Mokah" bersama YB Dato\' Mohd Zaidy sudah penuh. Saya ingin bertanya tentang senarai menunggu atau pakej umrah lain.'
       +'\nNama: '+(d.get('nama')||'')
       +'\nTelefon: +'+d.get('kod')+tel
       +'\nBilangan jemaah: '+d.get('jenis')
