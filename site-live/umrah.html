@@ -251,6 +251,10 @@ p{margin:0 0 1em}
 .pcard--soldout .pcard__price{color:var(--muted)}
 .pcard--soldout .pcard__price strong{text-decoration:line-through;text-decoration-thickness:1px}
 .pcard--soldout .pcard__price::after{color:var(--muted)}
+/* Harga tanpa pautan (pakej penuh, tiada halaman butiran) — buang anak panah
+   supaya ia tidak kelihatan boleh diklik. Kad yang masih menuju halaman
+   butiran kekal sebagai <a> dan mengekalkan anak panahnya. */
+span.pcard__price::after{display:none}
 .pcard--soldout .pcard__cta{filter:grayscale(1);opacity:.6;transition:opacity .15s,filter .15s}
 .pcard--soldout .pcard__cta:hover,.pcard--soldout .pcard__cta:focus-visible{opacity:1;filter:grayscale(.35)}
 .pcard__cta--off{pointer-events:none;cursor:default;user-select:none}
@@ -885,7 +889,7 @@ body.is-lbox-open{overflow:hidden}
             <li>Cenderahati: sling beg, bag pack, uncang kasut &amp; buku panduan umrah</li>
             <li>Kanak-kanak 24 bulan &amp; ke bawah RM 1,550</li>
           </ul>
-          <a class="pcard__price" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Transit%20Muscat%20Normal%20Season%201448H"><span>Dari</span><strong>RM 5,990</strong><em>/pax</em></a>
+          <span class="pcard__price"><span>Dari</span><strong>RM 5,990</strong><em>/pax</em></span>
           <span class="btn btn--wa btn--block pcard__cta pcard__cta--off" role="link" aria-disabled="true">
             Sudah Penuh
           </span>
@@ -930,7 +934,7 @@ body.is-lbox-open{overflow:hidden}
             <li>Madinah: Nusk Al Eiman @setaraf — 80 meter</li>
             <li>Cenderahati: sling beg, bag pack, uncang kasut &amp; buku panduan umrah</li>
           </ul>
-          <a class="pcard__price" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Umrah%20Transit%20Muscat%20Cuti%20Sekolah%20Disember%202026"><span>Dari</span><strong>RM 8,640</strong><em>/pax</em></a>
+          <span class="pcard__price"><span>Dari</span><strong>RM 8,640</strong><em>/pax</em></span>
           <span class="btn btn--wa btn--block pcard__cta pcard__cta--off" role="link" aria-disabled="true">
             Sudah Penuh
           </span>
