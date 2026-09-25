@@ -350,7 +350,7 @@ body.lb-lock{overflow:hidden}
 .foot{background:var(--paper);color:var(--muted);border-top:1px solid var(--line);font-size:.86rem}
 .foot a{text-decoration:none}
 .foot a:hover{color:var(--amber-deep)}
-.foot__main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,360px);gap:2.5rem;padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot__main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.5rem;padding-block:clamp(2.5rem,5vw,3.5rem)}
 .foot__brand{display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.1rem}
 .foot__logo{height:52px;width:auto;display:block}
 .foot__brand strong{font-family:var(--ff-display);font-variation-settings:'wdth' 120;font-size:1.05rem;color:var(--ink)}
@@ -384,35 +384,6 @@ body.lb-lock{overflow:hidden}
 .social a:focus-visible{z-index:2;transform:scale(1.5)}
 @media(max-width:420px){.social img{height:20px}}
 
-/* ── Grid siaran Instagram dalam footer ──────────────────
-   Lakaran ala IKHLAS: 6 lakaran segi empat sama, pautan terus ke siaran.
-   Imej dihoskan sendiri (images/instagram/) — URL CDN Instagram luput
-   dalam beberapa minggu, jadi jangan hotlink. Cara kemas kini: DEPLOY.md. */
-.foot__ig{align-self:end;min-width:0}
-.igrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;margin:0}
-.igrid__item{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:var(--r);border:1px solid var(--line);background:var(--white)}
-.igrid__item[hidden]{display:none}
-/* Mozek: 3 kecil di baris atas, satu besar 2x2 di kiri bawah, 2 kecil di kanan.
-   Kad besar sentiasa item ke-4 dalam markup — penempatan auto grid buat selebihnya. */
-.igrid__item--big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
-.igrid__item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s cubic-bezier(.22,.61,.36,1)}
-.igrid__item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(11,30,36,.5));opacity:0;transition:opacity .22s ease}
-.igrid__ico{position:absolute;right:.4rem;bottom:.4rem;width:15px;height:15px;z-index:2;color:var(--white);opacity:0;transform:translateY(4px);transition:opacity .22s ease,transform .22s ease}
-.igrid__ico svg{width:100%;height:100%;display:block;fill:currentColor}
-@media(hover:hover){
-  .igrid__item:hover img{transform:scale(1.06)}
-  .igrid__item:hover::after,.igrid__item:hover .igrid__ico{opacity:1}
-  .igrid__item:hover .igrid__ico{transform:none}
-}
-.igrid__item:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-.igrid__item:focus-visible::after,.igrid__item:focus-visible .igrid__ico{opacity:1;transform:none}
-.foot__ighandle{display:inline-flex;align-items:center;gap:.35rem;margin-top:.85rem;font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.11em;text-transform:lowercase;color:var(--muted)}
-.foot__ighandle::after{content:'\2192';letter-spacing:0;color:var(--amber)}
-.foot__ighandle:hover{color:var(--amber-deep)}
-@media(max-width:1080px){
-  .foot__main{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .foot__ig{grid-column:1/-1;align-self:start;max-width:340px}
-}
 .foot__legal{border-top:1px solid var(--line);padding-block:1.4rem;font-size:.77rem;line-height:1.7;max-width:110ch}
 .foot__legal a{color:var(--ink);border-bottom:1px solid var(--line)}
 .foot__legal a:hover{color:var(--amber-deep);border-color:var(--amber-deep)}
@@ -1095,39 +1066,7 @@ body.lb-lock{overflow:hidden}
       </div>
     </div>
 
-    <!-- Grid siaran Instagram — pautan terus ke siaran @krstravelofficial.
-         Imej dihoskan sendiri dalam images/instagram/ (ig-1 .. ig-6). -->
-    <div class="foot__ig">
-      <div class="igrid">
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcSdc3rxQ5p/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 20 Ogos 2026">
-          <img src="images/instagram/ig-1.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 20 Ogos 2026">
-          <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
-        </a>
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcKsLDnEW5t/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 17 Ogos 2026">
-          <img src="images/instagram/ig-2.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 17 Ogos 2026">
-          <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
-        </a>
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcA3QfaEfq1/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 14 Ogos 2026">
-          <img src="images/instagram/ig-3.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 14 Ogos 2026">
-          <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
-        </a>
-        <a class="igrid__item igrid__item--big" href="https://www.instagram.com/krstravelofficial/p/DcA22oMEcdg/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 14 Ogos 2026">
-          <img src="images/instagram/ig-4.webp" width="900" height="900" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 14 Ogos 2026">
-          <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
-        </a>
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcKvg_vESSQ/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 17 Ogos 2026">
-          <img src="images/instagram/ig-5.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 17 Ogos 2026">
-          <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
-        </a>
-        <a class="igrid__item" href="https://www.instagram.com/krstravelofficial/p/DcSdRojEeqh/" target="_blank" rel="noopener noreferrer" aria-label="Siaran Instagram KRS Travel — 20 Ogos 2026">
-          <img src="images/instagram/ig-6.webp" width="600" height="600" loading="lazy" decoding="async" alt="Siaran Instagram KRS Travel — 20 Ogos 2026">
-          <span class="igrid__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11a4.5 4.5 0 0 0 4.5-4.5v-11A4.5 4.5 0 0 0 17.5 2m2.5 15.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5zM12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3m6.5-8.75a1.25 1.25 0 1 1-1.25-1.25 1.25 1.25 0 0 1 1.25 1.25"/></svg></span>
-        </a>
-      </div>
-      <a class="foot__ighandle" href="https://www.instagram.com/krstravelofficial" target="_blank" rel="noopener noreferrer">@krstravelofficial</a>
-    </div>
-
-  </div>
+</div>
 
   <div class="wrap foot__legal">
     ©2026 KRS Travel Sdn Bhd. Laman web ini dikendalikan oleh KRS Travel Sdn Bhd (477239-X), sebuah agensi
@@ -1183,72 +1122,6 @@ body.lb-lock{overflow:hidden}
     var open=pairs.filter(function(p){return p.panel.getAttribute('data-open')==='true';})[0];
     if(open){closeAll(); open.btn.focus();}
   });
-})();
-
-/* Grid Instagram — pilih 6 siaran secara rawak daripada kolam penuh dalam
-   markup, sekali bagi setiap kunjungan. Susunan disimpan dalam sessionStorage
-   supaya ia kekal sama sepanjang pengguna melayari laman, dan dikocok semula
-   pada kunjungan baharu.
-
-   · Nod <a> dialihkan, bukan src ditukar, supaya imej tidak dimuat semula.
-   · Siaran yang tidak terpilih ditanda [hidden] — imej lazy tidak dimuat.
-   · Kelas --big diberi mengikut slot, jadi mozek 3-lajur sentiasa kekal.
-     Untuk tambah siaran: salin satu <a class="igrid__item"> dalam .igrid
-     (tanpa --big) dan letak imej baharu dalam images/instagram/. */
-(function(){
-  var KEY='krs.ig.v1';
-  var SLOTS=6;
-
-  var grid=document.querySelector('.igrid');
-  if(!grid) return;
-  var pool=[].slice.call(grid.children);
-  if(pool.length<2) return;
-
-  var show=Math.min(SLOTS,pool.length);
-
-  /* Slot tumpuan (2x2) diambil daripada markup; abai jika di luar 6 slot */
-  var bigSlot=-1,i;
-  for(i=0;i<pool.length;i++){
-    if(pool[i].classList.contains('igrid__item--big')&&i<show) bigSlot=i;
-  }
-
-  var pick=recall(pool.length,show);
-  if(!pick){ pick=draw(pool.length,show); store(pool.length,pick); }
-
-  /* Terpilih dahulu, kemudian yang tersembunyi — DOM ikut susunan visual */
-  var slotOf={};
-  for(i=0;i<pick.length;i++) slotOf[pick[i]]=i;
-  var seq=pick.slice();
-  for(i=0;i<pool.length;i++) if(!(i in slotOf)) seq.push(i);
-
-  for(i=0;i<seq.length;i++){
-    var el=pool[seq[i]], on=i<pick.length;
-    el.hidden=!on;
-    el.classList.toggle('igrid__item--big',on&&i===bigSlot);
-    grid.appendChild(el);
-  }
-
-  /* Fisher-Yates, ambil `take` yang pertama */
-  function draw(n,take){
-    var a=[],j,t,x;
-    for(x=0;x<n;x++) a.push(x);
-    for(x=n-1;x>0;x--){ j=Math.floor(Math.random()*(x+1)); t=a[x]; a[x]=a[j]; a[j]=t; }
-    return a.slice(0,take);
-  }
-  /* Buang simpanan jika kolam berubah saiz (siaran ditambah/dibuang) */
-  function recall(n,take){
-    try{
-      var v=JSON.parse(window.sessionStorage.getItem(KEY));
-      if(!v||v.n!==n||!v.pick||v.pick.length!==take) return null;
-      for(var x=0;x<take;x++){
-        if(typeof v.pick[x]!=='number'||v.pick[x]<0||v.pick[x]>=n) return null;
-      }
-      return v.pick;
-    }catch(e){ return null; }
-  }
-  function store(n,pick){
-    try{ window.sessionStorage.setItem(KEY,JSON.stringify({n:n,pick:pick})); }catch(e){}
-  }
 })();
 </script>
 
