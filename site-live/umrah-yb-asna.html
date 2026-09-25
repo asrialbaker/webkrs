@@ -660,6 +660,37 @@ body.is-lbox-open{overflow:hidden}
 @media(max-width:1080px){.rakan__band{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:860px){.rakan{padding:2.1rem 0 2.3rem}.rakan__band{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem 1rem}.rakan__band img{height:38px}}
 @media(max-width:560px){.rakan__band{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.35rem .9rem}.rakan__band img{height:30px}}
+
+/* ── Fasad video YouTube (poster → klik → pemain) ───────────
+   Iframe hanya wujud selepas klik, jadi YouTube tidak dihubungi
+   (dan tiada kuki ditetapkan) semasa halaman dibuka. */
+.ytfac{position:relative;display:block;width:100%;height:100%;margin:0;padding:0;border:0;
+  background:var(--ink);cursor:pointer;overflow:hidden}
+.ytfac__poster{display:block;width:100%;height:100%;object-fit:cover;
+  transition:transform .35s ease,filter .35s ease}
+.ytfac:hover .ytfac__poster{transform:scale(1.03);filter:brightness(.85)}
+.ytfac:focus-visible{outline:2px solid var(--amber);outline-offset:-3px}
+@media(prefers-reduced-motion:reduce){.ytfac:hover .ytfac__poster{transform:none}}
+.ytfac__play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:58px;height:58px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;background:rgba(14,28,34,.66);border:1px solid rgba(255,255,255,.34);color:#fff;
+  transition:background .18s,transform .18s}
+.ytfac__play svg{width:24px;height:24px;margin-left:2px}
+.ytfac:hover .ytfac__play{background:var(--haram);transform:translate(-50%,-50%) scale(1.08)}
+
+/* ── Cip "Tonton di YouTube" ────────────────────────────────
+   YouTube boleh membalas embed dengan tapisan "Sign in to confirm
+   you're not a bot" mengikut sesi penonton. Cip ini kekal di atas
+   iframe supaya video tetap boleh ditonton dengan satu klik. */
+.ythost{position:relative}
+.ytesc{position:absolute;top:.55rem;right:.55rem;z-index:6;text-decoration:none;
+  display:inline-flex;align-items:center;gap:.32rem;padding:.32rem .54rem;border-radius:999px;
+  background:rgba(14,28,34,.82);border:1px solid rgba(255,255,255,.3);color:#fff;
+  font-family:var(--ff-mono);font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  transition:background .18s,border-color .18s}
+.ytesc:hover{background:#FF0000;border-color:#FF0000}
+.ytesc:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.ytesc svg{width:12px;height:12px;fill:currentColor;flex:none}
 </style>
 </head>
 <body>
@@ -871,11 +902,13 @@ body.is-lbox-open{overflow:hidden}
     <div class="galx">
 
       <div class="galx__video">
-        <iframe src="https://www.youtube-nocookie.com/embed/qbJ0QtU6NFs"
-                title="Video rombongan Umrah Sekampung Ke Mokah bersama YB Datuk Hj Mohd Asna"
-                loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+        <button class="ytfac" type="button" data-yt="qbJ0QtU6NFs"
+                aria-label="Main video: Pelancaran &ldquo;Sekampung ke Mekah&rdquo; bersama YB Datuk Hj Mohd Asna bin Amin">
+          <img class="ytfac__poster" src="images/galeri/yt-pelancaran-sekampung-ke-mekah.webp"
+               width="464" height="832" loading="lazy" decoding="async"
+               alt="YB Datuk Hj Mohd Asna bin Amin, ADUN Lenggeng, berucap di pentas pelancaran program Sekampung ke Mokah pada 18 Februari 2026">
+          <span class="ytfac__play" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+        </button>
       </div>
 
       <div class="galx__main">
@@ -1681,6 +1714,44 @@ body.is-lbox-open{overflow:hidden}
       +'\nBilangan jemaah: '+d.get('jenis')
       +(d.get('pesanan')?'\nPesanan: '+d.get('pesanan'):'');
     window.open('https://wa.me/60102790458?text='+encodeURIComponent(msg),'_blank','noopener');
+  });
+})();
+</script>
+
+
+<script>
+/* ── Fasad video + jaring keselamatan YouTube ────────────────
+   Sebelum klik tiada apa-apa dimuat daripada YouTube (tiada kuki
+   pihak ketiga). Cip "Tonton di YouTube" kekal boleh diklik di atas
+   iframe jika YouTube membalas embed dengan tapisan sign-in. */
+(function(){
+  var MARK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.9 12 4.9 12 4.9s-7 0-8.9.5A3 3 0 0 0 1 7.5C.5 9.4.5 12 .5 12s0 2.6.5 4.5a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-4.5.5-4.5s0-2.6-.5-4.5M9.8 15.4V8.6l5.9 3.4z"/></svg>';
+  [].slice.call(document.querySelectorAll('.ytfac[data-yt]')).forEach(function(b){
+    var id=b.getAttribute('data-yt'), host=b.parentNode;
+    if(!id||!host) return;
+
+    host.classList.add('ythost');
+    var a=document.createElement('a');
+    a.className='ytesc';
+    a.href='https://www.youtube.com/watch?v='+id;
+    a.target='_blank'; a.rel='noopener noreferrer';
+    a.innerHTML=MARK+' Tonton di YouTube<span class="sr"> — buka dalam tab baharu</span>';
+    host.appendChild(a);
+
+    b.addEventListener('click',function(){
+      if(host.querySelector('iframe')) return;
+      var extra=(b.getAttribute('data-yt-params')||'').trim();
+      var f=document.createElement('iframe');
+      /* Tanpa autoplay=1 — permintaan main automatik dalam embed dibalas
+         YouTube dengan tapisan "Sign in to confirm you're not a bot". */
+      f.src='https://www.youtube.com/embed/'+id+'?rel=0&playsinline=1'+(extra?'&'+extra:'');
+      f.title=b.getAttribute('aria-label')||'Video KRS Travel';
+      f.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+      f.setAttribute('allowfullscreen','');
+      host.appendChild(f);
+      b.hidden=true;
+    });
   });
 })();
 </script>
