@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pakej Haji PJH 1447H — KRS Travel</title>
+<title>Pakej Haji PJH 1448H — KRS Travel</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<meta name="description" content="Pakej haji KRS Travel di bawah lesen Pengelola Jemaah Haji (PJH). 30–45 hari, hotel berdekatan Haramain dan Jamarat, dibimbing ustaz dan pakar rujuk.">
-<meta name="keywords" content="pakej haji 2026, haji pjh, pakej haji malaysia, haji tabung haji">
+<meta name="description" content="Pakej haji KRS Travel di bawah lesen Pengelola Jemaah Haji (PJH). 20–45 hari, hotel berdekatan Haramain dan Jamarat, dibimbing ustaz dan pakar rujuk.">
+<meta name="keywords" content="pakej haji 2027, pakej haji 1448h, haji pjh, pakej haji malaysia, haji tabung haji">
 <link rel="canonical" href="https://krstravel.com.my/haji">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ms_MY">
-<meta property="og:title" content="Pakej Haji PJH 1447H — KRS Travel">
-<meta property="og:description" content="Pemegang lesen Pengelola Jemaah Haji (PJH). Pakej Rotab, Ajwa dan Ajwa Plus Gold.">
+<meta property="og:title" content="Pakej Haji PJH 1448H — KRS Travel">
+<meta property="og:description" content="Pemegang lesen Pengelola Jemaah Haji (PJH). Pakej Rotab, Ajwa dan Ajwa Gold.">
 <meta property="og:url" content="https://krstravel.com.my/haji">
 <meta property="og:image" content="https://krstravel.com.my/og-image.jpg">
 <meta name="twitter:card" content="summary">
@@ -669,13 +669,31 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .sec--dark .person p{color:var(--muted)}
 
 /* ── Perkhidmatan tambahan ───────────────────────────────── */
-.addons{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
-  grid-template-columns:repeat(3,minmax(0,1fr))}
-.addon{background:var(--paper);padding:1.4rem 1.25rem;display:flex;flex-direction:column;gap:.6rem}
-.sec--stone .addon{background:var(--paper)}
-.addon__ico{width:28px;height:28px;color:var(--haram);flex:none}
-.addon h4{margin:0}
-.addon p{font-size:.83rem;color:var(--muted);margin:0;line-height:1.5}
+/* ── Jubin keistimewaan ──────────────────────────────────────
+   Idiom sama dengan .mcard pada tentang-kami.html: foto penuh jubin,
+   tirai gelap dari bawah, dan kapsyen bertindih di atas foto. Jubin
+   segi empat sama memberi ruang teks tanpa menutup subjek foto. */
+.addons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.addon{position:relative;aspect-ratio:1;background:var(--ink);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden}
+.addon__hit{position:absolute;inset:0;display:block;width:100%;height:100%;
+  padding:0;margin:0;border:0;background:none;cursor:zoom-in}
+.addon__img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.addon__hit:hover .addon__img,.addon__hit:focus-visible .addon__img{transform:scale(1.035)}
+.addon__hit:focus-visible{outline:3px solid var(--amber);outline-offset:-3px}
+/* Tirai gelap supaya teks putih kekal terbaca di atas mana-mana foto */
+.addon__scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,
+    rgba(6,18,22,.94) 0%, rgba(6,18,22,.88) 20%, rgba(6,18,22,.62) 38%,
+    rgba(6,18,22,.22) 56%, rgba(6,18,22,.04) 74%, rgba(6,18,22,0) 100%)}
+.addon__cap{position:absolute;left:0;right:0;bottom:0;padding:.9rem .85rem .95rem;pointer-events:none}
+.addon__ico{width:22px;height:22px;color:var(--amber);display:block;margin:0 0 .4rem}
+.addon h4{margin:0 0 .3rem;font-family:var(--ff-display);font-variation-settings:'wdth' 108;
+  font-weight:700;font-size:1rem;line-height:1.22;color:var(--white);
+  text-wrap:balance;text-shadow:0 1px 12px rgba(6,18,22,.5)}
+.addon p{margin:0;font-size:.78rem;line-height:1.5;color:rgba(255,255,255,.9)}
+@media(prefers-reduced-motion:reduce){.addon__img{transition:none}
+  .addon__hit:hover .addon__img,.addon__hit:focus-visible .addon__img{transform:none}}
 
 /* ── Jalur galeri (testimoni / penganugerahan) ───────────── */
 .galstrip{display:grid;gap:.75rem;grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -725,14 +743,24 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
   padding:1rem 1.2rem;margin:0 0 1.5rem;font-size:.88rem;line-height:1.55;color:var(--muted)}
 .ynote b{color:var(--ink)}
 
-/* Panel musim yang belum dibuka */
-.ysoon{background:var(--white);border:1px solid var(--line);border-radius:var(--r);
-  padding:clamp(1.4rem,3.5vw,2.4rem);display:grid;gap:.85rem;justify-items:start}
-.ysoon__tag{font-family:var(--ff-mono);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  padding:.28rem .6rem;border-radius:2px;background:var(--limestone);color:var(--amber-deep);border:1px solid var(--line)}
-.ysoon p{margin:0;font-size:.92rem;line-height:1.62;color:var(--muted)}
-.ysoon strong{color:var(--ink)}
-.ysoon__cta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem}
+/* Borang pendaftaran — seluruh kotak ialah pautan muat turun, idiom
+   yang sama dengan kad profil syarikat di tentang-kami.html. */
+.borang{display:flex;align-items:center;gap:1.25rem;text-decoration:none;
+  background:var(--maroon);color:var(--white);border:2px solid transparent;border-radius:var(--r);
+  padding:clamp(1.25rem,3vw,1.9rem);transition:background .15s,border-color .15s,transform .18s}
+.borang:hover{background:var(--maroon-deep);border-color:var(--amber);transform:translateY(-2px)}
+.borang:focus-visible{outline:3px solid var(--amber);outline-offset:4px}
+.borang__ico{width:44px;height:44px;flex:0 0 44px;color:var(--amber)}
+.borang__txt{min-width:0}
+.borang strong{display:block;font-family:var(--ff-display);font-variation-settings:'wdth' 112;
+  font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.25;font-weight:700}
+.borang small{display:block;margin-top:.45rem;font-family:var(--ff-mono);font-size:.7rem;
+  letter-spacing:.07em;color:#F0D9DD}
+.borang__arrow{width:26px;height:26px;flex:0 0 26px;margin-left:auto;color:var(--amber)}
+@media(prefers-reduced-motion:reduce){.borang:hover{transform:none}}
+@media(max-width:600px){.borang{gap:.9rem}
+  .borang__ico{width:34px;height:34px;flex-basis:34px}
+  .borang__arrow{width:20px;height:20px;flex-basis:20px}}
 
 /* Kad pakej musim lepas — tiada CTA jualan, hanya rujukan */
 .pcard--arkib:hover{transform:none;border-color:var(--line)}
@@ -885,6 +913,11 @@ body.lb-lock{overflow:hidden}
 }
 @media(max-width:640px){
   .addons{grid-template-columns:1fr}
+  .addon{aspect-ratio:4/3}
+}
+/* Telefon: jubin 4:3 jadi terlalu rendah untuk kapsyen — kembali ke segi empat sama */
+@media(max-width:480px){
+  .addon{aspect-ratio:1}
 }
 
 /* ── Rakan & pengiktirafan ───────────────────────────────── */
@@ -1118,13 +1151,13 @@ body.lb-lock{overflow:hidden}
     <nav class="crumb" aria-label="Laluan">
       <a href="index.html">Utama</a> <span aria-hidden="true">/</span> <span aria-current="page">Haji</span>
     </nav>
-    <h1>Pakej Haji PJH 1447H bersama KRS Travel</h1>
-    <p class="phero__lede">KRS Travel ialah pemegang lesen Pengelola Jemaah Haji (PJH). Pakej haji 30 hingga 45 hari, hotel berdekatan Haramain dan Kompleks Jamarat, dibimbing ustaz dan pakar rujuk.</p>
+    <h1>Pakej Haji PJH 1448H bersama KRS Travel</h1>
+    <p class="phero__lede">KRS Travel ialah pemegang lesen Pengelola Jemaah Haji (PJH). Pakej haji 20 hingga 45 hari, hotel berdekatan Haramain dan Kompleks Jamarat, dibimbing ustaz dan pakar rujuk.</p>
     <div class="phero__cta">
       <a class="btn btn--primary" href="#pakej">Lihat pakej haji</a>
       <a class="btn btn--on-dark" href="https://wa.me/60145056295">WhatsApp Haji</a>
     </div>
-    <div class="ribbon"><span><b>PJH</b> Berlesen</span><span><b>MOTAC</b> KPL 3590</span><span><b>30–45</b> hari</span><span><b>Sejak</b> 1999</span></div>
+    <div class="ribbon"><span><b>PJH</b> Berlesen</span><span><b>MOTAC</b> KPL 3590</span><span><b>20–45</b> hari</span><span><b>Sejak</b> 1999</span></div>
   </div>
 </section>
 
@@ -1135,8 +1168,8 @@ body.lb-lock{overflow:hidden}
     <div class="rail__stick">
       <div class="phead__card">
         <p class="phead__eyebrow">Haji</p>
-        <p class="phead__title">Pakej Haji PJH 1447H</p>
-        <p class="phead__lede">Pemegang lesen Pengelola Jemaah Haji (PJH). Pakej 30–45 hari, hotel berdekatan Haramain dan Kompleks Jamarat.</p>
+        <p class="phead__title">Pakej Haji PJH 1448H</p>
+        <p class="phead__lede">Pemegang lesen Pengelola Jemaah Haji (PJH). Pakej 20–45 hari, hotel berdekatan Haramain dan Kompleks Jamarat.</p>
         <div class="phead__cta">
           <a class="btn btn--primary" href="#pakej">Lihat pakej haji</a>
           <a class="btn btn--ghost" href="https://wa.me/60145056295">WhatsApp Haji</a>
@@ -1149,7 +1182,7 @@ body.lb-lock{overflow:hidden}
 <!-- ══ 01 · PAKEJ HAJI ══════════════════════════════════════ -->
 <section class="sec sec--stone" id="pakej">
   <div class="wrap">
-    <!-- Tab musim: 1448H · 1447H (semasa) · 1446H (arkib).
+    <!-- Tab musim: 1448H (semasa) · 1447H (arkib) · 1446H (arkib).
          Semua panel kekal dalam DOM — hanya disembunyikan — supaya kandungan
          setiap musim masih boleh diindeks enjin carian dan dicari Ctrl+F. -->
     <div class="ytabs" role="tablist" aria-label="Pilih musim haji">
@@ -1228,18 +1261,184 @@ body.lb-lock{overflow:hidden}
                alt="Dua peserta bergambar dengan sijil KRS Travel di hadapan latar Majlis Serahan Lesen PJH 1448H">
         </button>
       </div>
-      <div class="ysoon">
-        <span class="ysoon__tag">Belum dibuka</span>
-        <p>Harga dan senarai hotel bagi musim <strong>1448H / 2027</strong> belum diumumkan. Pakej PJH hanya boleh ditawarkan selepas Lembaga Tabung Haji mengeluarkan lesen Pengelola Jemaah Haji bagi musim berkenaan, dan selepas kuota serta surat tawaran haji dikeluarkan kepada bakal haji.</p>
-        <p>Buka senarai minat sekarang — kami akan hubungi anda dahulu sebaik sahaja pakej 1448H dibuka, sebelum tawaran umum. Sementara itu, <button class="ylink" type="button" data-goto-tab="tab-1447">pakej 1447H / 2026</button> boleh dijadikan panduan harga dan taraf hotel.</p>
-        <div class="ysoon__cta">
-          <a class="btn btn--primary" href="https://wa.me/60145056295?text=Salam,%20saya%20ingin%20didaftarkan%20dalam%20senarai%20minat%20Pakej%20Haji%20PJH%201448H%20%2F%202027">Daftar senarai minat 1448H</a>
-          <a class="btn" href="#proses">Lihat proses pendaftaran</a>
-        </div>
+      <h3 class="ypanel__h ypanel__h--next">Keistimewaan &amp; Kelebihan Pakej Haji PJH 1448H KRS Travel</h3>
+      <div class="addons">
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-aziziyah.webp" data-w="1400" data-h="875"
+                  data-title="Penginapan Aziziyah"
+                  data-meta="Dar Salah Hotel @setaraf, Al Mursalat, Makkah — lebih kurang 420 m dari Kompleks Jamarat">
+            <img class="addon__img" src="images/haji/istimewa-1448-aziziyah-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Peta lokasi Dar Salah Hotel di Aziziyah, Makkah — penginapan jemaah haji KRS Travel berhampiran Kompleks Jamarat">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg>
+            <h4>Aziziyah</h4>
+            <p>Penginapan di Aziziyah berhampiran Kompleks Jamarat, sekitar 420 meter sahaja.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-tarwiyah.webp" data-w="1400" data-h="875"
+                  data-title="Ibadah sunnah Tarwiyah"
+                  data-meta="Suasana dalam khemah di Mina pada Hari Tarwiyah, 8 Zulhijjah — musim haji 1447H">
+            <img class="addon__img" src="images/haji/istimewa-1448-tarwiyah-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Jemaah haji KRS Travel berihram di dalam khemah di Mina pada Hari Tarwiyah, sehari sebelum wukuf di Arafah">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l9-15 9 15z"/><path d="M12 5v15"/></svg>
+            <h4>Tarwiyah</h4>
+            <p>Melaksanakan ibadah sunnah Tarwiyah pada 8 Zulhijjah, tertakluk kelulusan Kementerian Haji Arab Saudi.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-pembimbing.webp" data-w="1400" data-h="875"
+                  data-title="Pembimbing &amp; mutawwif"
+                  data-meta="Pembimbing KRS Travel mengiringi jemaah dalam perjalanan ke Masjidil Haram">
+            <img class="addon__img" src="images/haji/istimewa-1448-pembimbing-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Pembimbing KRS Travel mengiringi sekumpulan jemaah haji berjalan menuju Masjidil Haram">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 20a5.5 5.5 0 0 1 5.5-5.5"/></svg>
+            <h4>Pembimbing</h4>
+            <p>Mutawwif, petugas dan pembimbing berpengalaman serta berkualiti tinggi untuk menyantuni para jemaah haji.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-ziarah.webp" data-w="1400" data-h="875"
+                  data-title="Ziarah 14 tempat bersejarah"
+                  data-meta="Rombongan haji KRS Travel di perkarangan Masjidil Haram, Makkah">
+            <img class="addon__img" src="images/haji/istimewa-1448-ziarah-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Rombongan jemaah haji KRS Travel bergambar beramai-ramai di perkarangan Masjidil Haram dengan latar Menara Jam Makkah">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <h4>Ziarah 14 Tempat</h4>
+            <p>Lawatan ke tempat bersejarah di sekitar Mekah dan Madinah bersama pembimbing.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-kesyukuran.webp" data-w="1400" data-h="875"
+                  data-title="Majlis Kesyukuran di Tanah Suci"
+                  data-meta="Majlis Graduasi &amp; Doa Selamat jemaah haji KRS Travel — 13 Jun 2026, Dewan Kalwin Layal, Makkah">
+            <img class="addon__img" src="images/haji/istimewa-1448-kesyukuran-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Poster Majlis Graduasi dan Doa Selamat jemaah haji KRS Travel pada 13 Jun 2026 di Dewan Kalwin Layal, Makkah">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0z"/><path d="M2 13h20"/><path d="M12 5V3"/><path d="M6 18h12"/></svg>
+            <h4>Majlis Kesyukuran</h4>
+            <p>Jamuan kesyukuran diadakan di Tanah Suci setelah sempurna menunaikan ibadah haji.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-kursus.webp" data-w="1400" data-h="875"
+                  data-title="Kursus Haji Perdana"
+                  data-meta="Selangkah ke Tanah Suci — 17 hingga 19 April 2026, Dewan Perdana KRS, Seremban">
+            <img class="addon__img" src="images/haji/istimewa-1448-kursus-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Sesi Kursus Haji Perdana Selangkah ke Tanah Suci anjuran KRS Travel di Dewan Perdana KRS, Seremban">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A15 15 0 0 1 12 7a15 15 0 0 1 9-1.5V19A15 15 0 0 0 12 20a15 15 0 0 0-9-1z"/><path d="M12 7v13"/></svg>
+            <h4>Kursus Haji Perdana</h4>
+            <p>Kursus haji komprehensif diadakan di Malaysia sebelum jemaah bertolak ke Tanah Suci.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-kelengkapan.webp" data-w="1400" data-h="875"
+                  data-title="Set kelengkapan haji"
+                  data-meta="Lebih 27 item percuma — beg berpandu, beg sandang, sejadah, bantal leher dan lain-lain">
+            <img class="addon__img" src="images/haji/istimewa-1448-kelengkapan-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Set kelengkapan haji KRS Travel: beg berpandu, beg sandang, topi, bantal leher, payung, sejadah dan botol air">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18v12H3z"/><path d="M3 8l3-4h12l3 4"/><path d="M12 8v12"/></svg>
+            <h4>Set Kelengkapan Haji</h4>
+            <p>Lebih 27 item set kelengkapan haji percuma, khas untuk jemaah yang mendaftar dengan kami.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-kuliah.webp" data-w="1400" data-h="875"
+                  data-title="Kuliah &amp; pengisian"
+                  data-meta="Sesi perkongsian ilmu bersama jemaah sepanjang tempoh di Tanah Suci">
+            <img class="addon__img" src="images/haji/istimewa-1448-kuliah-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Jemaah haji KRS Travel duduk membulat dalam sesi kuliah dan pengisian di ruang legar hotel">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H8l-4 4z"/><path d="M8 9h8"/><path d="M8 12h5"/></svg>
+            <h4>Kuliah &amp; Pengisian</h4>
+            <p>Sesi perkongsian ilmu disediakan sepanjang tempoh mengerjakan ibadah haji.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-takaful.webp" data-w="1400" data-h="875"
+                  data-title="Takaful Perjalanan Haji"
+                  data-meta="Perlindungan takaful dan rawatan tanpa tunai sepanjang perjalanan haji">
+            <img class="addon__img" src="images/haji/istimewa-1448-takaful-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Ilustrasi perlindungan Takaful Perjalanan Haji — tangan memegang kad perlindungan di hadapan masjid dan keluarga jemaah">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            <h4>Takaful</h4>
+            <p>Jemaah dilindungi dengan Takaful Perjalanan Haji dan rawatan tanpa tunai.</p>
+          </div>
+        </article>
       </div>
+
+      <h3 class="ypanel__h ypanel__h--next">Pakej Haji PJH 1448H / 2027 <span class="ypanel__pill ypanel__pill--live">Musim semasa</span></h3>
+      <div class="grid3 risalah">
+        <button class="gitem lbx" type="button" data-lb-group="risalah-1448"
+                data-full="images/haji/risalah-pjh-1448-1.webp" data-w="1415" data-h="2000"
+                data-title="Pakej Haji 1448H / 2027"
+                data-meta="Harga, kod bilik dan hotel bagi Pakej Rotab, Ajwa dan Ajwa Gold">
+          <img src="images/haji/risalah-pjh-1448-1-thumb.webp" width="424" height="599" loading="lazy" decoding="async"
+               alt="Risalah Pakej Haji KRS Travel 1448H/2027: harga dan hotel bagi Pakej Rotab, Pakej Ajwa dan Pakej Ajwa Gold">
+        </button>
+        <button class="gitem lbx" type="button" data-lb-group="risalah-1448"
+                data-full="images/haji/risalah-pjh-1448-2.webp" data-w="1415" data-h="2000"
+                data-title="Info Pakej Haji KRS Travel"
+                data-meta="Hotel Mekah, Madinah dan Aziziyah bagi setiap pakej, berserta kelas penerbangan dan makan">
+          <img src="images/haji/risalah-pjh-1448-2-thumb.webp" width="424" height="599" loading="lazy" decoding="async"
+               alt="Info Pakej Haji KRS Travel: hotel Mekah, Madinah dan Aziziyah bagi Pakej Rotab, Ajwa dan Ajwa Gold">
+        </button>
+        <button class="gitem lbx" type="button" data-lb-group="risalah-1448"
+                data-full="images/haji/risalah-pjh-1448-3.webp" data-w="1415" data-h="2000"
+                data-title="Keistimewaan Pakej Haji KRS Travel"
+                data-meta="Keistimewaan perkhidmatan, syarat penerimaan &amp; pembatalan, dan senarai ejen mengikut negeri">
+          <img src="images/haji/risalah-pjh-1448-3-thumb.webp" width="424" height="599" loading="lazy" decoding="async"
+               alt="Keistimewaan Pakej Haji KRS Travel: perkhidmatan, syarat penerimaan dan pembatalan serta senarai ejen">
+        </button>
+      </div>
+
+      <h3 class="ypanel__h ypanel__h--next">Daftar Minat Pakej Haji KRS Travel</h3>
+      <a class="borang" href="downloads/borang-pendaftaran-haji-1448h.pdf"
+         download="Borang-Pendaftaran-Haji-1448H-KRS-Travel.pdf" type="application/pdf"
+         aria-label="Muat turun Borang Pendaftaran Pakej Haji 1448H / 2027, PDF, 196 KB, 2 muka surat">
+        <svg class="borang__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg>
+        <span class="borang__txt">
+          <strong>Borang Pendaftaran Pakej Haji 1448H / 2027</strong>
+          <small>PDF · 196 KB · 2 muka surat</small>
+        </span>
+        <svg class="borang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M4 13l8 8 8-8"/></svg>
+      </a>
     </div>
 
-    <!-- ── PANEL: 1447H / 2026  (musim semasa) ───────────────── -->
+    <!-- ── PANEL: 1447H / 2026  (arkib) ──────────────────────── -->
     <div class="ypanel" id="pakej-1447" role="tabpanel" aria-labelledby="tab-1447" tabindex="0" hidden>
       <h3 class="ypanel__h">Penganugerahan Lesen PJH 1447H</h3>
       <div class="mediarow">
@@ -1301,8 +1500,8 @@ body.lb-lock{overflow:hidden}
         </button>
       </div>
 
-      <h3 class="ypanel__h ypanel__h--next">Pakej Haji PJH 1447H / 2026 <span class="ypanel__pill ypanel__pill--live">Musim semasa</span></h3>
-      <p class="prose" style="margin:0 0 1.6rem">Harga istimewa ini terhad kepada jemaah awal yang mendapat surat tawaran haji daripada Tabung Haji.</p>
+      <h3 class="ypanel__h ypanel__h--next">Pakej Haji PJH 1447H / 2026 <span class="ypanel__pill">Arkib</span></h3>
+      <p class="ynote">Musim <b>1447H / 2026</b> telah selesai — jemaah KRS Travel sudah pulang ke tanah air. Harga dan hotel di bawah disimpan sebagai <b>rujukan sejarah</b> dan tidak lagi dijual. Untuk pendaftaran semasa, sila lihat <button class="ylink" type="button" data-goto-tab="tab-1448">pakej 1448H / 2027</button>.</p>
       <div class="grid3">
         <article class="pcard">
           <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej"
@@ -1312,7 +1511,7 @@ body.lb-lock{overflow:hidden}
             <img src="images/haji/pakej-rotab-thumb.webp" width="700" height="442" loading="lazy" decoding="async"
                  alt="Hotel Pakej Rotab: Makkah Tower, Peninsula Worth Medina dan Manazil al Maqam di Aziziyah">
           </button>
-          <span class="pcard__ribbon pcard__ribbon--hot">Hot</span>
+          <span class="pcard__ribbon pcard__ribbon--arkib">Arkib 1447H</span>
           <div class="pcard__body">
             <h4>Pakej Rotab</h4>
             <p class="pcard__tier">30 – 45 Hari · Bilik ber-6 / ber-5 / ber-4</p>
@@ -1327,7 +1526,7 @@ body.lb-lock{overflow:hidden}
               <li><span>Bilik ber-5</span><b>RM 47,900</b></li>
               <li><span>Bilik ber-4</span><b>RM 50,900</b></li>
             </ul>
-            <a class="pcard__price" href="https://wa.me/60145056295?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Haji%20Rotab"><span>Dari</span><strong>RM 45,990</strong><em>/pax</em></a>
+            <div class="pcard__price pcard__price--arkib"><span>Dari</span><strong>RM 45,990</strong><em>/pax</em></div>
           </div>
         </article>
         <article class="pcard">
@@ -1338,7 +1537,7 @@ body.lb-lock{overflow:hidden}
             <img src="images/haji/pakej-ajwa-thumb.webp" width="700" height="442" loading="lazy" decoding="async"
                  alt="Hotel Pakej Ajwa: Al Safwah Tower 3, Madinah Al Aqeeq dan Manazil al Maqam di Aziziyah">
           </button>
-          <span class="pcard__ribbon pcard__ribbon--hot">Hot</span>
+          <span class="pcard__ribbon pcard__ribbon--arkib">Arkib 1447H</span>
           <div class="pcard__body">
             <h4>Pakej Ajwa</h4>
             <p class="pcard__tier">30 – 45 Hari · Bilik ber-4 / ber-3 / ber-2</p>
@@ -1353,7 +1552,7 @@ body.lb-lock{overflow:hidden}
               <li><span>Bilik ber-3</span><b>RM 59,600</b></li>
               <li><span>Bilik ber-2</span><b>RM 65,900</b></li>
             </ul>
-            <a class="pcard__price" href="https://wa.me/60145056295?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Haji%20Ajwa"><span>Dari</span><strong>RM 50,990</strong><em>/pax</em></a>
+            <div class="pcard__price pcard__price--arkib"><span>Dari</span><strong>RM 50,990</strong><em>/pax</em></div>
           </div>
         </article>
         <article class="pcard">
@@ -1364,7 +1563,7 @@ body.lb-lock{overflow:hidden}
             <img src="images/haji/pakej-ajwa-plus-gold-thumb.webp" width="700" height="442" loading="lazy" decoding="async"
                  alt="Hotel Pakej Ajwa Plus Gold: Mövenpick Makkah, Madinah Al Aqeeq dan Manazil al Maqam di Aziziyah">
           </button>
-          <span class="pcard__ribbon">Premium</span>
+          <span class="pcard__ribbon pcard__ribbon--arkib">Arkib 1447H</span>
           <div class="pcard__body">
             <h4>Pakej Ajwa Plus Gold</h4>
             <p class="pcard__tier">30 – 45 Hari · Dari Hati Untuk Ilahi</p>
@@ -1379,7 +1578,7 @@ body.lb-lock{overflow:hidden}
               <li><span>Bilik ber-3</span><b>RM 86,900</b></li>
               <li><span>Bilik ber-2</span><b>RM 91,900</b></li>
             </ul>
-            <a class="pcard__price" href="https://wa.me/60145056295?text=Salam,%20saya%20berminat%20dengan%20Pakej%20Haji%20Ajwa%20Plus%20Gold"><span>Dari</span><strong>RM 81,900</strong><em>/pax</em></a>
+            <div class="pcard__price pcard__price--arkib"><span>Dari</span><strong>RM 81,900</strong><em>/pax</em></div>
           </div>
         </article>
       </div>
@@ -1465,7 +1664,7 @@ body.lb-lock{overflow:hidden}
       </div>
 
       <h3 class="ypanel__h ypanel__h--next">Pakej Haji PJH 1446H / 2025 <span class="ypanel__pill">Arkib</span></h3>
-      <p class="ynote">Musim <b>1446H / 2025</b> telah selesai — jemaah KRS Travel sudah pulang ke tanah air. Harga dan hotel di bawah disimpan sebagai <b>rujukan sejarah</b> dan tidak lagi dijual. Untuk pendaftaran semasa, sila lihat <button class="ylink" type="button" data-goto-tab="tab-1447">pakej 1447H / 2026</button>.</p>
+      <p class="ynote">Musim <b>1446H / 2025</b> telah selesai — jemaah KRS Travel sudah pulang ke tanah air. Harga dan hotel di bawah disimpan sebagai <b>rujukan sejarah</b> dan tidak lagi dijual. Untuk pendaftaran semasa, sila lihat <button class="ylink" type="button" data-goto-tab="tab-1448">pakej 1448H / 2027</button>.</p>
       <div class="grid2">
         <article class="pcard pcard--arkib">
           <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1446"
@@ -1572,7 +1771,7 @@ body.lb-lock{overflow:hidden}
 </section>
 
 <!-- ══ 02 · BARISAN PEMBIMBING IBADAH ═══════════════════════ -->
-<section class="sec sec--dark" id="pembimbing" data-musim="semasa">
+<section class="sec sec--dark" id="pembimbing" data-musim="1448 1447">
   <div class="wrap">
     <div class="sec__bar">
       <div>
@@ -1610,7 +1809,7 @@ body.lb-lock{overflow:hidden}
 </section>
 
 <!-- ══ 03 · GALERI HOTEL ════════════════════════════════════ -->
-<section class="sec" id="hotel" data-musim="semasa">
+<section class="sec" id="hotel" data-musim="1447" hidden>
   <div class="wrap">
     <div class="sec__bar">
       <div>
@@ -1729,7 +1928,7 @@ body.lb-lock{overflow:hidden}
 </section>
 
 <!-- ══ 04 · PERJALANAN PAKEJ HAJI ═══════════════════════════ -->
-<section class="sec sec--stone" id="perjalanan" data-musim="semasa">
+<section class="sec sec--stone" id="perjalanan" data-musim="1447" hidden>
   <div class="wrap">
     <div class="sec__bar">
       <div>
@@ -1787,8 +1986,8 @@ body.lb-lock{overflow:hidden}
 </section>
 
 <!-- ══ KEMBARA JEMAAH HAJI 1447H ════════════════════════════
-     Kembar kepada #kembara-1446, untuk musim semasa. Musim 1447H belum
-     bermula, jadi setiap kad masih placeholder. Cara mengisi:
+     Kembar kepada #kembara-1446. Musim 1447H sudah selesai, jadi seksyen
+     ini kini arkib. Resipi mengisi kad bagi musim baharu:
        1. Letak lakaran dalam images/haji/video-1447-<nama>.webp (960 × 540).
        2. Ganti <div class="ph ph--video slot"> dengan:
           <button class="vcard__media" type="button" data-yt="ID_YOUTUBE"
@@ -1802,7 +2001,7 @@ body.lb-lock{overflow:hidden}
        3. Tukar kad kepada gaya berstamp seperti musim 1446H — tambah kelas
           .vcard--stamped, balut butang dalam <div class="vcard__frame"> dan
           tukar .vcard__body kepada .vcard__stamp. -->
-<section class="sec" id="kembara-1447" data-musim="semasa">
+<section class="sec" id="kembara-1447" data-musim="1447" hidden>
   <div class="wrap">
     <div class="sec__bar">
       <div>
@@ -1893,7 +2092,7 @@ body.lb-lock{overflow:hidden}
 
      Placeholder TIDAK diberi <figcaption>: cap gelap itu akan menutup teks
      panduan di dalam kotak. Tambah cap hanya bersama foto/video sebenar. -->
-<section class="sec sec--stone" id="testimoni-1447" data-musim="semasa">
+<section class="sec sec--stone" id="testimoni-1447" data-musim="1447" hidden>
   <div class="wrap">
     <div class="sec__bar">
       <div>
@@ -2014,67 +2213,8 @@ body.lb-lock{overflow:hidden}
   </div>
 </section>
 
-<!-- ══ 05 · PERKHIDMATAN TAMBAHAN ═══════════════════════════ -->
-<section class="sec" id="tambahan" data-musim="semasa">
-  <div class="wrap">
-    <div class="sec__bar">
-      <div>
-        <span class="sec__no">Seksyen 05</span>
-        <h2>Perkhidmatan Tambahan</h2>
-      </div>
-    </div>
-    <div class="addons">
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg>
-        <h4>Aziziyah</h4>
-        <p>Penginapan di Aziziyah berhampiran Kompleks Jamarat, sekitar 420 meter sahaja.</p>
-      </div>
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l9-15 9 15z"/><path d="M12 5v15"/></svg>
-        <h4>Tarwiyah</h4>
-        <p>Melaksanakan ibadah sunnah Tarwiyah pada 8 Zulhijjah, tertakluk kelulusan Kementerian Haji Arab Saudi.</p>
-      </div>
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 20a5.5 5.5 0 0 1 5.5-5.5"/></svg>
-        <h4>Pembimbing</h4>
-        <p>Mutawwif, petugas dan pembimbing berpengalaman serta berkualiti tinggi untuk menyantuni para jemaah haji.</p>
-      </div>
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        <h4>Ziarah 14 Tempat</h4>
-        <p>Lawatan ke tempat bersejarah di sekitar Mekah dan Madinah bersama pembimbing.</p>
-      </div>
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0z"/><path d="M2 13h20"/><path d="M12 5V3"/><path d="M6 18h12"/></svg>
-        <h4>Majlis Kesyukuran</h4>
-        <p>Jamuan kesyukuran diadakan di Tanah Suci setelah sempurna menunaikan ibadah haji.</p>
-      </div>
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5A15 15 0 0 1 12 7a15 15 0 0 1 9-1.5V19A15 15 0 0 0 12 20a15 15 0 0 0-9-1z"/><path d="M12 7v13"/></svg>
-        <h4>Kursus Haji Perdana</h4>
-        <p>Kursus haji komprehensif diadakan di Malaysia sebelum jemaah bertolak ke Tanah Suci.</p>
-      </div>
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18v12H3z"/><path d="M3 8l3-4h12l3 4"/><path d="M12 8v12"/></svg>
-        <h4>Set Kelengkapan Haji</h4>
-        <p>Lebih 27 item set kelengkapan haji percuma, khas untuk jemaah yang mendaftar dengan kami.</p>
-      </div>
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H8l-4 4z"/><path d="M8 9h8"/><path d="M8 12h5"/></svg>
-        <h4>Kuliah &amp; Pengisian</h4>
-        <p>Sesi perkongsian ilmu disediakan sepanjang tempoh mengerjakan ibadah haji.</p>
-      </div>
-      <div class="addon">
-        <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-        <h4>Takaful</h4>
-        <p>Jemaah dilindungi dengan Takaful Perjalanan Haji dan rawatan tanpa tunai.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ══ 06 · KELAYAKAN &amp; SYARAT ══════════════════════════ -->
-<section class="sec sec--stone" id="kelayakan" data-musim="semasa">
+<section class="sec sec--stone" id="kelayakan" data-musim="1448 1447">
   <div class="wrap">
     <div class="sec__bar">
       <div>
@@ -2099,7 +2239,7 @@ body.lb-lock{overflow:hidden}
   </div>
 </section>
 
-<section class="sec" id="termasuk" data-musim="semasa">
+<section class="sec" id="termasuk" data-musim="1448 1447">
   <div class="wrap">
     <div class="sec__bar">
       <div>
@@ -2137,7 +2277,7 @@ body.lb-lock{overflow:hidden}
   </div>
 </section>
 
-<section class="sec sec--stone" id="proses" data-musim="semasa">
+<section class="sec sec--stone" id="proses" data-musim="1448 1447">
   <div class="wrap">
     <div class="sec__bar">
       <div>
@@ -2155,7 +2295,7 @@ body.lb-lock{overflow:hidden}
       <div class="step">
         <p class="step__n">02</p>
         <h4>Pilih pakej &amp; daftar</h4>
-        <p>Pilih Rotab, Ajwa atau Ajwa Plus Gold. <span class="fill">ISI: jumlah deposit &amp; jadual bayaran</span></p>
+        <p>Pilih Rotab, Ajwa atau Ajwa Gold. <span class="fill">ISI: jumlah deposit &amp; jadual bayaran</span></p>
       </div>
       <div class="step">
         <p class="step__n">03</p>
@@ -2181,7 +2321,7 @@ body.lb-lock{overflow:hidden}
       </div>
     </div>
     <div class="prose" style="margin-bottom:1.6rem">
-      <p>Carta masyair musim <strong>1446H / 2025</strong> — 14 peringkat perjalanan haji jemaah KRS Travel, dari pelaporan diri di Sepang sehingga penerbangan pulang. Disimpan sebagai rujukan arkib; aliran musim semasa boleh dilihat dalam <button class="ylink" type="button" data-goto-tab="tab-1447">tab Haji 1447H</button>.</p>
+      <p>Carta masyair musim <strong>1446H / 2025</strong> — 14 peringkat perjalanan haji jemaah KRS Travel, dari pelaporan diri di Sepang sehingga penerbangan pulang. Disimpan sebagai rujukan arkib; carta musim 1447H boleh dilihat dalam <button class="ylink" type="button" data-goto-tab="tab-1447">tab Haji 1447H</button>.</p>
     </div>
 
     <div class="masyair masyair--wide">
@@ -2416,7 +2556,7 @@ body.lb-lock{overflow:hidden}
 
       <details>
         <summary>Berapa lama tempoh perjalanan?</summary>
-        <div>Antara 30 hingga 45 hari bergantung kepada pakej dan jadual penerbangan yang diperuntukkan.</div>
+        <div>Antara 20 hingga 45 hari bergantung kepada pakej dan jadual penerbangan yang diperuntukkan — Rotab dan Ajwa 30–45 hari, Ajwa Gold 20–24 hari.</div>
       </details>
 
       <details>
@@ -2426,18 +2566,18 @@ body.lb-lock{overflow:hidden}
 
       <details>
         <summary>Berapakah jarak hotel dari masjid?</summary>
-        <div>Rotab: Makkah Tower 50 m dari Masjidil Haram, Peninsula Worth 250 m dari Masjid Nabawi. Ajwa: Al Safwah Tower 3 50 m dari Masjidil Haram, Al Aqeeq 100 m dari Masjid Nabawi. Ajwa Plus Gold: Mövenpick 100 m dari Masjidil Haram, Al Aqeeq 100 m dari Masjid Nabawi. Semua pakej menggunakan Manazil al Maqam al Ehsan Tower di Aziziyah, 420 m dari Kompleks Jamarat.</div>
+        <div>Mengikut risalah rasmi 1448H / 2027 — Rotab: Makkah Towers @setaraf 50 m dari Masjidil Haram, Grand Millenium Al Haram @setaraf 50 m dari Masjid Nabawi. Ajwa: Mövenpick @setaraf 50 m dari Masjidil Haram, Grand Millenium Al Haram @setaraf 50 m dari Masjid Nabawi. Ajwa Gold: Makkah Hotel @setaraf 50 m dari Masjidil Haram, Grand Millenium Al Haram (Suite) @setaraf 50 m dari Masjid Nabawi. Semua pakej menggunakan Dar Salah Hotel @setaraf di Aziziyah, 420 m dari Kompleks Jamarat, dengan bilik berkumpulan.</div>
       </details>
 
       <details>
         <summary>Apakah pilihan bilik dan harganya?</summary>
         <div>
           <ul>
-            <li><strong>Rotab</strong> — ber-6 RM45,990 · ber-5 RM47,900 · ber-4 RM50,900</li>
-            <li><strong>Ajwa</strong> — ber-4 RM50,990 · ber-3 RM59,600 · ber-2 RM65,900</li>
-            <li><strong>Ajwa Plus Gold</strong> — ber-4 RM81,900 · ber-3 RM86,900 · ber-2 RM91,900</li>
+            <li><strong>Rotab</strong> (30–45 hari) — ber-6 RM54,990 · ber-5 RM58,990 · ber-4 RM60,990</li>
+            <li><strong>Ajwa</strong> (30–45 hari) — ber-4 RM65,900 · ber-3 RM76,900 · ber-2 RM81,900</li>
+            <li><strong>Ajwa Gold</strong> (20–24 hari) — ber-4 RM136,000 · ber-2 RM156,000, termasuk penerbangan komersial kelas perniagaan dan tren laju kelas perniagaan</li>
           </ul>
-          Harga istimewa ini terhad kepada jemaah awal yang mendapat surat tawaran haji daripada Tabung Haji.
+          Harga pakej termasuk bayaran haji PJH 1448H / 2027M sebanyak RM23,398 yang akan didebitkan daripada akaun Tabung Haji jemaah. Tabung Haji berhak mengenakan caj tambahan sekiranya berlaku penambahan kos atau pengenalan kos baharu oleh pihak berkuasa di Arab Saudi. Pakej Rotab dan Ajwa menggunakan penerbangan sewa khas Tabung Haji — tambahan RM20,000 jika anda memerlukan penerbangan komersial.
         </div>
       </details>
 
@@ -2789,17 +2929,16 @@ body.lb-lock{overflow:hidden}
       t.tabIndex=on?0:-1;
       if(p) p.hidden=!on;
     });
-    // Seksyen musim semasa (pembimbing, hotel, perjalanan, dsb.) tidak
-    // berkaitan dengan musim arkib — sembunyikan dan nombor semula supaya
-    // urutan "Seksyen NN" dan nav dalam halaman kekal berturutan.
-    var arkib = tab.id==='tab-1446';
-    [].slice.call(document.querySelectorAll('[data-musim="semasa"]')).forEach(function(el){
-      el.hidden=arkib;
-      if(el.hidden) resetVideos(el);
-    });
-    // Seksyen yang hanya wujud untuk musim 1446H (cth. kembara jemaah)
-    [].slice.call(document.querySelectorAll('[data-musim="1446"]')).forEach(function(el){
-      el.hidden=!arkib;
+    // Seksyen di luar #pakej terikat pada musim melalui data-musim:
+    //   "semua"      → sentiasa dipaparkan
+    //   "1447"       → hanya apabila tab musim itu aktif
+    //   "1448 1447"  → senarai dipisah ruang, padan mana-mana
+    // Seksyen tersembunyi dinombor semula supaya urutan "Seksyen NN" dan
+    // nav dalam halaman kekal berturutan.
+    var musim = tab.id.replace('tab-','');
+    [].slice.call(document.querySelectorAll('[data-musim]')).forEach(function(el){
+      var v = el.getAttribute('data-musim');
+      el.hidden = !(v==='semua' || v.split(/\s+/).indexOf(musim)>-1);
       if(el.hidden) resetVideos(el);
     });
     renumber();
