@@ -490,6 +490,12 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .btn--wa{background:#25D366;border-color:#25D366;color:#0B2E1B}
 .btn--wa:hover{background:#1EBE5B;border-color:#1EBE5B;color:var(--white)}
 .btn--wa svg{width:17px;height:17px;flex:none}
+/* Butang CTA selebar kad — idiom sama dengan .pcard__cta dalam umrah.html */
+.btn--block{display:flex;width:100%}
+.pcard__cta{margin-top:.9rem}
+/* Butang "Saya Berminat" menggantikan anak panah kecil pada baris harga
+   kad musim semasa; anak panah kekal pada kad arkib yang tiada butang. */
+#pakej-1448 .pcard__price::after{content:none}
 @media(max-width:640px){.cta__row .btn{width:100%;justify-content:center}}
 
 /* ── Nav seksyen dalam halaman ────────────────────────────── */
@@ -1464,7 +1470,12 @@ body.lb-lock{overflow:hidden}
               <li><span>Bilik ber-5 <small>(KRST R02)</small></span><b>RM 58,990</b></li>
               <li><span>Bilik ber-4 <small>(KRST R03)</small></span><b>RM 60,990</b></li>
             </ul>
-            <a class="pcard__price" href="https://wa.me/60102790458"><span>Dari</span><strong>RM 54,990</strong><em>/pax</em></a>
+            <div class="pcard__price"><span>Dari</span><strong>RM 54,990</strong><em>/pax</em></div>
+            <a class="btn btn--wa btn--block pcard__cta" href="https://wa.me/60102790458"
+               target="_blank" rel="noopener" aria-label="Saya berminat dengan Pakej Rotab 1448H — hubungi KRS Travel di WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+              Saya Berminat
+            </a>
           </div>
         </article>
         <article class="pcard">
@@ -1490,7 +1501,12 @@ body.lb-lock{overflow:hidden}
               <li><span>Bilik ber-3 <small>(KRST A05)</small></span><b>RM 76,900</b></li>
               <li><span>Bilik ber-2 <small>(KRST A06)</small></span><b>RM 81,900</b></li>
             </ul>
-            <a class="pcard__price" href="https://wa.me/60102790458"><span>Dari</span><strong>RM 65,900</strong><em>/pax</em></a>
+            <div class="pcard__price"><span>Dari</span><strong>RM 65,900</strong><em>/pax</em></div>
+            <a class="btn btn--wa btn--block pcard__cta" href="https://wa.me/60102790458"
+               target="_blank" rel="noopener" aria-label="Saya berminat dengan Pakej Ajwa 1448H — hubungi KRS Travel di WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+              Saya Berminat
+            </a>
           </div>
         </article>
         <article class="pcard">
@@ -1515,7 +1531,12 @@ body.lb-lock{overflow:hidden}
               <li><span>Bilik ber-4 <small>(KRST AG07)</small></span><b>RM 136,000</b></li>
               <li><span>Bilik ber-2 <small>(KRST AG08)</small></span><b>RM 156,000</b></li>
             </ul>
-            <a class="pcard__price" href="https://wa.me/60102790458"><span>Dari</span><strong>RM 136,000</strong><em>/pax</em></a>
+            <div class="pcard__price"><span>Dari</span><strong>RM 136,000</strong><em>/pax</em></div>
+            <a class="btn btn--wa btn--block pcard__cta" href="https://wa.me/60102790458"
+               target="_blank" rel="noopener" aria-label="Saya berminat dengan Pakej Ajwa Gold 1448H — hubungi KRS Travel di WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+              Saya Berminat
+            </a>
           </div>
         </article>
       </div>
