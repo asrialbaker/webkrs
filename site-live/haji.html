@@ -655,18 +655,35 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 @media(prefers-reduced-motion:reduce){.hslide img,.hslide__dots i{animation:none}.hslide img:nth-child(1){opacity:1}}
 
 /* ── Pembimbing ibadah ───────────────────────────────────── */
+/* Idiom sama dengan .addon di bawah: potret penuh jubin, tirai gelap dari
+   bawah, nama & jawatan bertindih di atas foto. Foto kad dipangkas gaya
+   pasport (kepala & bahu) pada nisbah 4/5; klik membuka foto penuh dalam
+   lightbox, jadi .person__img tidak perlu menampung badan penuh. */
 .people{display:grid;gap:1.25rem;grid-template-columns:repeat(2,minmax(0,1fr));max-width:840px}
-.person{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.person{position:relative;aspect-ratio:4/5;background:var(--white);border:1px solid var(--line);
+  border-radius:var(--r);overflow:hidden}
 .sec--dark .person{background:var(--white);border-color:var(--line)}
-/* nisbah 1024/647 sepadan dengan fail sumber — jadi tiada pangkasan wajah */
-.person__media{display:block;width:calc(100% - var(--card-pad)*2);height:auto;aspect-ratio:1024/647;
-  object-fit:cover;background:var(--white);margin:var(--card-pad) var(--card-pad) 0;border-radius:var(--r)}
-.person__body{padding:var(--card-pad)}
-.person__role{font-family:var(--ff-mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--amber-deep);margin:0 0 .4rem}
-.sec--dark .person__role{color:var(--amber-deep)}
-.person h3{font-size:1.02rem;margin-bottom:.4rem}
-.person p{font-size:.84rem;color:var(--muted);margin:0;line-height:1.5}
-.sec--dark .person p{color:var(--muted)}
+.person__hit{position:absolute;inset:0;display:block;width:100%;height:100%;
+  padding:0;margin:0;border:0;background:none;cursor:zoom-in}
+.person__img{width:100%;height:100%;object-fit:cover;display:block;background:var(--white);
+  transition:transform .5s ease}
+.person__hit:hover .person__img,.person__hit:focus-visible .person__img{transform:scale(1.035)}
+.person__hit:focus-visible{outline:3px solid var(--amber);outline-offset:-3px}
+/* Tirai gelap supaya teks putih kekal terbaca di atas latar foto yang cerah */
+.person__scrim{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to top,
+    rgba(6,18,22,.94) 0%, rgba(6,18,22,.88) 17%, rgba(6,18,22,.62) 33%,
+    rgba(6,18,22,.22) 50%, rgba(6,18,22,.04) 68%, rgba(6,18,22,0) 100%)}
+.person__cap{position:absolute;left:0;right:0;bottom:0;padding:1rem .95rem 1.05rem;pointer-events:none}
+.person__role{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin:0 0 .4rem}
+.sec--dark .person__role{color:var(--amber)}
+.person h3{font-family:var(--ff-display);font-variation-settings:'wdth' 108;font-weight:700;
+  font-size:1.02rem;line-height:1.22;margin:0 0 .3rem;color:var(--white);
+  text-wrap:balance;text-shadow:0 1px 12px rgba(6,18,22,.5)}
+.person p{font-size:.78rem;color:rgba(255,255,255,.9);margin:0;line-height:1.5}
+.sec--dark .person p{color:rgba(255,255,255,.9)}
+@media(prefers-reduced-motion:reduce){.person__img{transition:none}
+  .person__hit:hover .person__img,.person__hit:focus-visible .person__img{transform:none}}
 
 /* ── Perkhidmatan tambahan ───────────────────────────────── */
 /* ── Jubin keistimewaan ──────────────────────────────────────
@@ -1781,24 +1798,34 @@ body.lb-lock{overflow:hidden}
     </div>
     <div class="people">
       <article class="person">
-        <img class="person__media" src="images/haji/pembimbing-shuhadak-mahmud.webp" width="1024" height="647"
-             srcset="images/haji/pembimbing-shuhadak-mahmud-thumb.webp 700w, images/haji/pembimbing-shuhadak-mahmud.webp 1024w"
-             sizes="(max-width:960px) calc(100vw - 4rem), 385px"
-             loading="lazy" decoding="async"
-             alt="Tuan Guru Syeikh Dr. Shuhadak Mahmud, pakar rujuk haji KRS Travel">
-        <div class="person__body">
+        <button class="person__hit lbx" type="button" data-lb-group="pembimbing"
+                data-full="images/haji/pembimbing-shuhadak-mahmud-penuh.webp" data-w="768" data-h="1376"
+                data-title="Tuan Guru Syeikh Dr. Shuhadak Mahmud"
+                data-meta="Pakar Rujuk Haji · Ahli Jawatankuasa Fatwa Kerajaan Negeri, Negeri Sembilan">
+          <img class="person__img" src="images/haji/pembimbing-shuhadak-mahmud-potret.webp" width="432" height="540"
+               sizes="(max-width:960px) calc(100vw - 4rem), 385px"
+               loading="lazy" decoding="async"
+               alt="Tuan Guru Syeikh Dr. Shuhadak Mahmud, pakar rujuk haji KRS Travel">
+          <span class="person__scrim" aria-hidden="true"></span>
+        </button>
+        <div class="person__cap">
           <p class="person__role">Pakar Rujuk Haji</p>
           <h3>Tuan Guru Syeikh Dr. Shuhadak Mahmud</h3>
           <p>Ahli Jawatankuasa Fatwa Kerajaan Negeri, Negeri Sembilan.</p>
         </div>
       </article>
       <article class="person">
-        <img class="person__media" src="images/haji/pembimbing-abu-huzaifa.webp" width="1024" height="647"
-             srcset="images/haji/pembimbing-abu-huzaifa-thumb.webp 700w, images/haji/pembimbing-abu-huzaifa.webp 1024w"
-             sizes="(max-width:960px) calc(100vw - 4rem), 385px"
-             loading="lazy" decoding="async"
-             alt="Ustaz Haji Abu Huzaifa bin Ariff, Pegawai Agama KRS Travel">
-        <div class="person__body">
+        <button class="person__hit lbx" type="button" data-lb-group="pembimbing"
+                data-full="images/haji/pembimbing-abu-huzaifa-penuh.webp" data-w="727" data-h="1080"
+                data-title="Ustaz Haji Abu Huzaifa bin Ariff"
+                data-meta="Bahagian Operasi Haji · Pegawai Agama KRS Travel">
+          <img class="person__img" src="images/haji/pembimbing-abu-huzaifa-potret.webp" width="432" height="540"
+               sizes="(max-width:960px) calc(100vw - 4rem), 385px"
+               loading="lazy" decoding="async"
+               alt="Ustaz Haji Abu Huzaifa bin Ariff, Pegawai Agama KRS Travel">
+          <span class="person__scrim" aria-hidden="true"></span>
+        </button>
+        <div class="person__cap">
           <p class="person__role">Bahagian Operasi Haji</p>
           <h3>Ustaz Haji Abu Huzaifa bin Ariff</h3>
           <p>Pegawai Agama KRS Travel.</p>
