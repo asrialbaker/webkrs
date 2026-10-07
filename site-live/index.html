@@ -374,8 +374,8 @@ p{margin:0 0 1em}
 /* Kad video dalam galeri — mewarisi .ph supaya saiz grid (span 2 × 2) kekal,
    tetapi menggantikan latar berjalur dengan poster video sebenar. */
 .galvid{padding:0;display:block;background:#0B0F11;border:1px solid var(--line);margin:0}
-.galvid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;z-index:2}
-.galvid__facade{position:absolute;inset:0;z-index:1;display:block;text-decoration:none;color:var(--white);cursor:pointer}
+.galvid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;z-index:1}
+.galvid__facade{position:absolute;inset:0;z-index:2;display:block;text-decoration:none;color:var(--white);cursor:pointer}
 .galvid__poster{width:100%;height:100%;object-fit:cover;display:block;
   transition:transform .5s cubic-bezier(.2,.7,.3,1),filter .3s}
 .galvid__facade:hover .galvid__poster{transform:scale(1.04);filter:brightness(.8)}
@@ -636,11 +636,11 @@ body.is-lbox-open{overflow:hidden}
 .phone__scr{position:relative;height:100%;border-radius:34px;overflow:hidden;background:#000}
 .phone__notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:78px;height:20px;background:#11181B;border-radius:12px;z-index:4}
 .phone__vid{position:absolute;inset:0;background:#000}
-.phone__vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;z-index:2}
+.phone__vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;z-index:1}
 
 /* Fasad (poster) — sentiasa wujud dalam HTML. Iframe hanya dimuat selepas klik,
    jadi video tidak pernah "blank" walaupun TikTok disekat / autoplay ditolak. */
-.phone__facade{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;
+.phone__facade{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:.7rem;width:100%;padding:2.2rem 1rem 3.2rem;
   border:0;cursor:pointer;text-align:center;text-decoration:none;color:var(--white);
   background:radial-gradient(120% 80% at 50% 32%,#20292D 0%,#0B0F11 68%,#000 100%)}
@@ -2064,8 +2064,8 @@ body.is-lbox-open{overflow:hidden}
    Video dimuat sebaik sahaja mockup masuk ke skrin, kemudian kami hantar
    arahan mute + play melalui postMessage API pemain TikTok. Pelayar hanya
    membenarkan autoplay tanpa gesture jika video SENYAP — jadi ia dimulakan
-   senyap. Poster statik kekal di belakang sebagai sandaran jika TikTok
-   disekat atau gagal dimuat. */
+   senyap. Poster statik kekal DI ATAS iframe sehingga pemain benar-benar
+   menjawab, supaya pelawat tidak pernah melihat kotak hitam kosong. */
 (function(){
   var wrap=document.getElementById('tt-player');
   var facade=document.getElementById('tt-facade');
@@ -2073,12 +2073,34 @@ body.is-lbox-open{overflow:hidden}
   var src=wrap.getAttribute('data-tt-src');
   if(!src) return;
 
-  var fr=null, ready=false;
+  var ORIGIN='https://www.tiktok.com';
+  var fr=null, alive=false, timer=0;
 
   function tell(msg){
     if(!fr||!fr.contentWindow) return;
     msg['x-tiktok-player']=true;
-    try{ fr.contentWindow.postMessage(msg,'*'); }catch(e){}
+    try{ fr.contentWindow.postMessage(msg,ORIGIN); }catch(e){}
+  }
+
+  /* Iframe silang-asal tetap membangkitkan 'load' walaupun yang dipaparkan
+     ialah halaman ralat — jadi 'load' bukan bukti video hidup. Hanya mesej
+     daripada pemain TikTok yang membuktikannya; barulah poster ditanggalkan. */
+  function alive_(){
+    if(alive) return;
+    alive=true;
+    clearTimeout(timer);
+    wrap.setAttribute('data-playing','true');
+    tell({type:'mute'}); tell({type:'play'});
+  }
+
+  /* TikTok disekat, video dipadam atau talian mati — buang iframe dan
+     kekalkan poster sebagai pautan ke TikTok. */
+  function fail(){
+    if(alive) return;
+    wrap.removeAttribute('data-playing');
+    if(fr){ try{ wrap.removeChild(fr); }catch(e){} fr=null; }
+    var sub=facade.querySelector('.phone__sub');
+    if(sub) sub.textContent='Buka di TikTok';
   }
 
   function load(){
@@ -2091,36 +2113,24 @@ body.is-lbox-open{overflow:hidden}
     fr.setAttribute('allowfullscreen','');
     fr.setAttribute('frameborder','0');
     wrap.insertBefore(fr,facade);
-    wrap.setAttribute('data-playing','true');
 
-    var loaded=false;
     fr.addEventListener('load',function(){
-      loaded=true;
-      /* Senyapkan dahulu, kemudian main — urutan ini penting supaya
-         dasar autoplay pelayar tidak menolaknya. */
+      /* Senyapkan dahulu, kemudian main — urutan ini penting supaya dasar
+         autoplay pelayar tidak menolaknya. */
       tell({type:'mute'}); tell({type:'play'});
       setTimeout(function(){ tell({type:'mute'}); tell({type:'play'}); },600);
     });
 
-    /* Sandaran: jika TikTok tidak menjawab dalam 8 saat, pulangkan poster
-       supaya pelawat tidak tinggal dengan skrin hitam kosong. */
-    setTimeout(function(){
-      if(loaded) return;
-      wrap.removeAttribute('data-playing');
-      try{ wrap.removeChild(fr); }catch(e){}
-      fr=null;
-      var sub=facade.querySelector('.phone__sub');
-      if(sub) sub.textContent='Buka di TikTok';
-    },8000);
+    timer=setTimeout(fail,8000);
   }
 
-  /* Pemain menghantar onPlayerReady — guna untuk cuba main sekali lagi. */
+  /* Sebarang mesej daripada pemain bermakna ia hidup. */
   window.addEventListener('message',function(e){
+    if(e.origin!==ORIGIN) return;
     var d=e.data;
+    if(typeof d==='string'){ try{ d=JSON.parse(d); }catch(err){ return; } }
     if(!d||d['x-tiktok-player']!==true) return;
-    if(d.type==='onPlayerReady'&&!ready){
-      ready=true; tell({type:'mute'}); tell({type:'play'});
-    }
+    alive_();
   });
 
   /* Muat hanya apabila mockup hampir kelihatan — laman tidak menghubungi
@@ -2133,14 +2143,13 @@ body.is-lbox-open{overflow:hidden}
   }else{
     load();
   }
-
-  /* Poster masih boleh diklik jika iframe belum/ gagal dimuat. */
-  facade.addEventListener('click',function(e){
-    if(fr) return;            /* biar pautan TikTok berfungsi seperti biasa */
-  });
 })();
 
-/* Galeri — kad "Video Utama" YouTube, click-to-play (sama corak seperti TikTok). */
+/* Galeri — kad "Video Utama" YouTube, click-to-play (sama corak seperti TikTok).
+   Poster kekal DI ATAS iframe sehingga pemain YouTube benar-benar menjawab:
+   iframe silang-asal tetap membangkitkan 'load' walaupun yang dipaparkan ialah
+   halaman ralat, jadi 'load' bukan bukti video hidup. Dengan enablejsapi=1
+   pemain menghantar onReady — itulah buktinya. */
 (function(){
   var card=document.getElementById('yt-card');
   var facade=document.getElementById('yt-facade');
@@ -2148,28 +2157,59 @@ body.is-lbox-open{overflow:hidden}
   var src=card.getAttribute('data-yt-src');
   if(!src) return;
 
+  var ORIGIN='https://www.youtube-nocookie.com';
+  var fr=null, alive=false, timer=0, ping=0;
+
+  function stopPing(){ clearInterval(ping); ping=0; }
+
+  function alive_(){
+    if(alive) return;
+    alive=true;
+    clearTimeout(timer); stopPing();
+    card.setAttribute('data-playing','true');
+  }
+
+  /* YouTube disekat penapis rangkaian, video dipadam atau talian mati —
+     buang iframe dan pulangkan poster supaya kad masih boleh diklik. */
+  function fail(){
+    if(alive) return;
+    stopPing();
+    card.removeAttribute('data-playing');
+    if(fr){ try{ card.removeChild(fr); }catch(err){} fr=null; }
+    facade.addEventListener('click',onPlay);
+  }
+
   function onPlay(e){
     e.preventDefault();
     facade.removeEventListener('click',onPlay);
-    var fr=document.createElement('iframe');
-    fr.src=src;
+    fr=document.createElement('iframe');
+    fr.src=src+'&enablejsapi=1&origin='+encodeURIComponent(location.origin);
     fr.title='Video utama KRS Travel — perjalanan jemaah umrah dan haji';
     fr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     fr.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
     fr.setAttribute('allowfullscreen','');
     fr.setAttribute('frameborder','0');
     card.insertBefore(fr,facade);
-    card.setAttribute('data-playing','true');
 
-    var ok=false;
-    fr.addEventListener('load',function(){ ok=true; });
-    setTimeout(function(){
-      if(ok) return;
-      card.removeAttribute('data-playing');
-      try{ card.removeChild(fr); }catch(err){}
-      facade.addEventListener('click',onPlay);
-    },6000);
+    /* Pemain hanya bercakap selepas kita memperkenalkan diri. */
+    fr.addEventListener('load',function(){
+      var n=0;
+      ping=setInterval(function(){
+        if(!fr||!fr.contentWindow||alive) return stopPing();
+        try{ fr.contentWindow.postMessage(JSON.stringify({event:'listening',id:1,channel:'widget'}),ORIGIN); }catch(err){}
+        if(++n>20) stopPing();
+      },250);
+    });
+
+    timer=setTimeout(fail,8000);
   }
+
+  /* Sebarang mesej daripada pemain bermakna ia hidup. */
+  window.addEventListener('message',function(e){
+    if(e.origin!==ORIGIN) return;
+    alive_();
+  });
+
   facade.addEventListener('click',onPlay);
 })();
 

@@ -462,8 +462,8 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .kcard__media a{display:block;cursor:zoom-in}
 .kcard__media a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .kep__vid{position:relative;margin:0;flex:0 0 20rem;max-width:100%;aspect-ratio:9/16;overflow:hidden;background:#0B0F11;border:1px solid var(--line);border-radius:var(--r)}
-.kep__vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;z-index:2}
-.kvid__facade{position:absolute;inset:0;z-index:1;display:block;text-decoration:none;color:var(--white);cursor:pointer}
+.kep__vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;z-index:1}
+.kvid__facade{position:absolute;inset:0;z-index:2;display:block;text-decoration:none;color:var(--white);cursor:pointer}
 .kvid__poster{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.3,1),filter .3s}
 .kvid__facade:hover .kvid__poster{transform:scale(1.04);filter:brightness(.8)}
 .kvid__play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(2px);pointer-events:none;transition:transform .18s,background .18s,border-color .18s}
@@ -1212,6 +1212,9 @@ body.lb-open{overflow:hidden}
 
 
 // Kad video panduan biometrik — click-to-play (pemain TikTok, sama corak seperti mockup telefon di laman utama).
+/* Poster kekal DI ATAS iframe sehingga pemain TikTok benar-benar menjawab:
+   iframe silang-asal tetap membangkitkan 'load' walaupun yang dipaparkan
+   ialah halaman ralat, jadi 'load' bukan bukti video hidup. */
 (function(){
   var card=document.getElementById('kvid-biometrik');
   var facade=document.getElementById('kvid-facade');
@@ -1219,10 +1222,27 @@ body.lb-open{overflow:hidden}
   var src=card.getAttribute('data-tt-src');
   if(!src) return;
 
+  var ORIGIN='https://www.tiktok.com';
+  var fr=null, alive=false, timer=0;
+
+  function alive_(){
+    if(alive) return;
+    alive=true;
+    clearTimeout(timer);
+    card.setAttribute('data-playing','true');
+  }
+
+  function fail(){                       // jika TikTok disekat, pulihkan poster
+    if(alive) return;
+    card.removeAttribute('data-playing');
+    if(fr){ try{ card.removeChild(fr); }catch(err){} fr=null; }
+    facade.addEventListener('click',onPlay);
+  }
+
   function onPlay(e){
     e.preventDefault();
     facade.removeEventListener('click',onPlay);
-    var fr=document.createElement('iframe');
+    fr=document.createElement('iframe');
     fr.src=src;
     fr.title='Panduan memohon visa umrah dan kaedah pengimbasan — TikTok KRS Travel';
     fr.setAttribute('allow','autoplay; encrypted-media; fullscreen; picture-in-picture');
@@ -1230,17 +1250,18 @@ body.lb-open{overflow:hidden}
     fr.setAttribute('allowfullscreen','');
     fr.setAttribute('frameborder','0');
     card.insertBefore(fr,facade);
-    card.setAttribute('data-playing','true');
-
-    var ok=false;
-    fr.addEventListener('load',function(){ ok=true; });
-    setTimeout(function(){                 // jika TikTok disekat, pulihkan poster
-      if(ok) return;
-      card.removeAttribute('data-playing');
-      try{ card.removeChild(fr); }catch(err){}
-      facade.addEventListener('click',onPlay);
-    },8000);
+    timer=setTimeout(fail,8000);
   }
+
+  /* Sebarang mesej daripada pemain bermakna ia hidup. */
+  window.addEventListener('message',function(e){
+    if(e.origin!==ORIGIN) return;
+    var d=e.data;
+    if(typeof d==='string'){ try{ d=JSON.parse(d); }catch(err){ return; } }
+    if(!d||d['x-tiktok-player']!==true) return;
+    alive_();
+  });
+
   facade.addEventListener('click',onPlay);
 })();
 </script>
