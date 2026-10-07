@@ -249,6 +249,13 @@ p{margin:0 0 1em}
 .pcard__price{margin-top:auto;padding-top:1.1rem;display:flex;align-items:baseline;gap:.4rem;text-decoration:none;color:var(--haram)}
 .pcard__price span{font-family:var(--ff-body);font-size:.74rem;color:var(--muted)}
 .pcard__price strong{font-family:var(--ff-mono);font-size:1.32rem;font-weight:600;letter-spacing:-.01em}
+/* Harga musim semasa tidak dibenarkan pecah di tengah nombor. Kad arkib
+   dikecualikan — barisnya sudah membawa lencana ARKIB, dan nowrap di situ
+   menolak lencana itu keluar dari kad. */
+.pcard__price:not(.pcard__price--arkib) strong{white-space:nowrap}
+/* Harga enam angka (RM 136,000) lebih lebar daripada lajur apabila kad CTA
+   terapung menyempitkan grid — benarkan "/pax →" jatuh ke baris bawah. */
+.pcard__price:not(.pcard__price--arkib){flex-wrap:wrap}
 .pcard__price em{font-style:normal;font-size:.72rem;color:var(--muted);font-family:var(--ff-body)}
 .pcard__price:hover strong{color:var(--amber-deep)}
 .pcard__price::after{content:'→';margin-left:auto;font-family:var(--ff-mono);color:var(--amber)}
@@ -616,7 +623,10 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .tiers{list-style:none;margin:.95rem 0 0;padding:.8rem 0 0;border-top:1px solid var(--line);display:grid;gap:.35rem}
 .tiers li{display:flex;align-items:baseline;gap:.6rem;font-size:.83rem}
 .tiers li span{color:var(--muted)}
-.tiers li b{margin-left:auto;font-family:var(--ff-mono);font-size:.86rem;font-weight:600;color:var(--ink)}
+.tiers li b{margin-left:auto;font-family:var(--ff-mono);font-size:.86rem;font-weight:600;color:var(--ink);white-space:nowrap}
+/* Kod pakej (KRST R01 …) duduk di bawah label supaya harga tidak terpaksa
+   membalut dalam lajur sempit apabila kad CTA terapung di sebelah kanan. */
+.tiers li span small{display:block;font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.08em;color:var(--muted)}
 .tiers li:first-child b{color:var(--haram)}
 
 /* ── Kad hotel + slaid ───────────────────────────────────── */
@@ -749,6 +759,10 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
   padding:.24rem .5rem;border-radius:2px;background:var(--ink-2);color:var(--white)}
 .ypanel__pill--live{background:var(--haram)}
 .pcard__body h4{font-size:1.1rem;font-variation-settings:'wdth' 110}
+/* Nama pakej musim semasa ditulis dalam huruf besar, mengikut risalah rasmi.
+   Huruf besar dibuat melalui CSS supaya teks dalam HTML kekal dalam bentuk
+   biasa untuk pembaca skrin dan enjin carian. */
+#pakej-1448 .pcard__body h4{text-transform:uppercase;letter-spacing:.03em;font-size:1.04rem}
 
 /* Pautan teks yang menukar tab (bukan <a> — tiada URL untuk dilawati) */
 .ylink{appearance:none;background:none;border:0;padding:0;cursor:pointer;font:inherit;
@@ -1374,7 +1388,7 @@ body.lb-lock{overflow:hidden}
           <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
                   data-full="images/haji/istimewa-1448-kelengkapan.webp" data-w="1400" data-h="875"
                   data-title="Set kelengkapan haji"
-                  data-meta="Lebih 27 item percuma — beg berpandu, beg sandang, sejadah, bantal leher dan lain-lain">
+                  data-meta="Lebih 26 item percuma — beg berpandu, beg sandang, sejadah, bantal leher dan lain-lain">
             <img class="addon__img" src="images/haji/istimewa-1448-kelengkapan-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
                  alt="Set kelengkapan haji KRS Travel: beg berpandu, beg sandang, topi, bantal leher, payung, sejadah dan botol air">
             <span class="addon__scrim" aria-hidden="true"></span>
@@ -1382,7 +1396,7 @@ body.lb-lock{overflow:hidden}
           <div class="addon__cap">
             <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h18v12H3z"/><path d="M3 8l3-4h12l3 4"/><path d="M12 8v12"/></svg>
             <h4>Set Kelengkapan Haji</h4>
-            <p>Lebih 27 item set kelengkapan haji percuma, khas untuk jemaah yang mendaftar dengan kami.</p>
+            <p>Lebih 26 item set kelengkapan haji percuma, khas untuk jemaah yang mendaftar dengan kami.</p>
           </div>
         </article>
         <article class="addon">
@@ -1417,7 +1431,88 @@ body.lb-lock{overflow:hidden}
         </article>
       </div>
 
-      <h3 class="ypanel__h ypanel__h--next">Pakej Haji PJH 1448H / 2027 <span class="ypanel__pill ypanel__pill--live">Musim semasa</span></h3>
+      <h3 class="ypanel__h ypanel__h--next">Pakej Haji PJH 1448H / 2027 oleh KRS Travel <span class="ypanel__pill ypanel__pill--live">Musim semasa</span></h3>
+      <div class="grid3">
+        <article class="pcard">
+          <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
+                  data-full="images/haji/pakej-1448-rotab.webp" data-w="1343" data-h="642"
+                  data-title="Pakej Rotab — hotel 1448H"
+                  data-meta="Makkah Towers &middot; Grand Millenium Al Haram &middot; Aziziyah Dar Salah Hotel">
+            <img src="images/haji/pakej-1448-rotab-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
+                 alt="Hotel Pakej Rotab 1448H: bilik di Makkah Towers, Mekah">
+          </button>
+          <span class="pcard__ribbon pcard__ribbon--hot">Musim 1448H</span>
+          <div class="pcard__body">
+            <h4>Pakej Rotab</h4>
+            <p class="pcard__tier">30 &ndash; 45 Hari &middot; Bilik ber-6 / ber-5 / ber-4</p>
+            <ul class="pcard__feats">
+              <li>Mekah &mdash; Makkah Towers @setaraf, 50 m dari Masjidil Haram</li>
+              <li>Madinah &mdash; Grand Millenium Al Haram @setaraf, 50 m dari Masjid Nabawi</li>
+              <li>Aziziyah &mdash; Dar Salah Hotel @setaraf, 420 m dari Kompleks Jamrah</li>
+              <li>Makan 3 kali selera Asia &middot; kelas ekonomi &middot; penerbangan sewa khas TH</li>
+            </ul>
+            <ul class="tiers">
+              <li><span>Bilik ber-6 <small>(KRST R01)</small></span><b>RM 54,990</b></li>
+              <li><span>Bilik ber-5 <small>(KRST R02)</small></span><b>RM 58,990</b></li>
+              <li><span>Bilik ber-4 <small>(KRST R03)</small></span><b>RM 60,990</b></li>
+            </ul>
+            <a class="pcard__price" href="https://wa.me/60102790458"><span>Dari</span><strong>RM 54,990</strong><em>/pax</em></a>
+          </div>
+        </article>
+        <article class="pcard">
+          <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
+                  data-full="images/haji/pakej-1448-ajwa.webp" data-w="1343" data-h="638"
+                  data-title="Pakej Ajwa — hotel 1448H"
+                  data-meta="Movenpick &middot; Grand Millenium Al Haram &middot; Aziziyah Dar Salah Hotel">
+            <img src="images/haji/pakej-1448-ajwa-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
+                 alt="Hotel Pakej Ajwa 1448H: bilik di Movenpick, Mekah">
+          </button>
+          <span class="pcard__ribbon pcard__ribbon--hot">Musim 1448H</span>
+          <div class="pcard__body">
+            <h4>Pakej Ajwa</h4>
+            <p class="pcard__tier">30 &ndash; 45 Hari &middot; Bilik ber-4 / ber-3 / ber-2</p>
+            <ul class="pcard__feats">
+              <li>Mekah &mdash; Movenpick @setaraf, 50 m dari Masjidil Haram</li>
+              <li>Madinah &mdash; Grand Millenium Al Haram @setaraf, 50 m dari Masjid Nabawi</li>
+              <li>Aziziyah &mdash; Dar Salah Hotel @setaraf, 420 m dari Kompleks Jamrah</li>
+              <li>Makan 3 kali selera Asia &middot; kelas ekonomi &middot; penerbangan sewa khas TH</li>
+            </ul>
+            <ul class="tiers">
+              <li><span>Bilik ber-4 <small>(KRST A04)</small></span><b>RM 65,900</b></li>
+              <li><span>Bilik ber-3 <small>(KRST A05)</small></span><b>RM 76,900</b></li>
+              <li><span>Bilik ber-2 <small>(KRST A06)</small></span><b>RM 81,900</b></li>
+            </ul>
+            <a class="pcard__price" href="https://wa.me/60102790458"><span>Dari</span><strong>RM 65,900</strong><em>/pax</em></a>
+          </div>
+        </article>
+        <article class="pcard">
+          <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
+                  data-full="images/haji/pakej-1448-ajwa-gold.webp" data-w="1343" data-h="630"
+                  data-title="Pakej Ajwa Gold — hotel 1448H"
+                  data-meta="Makkah Hotel &middot; Grand Millenium Al Haram (Suite) &middot; Aziziyah Dar Salah Hotel">
+            <img src="images/haji/pakej-1448-ajwa-gold-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
+                 alt="Hotel Pakej Ajwa Gold 1448H: bilik di Makkah Hotel, Mekah">
+          </button>
+          <span class="pcard__ribbon pcard__ribbon--hot">Musim 1448H</span>
+          <div class="pcard__body">
+            <h4>Pakej Ajwa Gold</h4>
+            <p class="pcard__tier">20 &ndash; 24 Hari &middot; Kelas Perniagaan</p>
+            <ul class="pcard__feats">
+              <li>Mekah &mdash; Makkah Hotel @setaraf, 50 m dari Masjidil Haram</li>
+              <li>Madinah &mdash; Grand Millenium Al Haram (Suite) @setaraf, 50 m dari Masjid Nabawi</li>
+              <li>Aziziyah &mdash; Dar Salah Hotel @setaraf, 420 m dari Kompleks Jamrah</li>
+              <li>Makan 3 kali antarabangsa &middot; penerbangan komersial kelas perniagaan &middot; tren laju kelas perniagaan</li>
+            </ul>
+            <ul class="tiers">
+              <li><span>Bilik ber-4 <small>(KRST AG07)</small></span><b>RM 136,000</b></li>
+              <li><span>Bilik ber-2 <small>(KRST AG08)</small></span><b>RM 156,000</b></li>
+            </ul>
+            <a class="pcard__price" href="https://wa.me/60102790458"><span>Dari</span><strong>RM 136,000</strong><em>/pax</em></a>
+          </div>
+        </article>
+      </div>
+      <p class="ynote" style="margin-top:1.25rem">Harga pakej sudah <b>termasuk Bayaran Haji PJH 1448H/2027M sebanyak RM 23,398</b> yang akan didebitkan daripada akaun TH jemaah haji PJH. Tabung Haji berhak mengenakan caj tambahan sekiranya berlaku penambahan kos atau pengenalan kos baharu oleh pihak berkuasa di Arab Saudi. Pertukaran daripada penerbangan carter ke komersial memerlukan tambahan <b>RM 20,000</b>. Hotel di Aziziyah adalah <b>bilik berkumpulan</b> untuk semua pakej.</p>
+
       <div class="grid3 risalah">
         <button class="gitem lbx" type="button" data-lb-group="risalah-1448"
                 data-full="images/haji/risalah-pjh-1448-1.webp" data-w="1415" data-h="2000"
@@ -2610,7 +2705,7 @@ body.lb-lock{overflow:hidden}
 
       <details>
         <summary>Apakah perkhidmatan tambahan yang disediakan?</summary>
-        <div>Penginapan Aziziyah, ibadah sunnah Tarwiyah (tertakluk kelulusan Kementerian Haji Arab Saudi), pembimbing dan mutawwif berpengalaman, ziarah 14 tempat bersejarah, majlis kesyukuran di Tanah Suci, Kursus Haji Perdana sebelum berlepas, set kelengkapan haji lebih 27 item secara percuma, kuliah dan pengisian sepanjang perjalanan, serta perlindungan Takaful Perjalanan Haji dengan rawatan tanpa tunai.</div>
+        <div>Penginapan Aziziyah, ibadah sunnah Tarwiyah (tertakluk kelulusan Kementerian Haji Arab Saudi), pembimbing dan mutawwif berpengalaman, ziarah 14 tempat bersejarah, majlis kesyukuran di Tanah Suci, Kursus Haji Perdana sebelum berlepas, set kelengkapan haji lebih 26 item secara percuma, kuliah dan pengisian sepanjang perjalanan, serta perlindungan Takaful Perjalanan Haji dengan rawatan tanpa tunai.</div>
       </details>
 
       <details>
