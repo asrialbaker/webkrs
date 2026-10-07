@@ -687,9 +687,17 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .person__cap{position:absolute;left:0;right:0;bottom:0;padding:1rem .95rem 1.05rem;pointer-events:none}
 .person__role{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin:0 0 .4rem}
 .sec--dark .person__role{color:var(--amber)}
-.person h3{font-family:var(--ff-display);font-variation-settings:'wdth' 108;font-weight:700;
-  font-size:1.02rem;line-height:1.22;margin:0 0 .3rem;color:var(--white);
-  text-wrap:balance;text-shadow:0 1px 12px rgba(6,18,22,.5)}
+/* Nama penuh (gelaran + nama) hendaklah muat pada satu baris. Kad menyempit
+   mengikut lebar skrin, jadi saiz huruf turut mengecil dengan vw; had atas
+   .93rem ialah saiz terbesar yang masih memuatkan nama terpanjang pada lebar
+   kad desktop, dan had bawah .72rem menjaga telefon 320px. */
+.person h3{font-family:var(--ff-display);font-variation-settings:'wdth' 104;font-weight:700;
+  font-size:clamp(.72rem,3.4vw,.93rem);line-height:1.22;margin:0 0 .3rem;color:var(--white);
+  white-space:nowrap;text-shadow:0 1px 12px rgba(6,18,22,.5)}
+/* Jalur paling sempit untuk kad ini: dua lajur kembali pada 961px sedangkan
+   kad CTA terapung masih menuntut lajur kanan, jadi kad di sini lebih sempit
+   daripada pada telefon mahupun pada skrin lebar. Kecilkan sedikit lagi. */
+@media(min-width:961px) and (max-width:1180px){.person h3{font-size:.84rem}}
 .person p{font-size:.78rem;color:rgba(255,255,255,.9);margin:0;line-height:1.5}
 .sec--dark .person p{color:rgba(255,255,255,.9)}
 @media(prefers-reduced-motion:reduce){.person__img{transition:none}
