@@ -763,6 +763,16 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .addon p{margin:0;font-size:.78rem;line-height:1.5;color:rgba(255,255,255,.9)}
 @media(prefers-reduced-motion:reduce){.addon__img{transition:none}
   .addon__hit:hover .addon__img,.addon__hit:focus-visible .addon__img{transform:none}}
+/* Kad keistimewaan yang belum berisi — kekalkan irama grid sementara
+   menunggu foto dan teks. Tanda silang amber sama bahasa dengan .slot. */
+.addon--slot{border-style:dashed;border-color:var(--amber)}
+.addon__slotmark{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.25rem;text-align:center;padding:1rem;
+  background:repeating-linear-gradient(135deg,rgba(224,145,44,.12) 0 10px,transparent 10px 20px);
+  font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.addon__slotmark b{font-weight:600}
+.addon__slotmark span{font-size:.56rem;opacity:.75}
+.addon--slot .fill{color:var(--amber);background:rgba(224,145,44,.2);border-color:var(--amber)}
 
 /* ── Jalur galeri (testimoni / penganugerahan) ───────────── */
 .galstrip{display:grid;gap:.75rem;grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -1334,6 +1344,18 @@ body.lb-lock{overflow:hidden}
                alt="Dua peserta bergambar dengan sijil KRS Travel di hadapan latar Majlis Serahan Lesen PJH 1448H">
         </button>
       </div>
+      <h3 class="ypanel__h ypanel__h--next">Daftar Minat Pakej Haji KRS Travel</h3>
+      <a class="borang" href="downloads/borang-pendaftaran-haji-1448h.pdf"
+         download="Borang-Pendaftaran-Haji-1448H-KRS-Travel.pdf" type="application/pdf"
+         aria-label="Muat turun Borang Pendaftaran Pakej Haji 1448H / 2027, PDF, 196 KB, 2 muka surat">
+        <svg class="borang__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg>
+        <span class="borang__txt">
+          <strong>Borang Pendaftaran Pakej Haji 1448H / 2027</strong>
+          <small>PDF · 196 KB · 2 muka surat</small>
+        </span>
+        <svg class="borang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M4 13l8 8 8-8"/></svg>
+      </a>
+
       <h3 class="ypanel__h ypanel__h--next">Keistimewaan &amp; Kelebihan Pakej Haji PJH 1448H KRS Travel</h3>
       <div class="addons">
         <article class="addon">
@@ -1471,6 +1493,51 @@ body.lb-lock{overflow:hidden}
             <p>Jemaah dilindungi dengan Takaful Perjalanan Haji dan rawatan tanpa tunai.</p>
           </div>
         </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-haram.webp" data-w="550" data-h="412"
+                  data-title="Hotel 50 meter dari Masjidil Haram"
+                  data-meta="Pemandangan dataran Masjidil Haram dari tingkap bilik hotel jemaah KRS Travel">
+            <img class="addon__img" src="images/haji/istimewa-1448-haram-thumb.webp" width="412" height="412" loading="lazy" decoding="async"
+                 alt="Pemandangan dataran dan menara Masjidil Haram dilihat dari tingkap bilik hotel di Mekah">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><path d="M6 9l-3 3 3 3"/><path d="M18 9l3 3-3 3"/><path d="M3 6v12"/><path d="M21 6v12"/></svg>
+            <h4>50 Meter dari Haram</h4>
+            <p>Hotel di Mekah yang berdekatan dengan Masjidil Haram. Hanya 50 meter sahaja untuk semua pakej.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-masyair.webp" data-w="960" data-h="640"
+                  data-title="Hari-hari masyair haji"
+                  data-meta="Jemaah berhimpun di Padang Arafah berhampiran Jabal Rahmah pada hari wukuf">
+            <img class="addon__img" src="images/haji/istimewa-1448-masyair-thumb.webp" width="640" height="640" loading="lazy" decoding="async"
+                 alt="Lautan jemaah haji berihram putih berhimpun di Padang Arafah berhampiran Jabal Rahmah pada hari wukuf">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19v-9"/><path d="M21 19v-5a2 2 0 0 0-2-2H3"/><circle cx="7" cy="9" r="2"/></svg>
+            <h4>Keselesaan Masyair</h4>
+            <p>Penginapan di Aziziyyah memudahkan urusan jemaah sepanjang hari-hari masyair di Mina dan Arafah.</p>
+          </div>
+        </article>
+        <article class="addon">
+          <button class="addon__hit lbx" type="button" data-lb-group="istimewa-1448"
+                  data-full="images/haji/istimewa-1448-pengalaman.webp" data-w="484" data-h="504"
+                  data-title="Hampir 30 tahun pengalaman"
+                  data-meta="KRS Travel dalam industri haji dan umrah sejak 1999">
+            <img class="addon__img" src="images/haji/istimewa-1448-pengalaman-thumb.webp" width="800" height="800" loading="lazy" decoding="async"
+                 alt="Lencana 30 tahun pengalaman KRS Travel dalam industri haji dan umrah">
+            <span class="addon__scrim" aria-hidden="true"></span>
+          </button>
+          <div class="addon__cap">
+            <svg class="addon__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.6 13.4 7 22l5-3 5 3-1.6-8.6"/></svg>
+            <h4>Hampir 30 Tahun</h4>
+            <p>Pengalaman syarikat dalam industri haji dan umrah hampir 30 tahun.</p>
+          </div>
+        </article>
       </div>
 
       <h3 class="ypanel__h ypanel__h--next">Pakej Haji PJH 1448H / 2027 oleh KRS Travel <span class="ypanel__pill ypanel__pill--live">Musim semasa</span></h3>
@@ -1593,18 +1660,6 @@ body.lb-lock{overflow:hidden}
                alt="Keistimewaan Pakej Haji KRS Travel: perkhidmatan, syarat penerimaan dan pembatalan serta senarai ejen">
         </button>
       </div>
-
-      <h3 class="ypanel__h ypanel__h--next">Daftar Minat Pakej Haji KRS Travel</h3>
-      <a class="borang" href="downloads/borang-pendaftaran-haji-1448h.pdf"
-         download="Borang-Pendaftaran-Haji-1448H-KRS-Travel.pdf" type="application/pdf"
-         aria-label="Muat turun Borang Pendaftaran Pakej Haji 1448H / 2027, PDF, 196 KB, 2 muka surat">
-        <svg class="borang__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg>
-        <span class="borang__txt">
-          <strong>Borang Pendaftaran Pakej Haji 1448H / 2027</strong>
-          <small>PDF · 196 KB · 2 muka surat</small>
-        </span>
-        <svg class="borang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M4 13l8 8 8-8"/></svg>
-      </a>
     </div>
 
     <!-- ── PANEL: 1447H / 2026  (arkib) ──────────────────────── -->
