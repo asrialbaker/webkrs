@@ -645,6 +645,34 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .hcard dl{display:grid;grid-template-columns:auto 1fr;gap:.3rem .9rem;margin:.9rem 0 0;font-size:.83rem}
 .hcard dt{font-family:var(--ff-mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);align-self:center}
 .hcard dd{margin:0;color:var(--ink)}
+/* ── Hotel mengikut pakej ─────────────────────────────────────
+   Satu kad mendatang (landscape) selebar wrap bagi setiap hotel:
+   empat foto berderet di atas, nama hotel dan keterangan di bawah. */
+.hpaks{display:grid;gap:1.6rem}
+.hpak{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  transition:border-color .18s,transform .18s}
+.hpak:hover{border-color:var(--haram);transform:translateY(-3px)}
+.sec--stone .hpak{background:var(--paper)}
+/* Deret foto — satu foto besar (3:2) di atas, tiga kecil (4:3)
+   berderet di bawah dan rata dengan lebar foto besar */
+.hpak__shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;padding:var(--card-pad) var(--card-pad) 0}
+.hpak__shots .hpak__shot{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:var(--r)}
+.hpak__shots .hpak__shot--big{grid-column:1 / -1;aspect-ratio:3/2}
+.hpak__shot img{width:100%;height:100%;object-fit:cover}
+/* Dalam kad, .gitem jangan terangkat sendiri — kad sudah terangkat */
+.hpak__shots .gitem:hover,.hpak__shots .gitem:focus-visible{transform:none;box-shadow:none}
+.hpak__shots .ph{padding:.65rem;font-size:.6rem;letter-spacing:.06em}
+.hpak__shots .ph span{font-size:.56rem;line-height:1.35}
+.hpak__body{padding:var(--card-pad)}
+.hpak__meta{font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--amber-deep);margin:0 0 .4rem}
+.hpak__body h3{margin:0 0 .6rem;font-size:clamp(1.45rem,2.6vw,2rem);text-transform:uppercase;letter-spacing:0;font-variation-settings:'wdth' 112}
+.hpak__desc{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .75rem}
+.hpak__desc em{font-style:normal;font-size:.9rem;color:var(--muted)}
+.hpak__desc b{font-weight:600;font-size:.95rem;color:var(--ink)}
+@media(max-width:860px){
+  .hpak__shots{gap:.45rem}
+}
+
 .hslide{position:relative;overflow:hidden;background:transparent;padding:.75rem .75rem 0}
 .hslide img{pointer-events:none;position:absolute;inset:.75rem .75rem 0;width:calc(100% - 1.5rem);height:calc(100% - .75rem);
   object-fit:cover;border-radius:calc(var(--r) - 4px);opacity:0;animation:hslide-fade 16s linear infinite}
@@ -1451,7 +1479,7 @@ body.lb-lock{overflow:hidden}
           <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
                   data-full="images/haji/pakej-1448-rotab.webp" data-w="1343" data-h="642"
                   data-title="Pakej Rotab — hotel 1448H"
-                  data-meta="Makkah Towers &middot; Grand Millenium Al Haram &middot; Aziziyah Dar Salah Hotel">
+                  data-meta="Makkah Towers &middot; Grand Millennium Al Haram &middot; Aziziyah Dar Salah Hotel">
             <img src="images/haji/pakej-1448-rotab-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
                  alt="Hotel Pakej Rotab 1448H: bilik di Makkah Towers, Mekah">
           </button>
@@ -1461,7 +1489,7 @@ body.lb-lock{overflow:hidden}
             <p class="pcard__tier">30 &ndash; 45 Hari &middot; Bilik ber-6 / ber-5 / ber-4</p>
             <ul class="pcard__feats">
               <li>Mekah &mdash; Makkah Towers @setaraf, 50 m dari Masjidil Haram</li>
-              <li>Madinah &mdash; Grand Millenium Al Haram @setaraf, 50 m dari Masjid Nabawi</li>
+              <li>Madinah &mdash; Grand Millennium Al Haram @setaraf, 50 m dari Masjid Nabawi</li>
               <li>Aziziyah &mdash; Dar Salah Hotel @setaraf, 420 m dari Kompleks Jamrah</li>
               <li>Makan 3 kali selera Asia &middot; kelas ekonomi &middot; penerbangan sewa khas TH</li>
             </ul>
@@ -1482,7 +1510,7 @@ body.lb-lock{overflow:hidden}
           <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
                   data-full="images/haji/pakej-1448-ajwa.webp" data-w="1343" data-h="638"
                   data-title="Pakej Ajwa — hotel 1448H"
-                  data-meta="Movenpick &middot; Grand Millenium Al Haram &middot; Aziziyah Dar Salah Hotel">
+                  data-meta="Movenpick &middot; Grand Millennium Al Haram &middot; Aziziyah Dar Salah Hotel">
             <img src="images/haji/pakej-1448-ajwa-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
                  alt="Hotel Pakej Ajwa 1448H: bilik di Movenpick, Mekah">
           </button>
@@ -1492,7 +1520,7 @@ body.lb-lock{overflow:hidden}
             <p class="pcard__tier">30 &ndash; 45 Hari &middot; Bilik ber-4 / ber-3 / ber-2</p>
             <ul class="pcard__feats">
               <li>Mekah &mdash; Movenpick @setaraf, 50 m dari Masjidil Haram</li>
-              <li>Madinah &mdash; Grand Millenium Al Haram @setaraf, 50 m dari Masjid Nabawi</li>
+              <li>Madinah &mdash; Grand Millennium Al Haram @setaraf, 50 m dari Masjid Nabawi</li>
               <li>Aziziyah &mdash; Dar Salah Hotel @setaraf, 420 m dari Kompleks Jamrah</li>
               <li>Makan 3 kali selera Asia &middot; kelas ekonomi &middot; penerbangan sewa khas TH</li>
             </ul>
@@ -1513,7 +1541,7 @@ body.lb-lock{overflow:hidden}
           <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
                   data-full="images/haji/pakej-1448-ajwa-gold.webp" data-w="1343" data-h="630"
                   data-title="Pakej Ajwa Gold — hotel 1448H"
-                  data-meta="Makkah Hotel &middot; Grand Millenium Al Haram (Suite) &middot; Aziziyah Dar Salah Hotel">
+                  data-meta="Makkah Hotel &middot; Grand Millennium Al Haram (Suite) &middot; Aziziyah Dar Salah Hotel">
             <img src="images/haji/pakej-1448-ajwa-gold-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
                  alt="Hotel Pakej Ajwa Gold 1448H: bilik di Makkah Hotel, Mekah">
           </button>
@@ -1523,7 +1551,7 @@ body.lb-lock{overflow:hidden}
             <p class="pcard__tier">20 &ndash; 24 Hari &middot; Kelas Perniagaan</p>
             <ul class="pcard__feats">
               <li>Mekah &mdash; Makkah Hotel @setaraf, 50 m dari Masjidil Haram</li>
-              <li>Madinah &mdash; Grand Millenium Al Haram (Suite) @setaraf, 50 m dari Masjid Nabawi</li>
+              <li>Madinah &mdash; Grand Millennium Al Haram (Suite) @setaraf, 50 m dari Masjid Nabawi</li>
               <li>Aziziyah &mdash; Dar Salah Hotel @setaraf, 420 m dari Kompleks Jamrah</li>
               <li>Makan 3 kali antarabangsa &middot; penerbangan komersial kelas perniagaan &middot; tren laju kelas perniagaan</li>
             </ul>
@@ -1911,6 +1939,233 @@ body.lb-lock{overflow:hidden}
   </div>
 </section>
 
+<!-- ══ HOTEL PAKEJ HAJI 1448H ═══════════════════════════
+     Satu kad mendatang (landscape) bagi setiap hotel — tiga di Mekah
+     (ikut pakej: Rotab, Ajwa, Ajwa Gold), satu di Madinah dan satu di
+     Aziziyyah yang dikongsi ketiga-tiga pakej. Pemetaan hotel kepada
+     pakej ada dalam kad pakej di #pakej dan dalam Soalan Lazim.
+     Susun atur foto: satu foto besar (.hpak__shot--big, 3:2) di atas,
+     tiga foto kecil (4:3) berderet di bawah dan rata dengan lebar foto
+     besar. Kad Grand Millennium sudah berfoto; yang lain masih memegang
+     <div class="hpak__shot ph slot">.
+     Resipi menggantikan slot apabila foto sedia — ikut kad Grand
+     Millennium sebagai contoh:
+       1. Letak foto penuh dalam images/hotel/<nama-hotel>-1.webp … -4.webp
+          (lebar ±1290). Bagi tiga foto kecil, buat juga -N-thumb.webp
+          (lebar 800); foto besar guna fail penuh terus.
+       2. Ganti <div class="hpak__shot ph slot"> dengan butang lightbox:
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-<nama>"
+                  data-full="images/hotel/<nama>-2.webp" data-w="1290" data-h="1149"
+                  data-title="Ruang lobi" data-meta="…">
+            <img src="images/hotel/<nama>-2-thumb.webp" width="800" height="713"
+                 loading="lazy" decoding="async" alt="…">
+          </button>
+          Foto pertama tambah kelas .hpak__shot--big. Beri setiap hotel
+          data-lb-group tersendiri supaya anak panah lightbox tidak
+          melayari foto hotel lain.
+     Nama hotel dibesarkan dan dihuruf besar melalui CSS (.hpak__body h3),
+     jadi teks sumber kekal huruf biasa untuk carian dan pembaca skrin.
+     Nama dan jarak mengikut risalah rasmi 1448H (No. Lesen PJH 22/1448H). -->
+<section class="sec" id="hotel-1448" data-musim="1448">
+  <div class="wrap">
+    <div class="sec__bar">
+      <div>
+        <span class="sec__no">Seksyen 00</span>
+        <h2>Hotel-Hotel Yang Dekat &amp; Selesa</h2>
+      </div>
+    </div>
+    <div class="prose" style="margin-bottom:1.6rem">
+      <p>Ketiga-tiga pakej 1448H menempatkan jemaah dalam lingkungan <strong>50 meter dari masjid</strong> di Mekah dan Madinah, serta <strong>420 meter dari Kompleks Melontar Jamarat</strong> di Aziziyyah.</p>
+    </div>
+    <div class="hpaks">
+
+      <article class="hpak">
+        <div class="hpak__shots">
+          <button class="hpak__shot hpak__shot--big gitem lbx" type="button" data-lb-group="hotel-makkah-tower"
+                  data-full="images/hotel/makkah-tower-8.webp" data-w="1000" data-h="769"
+                  data-title="Kedudukan hotel"
+                  data-meta="Makkah Tower bersebelahan Masjidil Haram &middot; 50 m dari Masjidil Haram">
+            <img src="images/hotel/makkah-tower-8-thumb.webp" width="1000" height="667" loading="lazy" decoding="async"
+                 alt="Pemandangan udara Makkah Tower pada waktu malam bersebelahan dataran Masjidil Haram di Makkah">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-makkah-tower"
+                  data-full="images/hotel/makkah-tower-9.webp" data-w="1000" data-h="750"
+                  data-title="Ruang lobi"
+                  data-meta="Kaunter penerimaan tetamu dan ruang menunggu">
+            <img src="images/hotel/makkah-tower-9-thumb.webp" width="800" height="600" loading="lazy" decoding="async"
+                 alt="Ruang lobi Makkah Tower dengan siling berlampu, candelier kristal dan gubahan bunga di tengah ruang">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-makkah-tower"
+                  data-full="images/hotel/makkah-tower-10.webp" data-w="1000" data-h="666"
+                  data-title="Bilik penginapan"
+                  data-meta="Bilik dua katil dengan ruang duduk dan meja makan">
+            <img src="images/hotel/makkah-tower-10-thumb.webp" width="800" height="533" loading="lazy" decoding="async"
+                 alt="Bilik penginapan dua katil di Makkah Tower dengan ruang duduk, meja makan dan tingkap menghadap kota Makkah">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-makkah-tower"
+                  data-full="images/hotel/makkah-tower-11.webp" data-w="1000" data-h="750"
+                  data-title="Kafe hotel"
+                  data-meta="Ruang santai jemaah berhampiran lobi">
+            <img src="images/hotel/makkah-tower-11-thumb.webp" width="800" height="600" loading="lazy" decoding="async"
+                 alt="Kafe Makkah Tower dengan kerusi kulit merah marun, meja bulat dan kaligrafi berbingkai di dinding">
+          </button>
+        </div>
+        <div class="hpak__body">
+          <p class="hpak__meta">Di Mekah</p>
+          <h3>Makkah Tower</h3>
+          <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
+        </div>
+      </article>
+
+      <article class="hpak">
+        <div class="hpak__shots">
+          <button class="hpak__shot hpak__shot--big gitem lbx" type="button" data-lb-group="hotel-movenpick"
+                  data-full="images/hotel/movenpick-hajar-tower-1.webp" data-w="1024" data-h="768"
+                  data-title="Kedudukan hotel"
+                  data-meta="Hajar Tower menghadap Masjidil Haram &middot; 50 m dari Masjidil Haram">
+            <img src="images/hotel/movenpick-hajar-tower-1-thumb.webp" width="1024" height="683" loading="lazy" decoding="async"
+                 alt="Menara M&ouml;venpick Hotel &amp; Residences Hajar Tower dalam kompleks Abraj Al Bait, menghadap dataran Masjidil Haram dan Kaabah di Makkah">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-movenpick"
+                  data-full="images/hotel/movenpick-hajar-tower-2.webp" data-w="1024" data-h="768"
+                  data-title="Ruang lobi"
+                  data-meta="Kaunter penerimaan tetamu dan ruang menunggu">
+            <img src="images/hotel/movenpick-hajar-tower-2-thumb.webp" width="800" height="600" loading="lazy" decoding="async"
+                 alt="Ruang lobi M&ouml;venpick Hajar Tower dengan candelier besar, kaunter penerimaan tetamu dan lantai marmar bercorak">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-movenpick"
+                  data-full="images/hotel/movenpick-hajar-tower-3.webp" data-w="1024" data-h="683"
+                  data-title="Bilik penginapan"
+                  data-meta="Bilik dua katil lengkap meja tulis dan televisyen">
+            <img src="images/hotel/movenpick-hajar-tower-3-thumb.webp" width="800" height="534" loading="lazy" decoding="async"
+                 alt="Bilik penginapan dua katil di M&ouml;venpick Hajar Tower lengkap dengan meja tulis, kerusi dan televisyen">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-movenpick"
+                  data-full="images/hotel/movenpick-hajar-tower-4.webp" data-w="1024" data-h="768"
+                  data-title="Kafe &amp; ruang pastri"
+                  data-meta="Ruang santai jemaah berhampiran lobi hotel">
+            <img src="images/hotel/movenpick-hajar-tower-4-thumb.webp" width="800" height="600" loading="lazy" decoding="async"
+                 alt="Kafe dan ruang pastri M&ouml;venpick Hajar Tower dengan lantai petak hitam putih, meja marmar dan ruang duduk">
+          </button>
+        </div>
+        <div class="hpak__body">
+          <p class="hpak__meta">Di Mekah</p>
+          <h3>M&ouml;venpick</h3>
+          <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
+        </div>
+      </article>
+
+      <article class="hpak">
+        <div class="hpak__shots">
+          <button class="hpak__shot hpak__shot--big gitem lbx" type="button" data-lb-group="hotel-makkah-hotel"
+                  data-full="images/hotel/makkah-hotel-1.webp" data-w="800" data-h="1067"
+                  data-title="Bangunan hotel"
+                  data-meta="Makkah Hotel &amp; Towers &middot; 50 m dari Masjidil Haram">
+            <img src="images/hotel/makkah-hotel-1-thumb.webp" width="800" height="533" loading="lazy" decoding="async"
+                 alt="Bangunan Makkah Hotel &amp; Towers di Makkah pada waktu siang, tingkap mashrabiya kayu di sepanjang fasad dan Menara Jam Makkah kelihatan di sebelah kiri">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-makkah-hotel"
+                  data-full="images/hotel/makkah-hotel-2.webp" data-w="1000" data-h="667"
+                  data-title="Hidangan bufet"
+                  data-meta="Sajian bufet harian di restoran hotel">
+            <img src="images/hotel/makkah-hotel-2-thumb.webp" width="800" height="534" loading="lazy" decoding="async"
+                 alt="Kaunter bufet berbentuk pulau di restoran Makkah Hotel dengan periuk hidangan bertutup perak, susunan pinggan dan ruang makan di belakang">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-makkah-hotel"
+                  data-full="images/hotel/makkah-hotel-3.webp" data-w="1000" data-h="667"
+                  data-title="Ruang santai"
+                  data-meta="Lounge dengan sajian buah dan minuman">
+            <img src="images/hotel/makkah-hotel-3-thumb.webp" width="800" height="534" loading="lazy" decoding="async"
+                 alt="Ruang santai Makkah Hotel dengan kerusi berlapik corak zigzag, meja bulat, paparan buah-buahan dan peti sejuk minuman">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-makkah-hotel"
+                  data-full="images/hotel/makkah-hotel-4.webp" data-w="1000" data-h="667"
+                  data-title="Ruang lobi"
+                  data-meta="Kaunter penerimaan tetamu dan candelier utama">
+            <img src="images/hotel/makkah-hotel-4-thumb.webp" width="800" height="534" loading="lazy" decoding="async"
+                 alt="Ruang lobi utama Makkah Hotel dengan candelier kristal besar, kaunter penerimaan tetamu dan kaligrafi berbingkai di dinding">
+          </button>
+        </div>
+        <div class="hpak__body">
+          <p class="hpak__meta">Di Mekah</p>
+          <h3>Makkah Hotel</h3>
+          <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
+        </div>
+      </article>
+
+      <article class="hpak">
+        <div class="hpak__shots">
+          <button class="hpak__shot hpak__shot--big gitem lbx" type="button" data-lb-group="hotel-grand-millennium"
+                  data-full="images/hotel/grand-millennium-al-haram-1.webp" data-w="1290" data-h="1010"
+                  data-title="Fasad hotel"
+                  data-meta="Grand Millennium al-Haram, Madinah &middot; 50 m dari Masjid Nabawi">
+            <img src="images/hotel/grand-millennium-al-haram-1.webp" width="1290" height="1010" loading="lazy" decoding="async"
+                 alt="Fasad Grand Millennium Al Haram Hotel di Madinah pada waktu malam, papan tanda hotel bercahaya di atas deretan gerbang pintu masuk">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-grand-millennium"
+                  data-full="images/hotel/grand-millennium-al-haram-2.webp" data-w="1290" data-h="1149"
+                  data-title="Ruang lobi"
+                  data-meta="Kaunter penerimaan tetamu dan ruang menunggu">
+            <img src="images/hotel/grand-millennium-al-haram-2-thumb.webp" width="800" height="713" loading="lazy" decoding="async"
+                 alt="Ruang lobi Grand Millennium Al Haram dengan kaunter penerimaan tetamu, lantai marmar dan ruang duduk">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-grand-millennium"
+                  data-full="images/hotel/grand-millennium-al-haram-3.webp" data-w="1290" data-h="1232"
+                  data-title="Bilik penginapan"
+                  data-meta="Bilik dua katil lengkap meja tulis dan televisyen">
+            <img src="images/hotel/grand-millennium-al-haram-3-thumb.webp" width="800" height="764" loading="lazy" decoding="async"
+                 alt="Bilik penginapan dua katil di Grand Millennium Al Haram lengkap dengan meja tulis, kerusi dan televisyen">
+          </button>
+          <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-grand-millennium"
+                  data-full="images/hotel/grand-millennium-al-haram-4.webp" data-w="1289" data-h="1237"
+                  data-title="Ruang makan"
+                  data-meta="Dewan makan hotel untuk sarapan dan makan malam jemaah">
+            <img src="images/hotel/grand-millennium-al-haram-4-thumb.webp" width="800" height="768" loading="lazy" decoding="async"
+                 alt="Ruang makan Grand Millennium Al Haram dengan siling bilah kayu, dinding hijau dan deretan meja makan">
+          </button>
+        </div>
+        <div class="hpak__body">
+          <p class="hpak__meta">Di Madinah</p>
+          <h3>Grand Millennium al-Haram</h3>
+          <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjid Nabawi</b></p>
+        </div>
+      </article>
+
+      <article class="hpak">
+        <div class="hpak__shots">
+          <div class="hpak__shot hpak__shot--big ph slot">
+            <b>Foto 1</b>
+            <span>Bangunan hotel</span>
+            <span>1290 &times; 860</span>
+          </div>
+          <div class="hpak__shot ph slot">
+            <b>Foto 2</b>
+            <span>Ruang lobi</span>
+            <span>900 &times; 675</span>
+          </div>
+          <div class="hpak__shot ph slot">
+            <b>Foto 3</b>
+            <span>Bilik penginapan</span>
+            <span>900 &times; 675</span>
+          </div>
+          <div class="hpak__shot ph slot">
+            <b>Foto 4</b>
+            <span>Kemudahan hotel</span>
+            <span>900 &times; 675</span>
+          </div>
+        </div>
+        <div class="hpak__body">
+          <p class="hpak__meta">Di Aziziyyah</p>
+          <h3>Dar al-Salah Al-Aziziyyah</h3>
+          <p class="hpak__desc"><em>@setaraf</em><b>420 m dari Kompleks Melontar Jamarat</b></p>
+        </div>
+      </article>
+
+    </div>
+    <p class="prose" style="margin-top:1.1rem;font-size:.83rem">&ldquo;@setaraf&rdquo; bermaksud hotel setaraf boleh diganti sekiranya hotel tersenarai penuh. Jarak adalah anggaran berjalan kaki mengikut risalah rasmi musim 1448H.</p>
+  </div>
+</section>
+
 <!-- ══ 02 · BARISAN PEMBIMBING IBADAH ═══════════════════════ -->
 <section class="sec sec--dark" id="pembimbing" data-musim="1448 1447">
   <div class="wrap">
@@ -2008,7 +2263,7 @@ body.lb-lock{overflow:hidden}
         <li><b>Hotel Makkah <em>&middot; 15 Zulhijjah</em></b>
           <span>Penginapan di Makkah mengikut pakej &mdash; Rotab: Makkah Tower (&plusmn;50 m) &middot; Ajwa: M&ouml;venpick (&plusmn;50 m) &middot; Ajwa Gold: Makkah Hotel (&plusmn;50 m).</span></li>
         <li><b>Hotel Madinah <em>&middot; 1&ndash;7 Muharram</em></b>
-          <span>Penginapan di Madinah mengikut pakej &mdash; ketiga-tiga pakej di Grand Millenium Al Haram (&plusmn;50 m dari Masjid Nabawi).</span></li>
+          <span>Penginapan di Madinah mengikut pakej &mdash; ketiga-tiga pakej di Grand Millennium Al Haram (&plusmn;50 m dari Masjid Nabawi).</span></li>
         <li><b>Lapangan Terbang Madinah <em>&middot; 7 Muharram</em></b>
           <span>Berangkat pulang ke Malaysia.</span></li>
       </ol>
@@ -2780,7 +3035,7 @@ body.lb-lock{overflow:hidden}
 
       <details>
         <summary>Berapakah jarak hotel dari masjid?</summary>
-        <div>Mengikut risalah rasmi 1448H / 2027 — Rotab: Makkah Towers @setaraf 50 m dari Masjidil Haram, Grand Millenium Al Haram @setaraf 50 m dari Masjid Nabawi. Ajwa: Mövenpick @setaraf 50 m dari Masjidil Haram, Grand Millenium Al Haram @setaraf 50 m dari Masjid Nabawi. Ajwa Gold: Makkah Hotel @setaraf 50 m dari Masjidil Haram, Grand Millenium Al Haram (Suite) @setaraf 50 m dari Masjid Nabawi. Semua pakej menggunakan Dar Salah Hotel @setaraf di Aziziyah, 420 m dari Kompleks Jamarat, dengan bilik berkumpulan.</div>
+        <div>Mengikut risalah rasmi 1448H / 2027 — Rotab: Makkah Towers @setaraf 50 m dari Masjidil Haram, Grand Millennium Al Haram @setaraf 50 m dari Masjid Nabawi. Ajwa: Mövenpick @setaraf 50 m dari Masjidil Haram, Grand Millennium Al Haram @setaraf 50 m dari Masjid Nabawi. Ajwa Gold: Makkah Hotel @setaraf 50 m dari Masjidil Haram, Grand Millennium Al Haram (Suite) @setaraf 50 m dari Masjid Nabawi. Semua pakej menggunakan Dar Salah Hotel @setaraf di Aziziyah, 420 m dari Kompleks Jamarat, dengan bilik berkumpulan.</div>
       </details>
 
       <details>
