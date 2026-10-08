@@ -647,7 +647,8 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .hcard dd{margin:0;color:var(--ink)}
 /* ── Hotel mengikut pakej ─────────────────────────────────────
    Satu kad mendatang (landscape) selebar wrap bagi setiap hotel:
-   empat foto berderet di atas, nama hotel dan keterangan di bawah. */
+   empat foto berderet, nama hotel dan keterangan dihamparkan di atas
+   foto pertama (petak grid yang sama, rapat ke bawah). */
 .hpaks{display:grid;gap:1.6rem}
 .hpak{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
   transition:border-color .18s,transform .18s}
@@ -655,22 +656,35 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .sec--stone .hpak{background:var(--paper)}
 /* Deret foto — satu foto besar (3:2) di atas, tiga kecil (4:3)
    berderet di bawah dan rata dengan lebar foto besar */
-.hpak__shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;padding:var(--card-pad) var(--card-pad) 0}
+.hpak__shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;padding:var(--card-pad)}
 .hpak__shots .hpak__shot{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:var(--r)}
-.hpak__shots .hpak__shot--big{grid-column:1 / -1;aspect-ratio:3/2}
+.hpak__shots .hpak__shot--big{grid-column:1 / -1;grid-row:1;aspect-ratio:3/2}
+/* Slot kosong: tolak teks penanda ke atas supaya tidak bertindih dengan hamparan */
+.hpak__shots .hpak__shot--big.ph{justify-content:flex-start;padding-top:1.15rem}
+/* Tirai gelap supaya teks putih kekal terbaca di atas foto pertama */
+.hpak__scrim{position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(to top,
+    rgba(6,18,22,.94) 0%, rgba(6,18,22,.86) 18%, rgba(6,18,22,.58) 38%,
+    rgba(6,18,22,.2) 58%, rgba(6,18,22,.03) 76%, rgba(6,18,22,0) 100%)}
 .hpak__shot img{width:100%;height:100%;object-fit:cover}
 /* Dalam kad, .gitem jangan terangkat sendiri — kad sudah terangkat */
 .hpak__shots .gitem:hover,.hpak__shots .gitem:focus-visible{transform:none;box-shadow:none}
 .hpak__shots .ph{padding:.65rem;font-size:.6rem;letter-spacing:.06em}
 .hpak__shots .ph span{font-size:.56rem;line-height:1.35}
-.hpak__body{padding:var(--card-pad)}
-.hpak__meta{font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--amber-deep);margin:0 0 .4rem}
-.hpak__body h3{margin:0 0 .6rem;font-size:clamp(1.45rem,2.6vw,2rem);text-transform:uppercase;letter-spacing:0;font-variation-settings:'wdth' 112}
+.hpak__body{grid-column:1 / -1;grid-row:1;align-self:end;z-index:2;pointer-events:none;
+  padding:1rem 1.05rem 1.05rem}
+.hpak__meta{font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--amber);margin:0 0 .4rem}
+.hpak__body h3{margin:0 0 .5rem;font-size:clamp(1.2rem,2.4vw,1.9rem);text-transform:uppercase;letter-spacing:0;
+  font-variation-settings:'wdth' 112;color:var(--white);text-wrap:balance;text-shadow:0 1px 14px rgba(6,18,22,.55)}
 .hpak__desc{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .75rem}
-.hpak__desc em{font-style:normal;font-size:.9rem;color:var(--muted)}
-.hpak__desc b{font-weight:600;font-size:.95rem;color:var(--ink)}
+.hpak__desc em{font-style:normal;font-size:.9rem;color:rgba(255,255,255,.72)}
+.hpak__desc b{font-weight:600;font-size:.95rem;color:var(--white);text-shadow:0 1px 10px rgba(6,18,22,.5)}
 @media(max-width:860px){
   .hpak__shots{gap:.45rem}
+  .hpak__body{padding:.8rem .85rem .9rem}
+  /* Foto utama lebih tinggi pada telefon supaya hamparan teks tidak
+     menghimpit gambar — nama hotel terpanjang mengambil dua baris. */
+  .hpak__shots .hpak__shot--big{aspect-ratio:4/3}
 }
 
 .hslide{position:relative;overflow:hidden;background:transparent;padding:.75rem .75rem 0}
@@ -2001,7 +2015,9 @@ body.lb-lock{overflow:hidden}
      pakej ada dalam kad pakej di #pakej dan dalam Soalan Lazim.
      Susun atur foto: satu foto besar (.hpak__shot--big, 3:2) di atas,
      tiga foto kecil (4:3) berderet di bawah dan rata dengan lebar foto
-     besar. Kad Grand Millennium sudah berfoto; yang lain masih memegang
+     besar. Nama hotel dan jarak (.hpak__body) duduk dalam petak grid
+     yang sama dengan foto besar, rapat ke bawah di atas .hpak__scrim.
+     Kad Grand Millennium sudah berfoto; yang lain masih memegang
      <div class="hpak__shot ph slot">.
      Resipi menggantikan slot apabila foto sedia — ikut kad Grand
      Millennium sebagai contoh:
@@ -2015,7 +2031,9 @@ body.lb-lock{overflow:hidden}
             <img src="images/hotel/<nama>-2-thumb.webp" width="800" height="713"
                  loading="lazy" decoding="async" alt="…">
           </button>
-          Foto pertama tambah kelas .hpak__shot--big. Beri setiap hotel
+          Foto pertama tambah kelas .hpak__shot--big dan selitkan
+          <span class="hpak__scrim" aria-hidden="true"></span> sebelum
+          </button> supaya teks hamparan kekal terbaca. Beri setiap hotel
           data-lb-group tersendiri supaya anak panah lightbox tidak
           melayari foto hotel lain.
      Nama hotel dibesarkan dan dihuruf besar melalui CSS (.hpak__body h3),
@@ -2042,7 +2060,13 @@ body.lb-lock{overflow:hidden}
                   data-meta="Makkah Tower bersebelahan Masjidil Haram &middot; 50 m dari Masjidil Haram">
             <img src="images/hotel/makkah-tower-8-thumb.webp" width="1000" height="667" loading="lazy" decoding="async"
                  alt="Pemandangan udara Makkah Tower pada waktu malam bersebelahan dataran Masjidil Haram di Makkah">
+            <span class="hpak__scrim" aria-hidden="true"></span>
           </button>
+          <div class="hpak__body">
+            <p class="hpak__meta">Di Mekah</p>
+            <h3>Makkah Tower</h3>
+            <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
+          </div>
           <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-makkah-tower"
                   data-full="images/hotel/makkah-tower-9.webp" data-w="1000" data-h="750"
                   data-title="Ruang lobi"
@@ -2065,11 +2089,6 @@ body.lb-lock{overflow:hidden}
                  alt="Kafe Makkah Tower dengan kerusi kulit merah marun, meja bulat dan kaligrafi berbingkai di dinding">
           </button>
         </div>
-        <div class="hpak__body">
-          <p class="hpak__meta">Di Mekah</p>
-          <h3>Makkah Tower</h3>
-          <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
-        </div>
       </article>
 
       <article class="hpak">
@@ -2080,7 +2099,13 @@ body.lb-lock{overflow:hidden}
                   data-meta="Hajar Tower menghadap Masjidil Haram &middot; 50 m dari Masjidil Haram">
             <img src="images/hotel/movenpick-hajar-tower-1-thumb.webp" width="1024" height="683" loading="lazy" decoding="async"
                  alt="Menara M&ouml;venpick Hotel &amp; Residences Hajar Tower dalam kompleks Abraj Al Bait, menghadap dataran Masjidil Haram dan Kaabah di Makkah">
+            <span class="hpak__scrim" aria-hidden="true"></span>
           </button>
+          <div class="hpak__body">
+            <p class="hpak__meta">Di Mekah</p>
+            <h3>M&ouml;venpick</h3>
+            <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
+          </div>
           <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-movenpick"
                   data-full="images/hotel/movenpick-hajar-tower-2.webp" data-w="1024" data-h="768"
                   data-title="Ruang lobi"
@@ -2103,11 +2128,6 @@ body.lb-lock{overflow:hidden}
                  alt="Kafe dan ruang pastri M&ouml;venpick Hajar Tower dengan lantai petak hitam putih, meja marmar dan ruang duduk">
           </button>
         </div>
-        <div class="hpak__body">
-          <p class="hpak__meta">Di Mekah</p>
-          <h3>M&ouml;venpick</h3>
-          <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
-        </div>
       </article>
 
       <article class="hpak">
@@ -2118,7 +2138,13 @@ body.lb-lock{overflow:hidden}
                   data-meta="Makkah Hotel &amp; Towers &middot; 50 m dari Masjidil Haram">
             <img src="images/hotel/makkah-hotel-1-thumb.webp" width="800" height="533" loading="lazy" decoding="async"
                  alt="Bangunan Makkah Hotel &amp; Towers di Makkah pada waktu siang, tingkap mashrabiya kayu di sepanjang fasad dan Menara Jam Makkah kelihatan di sebelah kiri">
+            <span class="hpak__scrim" aria-hidden="true"></span>
           </button>
+          <div class="hpak__body">
+            <p class="hpak__meta">Di Mekah</p>
+            <h3>Makkah Hotel</h3>
+            <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
+          </div>
           <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-makkah-hotel"
                   data-full="images/hotel/makkah-hotel-2.webp" data-w="1000" data-h="667"
                   data-title="Hidangan bufet"
@@ -2141,11 +2167,6 @@ body.lb-lock{overflow:hidden}
                  alt="Ruang lobi utama Makkah Hotel dengan candelier kristal besar, kaunter penerimaan tetamu dan kaligrafi berbingkai di dinding">
           </button>
         </div>
-        <div class="hpak__body">
-          <p class="hpak__meta">Di Mekah</p>
-          <h3>Makkah Hotel</h3>
-          <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjidil Haram</b></p>
-        </div>
       </article>
 
       <article class="hpak">
@@ -2156,7 +2177,13 @@ body.lb-lock{overflow:hidden}
                   data-meta="Grand Millennium al-Haram, Madinah &middot; 50 m dari Masjid Nabawi">
             <img src="images/hotel/grand-millennium-al-haram-1.webp" width="1290" height="1010" loading="lazy" decoding="async"
                  alt="Fasad Grand Millennium Al Haram Hotel di Madinah pada waktu malam, papan tanda hotel bercahaya di atas deretan gerbang pintu masuk">
+            <span class="hpak__scrim" aria-hidden="true"></span>
           </button>
+          <div class="hpak__body">
+            <p class="hpak__meta">Di Madinah</p>
+            <h3>Grand Millennium al-Haram</h3>
+            <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjid Nabawi</b></p>
+          </div>
           <button class="hpak__shot gitem lbx" type="button" data-lb-group="hotel-grand-millennium"
                   data-full="images/hotel/grand-millennium-al-haram-2.webp" data-w="1290" data-h="1149"
                   data-title="Ruang lobi"
@@ -2179,11 +2206,6 @@ body.lb-lock{overflow:hidden}
                  alt="Ruang makan Grand Millennium Al Haram dengan siling bilah kayu, dinding hijau dan deretan meja makan">
           </button>
         </div>
-        <div class="hpak__body">
-          <p class="hpak__meta">Di Madinah</p>
-          <h3>Grand Millennium al-Haram</h3>
-          <p class="hpak__desc"><em>@setaraf</em><b>50 m dari Masjid Nabawi</b></p>
-        </div>
       </article>
 
       <article class="hpak">
@@ -2192,6 +2214,12 @@ body.lb-lock{overflow:hidden}
             <b>Foto 1</b>
             <span>Bangunan hotel</span>
             <span>1290 &times; 860</span>
+            <span class="hpak__scrim" aria-hidden="true"></span>
+          </div>
+          <div class="hpak__body">
+            <p class="hpak__meta">Di Aziziyyah</p>
+            <h3>Dar al-Salah Al-Aziziyyah</h3>
+            <p class="hpak__desc"><em>@setaraf</em><b>420 m dari Kompleks Melontar Jamarat</b></p>
           </div>
           <div class="hpak__shot ph slot">
             <b>Foto 2</b>
@@ -2208,11 +2236,6 @@ body.lb-lock{overflow:hidden}
             <span>Kemudahan hotel</span>
             <span>900 &times; 675</span>
           </div>
-        </div>
-        <div class="hpak__body">
-          <p class="hpak__meta">Di Aziziyyah</p>
-          <h3>Dar al-Salah Al-Aziziyyah</h3>
-          <p class="hpak__desc"><em>@setaraf</em><b>420 m dari Kompleks Melontar Jamarat</b></p>
         </div>
       </article>
 
