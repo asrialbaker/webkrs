@@ -209,7 +209,7 @@ p{margin:0 0 1em}
 .hsl__track{display:flex;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
 .hsl__slide{position:relative;container-type:inline-size;flex:0 0 100%;min-width:100%;display:block;line-height:0}
 .hsl__slide:focus-visible{outline:3px solid var(--amber);outline-offset:-3px}
-.hsl__slide img{width:100%;height:auto;aspect-ratio:2048/549;object-fit:cover}
+.hsl__slide img{width:100%;height:auto;aspect-ratio:1600/428;object-fit:cover}
 /* Banner pakej yang sudah penuh: warna diredamkan + reben serong di penjuru.
    Reben hidup dalam kotak segi empat sama yang dipotong (overflow:hidden),
    jadi hujungnya terpotong kemas pada tepi banner. */
@@ -231,8 +231,11 @@ p{margin:0 0 1em}
     font-size:.56rem;letter-spacing:.1em;padding:.28rem .46rem;box-shadow:0 2px 9px rgba(0,0,0,.32)}
 }
 /* Anak panah — DI DALAM slider, bertindih atas banner */
-.hsl__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:clamp(34px,3.2vw,42px);height:clamp(34px,3.2vw,42px);display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink);cursor:pointer;box-shadow:0 4px 14px rgba(14,28,34,.22);transition:background .15s,color .15s,opacity .15s;opacity:.9}
-.hsl__nav:hover{background:var(--white);color:var(--haram);opacity:1}
+.hsl__nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:clamp(34px,3.2vw,42px);height:clamp(34px,3.2vw,42px);display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink);cursor:pointer;box-shadow:0 4px 14px rgba(14,28,34,.22);transition:background .15s,color .15s,opacity .15s,box-shadow .18s,transform .2s cubic-bezier(.34,1.42,.64,1);opacity:.9}
+.hsl__nav:hover{background:var(--white);color:var(--haram);opacity:1;transform:translateY(-50%) scale(1.1);box-shadow:0 6px 18px rgba(14,28,34,.3)}
+/* Tekan: butang mengecil sekejap, kemudian melantun balik — pengguna
+   nampak kliknya diterima walaupun banner lambat sedikit bertukar. */
+.hsl__nav:active,.hsl__nav.is-tekan{background:var(--white);color:var(--haram);opacity:1;transform:translateY(-50%) scale(.84);box-shadow:0 2px 8px rgba(14,28,34,.26)}
 .hsl__nav:focus-visible{outline:3px solid var(--amber);outline-offset:2px;opacity:1}
 .hsl__nav svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .hsl__nav--prev{left:clamp(.5rem,1.2vw,1rem)}
@@ -242,8 +245,22 @@ p{margin:0 0 1em}
 .hsl__dot:hover{background:rgba(14,28,34,.42)}
 .hsl__dot[aria-current="true"]{width:26px;background:var(--amber)}
 .hsl__dot:focus-visible{outline:2px solid var(--haram);outline-offset:3px}
+/* Gerakan dikurangkan: banner TIDAK menggelongsor ke sisi — ia bersilih
+   ganti dengan pudar lembut. Autoplay tetap berjalan. Tetapan ini bermaksud
+   "kurangkan gerakan", bukan "matikan slider"; pudar tidak mencetus loya
+   gerakan, jadi pelawat masih nampak kesemua enam banner. */
 @media(prefers-reduced-motion:reduce){
-  .hsl__track{transition:none}
+  /* !important kerana peraturan sejagat di bawah mematikan SEMUA transition
+     bila gerakan dikurangkan. Pemilih kelas mengatasi `*` walaupun kedua-dua
+     !important, jadi hanya pudar slider ini yang dikecualikan. */
+  .hsl__track{transition:opacity .3s ease!important}
+  .hsl__track.is-tukar{opacity:0}
+  /* Kesan hover yang membesar sendiri dimatikan, tetapi maklum balas TEKAN
+     dikekalkan: ia balasan terus kepada klik pengguna, bukan gerakan yang
+     berlaku dengan sendirinya — cuma dilembutkan sedikit. */
+  .hsl__nav{transition:transform .12s ease,background .12s,color .12s!important}
+  .hsl__nav:hover{transform:translateY(-50%)}
+  .hsl__nav:active,.hsl__nav.is-tekan{transform:translateY(-50%) scale(.9)!important}
 }
 
 /* ── Irama seksyen ───────────────────────────────────────── */
@@ -907,33 +924,34 @@ body.is-lbox-open{overflow:hidden}
    <div class="hsl__win" id="hslWin" role="group" aria-label="Banner promosi — guna anak panah kiri dan kanan" tabindex="0">
     <div class="hsl__track" id="hslTrack">
 
-      <a class="hsl__slide" href="umrah.html">
-        <img src="images/slider/slaid-2.webp" width="2048" height="549" fetchpriority="high" decoding="async"
-             alt="Pakej Umrah &amp; Haji KRS Travel — dari hati, untuk Ilahi. Harga serendah RM6,040 transit Muscat, RM8,250 direct flight, RM8,640 cuti sekolah">
+      <a class="hsl__slide" href="haji.html">
+        <img src="images/slider/slaid-haji-1448h.webp" width="1600" height="428" fetchpriority="high" decoding="async"
+             alt="Pakej Haji 1448H/2027 — Pakej Rotab 30 hingga 45 hari bermula RM54,990, Pakej Ajwa 30 hingga 45 hari bermula RM65,900, Pakej Ajwa Gold 20 hingga 24 hari bermula RM136,000, bilik ber-6. Hotel di Aziziyah.">
       </a>
 
-      <a class="hsl__slide hsl__slide--off" href="umrah-yb-asna.html">
-        <img src="images/slider/slaid-4.webp" width="2048" height="549" loading="lazy" decoding="async"
-             alt="Umrah Sekampung Ke Mokah bersama YB Datuk Hj Mohd Asna Bin Amin, ADUN Lenggeng — 22 November 2026, 12 hari 10 malam, RM6,200 fullboard. Tempahan sudah penuh.">
-        <span class="hsl__off" aria-hidden="true"><b>Sudah Penuh</b></span>
+      <a class="hsl__slide" href="#" data-pautan-belum-sedia>
+        <img src="images/slider/slaid-cuti-sekolah-1448h.webp" width="1600" height="428" loading="lazy" decoding="async"
+             alt="Pakej Umrah Cuti Sekolah musim 1448H — fullboard 12 hari 10 malam, percuma 1 malam di Taif. Pakej Mandhi bermula RM9,750, Kabsah RM10,499, Maqlubah RM12,050 sebilik ber-4. Diskaun RM200 penerbangan Malaysia Airlines.">
       </a>
 
-      <a class="hsl__slide hsl__slide--off" href="umrah-yb-zaidy.html">
-        <img src="images/slider/slaid-5.webp" width="2048" height="549" loading="lazy" decoding="async"
-             alt="Umrah Moh Poie Mokah bersama YB Dato' Mohd Zaidy Bin Abdul Kadir — 3 November 2026, 11 hari 9 malam, RM6,040 fullboard. Tempahan sudah penuh.">
-        <span class="hsl__off" aria-hidden="true"><b>Sudah Penuh</b></span>
+      <a class="hsl__slide" href="#" data-pautan-belum-sedia>
+        <img src="images/slider/slaid-ramadhan-1448h.webp" width="1600" height="428" loading="lazy" decoding="async"
+             alt="Pakej Umrah Ramadhan 1448H/2027 — fullboard 12 hari 10 malam. Sambut Ramadhan 3 hingga 13 Februari bermula RM9,550, Pertengahan Ramadhan 13 hingga 23 Februari RM10,050, Akhir Ramadhan 28 Februari hingga 10 Mac RM15,790, bilik ber-4.">
       </a>
 
-      <a class="hsl__slide hsl__slide--off" href="umrah-yb-razi.html">
-        <img src="images/slider/slaid-6.webp" width="2048" height="549" loading="lazy" decoding="async"
-             alt="Umrah Jolobu Ko Baitullah bersama YB Datuk Seri Jalaluddin Bin Alias dan YB Dato' Razi Bin Mohd Ali — 10 November 2026, 11 hari 9 malam, RM6,090 fullboard. Tempahan sudah penuh.">
-        <span class="hsl__off" aria-hidden="true"><b>Sudah Penuh</b></span>
+      <a class="hsl__slide" href="#" data-pautan-belum-sedia>
+        <img src="images/slider/slaid-sebulan-ramadhan-1448h.webp" width="1600" height="428" loading="lazy" decoding="async"
+             alt="Pakej Umrah Sebulan Ramadhan 1448H/2027 — fullboard 31 hari 30 malam, direct flight Saudia, 23 Februari hingga 10 Mac 2027. Harga bermula RM16,998 sebilik ber-5. Tempat adalah terhad.">
       </a>
 
-      <a class="hsl__slide hsl__slide--off" href="umrah-perdana-krs-1448h.html">
-        <img src="images/slider/slaid-1.webp" width="2048" height="549" loading="lazy" decoding="async"
-             alt="Umrah Perdana KRS Travel 1448H istimewa bersama Mawi — 18 Disember 2026, bermula RM8,640. Tempahan sudah penuh.">
-        <span class="hsl__off" aria-hidden="true"><b>Sudah Penuh</b></span>
+      <a class="hsl__slide" href="#" data-pautan-belum-sedia>
+        <img src="images/slider/slaid-syawal-1448h.webp" width="1600" height="428" loading="lazy" decoding="async"
+             alt="Pakej Umrah Syawal 1448H/2027 — direct flight, harga bermula RM6,898 sebilik ber-4 atau ber-5, tanpa makan, set lengkap luggage, tambah makan RM700. Percuma 1 malam di Taif, ziarah Taif, makan nasi Arab dan 2 kali Jumaat.">
+      </a>
+
+      <a class="hsl__slide" href="#" data-pautan-belum-sedia>
+        <img src="images/slider/slaid-syawal-fullboard-1448h.webp" width="1600" height="428" loading="lazy" decoding="async"
+             alt="Pakej Umrah Syawal 1448H/2027 — direct flight fullboard. Pakej Mandhi Syawal bermula RM8,098, Kabsah Syawal RM8,698, Maqlubah Syawal RM9,598 sebilik ber-4. Percuma 1 malam di Taif, ziarah Taif, makan nasi Arab dan 2 kali Jumaat.">
       </a>
 
     </div>
@@ -1979,7 +1997,7 @@ body.is-lbox-open{overflow:hidden}
   });
 
   /* Satu banner sahaja kelihatan: geser jalur mengikut indeks */
-  function go(i){
+  function paint(i){
     idx=(i+n)%n;
     track.style.transform='translate3d(-'+(idx*100)+'%,0,0)';
     slides.forEach(function(s,k){
@@ -1990,12 +2008,34 @@ body.is-lbox-open{overflow:hidden}
     dots.forEach(function(d,k){ k===idx ? d.setAttribute('aria-current','true') : d.removeAttribute('aria-current'); });
   }
 
-  prev && prev.addEventListener('click',function(){ hold(); go(idx-1); });
-  next && next.addEventListener('click',function(){ hold(); go(idx+1); });
+  /* Peralihan biasa: CSS menggelongsor jalur, jadi paint() sahaja sudah cukup.
+     Bila pengguna minta gerakan dikurangkan, gelongsor sisi digantikan dengan
+     pudar: redup dahulu, tukar banner, kemudian terang semula. */
+  var SWAP=160, swapT=null;
+  function go(i){
+    if(!reduce){ paint(i); return; }
+    clearTimeout(swapT);
+    track.classList.add('is-tukar');
+    swapT=setTimeout(function(){
+      paint(i);
+      track.classList.remove('is-tukar');
+    },SWAP);
+  }
+
+  /* Tekan anak panah: tambah kelas sekejap supaya kesan "ditekan" kelihatan
+     walaupun ditekan melalui papan kekunci, di mana :active tidak menentu. */
+  function tekan(btn){
+    if(!btn) return;
+    btn.classList.add('is-tekan');
+    setTimeout(function(){ btn.classList.remove('is-tekan'); },190);
+  }
+
+  prev && prev.addEventListener('click',function(){ tekan(prev); hold(); go(idx-1); });
+  next && next.addEventListener('click',function(){ tekan(next); hold(); go(idx+1); });
 
   win && win.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight'){ e.preventDefault(); hold(); go(idx+1); }
-    if(e.key==='ArrowLeft'){ e.preventDefault(); hold(); go(idx-1); }
+    if(e.key==='ArrowRight'){ e.preventDefault(); tekan(next); hold(); go(idx+1); }
+    if(e.key==='ArrowLeft'){ e.preventDefault(); tekan(prev); hold(); go(idx-1); }
   });
 
   /* Leret pada skrin sentuh */
@@ -2021,10 +2061,12 @@ body.is-lbox-open{overflow:hidden}
      disembunyikan, atau bila slider keluar dari skrin — kemudian sambung
      semula dengan sendiri. Selepas pengguna tekan anak panah / titik /
      leret, kami jeda 9 saat supaya mereka boleh membaca, kemudian sambung. */
-  var STEP=6000, HOLDMS=9000;
+  /* Gerakan dikurangkan tidak lagi mematikan autoplay — ia cuma melambatkan
+     kadarnya dan menukar gelongsor kepada pudar (lihat go() dan CSS). */
+  var STEP=reduce?7500:6000, HOLDMS=9000;
 
   function play(){
-    if(reduce||timer||n<2||hovered||focused||resume||!seen||document.hidden) return;
+    if(timer||n<2||hovered||focused||resume||!seen||document.hidden) return;
     timer=setInterval(function(){ go(idx+1); },STEP);
   }
   function stop(){ clearInterval(timer); timer=null; }
@@ -2057,7 +2099,14 @@ body.is-lbox-open{overflow:hidden}
     },{threshold:0.25}).observe(win);
   }
 
-  go(0);
+  /* Slaid yang pautannya belum siap: klik tidak membawa ke mana-mana.
+     Tukar href="#" kepada halaman sebenar dan buang atribut ini nanti. */
+  track.addEventListener('click',function(e){
+    var a=e.target.closest('.hsl__slide[data-pautan-belum-sedia]');
+    if(a) e.preventDefault();
+  });
+
+  paint(0);
   play();
 })();
 
