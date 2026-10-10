@@ -500,7 +500,6 @@ body.is-lbox-open{overflow:hidden}
 @media(max-width:860px){.rakan{padding:2.1rem 0 2.3rem}.rakan__band{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6rem 1rem}.rakan__band img{height:38px}}
 @media(max-width:560px){.rakan__band{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.35rem .9rem}.rakan__band img{height:30px}}
 /* ── Pakej haji PJH 1448H (dipetik dari haji.html) ───────── */
-.pcard__shot{display:block;width:auto;height:auto;align-self:stretch;object-fit:cover;object-position:center;background:var(--limestone);border:1px solid var(--line)}
 .tiers{list-style:none;margin:.95rem 0 0;padding:.8rem 0 0;border-top:1px solid var(--line);display:grid;gap:.35rem}
 .tiers li{display:flex;align-items:baseline;gap:.6rem;font-size:.83rem}
 .tiers li span{color:var(--muted)}
@@ -509,9 +508,42 @@ body.is-lbox-open{overflow:hidden}
 .tiers li:first-child b{color:var(--haram)}
 .ynote{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:var(--r);padding:1rem 1.1rem;font-size:.85rem;line-height:1.65;color:var(--muted);margin:1.25rem 0 0}
 .ynote b{color:var(--ink)}
-.risalah__link{display:block;aspect-ratio:1131/1600;border:1px solid var(--line);border-radius:var(--r);background:var(--white);overflow:hidden;transition:border-color .18s,transform .18s}
-.risalah__link:hover,.risalah__link:focus-visible{border-color:var(--haram);transform:translateY(-3px)}
-.risalah__link img{width:100%;height:100%;object-fit:contain;display:block}
+/* ── Lightbox (dipetik dari haji.html) ───────────────────── */
+/* Rantaian flex dengan min-height:0 supaya imej sentiasa muat dalam skrin. */
+.pshot{display:block;padding:0;border:1px solid var(--line);background:var(--limestone);overflow:hidden;cursor:zoom-in}
+.pshot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.pshot:hover img,.pshot:focus-visible img{transform:scale(1.04)}
+.gitem{display:block;padding:0;margin:0;border:1px solid var(--line);border-radius:var(--r);background:var(--limestone);overflow:hidden;cursor:zoom-in;transition:border-color .18s,transform .18s,box-shadow .18s}
+.gitem img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.gitem:hover,.gitem:focus-visible{border-color:var(--haram);transform:translateY(-3px);box-shadow:0 12px 30px rgba(14,28,34,.14)}
+.gitem:hover img{transform:scale(1.045)}
+.risalah .gitem{aspect-ratio:1131/1600;background:var(--white)}
+.risalah .gitem img{object-fit:contain}
+.risalah .gitem:hover img{transform:none}
+img[data-zoom]{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:200;background:rgba(14,28,34,.94);display:none;
+  flex-direction:column;padding:clamp(.75rem,2vw,1.5rem);overflow:hidden}
+.lb.is-open{display:flex}
+.lb[hidden]{display:none}
+.lb__bar{flex:none;display:flex;align-items:center;gap:1rem;color:var(--muted-on-dark)}
+.lb__count{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+.lb__x{margin-left:auto;background:none;border:1px solid var(--line-dark);border-radius:var(--r);
+  color:var(--white);width:40px;height:40px;display:grid;place-items:center;cursor:pointer}
+.lb__x:hover{border-color:var(--amber);color:var(--amber)}
+.lb__x svg{width:16px;height:16px}
+.lb__stage{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;gap:clamp(.5rem,2vw,1.25rem);padding-block:.75rem}
+.lb__frame{flex:1 1 auto;min-width:0;min-height:0;height:100%;display:flex;align-items:center;justify-content:center}
+.lb__img{max-width:100%;max-height:100%;width:auto;height:auto;display:block;
+  background:var(--white);border-radius:var(--r);box-shadow:0 18px 50px rgba(0,0,0,.4)}
+.lb__nav{background:none;border:1px solid var(--line-dark);border-radius:50%;color:var(--white);
+  width:46px;height:46px;display:grid;place-items:center;cursor:pointer;flex:none}
+.lb__nav:hover{border-color:var(--amber);color:var(--amber)}
+.lb__nav svg{width:16px;height:16px}
+.lb__nav[hidden]{display:none}
+.lb__cap{flex:none;text-align:center;color:var(--white);padding-top:.9rem;margin:0}
+.lb__cap b{display:block;font-family:var(--ff-display);font-variation-settings:'wdth' 112;font-size:1rem;font-weight:600}
+.lb__cap span{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.1em;color:var(--muted-on-dark)}
+body.lb-lock{overflow:hidden}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Muizzuddin Bin Mohd Zuhali", "jobTitle": "Ejen Pelancongan", "url": "https://krstravel.com.my/ejen/muizzuddin-bin-mohd-zuhali", "telephone": "+60136062915", "worksFor": {"@type": "TravelAgency", "name": "KRS Travel Sdn Bhd", "url": "https://krstravel.com.my/"}, "areaServed": {"@type": "AdministrativeArea", "name": "Pahang"}}</script>
 </head>
@@ -693,10 +725,17 @@ body.is-lbox-open{overflow:hidden}
   </div>
 </section>
 
+<section class="sec sec--stone">
+  <div class="wrap">
+    <div class="sec__bar"><h2>Kawasan liputan</h2></div>
+    <p style="max-width:60ch;color:var(--muted);margin:0">Melayani jemaah di sekitar Pahang dan kawasan berdekatan. Untuk pengesahan kawasan liputan atau urusan tempahan, hubungi Muizzuddin Bin Mohd Zuhali terus melalui WhatsApp di 013-606 2915.</p>
+  </div>
+</section>
+
 <section class="sec">
   <div class="wrap">
-    <div class="sec__bar"><h2>Pakej yang diuruskan</h2></div>
-    <div class="grid3">
+    <div class="sec__bar"><h2>Pakej Umrah 1448H / 2027</h2></div>
+    <div class="grid2">
       <article class="pcard">
         <img class="pcard__media pcard__poster pcard__poster--tall" data-zoom src="../images/pakej-umrah-cuti-sekolah-transit-muscat-4-dis-2026.webp" width="1131" height="1600" loading="lazy" decoding="async" alt="Pakej Umrah Cuti Sekolah Disember 2026 — berangkat 4 Disember, Oman Air transit Muscat — KRS Travel">
         <span class="pcard__ribbon pcard__ribbon--hot">Termurah</span>
@@ -798,7 +837,13 @@ body.is-lbox-open{overflow:hidden}
     <div class="grid3">
 
       <article class="pcard">
-        <img class="pcard__media pcard__shot" src="../images/haji/pakej-1448-rotab-thumb.webp" width="700" height="467" loading="lazy" decoding="async" alt="Hotel Pakej Rotab 1448H: bilik di Makkah Towers, Mekah">
+        <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
+                data-full="../images/haji/pakej-1448-rotab.webp" data-w="1343" data-h="642"
+                data-title="Pakej Rotab &mdash; hotel 1448H"
+                data-meta="Makkah Towers &middot; Grand Millennium Al Haram &middot; Aziziyah Dar Salah Hotel">
+          <img src="../images/haji/pakej-1448-rotab-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
+               alt="Hotel Pakej Rotab 1448H: bilik di Makkah Towers, Mekah">
+        </button>
         <span class="pcard__ribbon pcard__ribbon--hot">Musim 1448H</span>
         <div class="pcard__body">
           <h3>Pakej Rotab</h3>
@@ -823,7 +868,13 @@ body.is-lbox-open{overflow:hidden}
       </article>
 
       <article class="pcard">
-        <img class="pcard__media pcard__shot" src="../images/haji/pakej-1448-ajwa-thumb.webp" width="700" height="467" loading="lazy" decoding="async" alt="Hotel Pakej Ajwa 1448H: bilik di Movenpick, Mekah">
+        <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
+                data-full="../images/haji/pakej-1448-ajwa.webp" data-w="1343" data-h="638"
+                data-title="Pakej Ajwa &mdash; hotel 1448H"
+                data-meta="Movenpick &middot; Grand Millennium Al Haram &middot; Aziziyah Dar Salah Hotel">
+          <img src="../images/haji/pakej-1448-ajwa-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
+               alt="Hotel Pakej Ajwa 1448H: bilik di Movenpick, Mekah">
+        </button>
         <span class="pcard__ribbon pcard__ribbon--hot">Musim 1448H</span>
         <div class="pcard__body">
           <h3>Pakej Ajwa</h3>
@@ -848,7 +899,13 @@ body.is-lbox-open{overflow:hidden}
       </article>
 
       <article class="pcard">
-        <img class="pcard__media pcard__shot" src="../images/haji/pakej-1448-ajwa-gold-thumb.webp" width="700" height="467" loading="lazy" decoding="async" alt="Hotel Pakej Ajwa Gold 1448H: bilik di Makkah Hotel, Mekah">
+        <button class="pcard__media pshot lbx" type="button" data-lb-group="pakej-1448"
+                data-full="../images/haji/pakej-1448-ajwa-gold.webp" data-w="1343" data-h="630"
+                data-title="Pakej Ajwa Gold &mdash; hotel 1448H"
+                data-meta="Makkah Hotel &middot; Grand Millennium Al Haram (Suite) &middot; Aziziyah Dar Salah Hotel">
+          <img src="../images/haji/pakej-1448-ajwa-gold-thumb.webp" width="700" height="467" loading="lazy" decoding="async"
+               alt="Hotel Pakej Ajwa Gold 1448H: bilik di Makkah Hotel, Mekah">
+        </button>
         <span class="pcard__ribbon pcard__ribbon--hot">Musim 1448H</span>
         <div class="pcard__body">
           <h3>Pakej Ajwa Gold</h3>
@@ -874,24 +931,29 @@ body.is-lbox-open{overflow:hidden}
     </div>
     <p class="ynote">Harga pakej sudah <b>termasuk Bayaran Haji PJH 1448H/2027M sebanyak RM 23,398</b> yang akan didebitkan daripada akaun TH jemaah haji PJH. Tabung Haji berhak mengenakan caj tambahan sekiranya berlaku penambahan kos atau pengenalan kos baharu oleh pihak berkuasa di Arab Saudi. Pertukaran daripada penerbangan carter ke komersial memerlukan tambahan <b>RM 20,000</b>. Hotel di Aziziyah adalah <b>bilik berkumpulan</b> untuk semua pakej.</p>
 
-    <div class="grid3" style="margin-top:1.25rem">
-      <a class="risalah__link" href="../haji.html#pakej-1448-senarai">
-        <img src="../images/haji/risalah-pjh-1448-1-thumb.webp" width="424" height="599" loading="lazy" decoding="async" alt="Risalah Pakej Haji KRS Travel 1448H/2027: harga dan hotel bagi Pakej Rotab, Pakej Ajwa dan Pakej Ajwa Gold">
-      </a>
-      <a class="risalah__link" href="../haji.html#pakej-1448-senarai">
-        <img src="../images/haji/risalah-pjh-1448-2-thumb.webp" width="424" height="599" loading="lazy" decoding="async" alt="Info Pakej Haji KRS Travel: hotel Mekah, Madinah dan Aziziyah bagi Pakej Rotab, Ajwa dan Ajwa Gold">
-      </a>
-      <a class="risalah__link" href="../haji.html#pakej-1448-senarai">
-        <img src="../images/haji/risalah-pjh-1448-3-thumb.webp" width="424" height="599" loading="lazy" decoding="async" alt="Keistimewaan Pakej Haji KRS Travel: perkhidmatan, syarat penerimaan dan pembatalan serta senarai ejen">
-      </a>
+    <div class="grid3 risalah" style="margin-top:1.25rem">
+      <button class="gitem lbx" type="button" data-lb-group="risalah-1448"
+              data-full="../images/haji/risalah-pjh-1448-1.webp" data-w="1415" data-h="2000"
+              data-title="Pakej Haji 1448H / 2027"
+              data-meta="Harga, kod bilik dan hotel bagi Pakej Rotab, Ajwa dan Ajwa Gold">
+        <img src="../images/haji/risalah-pjh-1448-1-thumb.webp" width="424" height="599" loading="lazy" decoding="async"
+             alt="Risalah Pakej Haji KRS Travel 1448H/2027: harga dan hotel bagi Pakej Rotab, Pakej Ajwa dan Pakej Ajwa Gold">
+      </button>
+      <button class="gitem lbx" type="button" data-lb-group="risalah-1448"
+              data-full="../images/haji/risalah-pjh-1448-2.webp" data-w="1415" data-h="2000"
+              data-title="Info Pakej Haji KRS Travel"
+              data-meta="Hotel Mekah, Madinah dan Aziziyah bagi setiap pakej, berserta kelas penerbangan dan makan">
+        <img src="../images/haji/risalah-pjh-1448-2-thumb.webp" width="424" height="599" loading="lazy" decoding="async"
+             alt="Info Pakej Haji KRS Travel: hotel Mekah, Madinah dan Aziziyah bagi Pakej Rotab, Ajwa dan Ajwa Gold">
+      </button>
+      <button class="gitem lbx" type="button" data-lb-group="risalah-1448"
+              data-full="../images/haji/risalah-pjh-1448-3.webp" data-w="1415" data-h="2000"
+              data-title="Keistimewaan Pakej Haji KRS Travel"
+              data-meta="Keistimewaan perkhidmatan, syarat penerimaan &amp; pembatalan, dan senarai ejen mengikut negeri">
+        <img src="../images/haji/risalah-pjh-1448-3-thumb.webp" width="424" height="599" loading="lazy" decoding="async"
+             alt="Keistimewaan Pakej Haji KRS Travel: perkhidmatan, syarat penerimaan dan pembatalan serta senarai ejen">
+      </button>
     </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__bar"><h2>Kawasan liputan</h2></div>
-    <p style="max-width:60ch;color:var(--muted);margin:0">Melayani jemaah di sekitar Pahang dan kawasan berdekatan. Untuk pengesahan kawasan liputan atau urusan tempahan, hubungi Muizzuddin Bin Mohd Zuhali terus melalui WhatsApp di 013-606 2915.</p>
   </div>
 </section>
 
@@ -960,6 +1022,27 @@ body.is-lbox-open{overflow:hidden}
   </div>
 </footer>
 
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Paparan gambar" hidden>
+  <div class="lb__bar">
+    <span class="lb__count" id="lb-count"></span>
+    <button class="lb__x" type="button" id="lb-close" aria-label="Tutup paparan">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+    </button>
+  </div>
+
+  <div class="lb__stage">
+    <button class="lb__nav" type="button" id="lb-prev" aria-label="Sebelumnya">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg>
+    </button>
+    <span class="lb__frame"><img class="lb__img" id="lb-img" src="" alt=""></span>
+    <button class="lb__nav" type="button" id="lb-next" aria-label="Seterusnya">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg>
+    </button>
+  </div>
+
+  <p class="lb__cap"><b id="lb-title"></b><span id="lb-meta"></span></p>
+</div>
+
 <a class="fab" href="https://wa.me/60136062915" aria-label="Hubungi kami di WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
   WhatsApp
@@ -1019,6 +1102,107 @@ body.is-lbox-open{overflow:hidden}
     img.addEventListener('error',fail);
     if(img.complete && img.naturalWidth===0) fail();
   });
+})();
+</script>
+
+
+<script>
+// Lightbox — butang .lbx (gambar hotel, risalah) dan poster img[data-zoom].
+// data-lb-group mengumpulkan imej: anak panah hanya melayari dalam kumpulan
+// yang sama, jadi poster umrah tidak tercampur dengan risalah haji.
+(function(){
+  var lb=document.getElementById('lightbox');
+  if(!lb) return;
+
+  var zooms=[].slice.call(document.querySelectorAll('img[data-zoom]'));
+  zooms.forEach(function(el){
+    el.setAttribute('role','button');
+    el.setAttribute('tabindex','0');
+    if(!el.getAttribute('title')) el.setAttribute('title','Klik untuk lihat poster penuh');
+  });
+  var all=[].slice.call(document.querySelectorAll('.lbx')).concat(zooms);
+  if(!all.length) return;
+
+  var img=document.getElementById('lb-img'), title=document.getElementById('lb-title'),
+      meta=document.getElementById('lb-meta'), count=document.getElementById('lb-count'),
+      xBtn=document.getElementById('lb-close'), prev=document.getElementById('lb-prev'), next=document.getElementById('lb-next');
+  var btns=all, i=0, opener=null, multi=false;
+
+  function isZoom(el){return el.hasAttribute('data-zoom');}
+  function group(el){return isZoom(el)?'poster':(el.dataset.lbGroup||'default');}
+
+  function show(n){
+    i=(n+btns.length)%btns.length;
+    var b=btns[i], d=b.dataset, thumb=isZoom(b)?b:b.querySelector('img');
+    img.removeAttribute('width'); img.removeAttribute('height');
+    img.src=isZoom(b)?(b.currentSrc||b.src):d.full;
+    if(!isZoom(b)){
+      if(d.w) img.width=d.w;
+      if(d.h) img.height=d.h;
+    }
+    img.alt=thumb?thumb.alt:(d.title||'');
+    title.textContent=isZoom(b)?'':(d.title||'');
+    meta.textContent=isZoom(b)?(b.alt||''):(d.meta||'');
+    count.textContent=multi?(i+1)+' / '+btns.length:'';
+  }
+  function open(from){
+    opener=from||null;
+    // hadkan pelayaran kepada kumpulan yang diklik
+    var g=group(from);
+    btns=all.filter(function(b){return group(b)===g;});
+    multi=btns.length>1;
+    prev.hidden=next.hidden=!multi;
+    show(btns.indexOf(from));
+    lb.hidden=false; lb.classList.add('is-open');
+    document.body.classList.add('lb-lock');
+    xBtn.focus();
+  }
+  function close(){
+    lb.classList.remove('is-open'); lb.hidden=true;
+    document.body.classList.remove('lb-lock');
+    img.src='';
+    if(opener){opener.focus(); opener=null;}
+  }
+
+  all.forEach(function(b){
+    b.addEventListener('click',function(){open(b);});
+    if(isZoom(b)) b.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault(); open(b);}
+    });
+  });
+  xBtn.addEventListener('click',close);
+  prev.addEventListener('click',function(){show(i-1);});
+  next.addEventListener('click',function(){show(i+1);});
+
+  // klik pada latar (bukan imej atau butang) menutup paparan
+  lb.addEventListener('click',function(e){
+    if(e.target.closest('.lb__img,.lb__nav,.lb__x,.lb__cap')) return;
+    close();
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(lb.hidden) return;
+    if(e.key==='Escape'){e.preventDefault(); close();}
+    else if(multi&&e.key==='ArrowLeft'){e.preventDefault(); show(i-1);}
+    else if(multi&&e.key==='ArrowRight'){e.preventDefault(); show(i+1);}
+    else if(e.key==='Tab'){
+      // kekalkan fokus di dalam dialog
+      var f=multi?[xBtn,prev,next]:[xBtn];
+      var at=f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(at+(e.shiftKey?-1:1)+f.length)%f.length].focus();
+    }
+  });
+
+  // leret pada peranti sentuh
+  var x0=null;
+  lb.addEventListener('touchstart',function(e){x0=e.changedTouches[0].clientX;},{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0;
+    if(multi&&Math.abs(dx)>60) show(i+(dx<0?1:-1));
+    x0=null;
+  },{passive:true});
 })();
 </script>
 
