@@ -662,21 +662,25 @@ body.is-lbox-open{overflow:hidden}
 .phone__vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;z-index:1}
 
 /* Fasad (poster) — sentiasa wujud dalam HTML. Iframe hanya dimuat selepas klik,
-   jadi video tidak pernah "blank" walaupun TikTok disekat / autoplay ditolak. */
+   jadi video tidak pernah "blank" walaupun YouTube disekat / autoplay ditolak. */
 .phone__facade{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:.7rem;width:100%;padding:2.2rem 1rem 3.2rem;
   border:0;cursor:pointer;text-align:center;text-decoration:none;color:var(--white);
   background:radial-gradient(120% 80% at 50% 32%,#20292D 0%,#0B0F11 68%,#000 100%)}
-.phone__facade::before{content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
-  background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px)}
-.phone__play{position:relative;width:56px;height:56px;flex:none;border-radius:50%;
+.phone__poster{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;border:0}
+/* Scrim gelap DI ATAS poster — tanpa ia, teks putih hilang pada bahagian
+   terang gambar. Jalur serong dikekalkan sebagai tekstur halus. */
+.phone__facade::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px),
+             linear-gradient(to bottom,rgba(8,11,13,.62) 0%,rgba(8,11,13,.34) 44%,rgba(8,11,13,.8) 100%)}
+.phone__play{position:relative;z-index:2;width:56px;height:56px;flex:none;border-radius:50%;
   display:grid;place-items:center;background:rgba(255,255,255,.1);
   border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(2px);transition:transform .18s,background .18s,border-color .18s}
 .phone__play svg{width:20px;height:20px;fill:currentColor;margin-left:3px}
 .phone__facade:hover .phone__play,.phone__facade:focus-visible .phone__play{transform:scale(1.08);background:var(--amber);border-color:var(--amber);color:#0B0F11}
 .phone__facade:focus-visible{outline:2px solid var(--amber);outline-offset:-4px}
-.phone__ttl{position:relative;font-size:.82rem;font-weight:600;line-height:1.4;max-width:22ch}
-.phone__sub{position:relative;font-family:var(--ff-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.phone__ttl{position:relative;z-index:2;font-size:.82rem;font-weight:600;line-height:1.4;max-width:22ch}
+.phone__sub{position:relative;z-index:2;font-family:var(--ff-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .phone__vid[data-playing="true"] .phone__facade{display:none}
 
 .phone__cap{position:absolute;left:0;right:0;bottom:0;z-index:3;display:flex;align-items:center;justify-content:center;gap:.4rem;
@@ -685,6 +689,7 @@ body.is-lbox-open{overflow:hidden}
   background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,0))}
 .phone__cap:hover{color:var(--amber)}
 .phone__cap svg{width:12px;height:12px;fill:currentColor;flex:none}
+.phone__cap img{height:12px;width:auto;flex:none}
 
 /* Senarai perkhidmatan */
 .dhui__lead h3{font-size:clamp(1.25rem,2.4vw,1.75rem);font-variation-settings:'wdth' 115}
@@ -1000,26 +1005,30 @@ body.is-lbox-open{overflow:hidden}
         <div class="phone__scr">
           <div class="phone__notch" aria-hidden="true"></div>
 
-          <div class="phone__vid" id="tt-player"
-               data-tt-src="https://www.tiktok.com/player/v1/7553572368191343890?music_info=0&amp;description=0&amp;rel=0&amp;native_context_menu=0&amp;closed_caption=0&amp;loop=1&amp;autoplay=1&amp;controls=0&amp;progress_bar=0&amp;volume_control=0&amp;fullscreen_button=0&amp;timestamp=0">
+          <div class="phone__vid" id="phone-player"
+               data-yt-src="https://www.youtube.com/embed/GJ0yxEWF1oU?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=GJ0yxEWF1oU&amp;controls=0&amp;rel=0&amp;modestbranding=1&amp;playsinline=1&amp;disablekb=1&amp;fs=0">
 
             <!-- Poster statik: sebahagian daripada HTML, jadi ia sentiasa terpapar
-                 walaupun JavaScript dimatikan atau TikTok tidak dapat dicapai. -->
-            <a class="phone__facade" id="tt-facade"
-               href="https://www.tiktok.com/@krstravelofficial/video/7553572368191343890"
+                 walaupun JavaScript dimatikan atau YouTube tidak dapat dicapai. -->
+            <a class="phone__facade" id="phone-facade"
+               href="https://www.youtube.com/shorts/GJ0yxEWF1oU"
                target="_blank" rel="noopener noreferrer"
-               aria-label="Main video TikTok KRS Travel">
+               aria-label="Main video YouTube KRS Travel">
+              <!-- Bingkai sebenar daripada video itu sendiri. Jika YouTube
+                   disekat, inilah yang dilihat pelawat — bukan dinding bot. -->
+              <img class="phone__poster" src="images/youtube-testimoni-haji-1446h-poster.webp"
+                   alt="" width="720" height="1280" loading="lazy" decoding="async">
               <span class="phone__play" aria-hidden="true">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               </span>
-              <span class="phone__ttl">Umrah Ramadhan — pahala seperti haji</span>
+              <span class="phone__ttl">Testimoni jemaah haji KRS Travel 1446H</span>
               <span class="phone__sub">Main video</span>
             </a>
 
           </div>
 
-          <a class="phone__cap" href="https://www.tiktok.com/@krstravelofficial/video/7553572368191343890" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-1.79-2.46V9.8a5.77 5.77 0 1 0 4.88 5.7V9.01a7.35 7.35 0 0 0 4.29 1.38V7.3a4.28 4.28 0 0 1-3.23-1.48z"/></svg>
+          <a class="phone__cap" href="https://www.youtube.com/shorts/GJ0yxEWF1oU" target="_blank" rel="noopener noreferrer">
+            <img src="images/logo/social/youtube.png" alt="" width="53" height="12" loading="lazy" decoding="async">
             @krstravelofficial
           </a>
         </div>
@@ -1135,7 +1144,7 @@ body.is-lbox-open{overflow:hidden}
       <!-- Kad 1 · Video Utama — kekal saiz grid yang sama (span 2 × 2).
            Poster ada dalam HTML; iframe YouTube hanya disuntik selepas klik. -->
       <figure class="ph galvid" id="yt-card"
-              data-yt-src="https://www.youtube-nocookie.com/embed/Rbqs1T-2VfQ?autoplay=1&amp;rel=0&amp;modestbranding=1">
+              data-yt-src="https://www.youtube.com/embed/Rbqs1T-2VfQ?autoplay=1&amp;rel=0&amp;modestbranding=1">
         <a class="galvid__facade" id="yt-facade"
            href="https://www.youtube.com/watch?v=Rbqs1T-2VfQ"
            target="_blank" rel="noopener noreferrer"
@@ -2121,81 +2130,115 @@ body.is-lbox-open{overflow:hidden}
   play();
 })();
 
-/* Mockup telefon — TikTok autoplay (senyap).
+/* Mockup telefon — YouTube Shorts autoplay (senyap).
    Video dimuat sebaik sahaja mockup masuk ke skrin, kemudian kami hantar
-   arahan mute + play melalui postMessage API pemain TikTok. Pelayar hanya
-   membenarkan autoplay tanpa gesture jika video SENYAP — jadi ia dimulakan
-   senyap. Poster statik kekal DI ATAS iframe sehingga pemain benar-benar
-   menjawab, supaya pelawat tidak pernah melihat kotak hitam kosong. */
+   arahan mute + play melalui IFrame Player API. Pelayar hanya membenarkan
+   autoplay tanpa gesture jika video SENYAP — jadi ia dimulakan senyap.
+   Poster statik kekal DI ATAS iframe sehingga pemain benar-benar bermain,
+   supaya pelawat tidak pernah melihat kotak hitam atau dinding "Sign in to
+   confirm you're not a bot". */
 (function(){
-  var wrap=document.getElementById('tt-player');
-  var facade=document.getElementById('tt-facade');
+  var wrap=document.getElementById('phone-player');
+  var facade=document.getElementById('phone-facade');
   if(!wrap||!facade) return;
-  var src=wrap.getAttribute('data-tt-src');
+  var src=wrap.getAttribute('data-yt-src');
   if(!src) return;
 
-  var ORIGIN='https://www.tiktok.com';
-  var fr=null, alive=false, timer=0;
+  /* www.youtube.com, BUKAN youtube-nocookie.com — domain nocookie tidak
+     pernah membawa sesi penonton, jadi setiap embed dikira tanpa nama dan
+     dinding bot menjadi LEBIH kerap. */
+  var ORIGIN='https://www.youtube.com';
+  var fr=null, ready=false, alive=false, tDead=0, tStall=0, ping=0;
 
-  function tell(msg){
+  function stopPing(){ clearInterval(ping); ping=0; }
+
+  function tell(func){
     if(!fr||!fr.contentWindow) return;
-    msg['x-tiktok-player']=true;
-    try{ fr.contentWindow.postMessage(msg,ORIGIN); }catch(e){}
+    try{ fr.contentWindow.postMessage(JSON.stringify({event:'command',func:func,args:[]}),ORIGIN); }catch(e){}
   }
 
   /* Iframe silang-asal tetap membangkitkan 'load' walaupun yang dipaparkan
-     ialah halaman ralat — jadi 'load' bukan bukti video hidup. Hanya mesej
-     daripada pemain TikTok yang membuktikannya; barulah poster ditanggalkan. */
+     ialah dinding bot — jadi 'load' bukan bukti video hidup. Malah 'onReady'
+     pun TIDAK memadai: ia dihantar sebaik sahaja cangkerang pemain sedia,
+     termasuk apabila main tekan play kemudiannya ditolak. Satu-satunya bukti
+     sebenar ialah keadaan MAIN atau masa yang bergerak. */
+
+  /* Cangkerang pemain menjawab: YouTube boleh dicapai. Poster KEKAL di atas;
+     kini kita tunggu video benar-benar bermain pula. */
+  function ready_(){
+    if(ready||alive) return;
+    ready=true;
+    clearTimeout(tDead); stopPing();
+    tell('mute'); tell('playVideo');
+    tStall=setTimeout(fail,7000);
+  }
+
+  /* Video benar-benar bermain. */
   function alive_(){
     if(alive) return;
     alive=true;
-    clearTimeout(timer);
+    clearTimeout(tDead); clearTimeout(tStall); stopPing();
     wrap.setAttribute('data-playing','true');
-    tell({type:'mute'}); tell({type:'play'});
   }
 
-  /* TikTok disekat, video dipadam atau talian mati — buang iframe dan
-     kekalkan poster sebagai pautan ke TikTok. */
+  /* YouTube disekat, video dipadam, dinding bot muncul atau talian mati —
+     buang iframe dan kekalkan poster sebagai pautan ke YouTube. */
   function fail(){
     if(alive) return;
+    stopPing();
     wrap.removeAttribute('data-playing');
     if(fr){ try{ wrap.removeChild(fr); }catch(e){} fr=null; }
     var sub=facade.querySelector('.phone__sub');
-    if(sub) sub.textContent='Buka di TikTok';
+    if(sub) sub.textContent='Buka di YouTube';
   }
 
   function load(){
     if(fr) return;
     fr=document.createElement('iframe');
-    fr.src=src;
-    fr.title='Video TikTok KRS Travel — @krstravelofficial';
-    fr.setAttribute('allow','autoplay; encrypted-media; fullscreen; picture-in-picture');
+    fr.src=src+'&enablejsapi=1&origin='+encodeURIComponent(location.origin);
+    fr.title='Testimoni jemaah haji KRS Travel 1446H — @krstravelofficial';
+    fr.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
     fr.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
-    fr.setAttribute('allowfullscreen','');
     fr.setAttribute('frameborder','0');
     wrap.insertBefore(fr,facade);
 
+    /* Pemain hanya bercakap selepas kita memperkenalkan diri. */
     fr.addEventListener('load',function(){
-      /* Senyapkan dahulu, kemudian main — urutan ini penting supaya dasar
-         autoplay pelayar tidak menolaknya. */
-      tell({type:'mute'}); tell({type:'play'});
-      setTimeout(function(){ tell({type:'mute'}); tell({type:'play'}); },600);
+      var n=0;
+      ping=setInterval(function(){
+        if(!fr||!fr.contentWindow||alive||ready) return stopPing();
+        try{ fr.contentWindow.postMessage(JSON.stringify({event:'listening',id:1,channel:'widget'}),ORIGIN); }catch(e){}
+        if(++n>20) stopPing();
+      },250);
     });
 
-    timer=setTimeout(fail,8000);
+    tDead=setTimeout(fail,8000);
   }
 
-  /* Sebarang mesej daripada pemain bermakna ia hidup. */
+  /* Hanya peristiwa main yang SEBENAR dikira hidup.
+     Halaman ini mempunyai DUA pemain YouTube (mockup telefon + kad galeri)
+     dan kedua-duanya mendengar pada 'window' yang sama. Tanpa semakan
+     e.source di bawah, satu pemain akan menyangka mesej jirannya sebagai
+     buktinya sendiri lalu menanggalkan posternya tanpa sebab. */
   window.addEventListener('message',function(e){
     if(e.origin!==ORIGIN) return;
+    if(!fr||e.source!==fr.contentWindow) return;
     var d=e.data;
     if(typeof d==='string'){ try{ d=JSON.parse(d); }catch(err){ return; } }
-    if(!d||d['x-tiktok-player']!==true) return;
-    alive_();
+    if(!d||!d.event) return;
+
+    if(d.event==='onReady'){ ready_(); return; }
+
+    /* 1 = sedang main. */
+    if(d.event==='onStateChange'&&d.info===1){ alive_(); return; }
+
+    if(d.event==='infoDelivery'&&d.info){
+      if(d.info.playerState===1||d.info.currentTime>0) alive_();
+    }
   });
 
   /* Muat hanya apabila mockup hampir kelihatan — laman tidak menghubungi
-     TikTok sama sekali sehingga pelawat menatal ke sini. */
+     YouTube sama sekali sehingga pelawat menatal ke sini. */
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(entries){
       entries.forEach(function(en){ if(en.isIntersecting){ load(); io.disconnect(); } });
@@ -2206,11 +2249,12 @@ body.is-lbox-open{overflow:hidden}
   }
 })();
 
-/* Galeri — kad "Video Utama" YouTube, click-to-play (sama corak seperti TikTok).
-   Poster kekal DI ATAS iframe sehingga pemain YouTube benar-benar menjawab:
-   iframe silang-asal tetap membangkitkan 'load' walaupun yang dipaparkan ialah
-   halaman ralat, jadi 'load' bukan bukti video hidup. Dengan enablejsapi=1
-   pemain menghantar onReady — itulah buktinya. */
+/* Galeri — kad "Video Utama" YouTube, click-to-play (sama corak seperti mockup telefon).
+   Poster kekal DI ATAS iframe sehingga video benar-benar BERMAIN. Iframe
+   silang-asal tetap membangkitkan 'load' walaupun yang dipaparkan ialah
+   dinding bot, dan 'onReady' pun TIDAK memadai — pemain menghantarnya sebaik
+   sahaja cangkerangnya sedia, termasuk apabila ia kemudiannya memaparkan
+   "Sign in to confirm you're not a bot". Hanya keadaan MAIN yang dikira. */
 (function(){
   var card=document.getElementById('yt-card');
   var facade=document.getElementById('yt-facade');
@@ -2218,26 +2262,47 @@ body.is-lbox-open{overflow:hidden}
   var src=card.getAttribute('data-yt-src');
   if(!src) return;
 
-  var ORIGIN='https://www.youtube-nocookie.com';
-  var fr=null, alive=false, timer=0, ping=0;
+  /* www.youtube.com, BUKAN youtube-nocookie.com — domain nocookie tidak
+     pernah membawa sesi penonton, jadi setiap embed dikira tanpa nama dan
+     dinding bot menjadi LEBIH kerap. */
+  var ORIGIN='https://www.youtube.com';
+  var fr=null, ready=false, alive=false, tDead=0, tStall=0, ping=0;
 
   function stopPing(){ clearInterval(ping); ping=0; }
+
+  function tell(func){
+    if(!fr||!fr.contentWindow) return;
+    try{ fr.contentWindow.postMessage(JSON.stringify({event:'command',func:func,args:[]}),ORIGIN); }catch(err){}
+  }
+
+  /* Cangkerang pemain menjawab: YouTube boleh dicapai. Poster KEKAL di atas;
+     kini kita tunggu video benar-benar bermain pula. Tiada arahan 'mute' di
+     sini — pelawat menekan kad ini untuk MENONTON, jadi bunyi dikekalkan. */
+  function ready_(){
+    if(ready||alive) return;
+    ready=true;
+    clearTimeout(tDead); stopPing();
+    tell('playVideo');
+    tStall=setTimeout(fail,7000);
+  }
 
   function alive_(){
     if(alive) return;
     alive=true;
-    clearTimeout(timer); stopPing();
+    clearTimeout(tDead); clearTimeout(tStall); stopPing();
     card.setAttribute('data-playing','true');
   }
 
-  /* YouTube disekat penapis rangkaian, video dipadam atau talian mati —
-     buang iframe dan pulangkan poster supaya kad masih boleh diklik. */
+  /* YouTube disekat penapis rangkaian, video dipadam, dinding bot muncul atau
+     talian mati — buang iframe dan pulangkan poster. Nota: onPlay TIDAK
+     dipasang semula, supaya pautan asal kad berfungsi seperti biasa dan klik
+     seterusnya membuka video di YouTube. Tanpa ini, kad hanya akan mencuba
+     iframe yang sama berulang kali dan gagal setiap kali. */
   function fail(){
     if(alive) return;
     stopPing();
     card.removeAttribute('data-playing');
     if(fr){ try{ card.removeChild(fr); }catch(err){} fr=null; }
-    facade.addEventListener('click',onPlay);
   }
 
   function onPlay(e){
@@ -2256,19 +2321,35 @@ body.is-lbox-open{overflow:hidden}
     fr.addEventListener('load',function(){
       var n=0;
       ping=setInterval(function(){
-        if(!fr||!fr.contentWindow||alive) return stopPing();
+        if(!fr||!fr.contentWindow||alive||ready) return stopPing();
         try{ fr.contentWindow.postMessage(JSON.stringify({event:'listening',id:1,channel:'widget'}),ORIGIN); }catch(err){}
         if(++n>20) stopPing();
       },250);
     });
 
-    timer=setTimeout(fail,8000);
+    tDead=setTimeout(fail,8000);
   }
 
-  /* Sebarang mesej daripada pemain bermakna ia hidup. */
+  /* Hanya peristiwa main yang SEBENAR dikira hidup.
+     Halaman ini mempunyai DUA pemain YouTube (mockup telefon + kad galeri)
+     dan kedua-duanya mendengar pada 'window' yang sama. Tanpa semakan
+     e.source di bawah, satu pemain akan menyangka mesej jirannya sebagai
+     buktinya sendiri lalu menanggalkan posternya tanpa sebab. */
   window.addEventListener('message',function(e){
     if(e.origin!==ORIGIN) return;
-    alive_();
+    if(!fr||e.source!==fr.contentWindow) return;
+    var d=e.data;
+    if(typeof d==='string'){ try{ d=JSON.parse(d); }catch(err){ return; } }
+    if(!d||!d.event) return;
+
+    if(d.event==='onReady'){ ready_(); return; }
+
+    /* 1 = sedang main. */
+    if(d.event==='onStateChange'&&d.info===1){ alive_(); return; }
+
+    if(d.event==='infoDelivery'&&d.info){
+      if(d.info.playerState===1||d.info.currentTime>0) alive_();
+    }
   });
 
   facade.addEventListener('click',onPlay);
