@@ -18,6 +18,18 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # ── Subdomain di dalam public_html ──────────────────────
+  # app.krstravel.com.my dan booking.krstravel.com.my mempunyai docroot
+  # DI DALAM folder ini (public_html/app, public_html/booking).
+  # Bergantung pada konfigurasi pelayan, peraturan rewrite di bawah boleh
+  # "menurun" ke subdomain itu — terutamanya peraturan URL cantik
+  # (^(.*)$ → $1.html) yang akan merosakkan penghalaan aplikasi.
+  # Baris ini menghentikan SEMUA rewrite fail ini untuk kedua-dua folder.
+  # Jika subdomain dipindahkan keluar dari public_html kelak, blok ini
+  # boleh dibuang.
+  RewriteCond %{REQUEST_URI} ^/(app|booking)(/|$) [NC]
+  RewriteRule ^ - [L]
+
   # http → https
   # Guna %{REQUEST_URI}, bukan /$1 — supaya peraturan ini betul sama ada fail
   # ini berada di root laman ATAU di dalam subfolder seperti /site-live/.
