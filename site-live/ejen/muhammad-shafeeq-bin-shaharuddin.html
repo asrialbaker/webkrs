@@ -1129,7 +1129,12 @@ body.lb-lock{overflow:hidden}
   var btns=all, i=0, opener=null, multi=false;
 
   function isZoom(el){return el.hasAttribute('data-zoom');}
-  function group(el){return isZoom(el)?'poster':(el.dataset.lbGroup||'default');}
+  function group(el){
+    if(!isZoom(el)) return el.dataset.lbGroup||'default';
+    // poster dikumpulkan ikut seksyen, jadi anak panah kekal dalam seksyen itu
+    var s=el.closest('section');
+    return 'zoom:'+((s&&s.id)||'lain');
+  }
 
   function show(n){
     i=(n+btns.length)%btns.length;
