@@ -209,7 +209,10 @@ p{margin:0 0 1em}
 .hsl__vp{position:relative;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
 /* Tetingkap: hanya SATU banner kelihatan pada satu-satu masa */
 .hsl__win{position:relative;overflow:hidden;border-radius:calc(var(--r) * 4);background:var(--ink);box-shadow:0 12px 34px rgba(14,28,34,.16);touch-action:pan-y}
-.hsl__track{display:flex;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
+/* row-reverse: banner pertama duduk di tepi KANAN tetingkap dan banner
+   berikutnya beratur ke KIRI. Jalur digeser ke arah positif, jadi
+   gerakannya dari kiri ke kanan — banner baharu masuk dari tepi kiri. */
+.hsl__track{display:flex;flex-direction:row-reverse;width:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
 .hsl__slide{position:relative;container-type:inline-size;flex:0 0 100%;min-width:100%;display:block;line-height:0}
 .hsl__slide:focus-visible{outline:3px solid var(--amber);outline-offset:-3px}
 .hsl__slide img{width:100%;height:auto;aspect-ratio:1600/428;object-fit:cover}
@@ -1999,10 +2002,12 @@ body.is-lbox-open{overflow:hidden}
     return b;
   });
 
-  /* Satu banner sahaja kelihatan: geser jalur mengikut indeks */
+  /* Satu banner sahaja kelihatan: geser jalur mengikut indeks. Jalur
+     disusun row-reverse, jadi anjakan POSITIF menolak kandungan ke
+     kanan dan banner seterusnya menyelinap masuk dari tepi kiri. */
   function paint(i){
     idx=(i+n)%n;
-    track.style.transform='translate3d(-'+(idx*100)+'%,0,0)';
+    track.style.transform='translate3d('+(idx*100)+'%,0,0)';
     slides.forEach(function(s,k){
       var off = k!==idx;
       s.setAttribute('aria-hidden', off ? 'true':'false');
@@ -2054,7 +2059,10 @@ body.is-lbox-open{overflow:hidden}
   win && win.addEventListener('touchend',function(e){
     if(x0===null) return;
     var dx=e.changedTouches[0].clientX-x0;
-    if(moved&&Math.abs(dx)>45){ go(dx<0 ? idx+1 : idx-1); }
+    /* Jalur kini bergerak ke kanan, jadi leretan turut dibalikkan:
+       tarik ke KANAN untuk menarik masuk banner seterusnya yang
+       menunggu di sebelah kiri. */
+    if(moved&&Math.abs(dx)>45){ go(dx>0 ? idx+1 : idx-1); }
     hold();
     x0=y0=null;
   },{passive:true});
