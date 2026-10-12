@@ -497,6 +497,11 @@ body.lb-lock{overflow:hidden}
   html{scroll-behavior:auto}
 }
 
+/* ── Nav seksyen dalam halaman ────────────────────────────── */
+/* Pautan #seksyen (contohnya dari slaid hero di halaman utama) mesti
+   berhenti di BAWAH .head yang sticky, bukan di belakangnya. */
+.sec[id]{scroll-margin-top:72px}
+
 .nav__link[aria-current="page"]{color:var(--haram);box-shadow:inset 0 -2px 0 var(--amber)}
 .pitem[aria-current="page"]{background:var(--limestone)}
 .pitem[aria-current="page"] h3{color:var(--haram)}
