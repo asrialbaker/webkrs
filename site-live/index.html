@@ -432,6 +432,7 @@ summary::-webkit-details-marker{display:none}
 summary::after{content:'';position:absolute;right:.4rem;top:50%;width:9px;height:9px;border-right:1.5px solid var(--haram);border-bottom:1.5px solid var(--haram);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
 details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
 details>div{padding:0 2.4rem 1.2rem 0;color:var(--muted);font-size:.9rem}
+details>div a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(224,145,44,.45)}
 details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .fill{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.04em;color:var(--amber-deep);background:rgba(224,145,44,.13);border:1px dashed var(--amber);border-radius:2px;padding:.1rem .4rem;display:inline-block}
 
@@ -1770,7 +1771,7 @@ body.is-lbox-open{overflow:hidden}
 
       <details>
         <summary>Bagaimana boleh saya hubungi wakil KRS Travel untuk pertanyaan lanjut?</summary>
-        <div>Hubungi ibu pejabat kami di Seremban pada 06-761 3666, WhatsApp 010-279 0458 (umrah) atau 014-505 6295 (haji), atau e-mel ke krstravelhq@gmail.com. Anda juga boleh berurusan dengan ejen KRS yang berdekatan.</div>
+        <div>Hubungi ibu pejabat kami di Seremban pada <a href="tel:+6067613666" aria-label="Telefon ibu pejabat KRS Travel di 06-761 3666">06-761 3666</a>, WhatsApp <a href="https://wa.me/60102790458" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp talian umrah KRS Travel di 010-279 0458">010-279 0458</a> (umrah) atau <a href="https://wa.me/60145056295" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp talian haji KRS Travel di 014-505 6295">014-505 6295</a> (haji), atau e-mel ke <a href="mailto:krstravelhq@gmail.com">krstravelhq@gmail.com</a>. Anda juga boleh berurusan dengan ejen KRS yang berdekatan.</div>
       </details>
 
     </div>
