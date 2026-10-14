@@ -540,7 +540,14 @@ body.is-lbox-open{overflow:hidden}
 
 /* Grid foto — 4 lajur, turun ikut lebar skrin */
 .galx__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem}
-.galx__item{margin:0;min-width:0}
+.galx__item{position:relative;margin:0;min-width:0}
+/* Cap tarikh/lokasi atas setiap foto — bukan dibakar ke dalam imej, supaya
+   teks kekal tajam pada semua saiz skrin dan senang dikemas kini. */
+.galx__stamp{position:absolute;left:0;right:0;bottom:0;padding:.85rem .5rem .45rem;
+  font-family:var(--ff-mono);font-size:.53rem;line-height:1.45;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--white);text-align:center;pointer-events:none;
+  border-radius:0 0 var(--r) var(--r);
+  background:linear-gradient(to top,rgba(11,30,36,.9) 0%,rgba(11,30,36,.62) 55%,rgba(11,30,36,0) 100%)}
 .galx__item[hidden]{display:none}
 .galx__item .ph{aspect-ratio:4/3;height:100%}
 .galx__item img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);border-radius:var(--r)}
@@ -891,15 +898,56 @@ body.is-lbox-open{overflow:hidden}
         </div>
 
         <div class="galx__grid" id="galx-grid" aria-live="polite">
-          <!-- Perasmian -->
-          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Ketibaan YB &amp; tetamu kehormat · 1200 × 900</span></div></figure>
-          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Bacaan doa · 1200 × 900</span></div></figure>
-          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Ucapan perasmian YB · 1200 × 900</span></div></figure>
-          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Ucapan wakil KRS Travel · 1200 × 900</span></div></figure>
-          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Gimik perasmian program · 1200 × 900</span></div></figure>
-          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Penyampaian cenderahati · 1200 × 900</span></div></figure>
-          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Ramah mesra bersama jemaah · 1200 × 900</span></div></figure>
-          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Foto kumpulan majlis · 1200 × 900</span></div></figure>
+          <!-- Perasmian — Majlis Perasmian Pembukaan KRS Travel cawangan Pasir Besar,
+               25 April 2026. Setiap foto ada data-zoom (lightbox) + data-cap (kapsyen). -->
+          <figure class="galx__item" data-cat="perasmian">
+            <img src="images/galeri/perasmian-pasir-besar-25-april-2026-1.webp" width="1200" height="1600"
+                 data-zoom data-cap="Tarikh 25 April 2026 | KRS Travel Cawangan Pasir Besar"
+                 loading="lazy" decoding="async" alt="Bacaan doa oleh petugas di podium KRS Travel sementara jemaah menadah tangan di meja jamuan">
+            <figcaption class="galx__stamp">Tarikh 25 April 2026 &nbsp;|&nbsp; KRS Travel Cawangan Pasir Besar</figcaption>
+          </figure>
+          <figure class="galx__item" data-cat="perasmian">
+            <img src="images/galeri/perasmian-pasir-besar-25-april-2026-2.webp" width="1600" height="1200"
+                 data-zoom data-cap="Tarikh 25 April 2026 | KRS Travel Cawangan Pasir Besar"
+                 loading="lazy" decoding="async" alt="Wakil KRS Travel menyampaikan ucapan di hadapan banner pakej Moh Poie Mokah">
+            <figcaption class="galx__stamp">Tarikh 25 April 2026 &nbsp;|&nbsp; KRS Travel Cawangan Pasir Besar</figcaption>
+          </figure>
+          <figure class="galx__item" data-cat="perasmian">
+            <img src="images/galeri/perasmian-pasir-besar-25-april-2026-3.webp" width="1600" height="1200"
+                 data-zoom data-cap="Tarikh 25 April 2026 | KRS Travel Cawangan Pasir Besar"
+                 loading="lazy" decoding="async" alt="Ustaz menyampaikan ucapan ke mikrofon pada majlis perasmian cawangan Pasir Besar">
+            <figcaption class="galx__stamp">Tarikh 25 April 2026 &nbsp;|&nbsp; KRS Travel Cawangan Pasir Besar</figcaption>
+          </figure>
+          <figure class="galx__item" data-cat="perasmian">
+            <img src="images/galeri/perasmian-pasir-besar-25-april-2026-4.webp" width="1600" height="1200"
+                 data-zoom data-cap="Tarikh 25 April 2026 | KRS Travel Cawangan Pasir Besar"
+                 loading="lazy" decoding="async" alt="Tetamu kehormat bergambar di sisi banner Majlis Perasmian Pembukaan KRS Travel cawangan Pasir Besar">
+            <figcaption class="galx__stamp">Tarikh 25 April 2026 &nbsp;|&nbsp; KRS Travel Cawangan Pasir Besar</figcaption>
+          </figure>
+          <figure class="galx__item" data-cat="perasmian">
+            <img src="images/galeri/perasmian-pasir-besar-25-april-2026-5.webp" width="1600" height="1200"
+                 data-zoom data-cap="Tarikh 25 April 2026 | KRS Travel Cawangan Pasir Besar"
+                 loading="lazy" decoding="async" alt="Penyampaian bakul cenderahati kepada tetamu kehormat majlis perasmian">
+            <figcaption class="galx__stamp">Tarikh 25 April 2026 &nbsp;|&nbsp; KRS Travel Cawangan Pasir Besar</figcaption>
+          </figure>
+          <figure class="galx__item" data-cat="perasmian">
+            <img src="images/galeri/perasmian-pasir-besar-25-april-2026-6.webp" width="1600" height="1200"
+                 data-zoom data-cap="Tarikh 25 April 2026 | KRS Travel Cawangan Pasir Besar"
+                 loading="lazy" decoding="async" alt="Tetamu menikmati jamuan di bawah khemah pada majlis pembukaan cawangan Pasir Besar">
+            <figcaption class="galx__stamp">Tarikh 25 April 2026 &nbsp;|&nbsp; KRS Travel Cawangan Pasir Besar</figcaption>
+          </figure>
+          <figure class="galx__item" data-cat="perasmian">
+            <img src="images/galeri/perasmian-pasir-besar-25-april-2026-7.webp" width="1600" height="1200"
+                 data-zoom data-cap="Tarikh 25 April 2026 | KRS Travel Cawangan Pasir Besar"
+                 loading="lazy" decoding="async" alt="Tetamu berbual di meja jamuan majlis pembukaan cawangan Pasir Besar">
+            <figcaption class="galx__stamp">Tarikh 25 April 2026 &nbsp;|&nbsp; KRS Travel Cawangan Pasir Besar</figcaption>
+          </figure>
+          <figure class="galx__item" data-cat="perasmian">
+            <img src="images/galeri/perasmian-pasir-besar-25-april-2026-8.webp" width="1600" height="1200"
+                 data-zoom data-cap="Tarikh 25 April 2026 | KRS Travel Cawangan Pasir Besar"
+                 loading="lazy" decoding="async" alt="Suasana tetamu memenuhi khemah jamuan majlis pembukaan cawangan Pasir Besar">
+            <figcaption class="galx__stamp">Tarikh 25 April 2026 &nbsp;|&nbsp; KRS Travel Cawangan Pasir Besar</figcaption>
+          </figure>
 
           <!-- Kursus Umrah -->
           <figure class="galx__item" data-cat="kursus"><div class="ph slot"><b>Foto</b><span>Kursus · Majlis pelancaran / taklimat · 1200 × 900</span></div></figure>
