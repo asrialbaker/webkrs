@@ -3596,6 +3596,29 @@ body.lb-lock{overflow:hidden}
     host.appendChild(a);
   });
 })();
+
+/* Pelayar melompat ke #id sebelum imej 'lazy' di atasnya sempat menempah
+   tingginya, jadi pautan ke sasaran jauh di bawah halaman boleh tersasar
+   pada muatan pertama (cache kosong). Daratkan sekali lagi selepas 'load'
+   — kecuali pengguna sudah menatal sendiri sementara menunggu. */
+(function(){
+  var id = location.hash ? decodeURIComponent(location.hash.slice(1)) : '';
+  if(!id) return;
+  var ditatal = false;
+  function tanda(){ ditatal = true; }
+  ['wheel','touchstart','keydown'].forEach(function(ev){
+    window.addEventListener(ev, tanda, {passive:true, once:true});
+  });
+  window.addEventListener('load', function(){
+    if(ditatal) return;
+    var el = document.getElementById(id);
+    if(!el) return;
+    setTimeout(function(){
+      var sasar = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      if(Math.abs(el.getBoundingClientRect().top - sasar) > 4) el.scrollIntoView();
+    }, 0);
+  });
+})();
 </script>
 
 </body>
