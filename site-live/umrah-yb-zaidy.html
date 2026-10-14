@@ -854,7 +854,7 @@ body.is-lbox-open{overflow:hidden}
             loading="lazy" decoding="async" alt="Keterangan ringkas foto">
      `data-zoom` menyambung foto itu ke lightbox sedia ada.
      Untuk tambah foto: salin satu <figure> dan kekalkan data-cat yang betul
-     (kursus / kembara / memori). Tab ditapis oleh skrip di hujung halaman. -->
+     (perasmian / kursus / kembara / memori). Tab ditapis oleh skrip di hujung halaman. -->
 <section class="sec">
   <div class="wrap">
     <div class="sec__bar"><h2>Galeri</h2></div>
@@ -884,12 +884,23 @@ body.is-lbox-open{overflow:hidden}
 
       <div class="galx__main">
         <div class="galx__tabs" role="group" aria-label="Penapis galeri foto">
-          <button class="galx__tab" type="button" data-filter="kursus"  aria-pressed="true">Kursus Umrah</button>
+          <button class="galx__tab" type="button" data-filter="perasmian" aria-pressed="true">Perasmian</button>
+          <button class="galx__tab" type="button" data-filter="kursus"  aria-pressed="false">Kursus Umrah</button>
           <button class="galx__tab" type="button" data-filter="kembara" aria-pressed="false">Suasana Kembara</button>
           <button class="galx__tab" type="button" data-filter="memori"  aria-pressed="false">Memori Jemaah</button>
         </div>
 
         <div class="galx__grid" id="galx-grid" aria-live="polite">
+          <!-- Perasmian -->
+          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Ketibaan YB &amp; tetamu kehormat · 1200 × 900</span></div></figure>
+          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Bacaan doa · 1200 × 900</span></div></figure>
+          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Ucapan perasmian YB · 1200 × 900</span></div></figure>
+          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Ucapan wakil KRS Travel · 1200 × 900</span></div></figure>
+          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Gimik perasmian program · 1200 × 900</span></div></figure>
+          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Penyampaian cenderahati · 1200 × 900</span></div></figure>
+          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Ramah mesra bersama jemaah · 1200 × 900</span></div></figure>
+          <figure class="galx__item" data-cat="perasmian"><div class="ph slot"><b>Foto</b><span>Perasmian · Foto kumpulan majlis · 1200 × 900</span></div></figure>
+
           <!-- Kursus Umrah -->
           <figure class="galx__item" data-cat="kursus"><div class="ph slot"><b>Foto</b><span>Kursus · Majlis pelancaran / taklimat · 1200 × 900</span></div></figure>
           <figure class="galx__item" data-cat="kursus"><div class="ph slot"><b>Foto</b><span>Kursus · Pendaftaran jemaah · 1200 × 900</span></div></figure>
