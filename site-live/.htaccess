@@ -58,6 +58,12 @@ ErrorDocument 404 /404.html
   RewriteRule ^tiket-penerbangan/?$        /ticketing.html        [R=301,L]
   RewriteRule ^visa/?$                     /visa.html             [R=301,L]
   RewriteRule ^pelancongan/?$              /pelancongan.html      [R=301,L]
+  # Dicerminkan daripada _redirects, yang hanya difahami Netlify/Cloudflare
+  RewriteRule ^tentang-krstravel(/.*)?$    /tentang-kami.html     [R=301,L]
+  RewriteRule ^index\.php$                 /                      [R=301,L]
+  RewriteRule ^home/?$                     /                      [R=301,L]
+  # Pakej Umrah Perdana 1448H ditarik — halaman dipadam 14 Okt 2026
+  RewriteRule ^umrah-perdana-krs-1448h(\.html)?/?$ /umrah.html     [R=301,L]
 </IfModule>
 
 # ── 4 · Pengepala keselamatan ─────────────────────────────────
