@@ -61,6 +61,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://krstravel.com.my/galeri-foto</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://krstravel.com.my/ticketing</loc>
     <lastmod>2026-08-21</lastmod>
     <priority>0.7</priority>

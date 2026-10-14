@@ -8,9 +8,6 @@
 <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<!-- TODO: buang baris noindex ini apabila kandungan sebenar masuk —
-     halaman placeholder tidak sepatutnya diindeks oleh enjin carian. -->
-<meta name="robots" content="noindex,follow">
 <meta name="description" content="Galeri foto KRS Travel Sdn Bhd — kumpulan jemaah umrah dan haji, kursus, majlis dan suasana di Tanah Suci.">
 <link rel="canonical" href="https://krstravel.com.my/galeri-foto">
 <meta property="og:type" content="website">
@@ -469,8 +466,8 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
 .prose ul.clauses li::before{content:'';flex:none;width:5px;height:5px;margin-top:.55rem;
   border-radius:50%;background:var(--amber-deep)}
 /* ═══════════════════════════════════════════════════════════
-   HALAMAN GALERI — jalur nav, grid galeri, slot placeholder,
-   lightbox. Ditambah di atas CSS asas yang dikongsi semua
+   HALAMAN GALERI — jalur nav, grid galeri, lightbox.
+   Ditambah di atas CSS asas yang dikongsi semua
    halaman KRS Travel.
    ═══════════════════════════════════════════════════════════ */
 
@@ -492,16 +489,6 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
   .ptabs__list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
   .ptab{justify-content:center;padding:.6rem .35rem;font-size:.63rem;letter-spacing:.04em;text-align:center}
 }
-
-/* ── Nota kandungan sementara ───────────────────────────────
-   Jujur di muka halaman: slot di bawah ialah placeholder, bukan
-   foto jemaah sebenar. Dibuang apabila kandungan betul masuk. */
-.todo{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:var(--r);
-  padding:1rem 1.2rem;margin:0 0 clamp(1.4rem,3vw,2rem);max-width:78ch}
-.todo p{margin:0;font-size:.88rem;line-height:1.6;color:var(--muted)}
-.todo b{color:var(--ink)}
-.todo code{font-family:var(--ff-mono);font-size:.82em;background:var(--limestone);
-  border:1px solid var(--line);border-radius:2px;padding:.08em .34em}
 
 /* ── Album: satu kepala + satu grid ─────────────────────────*/
 .album + .album{margin-top:clamp(2rem,4.5vw,3.25rem)}
@@ -775,148 +762,129 @@ body.is-lbox-open{overflow:hidden}
 
 <section class="sec">
   <div class="wrap">
-    <!-- Nota kepada penyunting: Slot placeholder. Setiap kotak di bawah ialah slot kosong, bukan foto jemaah. Untuk memasukkan foto sebenar: tukar src ke fail foto, kemas kini width, height, alt dan kapsyen dalam <figcaption>. Tambah data-full jika thumbnail dipotong dan lightbox perlu membuka versi penuh. -->
     <div class="album">
       <div class="album__head">
         <h2 class="album__h">Kumpulan Berlepas</h2>
-        <p class="album__meta">8 slot &middot; 1:1</p>
+        <p class="album__meta">4 foto &middot; 1:1</p>
       </div>
       <div class="ggrid">
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/kumpulan-haji-kt76b-11-mei-2026.webp" width="1080" height="1080"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 01 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 01</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Kumpulan haji KT76B KRS Travel bergambar di kaunter Tabung Haji Sepang pada 11 Mei 2026">
+        <figcaption class="gcard__cap"><b>Kumpulan Haji KT76B</b><span>11 Mei 2026 &middot; Kaunter Tabung Haji Sepang</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/kumpulan-haji-cf207-15-mei-2026.webp" width="1080" height="1080"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 02 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 02</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Kumpulan haji CF207 KRS Travel bergambar di balai berlepas antarabangsa KLIA pada 15 Mei 2026">
+        <figcaption class="gcard__cap"><b>Kumpulan Haji CF207</b><span>15 Mei 2026 &middot; Balai berlepas antarabangsa KLIA</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/kumpulan-umrah-13-julai-2026.webp" width="1080" height="1080"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 03 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 03</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Kumpulan umrah KRS Travel bergambar bersama sepanduk syarikat sebelum bertolak dari KLIA pada 13 Julai 2026">
+        <figcaption class="gcard__cap"><b>Kumpulan Umrah</b><span>13 Julai 2026 &middot; KLIA</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/kumpulan-umrah-16-julai-2026.webp" width="1080" height="1080"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 04 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 04</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
-      </figure>
-      <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
-             loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 05 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 05</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
-      </figure>
-      <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
-             loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 06 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 06</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
-      </figure>
-      <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
-             loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 07 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 07</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
-      </figure>
-      <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
-             loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 08 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 08</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Kumpulan umrah KRS Travel bergambar bersama sepanduk syarikat sebelum bertolak dari KLIA pada 16 Julai 2026">
+        <figcaption class="gcard__cap"><b>Kumpulan Umrah</b><span>16 Julai 2026 &middot; KLIA</span></figcaption>
       </figure>
       </div>
     </div>
     <div class="album">
       <div class="album__head">
         <h2 class="album__h">Kursus &amp; Majlis</h2>
-        <p class="album__meta">6 slot &middot; 4:3</p>
+        <p class="album__meta">6 foto &middot; 4:3</p>
       </div>
       <div class="ggrid ggrid--wide">
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/kursus-selangkah-ke-tanah-suci-april-2026.webp" width="1600" height="1200"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 09 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 09</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Jemaah haji KRS Travel mengikuti Kursus Selangkah Ke Tanah Suci di Dewan Perdana KRS, Seremban">
+        <figcaption class="gcard__cap"><b>Kursus Selangkah Ke Tanah Suci</b><span>17&ndash;19 April 2026 &middot; Dewan Perdana KRS, Seremban</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/perasmian-pasir-besar-25-april-2026-5.webp" width="1600" height="1200"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 10 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 10</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Penyampaian bakul cenderahati kepada tetamu kehormat majlis perasmian cawangan Pasir Besar">
+        <figcaption class="gcard__cap"><b>Perasmian Cawangan Pasir Besar</b><span>25 April 2026 &middot; Penyampaian cenderahati</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/perasmian-pasir-besar-25-april-2026-8.webp" width="1600" height="1200"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 11 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 11</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Suasana tetamu memenuhi khemah jamuan majlis pembukaan cawangan Pasir Besar">
+        <figcaption class="gcard__cap"><b>Perasmian Cawangan Pasir Besar</b><span>25 April 2026 &middot; Jamuan majlis pembukaan</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/kursus-sekampung-ke-mokah-14-jun-2026-1.webp" width="1600" height="1069"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 12 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 12</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Penceramah menyampaikan taklimat kursus umrah dengan poster Sekampung Ke Mokah dipaparkan di skrin">
+        <figcaption class="gcard__cap"><b>Kursus Sekampung Ke Mokah</b><span>14 Jun 2026 &middot; Dewan Perdana KRS</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/kursus-sekampung-ke-mokah-14-jun-2026-8.webp" width="1600" height="900"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 13 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 13</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Foto kumpulan jemaah rombongan pada hari kursus umrah Sekampung Ke Mokah">
+        <figcaption class="gcard__cap"><b>Kursus Sekampung Ke Mokah</b><span>14 Jun 2026 &middot; Foto kumpulan jemaah</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-8.webp" width="1080" height="810"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 14 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 14</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Foto kumpulan peserta kursus umrah mengangkat beg KRS di hadapan banner Kursus Umrah Percuma">
+        <figcaption class="gcard__cap"><b>Kursus Umrah Bersama Tokdi</b><span>20 September 2026 &middot; Dewan Tan Sri Yusof Nor, Felda Palong 2</span></figcaption>
       </figure>
       </div>
     </div>
     <div class="album">
       <div class="album__head">
         <h2 class="album__h">Di Tanah Suci</h2>
-        <p class="album__meta">6 slot &middot; 1:1</p>
+        <p class="album__meta">6 foto &middot; 1:1 &middot; musim haji 1446H</p>
       </div>
       <div class="ggrid">
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/haji/galeri-1446-4-thumb.webp" width="525" height="700"
+             data-full="images/haji/galeri-1446-4.webp"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 15 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 15</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Jemaah haji KRS Travel bersama bagasi di ruang ketibaan, di hadapan sepanduk Ahlan wa Sahlan Jemaah Haji KRS Travel">
+        <figcaption class="gcard__cap"><b>Ketibaan jemaah haji</b><span>Musim haji 1446H &middot; Ruang ketibaan</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/haji/galeri-1446-1-thumb.webp" width="700" height="394"
+             data-full="images/haji/galeri-1446-1.webp"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 16 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 16</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Rombongan jemaah haji wanita KRS Travel bergambar di lobi penginapan sempena ketibaan musim haji 1446H">
+        <figcaption class="gcard__cap"><b>Jemaah haji wanita</b><span>Musim haji 1446H &middot; Lobi penginapan</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/haji/galeri-1446-6-thumb.webp" width="525" height="700"
+             data-full="images/haji/galeri-1446-6.webp"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 17 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 17</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Empat jemaah haji KRS Travel berihram bergambar di lobi hotel sebelum menuju Masjidil Haram musim haji 1446H">
+        <figcaption class="gcard__cap"><b>Bersiap menuju Masjidil Haram</b><span>Musim haji 1446H &middot; Lobi hotel</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/haji/galeri-1446-5-thumb.webp" width="525" height="700"
+             data-full="images/haji/galeri-1446-5.webp"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 18 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 18</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Jemaah haji KRS Travel berihram di perkarangan Masjidil Haram dengan latar bangunan tinggi Makkah pada musim haji 1446H">
+        <figcaption class="gcard__cap"><b>Perkarangan Masjidil Haram</b><span>Musim haji 1446H &middot; Makkah</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/haji/galeri-1446-8-thumb.webp" width="700" height="525"
+             data-full="images/haji/galeri-1446-8.webp"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 19 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 19</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Foto kumpulan rombongan jemaah haji KRS Travel berihram di dalam Masjidil Haram pada musim haji 1446H">
+        <figcaption class="gcard__cap"><b>Rombongan di Masjidil Haram</b><span>Musim haji 1446H &middot; Foto kumpulan</span></figcaption>
       </figure>
       <figure class="gcard">
-        <img class="gcard__img" src="images/placeholder/foto-1x1.svg" width="1200" height="1200"
+        <img class="gcard__img" src="images/haji/galeri-1446-7-thumb.webp" width="700" height="525"
+             data-full="images/haji/galeri-1446-7.webp"
              loading="lazy" decoding="async" data-zoom
-             alt="Slot foto 20 — foto sebenar akan menggantikan placeholder ini">
-        <figcaption class="gcard__cap"><b>Slot Foto 20</b><span>Kapsyen &middot; tarikh &middot; lokasi</span></figcaption>
+             alt="Tiga jemaah haji KRS Travel berihram berehat di dalam khemah semasa mabit di Mina musim haji 1446H">
+        <figcaption class="gcard__cap"><b>Mabit di Mina</b><span>Musim haji 1446H &middot; Khemah Mina</span></figcaption>
       </figure>
       </div>
     </div>
