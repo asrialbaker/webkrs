@@ -274,16 +274,17 @@ p{margin:0 0 1em}
 .person p{font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--haram);margin:0}
 
 /* ── Sijil ───────────────────────────────────────────────── */
-.certs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2.5vw,1.75rem);
-       max-width:960px;margin-inline:auto;list-style:none;padding:0}
+/* Dua baris lima lajur pada desktop — jubin lebih kecil, klik untuk besarkan. */
+.certs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(.7rem,1.6vw,1.1rem);
+       max-width:1120px;margin-inline:auto;list-style:none;padding:0}
 .cert{width:100%;background:none;border:none;padding:0;cursor:zoom-in;text-align:center;font:inherit;color:inherit;display:block}
 .cert__frame{background:var(--white);border:1px solid var(--line);border-radius:var(--r);
-             aspect-ratio:3/4;display:grid;place-items:center;padding:.85rem;overflow:hidden;
+             aspect-ratio:3/4;display:grid;place-items:center;padding:.55rem;overflow:hidden;
              transition:border-color .18s,transform .18s}
 .cert:hover .cert__frame,.cert:focus-visible .cert__frame{border-color:var(--haram);transform:translateY(-3px)}
 .cert__frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
-.cert__cap{display:block;margin-top:.7rem;font-family:var(--ff-mono);font-size:.68rem;font-weight:500;
-           letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cert__cap{display:block;margin-top:.55rem;font-family:var(--ff-mono);font-size:.6rem;font-weight:500;
+           letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .cert:hover .cert__cap{color:var(--haram)}
 
 /* ── Lightbox ────────────────────────────────────────────── */
@@ -560,6 +561,7 @@ body.lb-lock{overflow:hidden}
 @media(max-width:1080px){
   .pgrid,.pstrip__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .quad{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .certs{grid-template-columns:repeat(4,minmax(0,1fr));max-width:880px}
 }
 @media(max-width:960px){
   .story,.ceo{grid-template-columns:1fr}
@@ -574,6 +576,7 @@ body.lb-lock{overflow:hidden}
 @media(max-width:860px){
   .nav{display:none}
   .burger{display:block}
+  .certs{grid-template-columns:repeat(3,minmax(0,1fr));max-width:620px}
   .head .btn{display:none}
   .nav.is-open{display:flex;flex-direction:column;align-items:stretch;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.7rem 0 1.2rem;gap:0;max-height:76vh;overflow:auto}
   .nav.is-open .nav__link{padding:.75rem var(--pad);font-size:.98rem;justify-content:space-between;width:100%;border-radius:0}
@@ -589,7 +592,7 @@ body.lb-lock{overflow:hidden}
 }
 @media(max-width:640px){
   .quad{grid-template-columns:1fr}
-  .certs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .certs{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}
   .partners{grid-template-columns:1fr;max-width:320px}
   .mgrid{grid-template-columns:1fr}
   .mcard{aspect-ratio:4/3}
@@ -1362,6 +1365,14 @@ body.lb-lock{overflow:hidden}
                 data-title="Sijil Keahlian BUMITRA Malaysia" data-meta="Persatuan Syarikat Pengendalian Pelancongan Bumiputera · No. BM 414">
           <span class="cert__frame"><img src="images/sijil/bumitra-thumb.webp" width="538" height="760" loading="lazy" decoding="async" alt="Sijil Keahlian BUMITRA Malaysia"></span>
           <span class="cert__cap">BUMITRA</span>
+        </button>
+      </li>
+      <li>
+        <button class="cert" type="button"
+                data-full="images/sijil/pjh-1448h.webp" data-w="1244" data-h="1800"
+                data-title="Lesen Pengelola Jemaah Haji 1448H" data-meta="Lembaga Tabung Haji &middot; No. Lesen PJH 22/1448H &middot; 1 September 2026">
+          <span class="cert__frame"><img src="images/sijil/pjh-1448h-thumb.webp" width="525" height="760" loading="lazy" decoding="async" alt="Lesen Pengelola Jemaah Haji 1448H daripada Lembaga Tabung Haji"></span>
+          <span class="cert__cap">PJH 1448H</span>
         </button>
       </li>
       <li>
