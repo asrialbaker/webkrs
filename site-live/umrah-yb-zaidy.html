@@ -551,6 +551,10 @@ body.is-lbox-open{overflow:hidden}
 .galx__item[hidden]{display:none}
 .galx__item .ph{aspect-ratio:4/3;height:100%}
 .galx__item img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--line);border-radius:var(--r)}
+/* Foto menegak: potongan 4/3 secara lalai mengambil bahagian tengah, jadi kepala
+   terpotong. Tarik potongan ke atas supaya wajah kekal penuh dalam grid — foto
+   penuh tetap dipaparkan dalam lightbox. */
+.galx__item img.galx__img--top{object-position:center 15%}
 @media(prefers-reduced-motion:no-preference){.galx__item{animation:galx-in .28s ease both}}
 @keyframes galx-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @media(max-width:1080px){.galx__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -967,33 +971,33 @@ body.is-lbox-open{overflow:hidden}
             <figcaption class="galx__stamp">Tarikh 20 September 2026 &nbsp;|&nbsp; Dewan Tan Sri Yusof Nor, Felda Palong 2</figcaption>
           </figure>
           <figure class="galx__item" data-cat="kursus">
-            <img src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-3.webp" width="960" height="1280"
+            <img class="galx__img--top" src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-3.webp" width="960" height="1280"
                  data-zoom data-cap="Tarikh 20 September 2026 | Dewan Tan Sri Yusof Nor, Felda Palong 2"
-                 loading="lazy" decoding="async" alt="Penyerahan beg KRS kepada seorang jemaah wanita bersama anaknya">
+                 loading="lazy" decoding="async" alt="YB Dato’ Mohd Zaidy menyerahkan beg KRS kepada seorang jemaah wanita bersama anaknya">
             <figcaption class="galx__stamp">Tarikh 20 September 2026 &nbsp;|&nbsp; Dewan Tan Sri Yusof Nor, Felda Palong 2</figcaption>
           </figure>
           <figure class="galx__item" data-cat="kursus">
-            <img src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-4.webp" width="960" height="1280"
+            <img class="galx__img--top" src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-4.webp" width="960" height="1280"
                  data-zoom data-cap="Tarikh 20 September 2026 | Dewan Tan Sri Yusof Nor, Felda Palong 2"
-                 loading="lazy" decoding="async" alt="Penyerahan beg KRS kepada seorang jemaah wanita di hadapan dewan">
+                 loading="lazy" decoding="async" alt="YB Dato’ Mohd Zaidy menyerahkan beg KRS kepada seorang jemaah wanita di hadapan dewan">
             <figcaption class="galx__stamp">Tarikh 20 September 2026 &nbsp;|&nbsp; Dewan Tan Sri Yusof Nor, Felda Palong 2</figcaption>
           </figure>
           <figure class="galx__item" data-cat="kursus">
-            <img src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-5.webp" width="960" height="1280"
+            <img class="galx__img--top" src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-5.webp" width="960" height="1280"
                  data-zoom data-cap="Tarikh 20 September 2026 | Dewan Tan Sri Yusof Nor, Felda Palong 2"
-                 loading="lazy" decoding="async" alt="Penyerahan beg KRS kepada seorang jemaah lelaki warga emas">
+                 loading="lazy" decoding="async" alt="YB Dato’ Mohd Zaidy menyerahkan beg KRS kepada seorang jemaah lelaki warga emas">
             <figcaption class="galx__stamp">Tarikh 20 September 2026 &nbsp;|&nbsp; Dewan Tan Sri Yusof Nor, Felda Palong 2</figcaption>
           </figure>
           <figure class="galx__item" data-cat="kursus">
-            <img src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-6.webp" width="960" height="1280"
+            <img class="galx__img--top" src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-6.webp" width="960" height="1280"
                  data-zoom data-cap="Tarikh 20 September 2026 | Dewan Tan Sri Yusof Nor, Felda Palong 2"
-                 loading="lazy" decoding="async" alt="Penyerahan beg KRS sambil berjabat tangan dengan seorang jemaah lelaki">
+                 loading="lazy" decoding="async" alt="YB Dato’ Mohd Zaidy menyerahkan beg KRS sambil berjabat tangan dengan seorang jemaah lelaki">
             <figcaption class="galx__stamp">Tarikh 20 September 2026 &nbsp;|&nbsp; Dewan Tan Sri Yusof Nor, Felda Palong 2</figcaption>
           </figure>
           <figure class="galx__item" data-cat="kursus">
-            <img src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-7.webp" width="960" height="1280"
+            <img class="galx__img--top" src="images/galeri/kursus-umrah-bersama-tokdi-20-september-2026-7.webp" width="960" height="1280"
                  data-zoom data-cap="Tarikh 20 September 2026 | Dewan Tan Sri Yusof Nor, Felda Palong 2"
-                 loading="lazy" decoding="async" alt="Penyerahan beg KRS kepada seorang jemaah wanita pada majlis kursus">
+                 loading="lazy" decoding="async" alt="YB Dato’ Mohd Zaidy menyerahkan beg KRS kepada seorang jemaah wanita pada majlis kursus">
             <figcaption class="galx__stamp">Tarikh 20 September 2026 &nbsp;|&nbsp; Dewan Tan Sri Yusof Nor, Felda Palong 2</figcaption>
           </figure>
           <figure class="galx__item" data-cat="kursus">
