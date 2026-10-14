@@ -566,6 +566,26 @@ body.lb-lock{overflow:hidden}
 .ribbon span:last-child{border-right:none}
 .prose{max-width:none;color:var(--muted)}
 .prose strong{color:var(--ink);font-weight:600}
+
+/* Borang pendaftaran — seluruh kotak ialah pautan muat turun, idiom
+   yang sama dengan borang haji di haji.html. */
+.borang{display:flex;align-items:center;gap:1.25rem;text-decoration:none;
+  background:var(--maroon);color:var(--white);border:2px solid transparent;border-radius:var(--r);
+  padding:clamp(1.25rem,3vw,1.9rem);transition:background .15s,border-color .15s,transform .18s}
+.borang:hover{background:var(--maroon-deep);border-color:var(--amber);transform:translateY(-2px)}
+.borang:focus-visible{outline:3px solid var(--amber);outline-offset:4px}
+.borang__ico{width:44px;height:44px;flex:0 0 44px;color:var(--amber)}
+.borang__txt{min-width:0}
+.borang strong{display:block;font-family:var(--ff-display);font-variation-settings:'wdth' 112;
+  font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.25;font-weight:700}
+.borang small{display:block;margin-top:.45rem;font-family:var(--ff-mono);font-size:.7rem;
+  letter-spacing:.07em;color:#F0D9DD}
+.borang__arrow{width:26px;height:26px;flex:0 0 26px;margin-left:auto;color:var(--amber)}
+.borang__h{margin:2.25rem 0 1rem}
+@media(prefers-reduced-motion:reduce){.borang:hover{transform:none}}
+@media(max-width:600px){.borang{gap:.9rem}
+  .borang__ico{width:34px;height:34px;flex-basis:34px}
+  .borang__arrow{width:20px;height:20px;flex-basis:20px}}
 .steps{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;grid-template-columns:repeat(4,minmax(0,1fr))}
 .step{background:var(--paper);padding:1.5rem 1.25rem}
 .step__n{font-family:var(--ff-mono);font-size:.72rem;font-weight:600;letter-spacing:.14em;color:var(--amber-deep);margin:0 0 .75rem}
@@ -876,6 +896,18 @@ body.lb-lock{overflow:hidden}
       <p>KRS Travel Sdn Bhd telah menguruskan lebih <strong>217,000 jemaah</strong> sejak 1999. Setiap pakej umrah kami menggunakan <strong>penerbangan terus</strong>, hotel yang jaraknya dinyatakan dalam meter dari Masjidil Haram dan Masjid Nabawi, serta hidangan <strong>full board</strong> sepanjang berada di Tanah Suci.</p>
       <p>Setiap rombongan dibimbing oleh mutawwif dan petugas berpengalaman — meliputi bimbingan ibadah <strong>umrah tiga kali</strong>, ziarah di Mekah dan Madinah, serta kursus umrah pra-berlepas bersama buku panduan untuk setiap jemaah.</p>
     </div>
+
+    <h3 class="borang__h">Daftar Minat Pakej Umrah KRS Travel</h3>
+    <a class="borang" href="downloads/borang-pendaftaran-umrah-krs.pdf"
+       download="Borang-Pendaftaran-Umrah-KRS-Travel.pdf" type="application/pdf"
+       aria-label="Muat turun Borang Pendaftaran Umrah KRS Travel, PDF, 865 KB, 2 muka surat">
+      <svg class="borang__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M12 11v7m-3-3 3 3 3-3"/></svg>
+      <span class="borang__txt">
+        <strong>Borang Pendaftaran Umrah KRS Travel</strong>
+        <small>PDF &middot; 865 KB &middot; 2 muka surat</small>
+      </span>
+      <svg class="borang__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M4 13l8 8 8-8"/></svg>
+    </a>
   </div>
 </section>
 
