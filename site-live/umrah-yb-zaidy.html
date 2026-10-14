@@ -450,6 +450,11 @@ details ul{margin:.3rem 0 0;padding-left:1.1rem;display:grid;gap:.25rem}
   border:1px solid rgba(255,255,255,.32);color:var(--white);border-radius:50%;
   font-size:1.35rem;line-height:1;cursor:pointer}
 .lbox__close:hover{background:rgba(255,255,255,.24)}
+.lbox__cap{position:absolute;left:0;right:0;bottom:0;margin:0;padding:1.4rem 1rem 1rem;
+  font-family:var(--ff-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.86);text-align:center;pointer-events:none;
+  background:linear-gradient(to top,rgba(11,30,36,.85),rgba(11,30,36,0))}
+.lbox__cap:empty{display:none}
 body.is-lbox-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.lbox,.lbox__img{transition:none}}
 
@@ -1027,10 +1032,10 @@ body.is-lbox-open{overflow:hidden}
     <div class="grid2">
       <article class="hcard">
         <div class="hcard__media hslide">
-          <img src="images/hotel/manazel-al-wisam-1.webp" alt="Bangunan Manazel Al Wisam Hotel, Makkah" loading="lazy" decoding="async">
-          <img src="images/hotel/manazel-al-wisam-2.webp" alt="Bilik dan kemudahan dalam bilik Manazel Al Wisam" loading="lazy" decoding="async">
-          <img src="images/hotel/manazel-al-wisam-3.webp" alt="Pemandangan jalan di hadapan Manazel Al Wisam Hotel" loading="lazy" decoding="async">
-          <img src="images/hotel/manazel-al-wisam-4.webp" alt="Pintu masuk utama Manazel Al Wisam Hotel" loading="lazy" decoding="async">
+          <img src="images/hotel/manazel-al-wisam-1.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Bangunan Manazel Al Wisam Hotel, Makkah" loading="lazy" decoding="async">
+          <img src="images/hotel/manazel-al-wisam-2.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Bilik dan kemudahan dalam bilik Manazel Al Wisam" loading="lazy" decoding="async">
+          <img src="images/hotel/manazel-al-wisam-3.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Pemandangan jalan di hadapan Manazel Al Wisam Hotel" loading="lazy" decoding="async">
+          <img src="images/hotel/manazel-al-wisam-4.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Pintu masuk utama Manazel Al Wisam Hotel" loading="lazy" decoding="async">
           <span class="hslide__dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         </div>
         <div class="hcard__body">
@@ -1044,10 +1049,10 @@ body.is-lbox-open{overflow:hidden}
       </article>
       <article class="hcard">
         <div class="hcard__media hslide">
-          <img src="images/hotel/concorde-al-madinah-1.webp" alt="Fasad hadapan Madinah Concorde Hotel" loading="lazy" decoding="async">
-          <img src="images/hotel/concorde-al-madinah-2.webp" alt="Bilik penginapan di Madinah Concorde" loading="lazy" decoding="async">
-          <img src="images/hotel/concorde-al-madinah-3.webp" alt="Papan tanda Madinah Concorde Hotel" loading="lazy" decoding="async">
-          <img src="images/hotel/concorde-al-madinah-4.webp" alt="Bangunan Al Madinah Concorde dari luar" loading="lazy" decoding="async">
+          <img src="images/hotel/concorde-al-madinah-1.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Fasad hadapan Madinah Concorde Hotel" loading="lazy" decoding="async">
+          <img src="images/hotel/concorde-al-madinah-2.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Bilik penginapan di Madinah Concorde" loading="lazy" decoding="async">
+          <img src="images/hotel/concorde-al-madinah-3.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Papan tanda Madinah Concorde Hotel" loading="lazy" decoding="async">
+          <img src="images/hotel/concorde-al-madinah-4.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Bangunan Al Madinah Concorde dari luar" loading="lazy" decoding="async">
           <span class="hslide__dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         </div>
         <div class="hcard__body">
@@ -1463,6 +1468,7 @@ body.is-lbox-open{overflow:hidden}
 <div class="lbox" id="lightbox" data-open="false" role="dialog" aria-modal="true" aria-label="Paparan penuh foto pakej">
   <button class="lbox__close" type="button" id="lightbox-close" aria-label="Tutup paparan foto">&times;</button>
   <img class="lbox__img" id="lightbox-img" src="" alt="">
+  <p class="lbox__cap" id="lightbox-cap"></p>
 </div>
 
 <script>
@@ -1579,6 +1585,7 @@ body.is-lbox-open{overflow:hidden}
 (function(){
   var box=document.getElementById('lightbox');
   var img=document.getElementById('lightbox-img');
+  var cap=document.getElementById('lightbox-cap');
   var closeBtn=document.getElementById('lightbox-close');
   var shots=[].slice.call(document.querySelectorAll('img[data-zoom]'));
   if(!box||!img||!shots.length) return;
@@ -1588,6 +1595,8 @@ body.is-lbox-open{overflow:hidden}
   function open(src,alt,trigger){
     last=trigger||null;
     img.src=src; img.alt=alt||'';
+    /* Kapsyen datang dari data-cap pada <img>; kosong = jalur kapsyen disembunyikan. */
+    if(cap) cap.textContent=(trigger&&trigger.getAttribute('data-cap'))||'';
     box.setAttribute('data-open','true');
     document.body.classList.add('is-lbox-open');
     requestAnimationFrame(function(){box.classList.add('is-visible');});
@@ -1599,6 +1608,7 @@ body.is-lbox-open{overflow:hidden}
     window.setTimeout(function(){
       box.setAttribute('data-open','false');
       img.src=''; img.alt='';
+      if(cap) cap.textContent='';
     },200);
     if(last){last.focus(); last=null;}
   }
@@ -1606,7 +1616,7 @@ body.is-lbox-open{overflow:hidden}
   shots.forEach(function(el){
     el.setAttribute('role','button');
     el.setAttribute('tabindex','0');
-    if(!el.getAttribute('title')) el.setAttribute('title','Klik untuk lihat poster penuh');
+    if(!el.getAttribute('title')) el.setAttribute('title', el.hasAttribute('data-cap') ? 'Klik untuk lihat foto penuh' : 'Klik untuk lihat poster penuh');
     el.addEventListener('click',function(){open(el.currentSrc||el.src, el.alt, el);});
     el.addEventListener('keydown',function(e){
       if(e.key==='Enter'||e.key===' '){e.preventDefault(); open(el.currentSrc||el.src, el.alt, el);}
