@@ -503,7 +503,15 @@ body.is-lbox-open{overflow:hidden}
 @media(max-width:1180px){.agrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:900px){.agrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){.hero--dir .wrap{grid-template-columns:1fr}.hero__tally{text-align:left}}
-@media(max-width:640px){.agrid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .agrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+  .acard{--card-pad:.8rem}
+  .acard h3{overflow-wrap:break-word}
+  /* dua lajur: nombor turun ke barisnya sendiri supaya butang tidak melimpah */
+  .acard__wa{flex-wrap:wrap;justify-content:center;row-gap:.1rem;padding-inline:.35rem}
+  .acard__wa .num{margin-left:0;width:100%;text-align:center;font-size:.72rem;white-space:nowrap}
+  .acard__page{flex-direction:column;align-items:flex-start;gap:.15rem;padding-inline:.6rem;font-size:.75rem}
+}
 
 /* ── CTA akhir halaman (sitewide) ─────────────────────────── */
 .sec--cta{background:var(--paper);border-top:1px solid var(--line)}
