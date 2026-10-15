@@ -41,6 +41,31 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
+  # ── Halaman dalam subfolder, URL awam kekal rata ─────────
+  # Fail disusun dalam destinasi/, kempen/ dan legal/ supaya root
+  # public_html hanya mengandungi halaman utama. URL awam TIDAK berubah:
+  # baris di bawah memetakan URL rata kepada fail baharu secara DALAMAN
+  # (bukan 301), jadi semua pautan luar, canonical dan sitemap sedia ada
+  # kekal sah. Jangan tukar kepada R=301 — ia akan memutarkan URL laman.
+  #
+  # Nota: folder TIDAK boleh dinamakan sama dengan halaman sedia ada.
+  # Peraturan "URL cantik" di bawah melangkau direktori (!-d), jadi folder
+  # bernama `pelancongan` akan menyebabkan /pelancongan jadi 403 —
+  # sebab itu folder destinasi dinamakan `destinasi`, bukan `pelancongan`.
+  RewriteRule ^(turkiye|uzbekistan|balkan|yunnan|south-korea|pulau-redang|pulau-perhentian)(\.html)?$ /destinasi/$1.html [L]
+  RewriteRule ^(umrah-yb-asna|umrah-yb-razi|umrah-yb-zaidy|pembiayaan-umrah-maybank|mutawwif)(\.html)?$ /kempen/$1.html [L]
+  RewriteRule ^(dasar-privasi|penafian|terma-syarat)(\.html)?$ /legal/$1.html [L]
+
+  # ── Aset yang dipinta di root ────────────────────────────
+  # Semua foto kini dalam images/. Pelayar dan perayap masih memanggil
+  # /favicon.ico dan /apple-touch-icon.png di root walaupun tanpa <link>,
+  # dan pautan kongsi lama (Facebook, WhatsApp) masih memanggil
+  # /og-image-v2.jpg — baris ini mengekalkan semuanya.
+  RewriteRule ^favicon\.ico$                        /images/brand/favicon.ico         [L]
+  RewriteRule ^favicon\.png$                        /images/brand/favicon.png         [L]
+  RewriteRule ^apple-touch-icon(-precomposed)?\.png$ /images/brand/apple-touch-icon.png [L]
+  RewriteRule ^og-image-v2\.jpg$                     /images/brand/og-image-v2.jpg     [L]
+
   # URL cantik: /umrah → umrah.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
