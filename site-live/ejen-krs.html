@@ -464,14 +464,14 @@ body.is-lbox-open{overflow:hidden}
 .chip:disabled{opacity:.38;cursor:not-allowed}
 
 /* Kad ejen */
-.agrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}
+.agrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}
 .acard{background:var(--white);border:1px solid var(--line);border-radius:var(--r);
   padding:var(--card-pad);display:flex;flex-direction:column;transition:border-color .18s,transform .18s}
 .acard:hover{border-color:var(--haram);transform:translateY(-3px)}
 /* Potret ejen — imej hos di krstravel.com.my */
 .acard__plate{position:relative;background:var(--limestone);border:1px solid var(--line);
-  border-radius:var(--r);aspect-ratio:4/3;overflow:hidden;margin-bottom:1rem}
-.acard__photo{width:100%;height:100%;object-fit:contain;object-position:center bottom;display:block}
+  border-radius:var(--r);aspect-ratio:2/3;overflow:hidden;margin-bottom:1rem}
+.acard__photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .acard__plate .acard__mono{position:absolute;inset:0;width:auto;height:auto;border:0;border-radius:0;
   font-size:2rem;background:transparent}
 .acard__plate[data-fallback="true"] .acard__photo{display:none}
@@ -480,10 +480,10 @@ body.is-lbox-open{overflow:hidden}
   border:1px solid var(--line);border-radius:var(--r);font-family:var(--ff-display);
   font-variation-settings:'wdth' 118;font-weight:700;font-size:1.15rem;color:var(--haram);letter-spacing:.01em}
 .acard h3{font-size:1rem;font-weight:600;font-variation-settings:'wdth' 108;margin:.15rem 0 .4rem}
-.acard__negeri{display:inline-flex;align-items:center;gap:.35rem;margin:0;font-family:var(--ff-mono);
+.acard__negeri{display:inline-flex;align-items:center;gap:.35rem;margin:0 0 1.15rem;font-family:var(--ff-mono);
   font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 .acard__negeri svg{width:12px;height:12px;flex:none;color:var(--haram)}
-.acard__act{margin-top:1.15rem;padding-top:1rem;border-top:1px solid var(--line);display:grid;gap:.5rem}
+.acard__act{margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);display:grid;gap:.5rem}
 .acard__wa{justify-content:flex-start}
 .acard__wa .num{margin-left:auto;font-family:var(--ff-mono);font-size:.78rem;font-weight:600;opacity:.85}
 .acard__page{display:flex;align-items:center;justify-content:space-between;gap:.5rem;
@@ -500,7 +500,8 @@ body.is-lbox-open{overflow:hidden}
 .empty h3{margin:0 0 .5rem}
 .empty p{margin:0 auto;max-width:44ch;font-size:.9rem}
 
-@media(max-width:1080px){.agrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1180px){.agrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){.agrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:860px){.hero--dir .wrap{grid-template-columns:1fr}.hero__tally{text-align:left}}
 @media(max-width:640px){.agrid{grid-template-columns:1fr}}
 
