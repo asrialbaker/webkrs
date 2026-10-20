@@ -700,6 +700,8 @@ body.lb-lock{overflow:hidden}
   .foot__main{grid-template-columns:1fr}
 }
 /* ── Sebut harga pembiayaan (rel tetap pada desktop · kad inline mudah alih) ── */
+.urail,.urail__stick{display:contents}
+.pgwrail{display:none}
 .fin-promo{margin:1.25rem var(--pad);background:#fffdf6;color:var(--ink);border:1px solid #d4c69b;border-top:5px solid #ffce32;border-radius:6px;padding:1.25rem;box-shadow:0 12px 32px rgba(14,28,34,.16)}
 .fin-promo__brand{display:flex;align-items:center;gap:.6rem;color:#10513e;font-size:.875rem;font-weight:700;margin:0 0 1rem}
 .fin-promo__brand svg{width:30px;height:30px;flex:0 0 30px;background:#ffce32;padding:5px;border-radius:50%}
@@ -710,7 +712,27 @@ body.lb-lock{overflow:hidden}
 .fin-promo__cta:focus-visible{outline:3px solid #10513e;outline-offset:4px}
 @media(min-width:861px){
   :root{--floatw:clamp(206px,17.5vw,244px);--floatgap:clamp(1rem,1.6vw,1.5rem);--floattop:calc(107px + .7rem)}
-  .fin-promo{position:fixed;z-index:50;top:var(--floattop);right:var(--floatgap);width:var(--floatw);margin:0;padding:.95rem 1rem 1rem}
+  .urail{display:block;position:fixed;inset:0;z-index:50;pointer-events:none}
+  .urail__stick{display:block;position:absolute;top:var(--floattop);right:var(--floatgap);
+    width:var(--floatw);pointer-events:auto}
+  /* Kedudukan dipegang oleh rel di atas, jadi kad ini mengalir biasa di dalamnya */
+  .fin-promo{margin:0;padding:.95rem 1rem 1rem}
+  .pgwrail{display:block;margin-top:.6rem;background:var(--white);border-radius:calc(var(--r) * 2);
+    padding:.8rem .85rem .85rem;box-shadow:0 12px 32px rgba(14,28,34,.22)}
+  .pgwrail__ttl{font-family:var(--ff-mono);font-size:.55rem;font-weight:600;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--haram);margin:0 0 .6rem;text-align:center}
+  .pgwrail__list{list-style:none;margin:0;padding:0;display:grid;gap:.55rem}
+  .pgwrail__list li{display:flex;align-items:center;gap:.55rem}
+  .pgwrail__list img{width:38px;height:38px;flex:none;border-radius:50%;object-fit:cover;
+    background:var(--paper)}
+  .pgwrail__nama{font-size:.74rem;font-weight:600;line-height:1.2;color:var(--ink);margin:0}
+  .pgwrail__wa{display:inline-flex;align-items:center;gap:.3rem;margin-top:.25rem;
+    font-size:.66rem;font-weight:600;line-height:1;color:#0B2E1B;text-decoration:none;
+    background:#25D366;border:1px solid #25D366;border-radius:var(--r);padding:.32rem .48rem;
+    transition:background .15s,border-color .15s,color .15s}
+  .pgwrail__wa:hover{background:#1EBE5B;border-color:#1EBE5B;color:var(--white)}
+  .pgwrail__wa:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+  .pgwrail__wa svg{width:12px;height:12px;fill:currentColor;flex:none}
   .fin-promo__brand{font-size:.71rem;gap:.45rem;margin-bottom:.4rem}
   .fin-promo__brand svg{width:24px;height:24px;flex-basis:24px;padding:4px}
   .fin-promo h2{font-size:1rem;line-height:1.28;margin-bottom:.4rem}
@@ -968,12 +990,53 @@ body.lb-lock{overflow:hidden}
 
 <!-- ══ KAD CTA TERAPUNG ════════════════════════════════════
      Kekal di lajur kanan sepanjang skrol (desktop sahaja). -->
-<aside class="fin-promo" aria-labelledby="fin-promo-title">
-  <p class="fin-promo__brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18L12 3 3 9ZM5 9v10m5-10v10m4-10v10m5-10v10M3 21h18"/></svg>Maybank Islamic</p>
-  <h2 id="fin-promo-title">Niat ke Tanah Suci.<br>Rancang langkah anda.</h2>
-  <p class="fin-promo__text">Sedang merancang bajet umrah? Kenali pilihan pembiayaan Maybank Islamic bersama KRS Travel.</p>
-  <a class="fin-promo__cta" href="kempen/pembiayaan-umrah-maybank.html">Lihat pembiayaan umrah <span aria-hidden="true">→</span></a>
-</aside>
+<!-- ══ REL TERAPUNG · pembiayaan + pegawai pemasaran ══════
+     Pada ≤860px .urail/.urail__stick jadi display:contents, jadi
+     kad pembiayaan mengalir inline persis seperti sebelum ini. -->
+<div class="urail">
+  <div class="urail__stick">
+    <aside class="fin-promo" aria-labelledby="fin-promo-title">
+      <p class="fin-promo__brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18L12 3 3 9ZM5 9v10m5-10v10m4-10v10m5-10v10M3 21h18"/></svg>Maybank Islamic</p>
+      <h2 id="fin-promo-title">Niat ke Tanah Suci.<br>Rancang langkah anda.</h2>
+      <p class="fin-promo__text">Sedang merancang bajet umrah? Kenali pilihan pembiayaan Maybank Islamic bersama KRS Travel.</p>
+      <a class="fin-promo__cta" href="kempen/pembiayaan-umrah-maybank.html">Lihat pembiayaan umrah <span aria-hidden="true">→</span></a>
+    </aside>
+        <!-- Pegawai pemasaran — versi padat untuk rel terapung.
+             Potret penuh yang sama kekal dalam CTA untuk skrin kecil. -->
+        <div class="pgwrail">
+          <p class="pgwrail__ttl">Pegawai Pemasaran</p>
+          <ul class="pgwrail__list">
+            <li>
+              <img src="images/tentang/pegawai-muhammad-yusdi-wajah.webp" width="128" height="128" loading="lazy" decoding="async"
+                   alt="En. Muhammad Yusdi, pegawai pemasaran KRS Travel">
+              <div>
+                <p class="pgwrail__nama">Encik Yusdi</p>
+                <a class="pgwrail__wa" href="https://wa.me/60162780458?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20tentang%20pakej%20umrah%20KRS%20Travel." target="_blank" rel="noopener noreferrer"
+                   aria-label="WhatsApp Encik Yusdi di 016-278 0458"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>016-278 0458</a>
+              </div>
+            </li>
+            <li>
+              <img src="images/tentang/pegawai-noor-saidanatul-akmal-wajah.webp" width="128" height="128" loading="lazy" decoding="async"
+                   alt="Cik Noor Saidanatul Akmal, pegawai pemasaran KRS Travel">
+              <div>
+                <p class="pgwrail__nama">Cik Saida</p>
+                <a class="pgwrail__wa" href="https://wa.me/60102790458?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20tentang%20pakej%20umrah%20KRS%20Travel." target="_blank" rel="noopener noreferrer"
+                   aria-label="WhatsApp Cik Saida di 010-279 0458"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>010-279 0458</a>
+              </div>
+            </li>
+            <li>
+              <img src="images/tentang/pegawai-nur-aleia-qahirah-wajah.webp" width="128" height="128" loading="lazy" decoding="async"
+                   alt="Cik Nur Aleia Qahirah, pegawai pemasaran KRS Travel">
+              <div>
+                <p class="pgwrail__nama">Cik Qahirah</p>
+                <a class="pgwrail__wa" href="https://wa.me/60102710458?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20tentang%20pakej%20umrah%20KRS%20Travel." target="_blank" rel="noopener noreferrer"
+                   aria-label="WhatsApp Cik Qahirah di 010-271 0458"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>010-271 0458</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+  </div>
+</div>
 
 <section class="sec">
   <div class="wrap">
