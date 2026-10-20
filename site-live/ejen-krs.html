@@ -578,6 +578,40 @@ body.is-lbox-open{overflow:hidden}
   .ejkad__split{grid-template-columns:1fr}
   .ejkad__media{max-width:420px;margin-inline:auto}
 }
+/* ── Kad CTA terapung · jadi ejen (≥861px) ────────────────────
+   Pola yang sama seperti haji.html dan umrah.html: kad kekal di
+   lajur kanan sepanjang skrol, dan setiap .wrap diberi padding-right
+   selebar kad supaya kandungan tidak pernah tertutup. Namanya .erail
+   kerana .rail di halaman ini sudah menjadi bar penapis negeri.
+   Pada mudah alih ia disembunyikan — kad kempen penuh di bawah hero
+   sudah membawa tawaran dan nombor yang sama. */
+.erail{display:none}
+#kempen-ejen{scroll-margin-top:72px}
+@media(min-width:861px){
+  /* 107px = bar utiliti (37px) + header (70px) */
+  :root{--floatw:clamp(206px,17.5vw,244px);--floatgap:clamp(1rem,1.6vw,1.5rem);
+        --floattop:calc(107px + .7rem)}
+  .erail{display:block;position:fixed;inset:0;z-index:50;pointer-events:none}
+  .erail__stick{position:absolute;top:var(--floattop);right:var(--floatgap);
+    width:var(--floatw);pointer-events:auto}
+
+  /* Lajur kanan dikhaskan untuk kad — kandungan tidak pernah ditutupi */
+  #kandungan .wrap,.rakan .wrap,.foot .wrap{padding-right:calc(var(--floatw) + var(--floatgap) * 2)}
+
+  .ecard{background:var(--white);border-radius:calc(var(--r) * 2);
+    padding:.95rem 1rem 1rem;box-shadow:0 12px 32px rgba(14,28,34,.22);text-align:center}
+  .ecard__eyebrow{font-family:var(--ff-mono);font-size:.55rem;font-weight:600;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--maroon);margin:0 0 .4rem}
+  .ecard__title{font-family:var(--ff-display);font-variation-settings:'wdth' 115;font-weight:700;
+    letter-spacing:-.015em;font-size:1rem;line-height:1.28;color:var(--ink);margin:0}
+  .ecard__lede{font-size:.71rem;line-height:1.45;color:var(--muted);margin:.4rem 0 0}
+  .ecard__cta{display:grid;grid-template-columns:1fr;gap:.4rem;margin-top:.8rem;
+    padding-top:.8rem;border-top:1px solid var(--line)}
+  .ecard__cta .btn{width:100%;padding:.5rem;font-size:.72rem;line-height:1.25;
+    justify-content:center;text-align:center}
+  .ecard__cta .btn--wa svg{width:14px;height:14px}
+}
+
 /* ── Rakan & pengiktirafan ───────────────────────────────── */
 .rakan{border-top:1px solid var(--line);background:var(--white);padding:2.7rem 0 2.9rem;overflow:hidden}
 .rakan__label{font-family:var(--ff-mono);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-align:center;margin:0 0 1.9rem}
@@ -762,8 +796,28 @@ body.is-lbox-open{overflow:hidden}
   </div>
 </section>
 
+<!-- ══ KAD CTA TERAPUNG · jadi ejen ════════════════════════
+     Kekal di lajur kanan sepanjang skrol (desktop sahaja). -->
+<div class="erail">
+  <div class="erail__stick">
+    <div class="ecard">
+      <p class="ecard__eyebrow">Peluang Ejen</p>
+      <p class="ecard__title">Jadi Ejen Umrah KRS</p>
+      <p class="ecard__lede">Komisen bermula RM300 setiap jemaah, umrah percuma pada sasaran 35 jemaah, dengan bimbingan penuh daripada pasukan kami.</p>
+      <div class="ecard__cta">
+        <a class="btn btn--primary" href="#kempen-ejen">Lihat peluang ejen</a>
+        <a class="btn btn--wa" href="https://wa.me/601110057095?text=Assalamualaikum%2C%20saya%20berminat%20untuk%20menjadi%20Ejen%20Umrah%20KRS%20Travel." target="_blank" rel="noopener noreferrer"
+           aria-label="WhatsApp pendaftaran ejen umrah KRS Travel di 011-1005 7095">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+          WhatsApp 011-1005 7095
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ══ 03b · KEMPEN EJEN — jemputan menyertai keluarga KRS ═ -->
-<section class="sec sec--stone" aria-labelledby="kempen-ejen-ttl">
+<section class="sec sec--stone" id="kempen-ejen" aria-labelledby="kempen-ejen-ttl">
   <div class="wrap">
     <!-- ── Kad kempen ejen · jemputan menyertai keluarga KRS ──
            Poster dan kod QR dua-dua ada data-zoom, jadi lightbox
@@ -1526,7 +1580,11 @@ body.is-lbox-open{overflow:hidden}
       KRS Travel melantik ejen di seluruh Malaysia. Anda menguruskan jemaah di kawasan anda; kami
       menyediakan pakej, latihan produk dan sokongan operasi dari Seremban.
     </p>
-    <a class="btn btn--primary" href="https://wa.me/60102790458?text=Salam,%20saya%20berminat%20menjadi%20ejen%20KRS%20Travel" target="_blank" rel="noopener">Mohon jadi ejen</a>
+    <a class="btn btn--wa" href="https://wa.me/601110057095?text=Assalamualaikum%2C%20saya%20berminat%20untuk%20menjadi%20Ejen%20Umrah%20KRS%20Travel." target="_blank" rel="noopener noreferrer"
+       aria-label="WhatsApp pendaftaran ejen umrah KRS Travel di 011-1005 7095">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+      WhatsApp 011-1005 7095
+    </a>
   </div>
 </section>
 
