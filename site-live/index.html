@@ -736,6 +736,54 @@ body.is-lbox-open{overflow:hidden}
   .dhui__grid{grid-template-columns:1fr;gap:1.7rem}
 }
 
+/* ── Kad kempen ejen · "KRS menjemput anda" ───────────────
+   Duduk di dalam .dhui__intro, jadi perlu batalkan text-align
+   center/justify yang diwarisi daripada blok pengenalan itu.   */
+.ejkad{text-align:left;margin:clamp(1.9rem,4vw,2.8rem) 0 clamp(1.6rem,3.5vw,2.3rem);
+  background:var(--white);border:1px solid var(--line);border-top:4px solid var(--maroon);
+  border-radius:var(--r);padding:clamp(1.25rem,3vw,2.1rem);box-shadow:0 10px 30px rgba(14,28,34,.07)}
+.ejkad .ejkad__eyebrow{font-family:var(--ff-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--maroon);margin:0 0 .6rem;text-align:left;text-align-last:auto}
+.ejkad h3{font-size:clamp(1.05rem,2vw,1.4rem);line-height:1.22;text-transform:uppercase;
+  letter-spacing:.005em;font-variation-settings:'wdth' 110;margin:0 0 1.4rem}
+.ejkad__split{display:grid;grid-template-columns:minmax(0,290px) 1fr;gap:clamp(1.25rem,3vw,2.25rem);align-items:start}
+
+/* Poster + kod QR — kedua-duanya buka lightbox (img[data-zoom]) */
+.ejkad__media{display:grid;gap:1rem;margin:0}
+.ejkad__media img{display:block;width:100%;height:auto;border:1px solid var(--line);
+  border-radius:var(--r);background:var(--white);cursor:zoom-in;transition:border-color .15s}
+.ejkad__media img:hover{border-color:var(--haram)}
+.ejkad__media img:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.ejkad__qr{margin:0;max-width:198px;justify-self:center}
+.ejkad__qr img{padding:.45rem}
+.ejkad__cap{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin:.45rem 0 0}
+
+/* Teks kad */
+.ejkad__body p{color:var(--muted);font-size:.94rem;line-height:1.7;margin:0 0 .85rem;
+  text-align:left;text-align-last:auto}
+.ejkad__body h4{font-size:.95rem;margin:1.3rem 0 .6rem}
+.ejkad__list{list-style:none;margin:0 0 1.15rem;padding:0;display:grid;gap:.55rem}
+.ejkad__list li{position:relative;padding-left:1.35rem;font-size:.92rem;line-height:1.6;color:var(--ink)}
+.ejkad__list li::before{content:"";position:absolute;left:0;top:.56em;width:7px;height:7px;
+  background:var(--amber);border-radius:1px}
+.ejkad__sum{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--haram);
+  border-radius:var(--r);padding:.9rem 1.05rem;margin:0 0 1.15rem}
+.ejkad__sum p{margin:0 0 .3rem;font-size:.88rem;line-height:1.6;color:var(--ink)}
+.ejkad__sum p:last-child{margin:0}
+.ejkad .ejkad__sum-ttl{font-family:var(--ff-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 .5rem}
+.ejkad__sum b{color:var(--maroon)}
+.ejkad .ejkad__who{margin:0 0 1.25rem}
+.ejkad__cta{display:flex;flex-wrap:wrap;gap:.7rem}
+.ejkad .ejkad__note{display:flex;align-items:center;gap:.45rem;font-size:.85rem;color:var(--muted);
+  margin:.75rem 0 0;text-align:left;text-align-last:auto}
+.ejkad__note svg{width:15px;height:15px;flex:none;fill:currentColor}
+@media(max-width:860px){
+  .ejkad__split{grid-template-columns:1fr}
+  .ejkad__media{max-width:420px;margin-inline:auto}
+}
+
 /* ── Rakan & pengiktirafan ───────────────────────────────── */
 .rakan{border-top:1px solid var(--line);background:var(--white);padding:2.7rem 0 2.9rem;overflow:hidden}
 .rakan__label{font-family:var(--ff-mono);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-align:center;margin:0 0 1.9rem}
@@ -1241,6 +1289,68 @@ body.is-lbox-open{overflow:hidden}
     <div class="dhui__intro">
       <h2>KRS Travel — Dari Hati Untuk Ilahi</h2>
       <p>KRS Travel Sdn Bhd telah menyusun perjalanan ibadah dan pelancongan mesra Muslim sejak 1999. Dari umrah dan haji sehingga tiket penerbangan, visa dan penginapan, setiap urusan dikendalikan sendiri oleh pasukan kami — supaya anda hanya perlu fokus pada satu perkara: ibadah.</p>
+      <!-- ── Kad kempen ejen · jemputan menyertai keluarga KRS ──
+           Poster dan kod QR dua-dua ada data-zoom, jadi lightbox
+           sedia ada (img[data-zoom]) membukanya tanpa JS tambahan. -->
+      <div class="ejkad">
+        <p class="ejkad__eyebrow">Peluang Ejen Umrah</p>
+        <h3>KRS menjemput anda untuk menjadi sebahagian keluarga kami</h3>
+
+        <div class="ejkad__split">
+
+          <div class="ejkad__media">
+            <img src="images/ejen/kempen-ejen-umrah-2026-thumb.webp"
+                 alt="Poster pencarian ejen umrah KRS Travel seluruh Malaysia — komisen bermula RM300 bagi setiap jemaah umrah, komisen haji lebih tinggi, umrah percuma apabila mencapai sasaran 35 jemaah, serta bimbingan dan panduan disediakan."
+                 width="1000" height="1000" loading="lazy" decoding="async"
+                 data-zoom data-full="images/ejen/kempen-ejen-umrah-2026.webp"
+                 title="Klik untuk lihat poster penuh">
+            <figure class="ejkad__qr">
+              <img src="images/qr/pendaftaran-ejen-umrah.webp"
+                   alt="Kod QR pendaftaran ejen umrah KRS Travel"
+                   width="900" height="900" loading="lazy" decoding="async"
+                   data-zoom
+                   title="Klik untuk lihat kod QR penuh">
+              <figcaption class="ejkad__cap">Imbas untuk daftar</figcaption>
+            </figure>
+          </div>
+
+          <div class="ejkad__body">
+            <p>KRS Travel Sdn Bhd kini membuka peluang kepada seluruh rakyat Malaysia untuk menyertai kami sebagai Ejen Umrah.</p>
+            <p>Peluang ini terbuka kepada anda yang ingin membantu umat Islam menjejakkan kaki ke Haramain, di samping menjana pendapatan yang berkat, Insya Allah.</p>
+
+            <h4>Manfaat yang ditawarkan</h4>
+            <ul class="ejkad__list">
+              <li>Komisen bermula <b>RM300</b> bagi setiap jemaah umrah.</li>
+              <li>Komisen haji yang lebih tinggi!</li>
+              <li>Umrah <b>PERCUMA</b> apabila mencapai sasaran 35 jemaah.</li>
+              <li>Bimbingan dan panduan disediakan. Anda akan dibimbing oleh pasukan yang profesional dan memiliki pengalaman hampir 30 tahun dalam industri umrah &amp; haji.</li>
+            </ul>
+
+            <div class="ejkad__sum">
+              <p class="ejkad__sum-ttl">Sebagai contoh</p>
+              <p>RM300 &times; 35 jemaah = <b>RM10,500</b>,</p>
+              <p>berserta peluang menunaikan umrah secara percuma.</p>
+              <p>Komisen dapat, pergi umrah PERCUMA pun dapat!</p>
+            </div>
+
+            <p class="ejkad__who"><b>Siapa kami?</b> KRS Travel merupakan syarikat berstatus PJH dengan pengalaman hampir 30 tahun dalam industri umrah dan haji.</p>
+
+            <h4>Daftar segera</h4>
+            <div class="ejkad__cta">
+              <a class="btn btn--wa" href="https://wa.me/601110057095?text=Assalamualaikum%2C%20saya%20berminat%20untuk%20menjadi%20Ejen%20Umrah%20KRS%20Travel." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp pendaftaran ejen umrah KRS Travel di 011-1005 7095">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+                WhatsApp 011-1005 7095
+              </a>
+            </div>
+            <p class="ejkad__note">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v7H3V3Zm2 2v3h3V5H5Zm9-2h7v7h-7V3Zm2 2v3h3V5h-3ZM3 14h7v7H3v-7Zm2 2v3h3v-3H5Zm9-2h2v2h-2v-2Zm2 2h2v2h-2v-2Zm2-2h3v2h-3v-2Zm0 4h3v5h-5v-2h2v-3Zm-4 1h2v4h-2v-4Z"/></svg>
+              Atau imbas kod QR pada poster.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
       <a class="dhui__more" href="tentang-kami.html">Baca lebih lanjut tentang kami
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 2l4 4-4 4"/></svg>
       </a>
