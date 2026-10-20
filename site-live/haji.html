@@ -1021,6 +1021,29 @@ body.lb-lock{overflow:hidden}
   .addon{aspect-ratio:1}
 }
 
+/* ── Pegawai pemasaran dalam CTA akhir ─────────────────────
+   Tiga kad potret; setiap satu membawa talian pegawai sendiri,
+   menggantikan satu butang WhatsApp umum yang ada sebelum ini. */
+.cta__pgw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2.5vw,1.6rem);
+  margin-top:clamp(1.7rem,3vw,2.3rem)}
+.pgw{margin:0;display:flex;flex-direction:column;background:var(--paper);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pgw img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.pgw__cap{display:flex;flex-direction:column;gap:.5rem;padding:.95rem 1rem 1.1rem}
+.pgw__nama{font-family:var(--ff-display);font-variation-settings:'wdth' 110;font-weight:700;
+  font-size:1rem;line-height:1.25;color:var(--ink);margin:0;text-align:center;
+  text-align-last:auto}
+.pgw__meta{font-family:var(--ff-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:-.3rem 0 .2rem;text-align:center;text-align-last:auto}
+.pgw .btn--wa{width:100%;padding:.55rem;font-size:.78rem;justify-content:center;text-align:center}
+.pgw__tel{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+  font-size:.78rem;color:var(--muted);text-decoration:none;background:var(--white);
+  border:1px solid var(--line);border-radius:var(--r);padding:.5rem;
+  transition:border-color .15s,color .15s}
+.pgw__tel:hover{border-color:var(--haram);color:var(--haram)}
+.pgw__tel svg{width:14px;height:14px;fill:currentColor;flex:none}
+@media(max-width:760px){.cta__pgw{grid-template-columns:1fr;max-width:330px;margin-inline:auto}}
+
 /* ── Rakan & pengiktirafan ───────────────────────────────── */
 .rakan{border-top:1px solid var(--line);background:var(--white);padding:2.7rem 0 2.9rem;overflow:hidden}
 .rakan__label{font-family:var(--ff-mono);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-align:center;margin:0 0 1.9rem}
@@ -3255,11 +3278,60 @@ body.lb-lock{overflow:hidden}
     <div class="cta">
       <h2>Bincang perjalanan anda dengan kami</h2>
       <p class="cta__lede">Semak tarikh, ketersediaan tempat dan sebut harga rombongan — atau tanya apa sahaja tentang umrah, haji, tiket penerbangan dan visa. Pasukan Seremban kami menjawab setiap hari bekerja, 9 pagi – 6 petang.</p>
+      <div class="cta__pgw">
+        <figure class="pgw">
+          <img src="images/tentang/pegawai-muhammad-yusdi.webp" width="640" height="640" loading="lazy" decoding="async"
+               alt="En. Muhammad Yusdi, pegawai pemasaran KRS Travel">
+          <figcaption class="pgw__cap">
+            <p class="pgw__nama">Encik Yusdi</p>
+            <p class="pgw__meta">Pegawai Pemasaran</p>
+            <a class="btn btn--wa" href="https://wa.me/60162780458?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20tentang%20pakej%20haji%20KRS%20Travel." target="_blank" rel="noopener noreferrer"
+               aria-label="WhatsApp Encik Yusdi di 016-278 0458">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+              WhatsApp 016-278 0458
+            </a>
+            <a class="pgw__tel" href="tel:+60162780458" aria-label="Telefon Encik Yusdi di 016-278 0458">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.23.2 2.44.57 3.56a1 1 0 0 1-.25 1.03z"/></svg>
+              Telefon 016-278 0458
+            </a>
+          </figcaption>
+        </figure>
+        <figure class="pgw">
+          <img src="images/tentang/pegawai-noor-saidanatul-akmal.webp" width="640" height="640" loading="lazy" decoding="async"
+               alt="Cik Noor Saidanatul Akmal, pegawai pemasaran KRS Travel">
+          <figcaption class="pgw__cap">
+            <p class="pgw__nama">Cik Saida</p>
+            <p class="pgw__meta">Pegawai Pemasaran</p>
+            <a class="btn btn--wa" href="https://wa.me/60102790458?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20tentang%20pakej%20haji%20KRS%20Travel." target="_blank" rel="noopener noreferrer"
+               aria-label="WhatsApp Cik Saida di 010-279 0458">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+              WhatsApp 010-279 0458
+            </a>
+            <a class="pgw__tel" href="tel:+60102790458" aria-label="Telefon Cik Saida di 010-279 0458">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.23.2 2.44.57 3.56a1 1 0 0 1-.25 1.03z"/></svg>
+              Telefon 010-279 0458
+            </a>
+          </figcaption>
+        </figure>
+        <figure class="pgw">
+          <img src="images/tentang/pegawai-nur-aleia-qahirah.webp" width="640" height="640" loading="lazy" decoding="async"
+               alt="Cik Nur Aleia Qahirah, pegawai pemasaran KRS Travel">
+          <figcaption class="pgw__cap">
+            <p class="pgw__nama">Cik Qahirah</p>
+            <p class="pgw__meta">Pegawai Pemasaran</p>
+            <a class="btn btn--wa" href="https://wa.me/60102710458?text=Assalamualaikum%2C%20saya%20ingin%20bertanya%20tentang%20pakej%20haji%20KRS%20Travel." target="_blank" rel="noopener noreferrer"
+               aria-label="WhatsApp Cik Qahirah di 010-271 0458">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
+              WhatsApp 010-271 0458
+            </a>
+            <a class="pgw__tel" href="tel:+60102710458" aria-label="Telefon Cik Qahirah di 010-271 0458">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.23.2 2.44.57 3.56a1 1 0 0 1-.25 1.03z"/></svg>
+              Telefon 010-271 0458
+            </a>
+          </figcaption>
+        </figure>
+      </div>
       <div class="cta__row">
-        <a class="btn btn--wa" href="https://wa.me/60102790458" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5c.1-.2.1-.3 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.8.8-.9 1.9-.2 3.1a10 10 0 0 0 4.3 4.1c1.6.7 2.5.6 3.2.4.5-.2 1.2-.8 1.3-1.3.1-.4.1-.8 0-.9z"/></svg>
-          WhatsApp 010-279 0458
-        </a>
         <a class="btn btn--ghost" href="tel:+6067613666">Telefon 06-761 3666</a>
         <a class="btn btn--ghost" href="ejen-krs.html">Cari Ejen Berdekatan</a>
       </div>
