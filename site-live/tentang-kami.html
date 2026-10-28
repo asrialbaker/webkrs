@@ -306,6 +306,7 @@ p{margin:0 0 1em}
          background:var(--white);border-radius:var(--r);box-shadow:0 18px 50px rgba(0,0,0,.4)}
 .lb__nav{background:none;border:1px solid var(--line-dark);border-radius:50%;color:var(--white);
          width:46px;height:46px;display:grid;place-items:center;cursor:pointer;flex:none}
+.lb__nav[hidden]{display:none}
 .lb__nav:hover{border-color:var(--amber);color:var(--amber)}
 .lb__nav svg{width:16px;height:16px}
 .lb__cap{flex:none;text-align:center;color:var(--white);padding-top:.9rem;margin:0}
@@ -358,18 +359,45 @@ body.lb-lock{overflow:hidden}
 
 /* Kad ibu pejabat — merentang penuh, peta di sebelah kanan */
 .story__hq{margin-top:clamp(2rem,4vw,3rem)}
-.ofc__card--hq{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;
+.ofc__card--hq,.ofc__card--wide{grid-column:1/-1;display:grid;align-items:stretch;
   gap:clamp(.75rem,1.5vw,1.25rem)}
-.ofc__card--hq .ofc__map{order:0;aspect-ratio:auto;min-height:300px}
+.ofc__card--hq{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.ofc__card--wide{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr)}
+.ofc__card--hq .ofc__map,.ofc__card--wide .ofc__map{order:0;aspect-ratio:auto;min-height:300px}
 .ofc__map-open{position:absolute;z-index:1;top:10px;left:10px;display:inline-flex;align-items:center;gap:.4rem;
   padding:.65rem .8rem;background:#fff;color:#1967d2;border:1px solid var(--line);border-radius:2px;
   box-shadow:0 1px 4px rgba(0,0,0,.2);font:500 13px/1.2 Arial,sans-serif;text-decoration:none}
 .ofc__map-open:hover{background:#f5f8ff;color:#174ea6}
 .ofc__map-open:focus-visible{outline:3px solid var(--amber-deep);outline-offset:2px}
-.ofc__card--hq .ofc__body{padding:clamp(1.35rem,2.6vw,2.1rem)}
-.ofc__card--hq h3{font-size:clamp(1.15rem,1.9vw,1.45rem)}
-.ofc__card--hq .ofc__addr{font-size:.92rem}
-.ofc__card--hq:hover{transform:none}
+.ofc__card--hq .ofc__body,.ofc__card--wide .ofc__body{padding:clamp(1.35rem,2.6vw,2.1rem)}
+.ofc__card--hq h3,.ofc__card--wide h3{font-size:clamp(1.15rem,1.9vw,1.45rem)}
+.ofc__card--wide h3{font-size:clamp(.95rem,1.3vw,1.18rem);line-height:1.3}
+.ofc__card--hq .ofc__addr,.ofc__card--wide .ofc__addr{font-size:.92rem}
+.ofc__card--hq:hover,.ofc__card--wide:hover{transform:none}
+.ofc__logo{width:clamp(92px,10.5vw,128px);height:auto;display:block;margin-bottom:.8rem}
+.ofc__shot{position:relative;margin:0;aspect-ratio:16/10;background:var(--limestone);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.ofc__shot .lb-open{display:block;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.ofc__shot .lb-open:focus-visible{outline:3px solid var(--amber-deep);outline-offset:-3px}
+.ofc__shot img{transition:transform .3s}
+.ofc__shot .lb-open:hover img{transform:scale(1.04)}
+.ofc__card--wide .ofc__shot{aspect-ratio:auto;min-height:300px}
+.ofc__shot picture{display:block;width:100%;height:100%}
+.ofc__shot img{width:100%;height:100%;object-fit:cover;display:block}
+.ofc__card--wide h3+.ofc__trade{font-family:var(--ff-mono);font-size:.7rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--haram);margin:-.35rem 0 .6rem}
+.ofc__card--wide .ofc__body>.pcontact{margin-top:.95rem}
+.ofc__people{margin-top:auto;padding-top:.95rem}
+.ofc__people .ofc__kicker{margin-bottom:.5rem}
+.ofc__person+.ofc__person{margin-top:.6rem;padding-top:.6rem;border-top:1px dashed var(--line)}
+.ofc__person b{display:block;font-size:.86rem;font-weight:600;line-height:1.5;color:var(--ink)}
+.ofc__card .ofc__person .pcontact{margin-top:.35rem;padding-top:0}
+/* Tiga lajur hanya apabila lajur foto cukup lebar untuk papan tanda */
+@media(max-width:1100px){
+  .ofc__card--wide{grid-template-columns:1fr}
+  .ofc__card--wide .ofc__shot{order:-2;aspect-ratio:16/10;min-height:0}
+  .ofc__card--wide .ofc__map{order:-1;aspect-ratio:16/10;min-height:0}
+}
 @media(max-width:960px){
   .ofc{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ofc__card--hq{grid-template-columns:1fr}
@@ -973,7 +1001,7 @@ body.lb-lock{overflow:hidden}
   <div class="wrap">
     <div class="sec__head centered">
       <h2 class="dh dh--lg">Cawangan KRS Travel Sdn Bhd</h2>
-      <p class="sub">Enam cawangan merentasi Semenanjung — datang berjumpa kami, atau hubungi cawangan yang paling hampir dengan anda.</p>
+      <p class="sub">Enam cawangan merentasi Semenanjung dan sebuah pejabat di Balikpapan, Indonesia — datang berjumpa kami, atau hubungi cawangan yang paling hampir dengan anda.</p>
     </div>
 
     <div class="ofc">
@@ -1121,6 +1149,62 @@ body.lb-lock{overflow:hidden}
                   loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
       </article>
+
+      <!-- ── Pejabat Indonesia: SWJP Tour &amp; Travel, Balikpapan ── -->
+      <article class="ofc__card ofc__card--wide">
+        <div class="ofc__body">
+          <img class="ofc__logo" src="images/logo/swjp-tour-travel.webp" width="800" height="800" loading="lazy" decoding="async"
+               alt="Logo SWJP Tour &amp; Travel — PT Syifa Wisata Jaya Persada">
+          <p class="ofc__kicker">Pejabat Indonesia</p>
+          <h3>PT Syifa Wisata Jaya Persada</h3>
+          <p class="ofc__trade">SWJP Tour &amp; Travel</p>
+          <address class="ofc__addr">
+            Kompleks Balikpapan Superblock (BSB),<br>
+            Blok C No. 39, Jl. Jend. Sudirman,<br>
+            Gn. Bahagia, Kecamatan Balikpapan Selatan,<br>
+            Kalimantan Timur, Indonesia
+          </address>
+          <div class="pcontact">
+            <a href="mailto:swjp_travel@yahoo.com" aria-label="E-mel SWJP Tour &amp; Travel di swjp_travel@yahoo.com"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m8 7.17L20 6.4V6H4v.4zM4 8.73V18h16V8.73l-8 4.77z"/></svg>swjp_travel@yahoo.com</a>
+          </div>
+          <div class="ofc__people">
+            <p class="ofc__kicker">Pegawai Perhubungan</p>
+            <div class="ofc__person">
+              <b>Muhammad Akasyah Bin Abdul Muhsin</b>
+              <div class="pcontact">
+                <a href="tel:+6282285122344" aria-label="Telefon Pak Akasyah, SWJP Tour &amp; Travel di +62 822-8512-2344"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.23.2 2.44.57 3.56a1 1 0 0 1-.25 1.03z"/></svg>+62 822-8512-2344</a>
+                <a class="pc--wa" href="https://wa.me/6282285122344" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Pak Akasyah, SWJP Tour &amp; Travel di +62 822-8512-2344"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 0 16.47m4.52-6.16c-.25-.12-1.47-.72-1.69-.81s-.39-.12-.56.13-.64.81-.79.98-.29.19-.54.06-1.05-.39-1.99-1.23c-.74-.66-1.24-1.47-1.38-1.72s-.02-.38.11-.51c.11-.11.25-.29.37-.44s.17-.25.25-.42.04-.31-.02-.44-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31s-.87.85-.87 2.08.9 2.41 1.02 2.58 1.76 2.69 4.27 3.77c.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18s.21-1.08.15-1.18-.23-.19-.48-.31"/></svg>+62 822-8512-2344</a>
+              </div>
+            </div>
+            <div class="ofc__person">
+              <b>Pak Aniq</b>
+              <div class="pcontact">
+                <a href="tel:+6285365344674" aria-label="Telefon Pak Aniq, SWJP Tour &amp; Travel di +62 853-6534-4674"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.03-.24c1.12.37 2.33.57 3.56.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.23.2 2.44.57 3.56a1 1 0 0 1-.25 1.03z"/></svg>+62 853-6534-4674</a>
+                <a class="pc--wa" href="https://wa.me/6285365344674" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Pak Aniq, SWJP Tour &amp; Travel di +62 853-6534-4674"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 18.15h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.23 8.23 0 0 1 0 16.47m4.52-6.16c-.25-.12-1.47-.72-1.69-.81s-.39-.12-.56.13-.64.81-.79.98-.29.19-.54.06-1.05-.39-1.99-1.23c-.74-.66-1.24-1.47-1.38-1.72s-.02-.38.11-.51c.11-.11.25-.29.37-.44s.17-.25.25-.42.04-.31-.02-.44-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31s-.87.85-.87 2.08.9 2.41 1.02 2.58 1.76 2.69 4.27 3.77c.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18s.21-1.08.15-1.18-.23-.19-.48-.31"/></svg>+62 853-6534-4674</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figure class="ofc__shot">
+          <button class="lb-open" type="button"
+                  data-full="images/tentang/swjp-balikpapan.webp" data-w="1200" data-h="750"
+                  data-title="SWJP Tour &amp; Travel, Balikpapan" data-meta="Kompleks Balikpapan Superblock · Jl. Jend. Sudirman"
+                  aria-label="Besarkan foto pejabat SWJP Tour &amp; Travel di Balikpapan">
+            <picture>
+              <source media="(min-width:1101px)" srcset="images/tentang/swjp-balikpapan-potret.webp" width="470" height="746">
+              <img src="images/tentang/swjp-balikpapan.webp" width="1200" height="750" loading="lazy" decoding="async"
+                   alt="Pejabat SWJP Tour &amp; Travel di Kompleks Balikpapan Superblock, Jalan Jend. Sudirman, Balikpapan">
+            </picture>
+          </button>
+        </figure>
+        <div class="ofc__map">
+          <a class="ofc__map-open" href="https://www.google.com/maps/search/?api=1&amp;query=Kompleks+Balikpapan+Superblock+Blok+C+No.+39+Jalan+Jend.+Sudirman+Gn.+Bahagia+Balikpapan+Selatan+Kalimantan+Timur" target="_blank" rel="noopener noreferrer" aria-label="Open SWJP Tour &amp; Travel in Google Maps (new tab)">Open in Maps <span aria-hidden="true">↗</span></a>
+          <iframe src="https://maps.google.com/maps?q=-1.2729659%2C116.8577334&amp;t=m&amp;z=17&amp;output=embed&amp;iwloc="
+                  title="Peta lokasi SWJP Tour &amp; Travel, Balikpapan Superblock, Kalimantan Timur"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </article>
+
 
     </div>
   </div>
@@ -1673,10 +1757,10 @@ body.lb-lock{overflow:hidden}
 </footer>
 
 <!-- ══ LIGHTBOX SIJIL ══════════════════════════════════════ -->
-<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Paparan sijil" hidden>
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Paparan imej" hidden>
   <div class="lb__bar">
     <span class="lb__count" id="lb-count"></span>
-    <button class="lb__x" type="button" id="lb-close" aria-label="Tutup paparan sijil">
+    <button class="lb__x" type="button" id="lb-close" aria-label="Tutup paparan imej">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
     </button>
   </div>
@@ -1745,9 +1829,12 @@ body.lb-lock{overflow:hidden}
 (function(){
   var lb=document.getElementById('lightbox');
   var grid=document.getElementById('certs');
-  if(!lb||!grid) return;
+  if(!lb) return;
 
-  var btns=[].slice.call(grid.querySelectorAll('.cert'));
+  var certs=grid?[].slice.call(grid.querySelectorAll('.cert')):[];
+  var solos=[].slice.call(document.querySelectorAll('.lb-open'));
+  if(!certs.length&&!solos.length) return;
+  var btns=certs;
   var img=document.getElementById('lb-img'), title=document.getElementById('lb-title'),
       meta=document.getElementById('lb-meta'), count=document.getElementById('lb-count'),
       xBtn=document.getElementById('lb-close'), prev=document.getElementById('lb-prev'), next=document.getElementById('lb-next');
@@ -1761,7 +1848,10 @@ body.lb-lock{overflow:hidden}
     title.textContent=d.title; meta.textContent=d.meta;
     count.textContent=(i+1)+' / '+btns.length;
   }
-  function open(n,from){
+  function open(list,n,from){
+    btns=list;
+    var many=list.length>1;
+    prev.hidden=next.hidden=count.hidden=!many;
     opener=from||null;
     show(n);
     lb.hidden=false; lb.classList.add('is-open');
@@ -1775,7 +1865,8 @@ body.lb-lock{overflow:hidden}
     if(opener){opener.focus(); opener=null;}
   }
 
-  btns.forEach(function(b,n){ b.addEventListener('click',function(){open(n,b);}); });
+  certs.forEach(function(b,n){ b.addEventListener('click',function(){open(certs,n,b);}); });
+  solos.forEach(function(b){ b.addEventListener('click',function(){open([b],0,b);}); });
   xBtn.addEventListener('click',close);
   prev.addEventListener('click',function(){show(i-1);});
   next.addEventListener('click',function(){show(i+1);});
@@ -1788,11 +1879,11 @@ body.lb-lock{overflow:hidden}
   document.addEventListener('keydown',function(e){
     if(lb.hidden) return;
     if(e.key==='Escape'){e.preventDefault(); close();}
-    else if(e.key==='ArrowLeft'){e.preventDefault(); show(i-1);}
-    else if(e.key==='ArrowRight'){e.preventDefault(); show(i+1);}
+    else if(e.key==='ArrowLeft'&&btns.length>1){e.preventDefault(); show(i-1);}
+    else if(e.key==='ArrowRight'&&btns.length>1){e.preventDefault(); show(i+1);}
     else if(e.key==='Tab'){
       // kekalkan fokus di dalam dialog
-      var f=[xBtn,prev,next];
+      var f=[xBtn,prev,next].filter(function(el){return !el.hidden;});
       var at=f.indexOf(document.activeElement);
       e.preventDefault();
       f[(at + (e.shiftKey?-1:1) + f.length) % f.length].focus();
@@ -1805,7 +1896,7 @@ body.lb-lock{overflow:hidden}
   lb.addEventListener('touchend',function(e){
     if(x0===null) return;
     var dx=e.changedTouches[0].clientX-x0;
-    if(Math.abs(dx)>60) show(i+(dx<0?1:-1));
+    if(Math.abs(dx)>60&&btns.length>1) show(i+(dx<0?1:-1));
     x0=null;
   },{passive:true});
 })();
