@@ -597,6 +597,12 @@ body.is-lbox-open{overflow:hidden}
 .hcard dt{font-family:var(--ff-mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);align-self:center}
 .hcard dd{margin:0;color:var(--ink)}
 
+/* Kad hotel dengan satu foto sahaja — geometri sama seperti .hslide
+   (padding + bucu bulat) tetapi tanpa animasi silih ganti. */
+.hcard__media--solo{position:relative;overflow:hidden;background:transparent;padding:.75rem .75rem 0}
+.hcard__media--solo img{position:absolute;inset:.75rem .75rem 0;width:calc(100% - 1.5rem);height:calc(100% - .75rem);
+  object-fit:cover;border-radius:calc(var(--r) - 4px);display:block}
+
 /* Slideshow foto hotel (auto, tanpa klik) */
 .hslide{position:relative;overflow:hidden;background:transparent;padding:.75rem .75rem 0}
 .hslide img{position:absolute;inset:.75rem .75rem 0;width:calc(100% - 1.5rem);height:calc(100% - .75rem);
@@ -1147,7 +1153,7 @@ body.is-lbox-open{overflow:hidden}
     <div class="grid3" style="margin-top:1.5rem">
       <div class="infocard">
         <h3>Berkumpul di KLIA</h3>
-        <p>Jemaah berkumpul di KLIA pada jam <strong>5:00 pagi</strong>, iaitu kira-kira 4 jam sebelum berlepas.</p>
+        <p>Jemaah berkumpul di KLIA 1 pada jam <strong>5:20 pagi</strong>, iaitu kira-kira 4 jam sebelum berlepas.</p>
       </div>
       <div class="infocard">
         <h3>Miqat &amp; niat ihram</h3>
@@ -1161,7 +1167,7 @@ body.is-lbox-open{overflow:hidden}
 <section class="sec sec--stone" id="hotel">
   <div class="wrap">
     <div class="sec__bar"><h2>Penginapan</h2></div>
-    <div class="grid2">
+    <div class="grid3">
       <article class="hcard">
         <div class="hcard__media hslide">
           <img src="../images/hotel/manazel-al-wisam-1.webp" data-zoom title="Klik untuk lihat foto penuh" alt="Bangunan Manazel Al Wisam Hotel, Makkah" loading="lazy" decoding="async">
@@ -1196,6 +1202,19 @@ body.is-lbox-open{overflow:hidden}
           <p>Penginapan sepanjang berada di Madinah, berhampiran pintu masuk Masjid Nabawi.</p>
         </div>
       </article>
+      <article class="hcard">
+        <div class="hcard__media hcard__media--solo">
+          <img src="../images/hotel/ghask-al-lail-1.webp" width="1024" height="720" data-zoom title="Klik untuk lihat foto penuh" alt="Fasad Hotel Ghask Al Lail (Beginning Night Hotel Apartments) di Taif pada waktu malam" loading="lazy" decoding="async">
+        </div>
+        <div class="hcard__body">
+          <p class="hcard__meta">Taif &middot; 03&ndash;04 Nov</p>
+          <h3>Ghask Al Lail</h3>
+          <dl>
+            <dt>Malam</dt><dd>1 malam</dd>
+          </dl>
+          <p>Bermalam di Taif pada malam ketibaan sebelum berihram di Qarnul Manazil dan bergerak ke Makkah.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -1207,58 +1226,58 @@ body.is-lbox-open{overflow:hidden}
 
     <div class="itin">
       <details open>
-        <summary><span class="d-n">Hari 01</span><span class="d-t">KUL → Muscat<small>Khamis · 03/12/26</small></span></summary>
-        <div>Berkumpul di KLIA jam <strong>5:00 pagi</strong>. Bertolak ke Muscat — dijangka tiba <strong>12:10 tengah hari</strong> (waktu Oman).</div>
+        <summary><span class="d-n">Hari 01</span><span class="d-t">KUL &rarr; Muscat &rarr; Jeddah &rarr; Taif<small>Selasa &middot; 03/11/26</small></span></summary>
+        <div>Berkumpul di <strong>KLIA 1 jam 5:20 pagi</strong>. Penerbangan Kuala Lumpur ke Muscat jam <strong>9:30 pagi</strong> (WY822) &mdash; dijangka tiba di Muscat jam <strong>12:10 tengah hari</strong> (waktu Oman). Transit di Muscat, kemudian bertolak ke Jeddah jam <strong>2:35 petang</strong> (WY675) dan dijangka tiba jam <strong>5:10 petang</strong>. Check-in hotel Taif dan bermalam di Taif.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 02</span><span class="d-t">Muscat → Jeddah → Makkah · Umrah pertama<small>Jumaat · 04/12/26</small></span></summary>
-        <div>Bertolak ke Jeddah — berniat ihram di <strong>Qarnul Manazil</strong>. Dijangka tiba <strong>4:45 pagi</strong> (waktu Saudi). Check-in hotel Makkah dan menunaikan <strong>umrah pertama</strong> dengan bimbingan mutawwif.</div>
+        <summary><span class="d-n">Hari 02</span><span class="d-t">Taif &rarr; Makkah &middot; Umrah pertama<small>Rabu &middot; 04/11/26</small></span></summary>
+        <div>Ziarah sekitar Kota Taif, kemudian bertolak ke Makkah. Berihram di <strong>Qarnul Manazil</strong>, check-in hotel dan menunaikan <strong>umrah pertama</strong> dipimpin oleh mutawwif.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 03</span><span class="d-t">Makkah · Aktiviti bebas<small>Sabtu · 05/12/26</small></span></summary>
-        <div>Aktiviti bebas — ibadah sunat, tawaf sunat dan solat berjemaah di Masjidil Haram.</div>
+        <summary><span class="d-n">Hari 03</span><span class="d-t">Makkah &middot; Aktiviti bebas<small>Khamis &middot; 05/11/26</small></span></summary>
+        <div>Aktiviti bebas &mdash; ibadah sunat, tawaf sunat dan solat berjemaah di Masjidil Haram.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 04</span><span class="d-t">Ziarah Arafah &amp; Mina · Umrah kedua<small>Ahad · 06/12/26</small></span></summary>
-        <div>Ziarah ke <strong>Arafah, Jabal Rahmah, Muzdalifah dan Mina</strong>. Berihram di <strong>Ji'ranah</strong> untuk menunaikan <strong>umrah kedua</strong>.</div>
+        <summary><span class="d-n">Hari 04</span><span class="d-t">Makkah &middot; Solat Jumaat<small>Jumaat &middot; 06/11/26</small></span></summary>
+        <div>Aktiviti bebas &mdash; <strong>solat Jumaat</strong> di Masjidil Haram.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 05</span><span class="d-t">Makkah · Aktiviti bebas<small>Isnin · 07/12/26</small></span></summary>
-        <div>Aktiviti bebas — ibadah sunat dan rehat.</div>
+        <summary><span class="d-n">Hari 05</span><span class="d-t">Ziarah Arafah &amp; Mina &middot; Umrah kedua<small>Sabtu &middot; 07/11/26</small></span></summary>
+        <div>Ziarah ke <strong>Arafah, Jabal Rahmah, Muzdalifah dan Mina</strong>. Berihram di <strong>Ji&rsquo;ranah</strong> untuk menunaikan <strong>umrah kedua</strong>.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 06</span><span class="d-t">Gua Thur &amp; Hudaibiyah · Umrah ketiga<small>Selasa · 08/12/26</small></span></summary>
-        <div>Ziarah ke <strong>Gua Thur</strong> dan <strong>Hudaibiyah</strong>. Berihram di Hudaibiyah untuk menunaikan <strong>umrah ketiga</strong>.</div>
+        <summary><span class="d-n">Hari 06</span><span class="d-t">Gua Thur &amp; Hudaibiyah &middot; Umrah ketiga<small>Ahad &middot; 08/11/26</small></span></summary>
+        <div>Ziarah ke <strong>Gua Thur</strong> dan <strong>Hudaibiyah</strong>. Berihram di Hudaibiyah untuk menunaikan <strong>umrah ketiga</strong>. Taklimat / tausiyah khas bagi keberangkatan ke Madinah.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 07</span><span class="d-t">Makkah → Madinah<small>Rabu · 09/12/26</small></span></summary>
-        <div>Taklimat dan tausiyah khas bagi keberangkatan ke Madinah. Check-out hotel Makkah, kemudian check-in hotel Madinah.</div>
+        <summary><span class="d-n">Hari 07</span><span class="d-t">Makkah &rarr; Madinah<small>Isnin &middot; 09/11/26</small></span></summary>
+        <div>Check-out hotel Makkah dan bertolak ke Madinah. Check-in hotel Madinah, diikuti aktiviti bebas.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 08</span><span class="d-t">Ziarah sekitar Madinah<small>Khamis · 10/12/26</small></span></summary>
-        <div>Ziarah <strong>Masjid Quba</strong>, <strong>Bukit Uhud</strong>, <strong>Ladang Kurma</strong>, <strong>Masjid Qiblatain</strong> dan <strong>Masjid Tujuh</strong>. Diikuti taklimat keberangkatan pulang ke tanah air.</div>
-      </details>
-
-      <details>
-        <summary><span class="d-n">Hari 09</span><span class="d-t">Sirah Masjid Nabawi<small>Jumaat · 11/12/26</small></span></summary>
+        <summary><span class="d-n">Hari 08</span><span class="d-t">Sirah Masjid Nabawi<small>Selasa &middot; 10/11/26</small></span></summary>
         <div>Ziarah sirah <strong>Masjid Nabawi</strong> dan <strong>Makam Rasulullah &#65018;</strong>.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 10</span><span class="d-t">Ziarah Wada' &amp; Badar → Lapangan Terbang Madinah<small>Sabtu · 12/12/26</small></span></summary>
-        <div>Ziarah Wada'. Check-out hotel Madinah, diikuti ziarah <strong>Badar</strong>. Bergerak ke Lapangan Terbang Madinah lima jam lebih awal (kira-kira <strong>10:00 malam</strong>).</div>
+        <summary><span class="d-n">Hari 09</span><span class="d-t">Ziarah sekitar Madinah<small>Rabu &middot; 11/11/26</small></span></summary>
+        <div>Ziarah <strong>Masjid Quba</strong>, <strong>Bukit Uhud</strong>, <strong>Ladang Kurma</strong>, <strong>Masjid Qiblatain</strong> dan <strong>Masjid Tujuh</strong>.</div>
       </details>
 
       <details>
-        <summary><span class="d-n">Hari 11</span><span class="d-t">Madinah → Muscat → KLIA<small>Ahad · 13/12/26</small></span></summary>
-        <div>Berangkat ke Lapangan Terbang Muscat, kemudian sambung penerbangan pulang. Dijangka tiba di KLIA jam <strong>8:05 malam</strong> (waktu tempatan).</div>
+        <summary><span class="d-n">Hari 10</span><span class="d-t">Ziarah Wada&rsquo; &rarr; Lapangan Terbang Madinah<small>Khamis &middot; 12/11/26</small></span></summary>
+        <div>Aktiviti bebas dan <strong>ziarah wada&rsquo;</strong>. Taklimat keberangkatan pulang ke tanah air, kemudian bergerak ke Lapangan Terbang Madinah.</div>
+      </details>
+
+      <details>
+        <summary><span class="d-n">Hari 11</span><span class="d-t">Madinah &rarr; Muscat &rarr; KLIA<small>Jumaat &middot; 13/11/26</small></span></summary>
+        <div>Penerbangan Madinah ke Muscat jam <strong>2:30 pagi</strong> (WY678), tiba jam <strong>6:20 pagi</strong>. Transit di Muscat, kemudian sambung penerbangan pulang jam <strong>9:20 pagi</strong> (WY823). Dijangka tiba di KLIA 1 jam <strong>8:05 malam</strong> (waktu tempatan).</div>
       </details>
     </div>
 
